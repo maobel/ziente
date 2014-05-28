@@ -1,0 +1,49 @@
+<?php
+	$paneltool = $items['paneltool'];
+    $data = $items['data'];
+    $skins = $data['skins'];
+    $skin_default = $items['skin_default'];
+    $patterns = $data['patterns'];
+    
+    $bgpattern = $items['bgpattern'];
+    $layout = $items['layout'];
+    
+    
+    $theme = Mage::getSingleton('core/design_package')->getTheme('frontend');
+    $baseURL = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN) . 'frontend/default/' . $theme . '/venustheme/images/patterns/';
+?>
+
+<?php if($paneltool) { ?>
+<div class="toolspanel" id="toolspanel">
+    <form action="<?php echo $this->getPostActionUrl(); ?>" method="post" id="cpanel-form">  
+        <div style="min-height: 300px; width: 200px; left: 0px;" class="pn-content " id="toolspanelcontent">
+            <div class="pn-button open"><span></span> </div>
+            <div id="template_theme"> 
+                <h5><?php echo $this->__('Theme skin'); ?></h5>
+                <select name="skin">
+                    <?php foreach($skins as $skin){?>
+                    <option value="<?php echo $skin;?>" <?php if($skin_default == $skin) echo 'selected="selected"'?> ><?php echo $skin;?></option>
+                    <?php }?>
+                </select>
+
+            </div>
+            
+            <?php if($patterns){?>
+            <div id="pnpartterns">
+                <h5><?php echo $this->__('Pattern'); ?></h5>
+                <input  type="hidden" value="<?php echo $bgpattern;?>" name="bgpattern/">
+                <?php foreach($patterns as $pattern){?>
+                <a <?php if($pattern == $bgpattern.'.png') echo 'class="active"';?> style="background:url('<?php echo $baseURL.$pattern;?>')" onclick="return false;" href="#" title="<?php echo $pattern;?>" id="<?php echo $pattern;?>"></a>
+                <?php } ?>
+                <div class="clearfix"></div>
+            </div>
+            <?php } ?>
+            <div class="clearfix" id="bottombox">
+                <input type="submit" name="usercustom" value="<?php echo $this->__('Apply');?>"/>
+                <input type="submit" name="usercustom" value="<?php echo $this->__('Reset');?>"/>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </form>
+</div>
+<?php } ?>

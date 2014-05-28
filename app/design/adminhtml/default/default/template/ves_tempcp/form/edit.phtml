@@ -1,0 +1,1542 @@
+<?php
+/**
+ * @see Mage_Adminhtml_Block_Widget_Form_Container
+ */
+ ?>
+ <?php
+ 	$themecontrol = $this->getThemeData();
+
+ 	$element = Mage::helper("ves_tempcp/element");
+
+ 	$default_theme = $themecontrol->get("default_theme");
+ 	$templates = $themecontrol->get("templates", array());
+ 	$skins = $themecontrol->get("skins", array());
+ 	$fontsizes = $themecontrol->get("fontsizes", array());
+ 	$fonts = $themecontrol->get("fonts", array());
+ 	$internal_modules = $themecontrol->get("internal_modules", array());
+ 	$patterns = $themecontrol->get("patterns", array());
+ 	$theme_path = $themecontrol->get("theme_path", "");
+ 	$theme_uri = Mage::getBaseUrl('skin').'frontend/default/'.$themecontrol->get("theme", "")."/";
+ 	$stores = $themecontrol->get("store_id", array());
+
+ 	$themePath = Mage::getBaseDir('skin')."/frontend/default/".$default_theme."/" ;
+
+ 	$themeCustomizePath = $themePath.'css/customize/';
+ 	
+ 	$files = $this->getFileList( $themeCustomizePath , '.css' );
+
+ 	$custom_css = $this->getContentCustomCss( );
+
+ 	$directions = array("ltr" => "Left To Right",
+ 						"rtl" => "Right To Left");
+
+ 	$repeat_options = array("repeat" => "repeat",
+ 							"repeat-x" => "repeat-x",
+ 							"repeat-y" => "repeat-y",
+ 							"no-repeat" => "no-repeat");
+ 	$position_options = array("left top" => "left top",
+ 							  "left center" => "left center",
+ 							  "left bottom" => "left bottom",
+ 							  "center top" => "center top",
+ 							  "center" => "center",
+ 							  "center bottom"=> "center bottom",
+ 							  "right top"=>"right top",
+ 							  "right center" => "right center",
+ 							  "right bottom" => "right bottom"
+ 							);
+
+ 	$layouts = array( 'fullwidth' => 'Full Width', 'boxed-lg' => 'Boxed Desktop Large', 'boxed-md'=>'Boxed Desktop Mediumn' );
+
+ 	$yesno_options= array(1 => Mage::helper('ves_tempcp')->__('Yes'),
+ 				  0 => Mage::helper('ves_tempcp')->__('No'));
+ 	$type_fonts = array("standard"=> Mage::helper('ves_tempcp')->__('Standard'),
+ 						"google"=> Mage::helper('ves_tempcp')->__('Google Fonts'));
+
+
+ 	$compile_options = array(
+ 							 "" => Mage::helper('ves_tempcp')->__('No'),
+ 							 "compile-export" => Mage::helper('ves_tempcp')->__('Compile Less And Export Css'),
+ 							 "compile" => Mage::helper('ves_tempcp')->__('Compile Only'));
+
+ 	$category_display_modes = array("grid" => "Grid",
+ 									"list" => "List");
+ 	$columns = array("0" => 'Auto',
+ 					 "1" => 1,
+ 					 "2" => 2,
+ 					 "3" => 3,
+ 					 "4" => 4,
+ 					 "5" => 5,
+ 					 "6" => 6);
+
+ 	$zoom_galleries = array("basic" => Mage::helper('ves_tempcp')->__('Basic Zoom'),
+ 								"slider" => Mage::helper('ves_tempcp')->__('Slider - Main Zoom'));
+
+ 	$header_options = array("" => Mage::helper('ves_tempcp')->__('No Scrolling'),
+ 								"keep-header" => Mage::helper('ves_tempcp')->__('Keep Header When Scrolling'));
+
+ 	$zoom_modes = array("basic" => Mage::helper('ves_tempcp')->__('Basic Zoom'),
+ 							"inner" => Mage::helper('ves_tempcp')->__('Inner Zoom'),
+ 							"lens" => Mage::helper('ves_tempcp')->__('Lens Zoom'));
+
+ 	$zoomlensshapes = array("basic" => Mage::helper('ves_tempcp')->__('Basic'),
+ 								"round" => Mage::helper('ves_tempcp')->__('Round'));
+
+ 	$compress_mode = array("" => Mage::helper('ves_tempcp')->__('Select A Compression Mod'),
+ 						 "compress-only" => Mage::helper('ves_tempcp')->__('Compress Only'),
+ 						 "compress-merge" => Mage::helper('ves_tempcp')->__('Merge And Compress'));
+ 	
+ 	$bg_image_thumb = "";
+ 	if($themecontrol->get("bg_image","") != ""){
+ 		$bg_image_thumb = $element->resizeImage($themecontrol->get("bg_image"), 135, 135);
+ 	}
+
+ 	$stores = $element->getElementStores("store_id", "stores[]", $stores);
+
+ ?>
+
+
+<?php echo $this->getFormInitScripts() ?>
+<?php echo Mage::helper('ves_tempcp/element')->initTextEditor(); ?>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>venustheme/ves_tempcp/admin/jquery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>venustheme/ves_tempcp/admin/jquery/ui/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>venustheme/ves_tempcp/admin/jquery/jquerycookie.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>venustheme/ves_tempcp/admin/themecontrol/pekeUpload.js"></script>
+
+
+<div class="entry-edit">
+    <form id="form" action="<?php echo $this->getFormActionUrl() ?>" method="post" id="product_edit_form" enctype="multipart/form-data">
+    	<input type="hidden" name="id" value="<?php echo $themecontrol->get("theme_id",0); ?>"/>
+    	<input type="hidden" name="action" value="" id="action"/>
+    <div class="box" id="themepanel">
+    <div class="heading">
+      <h1><b style="font-size:18	px;color:#E8481B"><?php echo $this->getHeaderText(); ?></b></h1>
+	  
+      <div class="buttons">
+	  <a class="button button-action btn-save" onclick="jQuery('#form').submit();" rel=""><?php echo Mage::helper('ves_tempcp')->__('Save');?></a>
+	  <a id="button_save_keep" class="button button-action green" onclick="jQuery('#action').val('save_stay');jQuery('#form').submit();" rel="save-edit"><?php echo Mage::helper('ves_tempcp')->__('Save and Edit');?></a>
+	 
+	  <a href="<?php echo $this->getCancelLink(); ?>" class="button"><?php echo Mage::helper('ves_tempcp')->__('Cancel');?></a><?php if((int)$themecontrol->get("theme_id",0) > 0) { ?> |
+	   <a href="<?php echo $this->getLiveEditLink();?>" class="button"><?php echo Mage::helper('ves_tempcp')->__('Live Customzing Theme');?></a>
+	   <?php } ?>
+	  </div>
+    </div>
+
+    <div class="content">
+		
+	 <div class="entry-theme">
+		<b class="label"> <b><?php echo Mage::helper('ves_tempcp')->__('Default Theme');?></b></b>
+		<select name="themecontrol[default_theme]">
+			<?php
+			if($templates){
+				foreach($templates as $template){
+					if($template == $default_theme){
+						?>
+						<option value="<?php echo $template;?>" selected="selected"><?php echo $template;?></option>
+						<?php
+					}else{
+						?>
+						<option value="<?php echo $template;?>"><?php echo $template;?></option>
+						<?php
+					}
+				}
+			}
+			?>
+		</select>
+		
+		 - <a rel="" class="green custom-popup" href="http://www.venusthemes.com/guides/<?php echo $default_theme;?>" id="btn-guide"><?php echo Mage::helper('ves_tempcp')->__('UserGuide');?></a>
+		</div>
+		  
+			<div class="ibox">
+	      
+		  
+		
+			 <div id="tabs" class="htabs">
+				
+				<a class="selected" style="display: inline;" href="#tab-general"><?php echo Mage::helper('ves_tempcp')->__('General');?></a>
+				<a style="display: inline;" href="#tab-pages-layout"><?php echo Mage::helper('ves_tempcp')->__('Pages Setting');?></a>
+				
+
+				<a style="display: inline;" href="#tab-font"><?php echo Mage::helper('ves_tempcp')->__('Font');?></a>
+				<a style="display: inline;" href="#tab-imodules"><?php echo Mage::helper('ves_tempcp')->__('Internal Modules');?></a>
+				<a style="display: inline;" href="#tab-customcode"><?php echo Mage::helper('ves_tempcp')->__('Customization');?></a>
+				<!--<a style="display: inline;" href="#tab-tools"><?php echo Mage::helper('ves_tempcp')->__('Tools');?></a>-->
+				<a style="display: inline;" href="#tab-support"><?php echo Mage::helper('ves_tempcp')->__('Information');?></a>
+			 </div>
+
+		<div id="tab-contents">
+				
+				<div style="display: none;" id="tab-pages-layout">
+
+	  				 <div id="my-tab-pageslayout" class="vtabs">
+	  					<a class="selected" href="#tab-pcategory" onclick="return false;"><?php echo Mage::helper('ves_tempcp')->__('Category - Listing Products');?></a>
+	  					<a href="#tab-pproduct" onclick="return false;"><?php echo Mage::helper('ves_tempcp')->__('Product');?></a>
+	  					<a href="#tab-pcontact" onclick="return false;"><?php echo Mage::helper('ves_tempcp')->__('Contact');?></a>
+	  				 </div> 
+	  				 <div class="page-tabs-wrap">
+			  			 <div style="display: block;" class="clearfix" id="tab-pcategory">
+			  			 	<div class="tab-inner">
+			  			 		<table class="form">
+			  			 			<tbody><tr>
+			  			 				<td><?php echo Mage::helper('ves_tempcp')->__('Display Product Modes');?></td>
+			  			 				<td>
+
+			  			 					<select name="themecontrol[category_display_mode]">
+			  			 						<?php
+			  			 						foreach($category_display_modes as $key => $val){
+			  			 							if($key == $themecontrol->get("category_display_mode", "")){
+			  			 								?>
+			  			 								<option value="<?php echo $key; ?>" selected="selected"><?php echo $val;?></option>
+			  			 								<?php
+			  			 							}else{
+			  			 								?>
+			  			 								<option value="<?php echo $key; ?>"><?php echo $val;?></option>
+			  			 								<?php
+			  			 							}
+			  			 						}
+			  			 						?>
+			  			 							
+			  			 					</select>
+			  			 				</td>
+			  			 			</tr>	
+			  			 			<tr>
+			  			 				<td><?php echo Mage::helper('ves_tempcp')->__('Product - Columns in Large Screen');?></td>
+			  			 				<td>
+
+			  			 					<select name="themecontrol[listing_products_columns]">
+			  			 						<?php 
+			  			 							foreach($columns as $key=> $val){
+			  			 								if($key == $themecontrol->get("listing_products_columns", 0)){
+			  			 									?>
+			  			 									<option value="<?php echo $key; ?>" selected="selected"><?php echo $val;?></option>
+			  			 									<?php
+			  			 								}else{
+			  			 									?>
+			  			 									<option value="<?php echo $key; ?>"><?php echo $val;?></option>
+			  			 									<?php
+
+			  			 								}
+			  			 							}
+			  			 						?>
+			  			 							
+			  			 					</select>
+			  			 				</td>
+			  			 			</tr>	
+			  			 			 
+			  			 			 <tr>
+			  			 				<td><?php echo Mage::helper('ves_tempcp')->__('Product - Columns In Small Screen');?></td>
+			  			 				<td>
+
+			  			 					<select name="themecontrol[listing_products_columns_small]">
+												<?php 
+			  			 							foreach($columns as $key=> $val){
+			  			 								if($key == $themecontrol->get("listing_products_columns_small", 0)){
+			  			 									?>
+			  			 									<option value="<?php echo $key; ?>" selected="selected"><?php echo $val;?></option>
+			  			 									<?php
+			  			 								}else{
+			  			 									?>
+			  			 									<option value="<?php echo $key; ?>"><?php echo $val;?></option>
+			  			 									<?php
+
+			  			 								}
+			  			 							}
+			  			 						?>
+			  			 					</select>
+			  			 				</td>
+			  			 			</tr>	
+
+			  			 			 <tr>
+			  			 				<td><?php echo Mage::helper('ves_tempcp')->__('Product - Columns In Mini Small Screen');?></td>
+			  			 				<td>
+
+			  			 					<select name="themecontrol[listing_products_columns_minismall]">
+			  			 						<?php 
+			  			 							foreach($columns as $key=> $val){
+			  			 								if($key == $themecontrol->get("listing_products_columns_minismall", 0)){
+			  			 									?>
+			  			 									<option value="<?php echo $key; ?>" selected="selected"><?php echo $val;?></option>
+			  			 									<?php
+			  			 								}else{
+			  			 									?>
+			  			 									<option value="<?php echo $key; ?>"><?php echo $val;?></option>
+			  			 									<?php
+
+			  			 								}
+			  			 							}
+			  			 						?>
+			  			 							
+			  			 					</select>
+			  			 				</td>
+			  			 			</tr>
+			  			 			<tr>
+			  			 				<td><?php echo Mage::helper('ves_tempcp')->__('Enable Short Description<br/><span class="help">Show/hide short description of products in Grid mode.</span>');?></td>
+			  			 				<td>
+			  			 					<select name="themecontrol[enable_short_desc]">
+			  			 					<?php
+												foreach($yesno_options as $key=>$val){
+													if($key == $themecontrol->get("enable_short_desc", 0)){
+														?>
+														<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+														<?php
+													}else{
+														?>
+														<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+														<?php
+													}
+												}
+											?>
+			  			 							
+			  			 					</select>
+			  			 				</td>
+			  			 			</tr>
+			  			 			<tr>
+			  			 				<td><?php echo Mage::helper('ves_tempcp')->__('Enable Product Popup Image');?></td>
+			  			 				<td>
+			  			 					<select name="themecontrol[category_pzoom]">
+			  			 					<?php
+												foreach($yesno_options as $key=>$val){
+													if($key == $themecontrol->get("category_pzoom", 0)){
+														?>
+														<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+														<?php
+													}else{
+														?>
+														<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+														<?php
+													}
+												}
+											?>
+			  			 							
+			  			 					</select>
+			  			 				</td>
+			  			 			</tr>
+			  			 			<tr>
+			  							<td><?php echo Mage::helper('ves_tempcp')->__('Popup Image Size (Width X Height):');?></td>
+			  							<td>
+			  								<input value="<?php echo $themecontrol->get("popup_image_width",600);?>" name="themecontrol[popup_image_width]"> x <input value="<?php echo $themecontrol->get("popup_image_height", 500);?>" name="themecontrol[popup_image_height]"> 
+			  							</td>
+			  						</tr>
+			  						<tr>
+			  							<td><?php echo Mage::helper('ves_tempcp')->__('Listing Image Size (Width X Height):');?></td>
+			  							<td>
+			  								<input value="<?php echo $themecontrol->get("listing_image_width", 300);?>" name="themecontrol[listing_image_width]"> x <input value="<?php echo $themecontrol->get("listing_image_height", 300);?>" name="themecontrol[listing_image_height]"> 
+			  							</td>
+			  						</tr>
+			  			 		</tbody></table>
+			  			 	</div>
+			  			 </div>
+			  			  <div style="display: none;" class="clearfix" id="tab-pproduct">
+			  				<div class="tab-inner">
+			  					<table class="form">
+			  						<tbody><tr>
+			  							<td><b><?php echo Mage::helper('ves_tempcp')->__('Enable Product Zoom');?></b></td>
+			  							<td>
+			  								<select name="themecontrol[product_enablezoom]">
+			  								<?php
+												foreach($yesno_options as $key=>$val){
+													if($key == $themecontrol->get("product_enablezoom", 1)){
+														?>
+														<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+														<?php
+													}else{
+														?>
+														<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+														<?php
+													}
+												}
+											?>	
+			  								</select>
+			  							</td>
+			  						</tr>
+			  						<tr>
+			  							<td><?php echo Mage::helper('ves_tempcp')->__('Zoom Gallery Style');?></td>
+			  							<td>
+			  								<select name="themecontrol[product_zoomgallery]">
+			  									<?php
+			  			 						foreach($zoom_galleries as $key => $val){
+			  			 							if($key == $themecontrol->get("product_zoomgallery", "basic")){
+			  			 								?>
+			  			 								<option value="<?php echo $key; ?>" selected="selected"><?php echo $val;?></option>
+			  			 								<?php
+			  			 							}else{
+			  			 								?>
+			  			 								<option value="<?php echo $key; ?>"><?php echo $val;?></option>
+			  			 								<?php
+			  			 							}
+			  			 						}
+			  			 						?>
+			  			 							
+			  								</select>
+			  							</td>
+			  						</tr>	
+			  						<tr>
+			  							<td><?php echo Mage::helper('ves_tempcp')->__('Product Zoom Mode');?></td>
+			  							<td>
+			  								<select name="themecontrol[product_zoommode]">
+			  									<?php
+			  			 						foreach($zoom_modes as $key => $val){
+			  			 							if($key == $themecontrol->get("product_zoommode", "basic")){
+			  			 								?>
+			  			 								<option value="<?php echo $key; ?>" selected="selected"><?php echo $val;?></option>
+			  			 								<?php
+			  			 							}else{
+			  			 								?>
+			  			 								<option value="<?php echo $key; ?>"><?php echo $val;?></option>
+			  			 								<?php
+			  			 							}
+			  			 						}
+			  			 						?>
+			  			 							
+			  								</select>
+			  							</td>
+			  						</tr>
+			  						<tr>
+			  							<td><?php echo Mage::helper('ves_tempcp')->__('Lens Zoom Size');?></td>
+			  							<td>
+			  								<input value="<?php echo $themecontrol->get("product_zoomlenssize",150);?>" name="themecontrol[product_zoomlenssize]"> 
+			  							</td>
+			  						</tr>
+			  						<tr>
+			  							<td><?php echo Mage::helper('ves_tempcp')->__('Enable Zoom Easing');?></td>
+			  							<td>
+			  								<select name="themecontrol[product_zoomeasing]">
+			  									<?php
+													foreach($yesno_options as $key=>$val){
+														if($key == $themecontrol->get("product_zoomeasing", 0)){
+															?>
+															<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+															<?php
+														}else{
+															?>
+															<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+															<?php
+														}
+													}
+												?>
+			  			 							
+			  								</select>
+			  							</td>
+			  						</tr>
+			  						
+			  						<tr>
+			  							<td><?php echo Mage::helper('ves_tempcp')->__('Lens Zoom Shapes');?></td>
+			  							<td>
+			  								<select name="themecontrol[product_zoomlensshape]">
+			  									<?php 
+			  			 							foreach($zoomlensshapes as $key=> $val){
+			  			 								if($key == $themecontrol->get("product_zoomlensshape", "basic")){
+			  			 									?>
+			  			 									<option value="<?php echo $key; ?>" selected="selected"><?php echo $val;?></option>
+			  			 									<?php
+			  			 								}else{
+			  			 									?>
+			  			 									<option value="<?php echo $key; ?>"><?php echo $val;?></option>
+			  			 									<?php
+
+			  			 								}
+			  			 							}
+			  			 						?>
+			  			 							
+			  								</select>
+			  							</td>
+			  						</tr>
+			  						<tr>
+			  							<td><?php echo Mage::helper('ves_tempcp')->__('Product Main Image Size (Width X Height):');?></td>
+			  							<td>
+			  								<input value="<?php echo $themecontrol->get("main_image_width", 265);?>" name="themecontrol[main_image_width]"> x <input value="<?php echo $themecontrol->get("main_image_height", 265);?>" name="themecontrol[main_image_height]"> 
+			  							</td>
+			  						</tr>
+			  						<tr>
+			  							<td><?php echo Mage::helper('ves_tempcp')->__('Product Additional Images Size (Width X Height):');?></td>
+			  							<td>
+			  								<input value="<?php echo $themecontrol->get("additional_image_width", 80);?>" name="themecontrol[additional_image_width]"> x <input value="<?php echo $themecontrol->get("additional_image_height", 80);?>" name="themecontrol[additional_image_height]"> 
+			  							</td>
+			  						</tr>
+			  						<tr>
+			  			 				<td><b><?php echo Mage::helper('ves_tempcp')->__('Product Related Columns');?><b></b></b></td>
+			  			 				<td>
+
+			  			 					<select name="themecontrol[product_related_column]">
+			  			 						<?php 
+			  			 							foreach($columns as $key=> $val){
+			  			 								if($key == $themecontrol->get("product_related_column", 0)){
+			  			 									?>
+			  			 									<option value="<?php echo $key; ?>" selected="selected"><?php echo $val;?></option>
+			  			 									<?php
+			  			 								}else{
+			  			 									?>
+			  			 									<option value="<?php echo $key; ?>"><?php echo $val;?></option>
+			  			 									<?php
+
+			  			 								}
+			  			 							}
+			  			 						?>
+			  			 							
+			  			 					</select>
+			  			 				</td>
+			  			 			</tr>
+			  			 			<tr>
+			  			 				<td><b><?php echo Mage::helper('ves_tempcp')->__('Moreview images cols');?><b></b></b></td>
+			  			 				<td>
+
+			  			 					<select name="themecontrol[moreview_cols]">
+			  			 						<?php 
+			  			 							foreach($columns as $key=> $val){
+			  			 								if($key == $themecontrol->get("moreview_cols", 0)){
+			  			 									?>
+			  			 									<option value="<?php echo $key; ?>" selected="selected"><?php echo $val;?></option>
+			  			 									<?php
+			  			 								}else{
+			  			 									?>
+			  			 									<option value="<?php echo $key; ?>"><?php echo $val;?></option>
+			  			 									<?php
+
+			  			 								}
+			  			 							}
+			  			 						?>
+			  			 							
+			  			 					</select>
+			  			 				</td>
+			  			 			</tr>
+			  			 			<tr>
+			  			 				<td colspan="1"><h4><?php echo Mage::helper('ves_tempcp')->__('Add Custom Tab');?></h4></td>
+			  			 				<td>
+			  			 					<select name="themecontrol[enable_product_customtab]">
+			  			 						<?php
+													foreach($yesno_options as $key=>$val){
+														if($key == $themecontrol->get("enable_product_customtab", 0)){
+															?>
+															<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+															<?php
+														}else{
+															?>
+															<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+															<?php
+														}
+													}
+												?>
+			  			 							
+			  			 					</select>
+			  			 				</td>
+			  			 			</tr>
+			  			 			<tr>
+			  			 				<td><label> <?php echo Mage::helper('ves_tempcp')->__('Custom Tab Name:');?> </label></td>
+			  			 				<td>
+			  			 					<input size="80" name="themecontrol[product_customtab_name]" value="<?php echo $themecontrol->get("product_customtab_name", "");?>" type="text">
+			  			 				</td>
+
+			  			 			</tr>
+			  			 			<tr>
+			  			 				<td><?php echo Mage::helper('ves_tempcp')->__('Custom Tab Content');?></td>
+			  			 				<td>
+			  			 					<?php echo Mage::helper('ves_tempcp/element')->getElementEditor('customtab-content-1','themecontrol[product_customtab_content]', $themecontrol->get("product_customtab_content","")); ?>
+			  			 				</td>
+			  			 			</tr>
+
+			  			 				
+			  					</tbody></table>
+			  				</div>
+			  			 </div>
+
+			  			 <div style="display: none;" id="tab-pcontact">
+			  			 	<div class="tab-inner">
+			  			 		
+			  			 		<table class="form">
+			  			 			<tbody>
+			  			 				<tr>
+				  			 				<td class="" colspan="2"><h4><?php echo Mage::helper('ves_tempcp')->__('Contact Google Map'); ?></h4></td>
+				  			 			</tr>
+				  			 			<tr>
+				  			 				<td><?php echo Mage::helper('ves_tempcp')->__('Location Address'); ?><span class="help"><?php echo Mage::helper('ves_tempcp')->__("Input your store address"); ?></span></td>
+				  			 				<td>
+				  			 					<input id="searchTextField" name="themecontrol[location_address]" type="text" value="<?php echo $themecontrol->get('location_address', Mage::getStoreConfig('general/store_information/address')); ?>" placeholder="<?php echo Mage::helper('ves_tempcp')->__("Input your store address"); ?>" autocomplete="on" runat="server" size="60"/>
+				  			 				</td>
+				  			 			</tr>
+				  			 			<tr>
+				  			 				<td><?php echo Mage::helper('ves_tempcp')->__('Latitude'); ?></td>
+				  			 				<td>
+				  			 					<input id="location_latitude" name="themecontrol[location_latitude]" value="<?php echo $themecontrol->get('location_latitude'); ?>" size="30"/>
+											</td>
+				  			 			</tr>
+				  			 			<tr>
+				  			 				<td><?php echo Mage::helper('ves_tempcp')->__('Longitude'); ?></td>
+				  			 				<td><input id="location_longitude" name="themecontrol[location_longitude]" value="<?php echo $themecontrol->get('location_longitude'); ?>" size="30"/></td>
+				  			 			</tr>
+			  			 				<tr>
+			  			 				<td><h4><?php echo Mage::helper('ves_tempcp')->__('Custom HTML');?></h4></td>
+			  			 				<td>
+			  			 					<?php echo Mage::helper('ves_tempcp/element')->getElementEditor('contact_customhtml','themecontrol[contact_customhtml]', $themecontrol->get("contact_customhtml","")); ?>
+			  			 				</td>
+			  			 			</tr>
+			  			 			</tbody>
+			  			 		</table>	
+			  			 	</div>	
+			  			 </div>
+
+			  			
+			  			</div>  <div class="clear clearfix"></div>				</div>  
+
+				<div style="display: block;" id="tab-general">
+						<div class="tab-inner">
+						<table class="form form-list ">
+							<tbody>
+								
+								<tr>
+								<td><b><?php echo Mage::helper('ves_tempcp')->__('Default Skin');?></b></td>
+								<td>
+									<div class="group-options theme-skins clear">
+										<select name="themecontrol[skin]">
+											<?php
+											 if($skins){
+											 	foreach($skins as $val){
+											 		if($val == $themecontrol->get("skin")){
+											 			?>
+											 			<option value="<?php echo $val;?>" selected="selected"><?php echo $val;?></option>
+											 			<?php
+											 		}else{
+											 			?>
+											 			<option value="<?php echo $val;?>"><?php echo $val;?></option>
+											 			<?php
+											 		}
+											 	}
+											 }
+											?>
+										</select>
+										
+										<div class="clear"></div>
+									</div>
+						
+								</td>
+							</tr>
+							
+							<tr>
+								<td><?php echo Mage::helper('ves_tempcp')->__('Theme Layout Width');?></td>
+								<td>
+									<input name="themecontrol[theme_width]" value="<?php echo $themecontrol->get('theme_width','auto');?>">
+									<p><i><?php echo Mage::helper('ves_tempcp')->__('Enter Layout width, such as 940px or 96%. Put value "<b>auto</b>" -&gt; Layout width is used in stylesheet.css  of theme');?></i></p>
+								</td>
+							</tr>
+
+							<tr>
+								<td><?php echo Mage::helper('ves_tempcp')->__('Direction');?></td>
+								<td>
+									<div class="direction clear">
+										<select name="themecontrol[direction]">
+											<?php
+											 if($directions){
+											 	foreach($directions as $key=>$val){
+											 		if($key == $themecontrol->get("direction","ltr")){
+											 			?>
+											 			<option value="<?php echo $key;?>" selected="selected"><?php echo $val;?></option>
+											 			<?php
+											 		}else{
+											 			?>
+											 			<option value="<?php echo $key;?>"><?php echo $val;?></option>
+											 			<?php
+											 		}
+											 	}
+											 }
+											?>
+										</select>
+										
+										<div class="clear"></div>
+									</div>
+						
+								</td>
+							</tr>
+							<tr class="highlight">
+							<td><?php echo Mage::helper('ves_tempcp')->__('Enable Custom Copyright');?></td>
+							<td>
+								<select name="themecontrol[enable_custom_copyright]">
+												<?php
+													foreach($yesno_options as $key=>$val){
+														if($key == $themecontrol->get("enable_custom_copyright", 0)){
+															?>
+															<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+															<?php
+														}else{
+															?>
+															<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+															<?php
+														}
+													}
+												?>
+											</select>
+							</td>
+						</tr>
+							<tr>
+								<td><?php echo Mage::helper('ves_tempcp')->__('Copyright');?></td>
+								<td>
+									<textarea cols="40" rows="3" name="themecontrol[copyright]"><?php echo $themecontrol->get("copyright", Mage::helper('ves_tempcp')->__('Copyright 2013 Venustheme.Com.'));?></textarea>
+								</td>
+							</tr>
+							<tr class="option_allow_hidden">
+								<td><?php echo Mage::helper('ves_tempcp')->__('Disable Design By');?></td>
+								<td>
+									<select name="themecontrol[disable_design]">
+										<?php
+													foreach($yesno_options as $key=>$val){
+														if($key == $themecontrol->get("disable_design", 0)){
+															?>
+															<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+															<?php
+														}else{
+															?>
+															<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+															<?php
+														}
+													}
+												?>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td><?php echo Mage::helper('ves_tempcp')->__('Enable OffCanvas Sidebars');?></td>
+								<td>
+									<select name="themecontrol[enable_offsidebars]">
+										<?php
+													foreach($yesno_options as $key=>$val){
+														if($key == $themecontrol->get("enable_offsidebars", 1)){
+															?>
+															<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+															<?php
+														}else{
+															?>
+															<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+															<?php
+														}
+													}
+												?>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td><?php echo Mage::helper('ves_tempcp')->__('Enable Footer Center:');?></td>
+								<td>
+									<select name="themecontrol[enable_footer_center]">
+										<?php
+													foreach($yesno_options as $key=>$val){
+														if($key == $themecontrol->get("enable_footer_center", 1)){
+															?>
+															<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+															<?php
+														}else{
+															?>
+															<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+															<?php
+														}
+													}
+												?>
+									</select>
+								</td>
+							</tr>
+							
+							<tr>
+								<td><?php echo Mage::helper('ves_tempcp')->__('Enable Panel Tool');?></td>
+								<td>
+									<select name="themecontrol[enable_paneltool]">
+										<?php
+													foreach($yesno_options as $key=>$val){
+														if($key == $themecontrol->get("enable_paneltool", 1)){
+															?>
+															<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+															<?php
+														}else{
+															?>
+															<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+															<?php
+														}
+													}
+												?>
+									</select>
+								</td>
+							</tr>
+
+							<tr>
+								<td><?php echo Mage::helper('ves_tempcp')->__('Enable Ajax Cart');?></td>
+								<td>
+									<select name="themecontrol[enable_ajaxcart]">
+										<?php
+													foreach($yesno_options as $key=>$val){
+														if($key == $themecontrol->get("enable_ajaxcart", 1)){
+															?>
+															<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+															<?php
+														}else{
+															?>
+															<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+															<?php
+														}
+													}
+												?>
+									</select>
+								</td>
+							</tr>
+							
+							<tr>
+								<td><?php echo Mage::helper('ves_tempcp')->__('Enable Quick View');?></td>
+								<td>
+									<select name="themecontrol[enable_quickview]">
+										<?php
+													foreach($yesno_options as $key=>$val){
+														if($key == $themecontrol->get("enable_quickview", 1)){
+															?>
+															<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+															<?php
+														}else{
+															?>
+															<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+															<?php
+														}
+													}
+												?>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td><?php echo Mage::helper('ves_tempcp')->__('Enable Swap Image');?></td>
+								<td>
+									<select name="themecontrol[enable_swap]">
+										<?php
+													foreach($yesno_options as $key=>$val){
+														if($key == $themecontrol->get("enable_swap", 1)){
+															?>
+															<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+															<?php
+														}else{
+															?>
+															<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+															<?php
+														}
+													}
+												?>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td><?php echo Mage::helper('ves_tempcp')->__('Swap Image Number:');?></td>
+			  							<td>
+			  								<input value="<?php echo $themecontrol->get("swap_image_number","0");?>" name="themecontrol[swap_image_number]">
+			  								<br/>
+			  								<span class="help"><?php echo Mage::helper('ves_tempcp')->__('Input index number of product additional images to use for Swap image (index number start from <b>0</b>), <br/>for example: you want get image 3 for swap image, you should input swap image number = 2 ');?></span> 
+			  							</td>
+							</tr>
+							<tr>
+								<td><?php echo Mage::helper('ves_tempcp')->__('Popup Quickview Size (Width X Height):');?></td>
+			  							<td>
+			  								<input value="<?php echo $themecontrol->get("popup_quickview_width","60%");?>" name="themecontrol[popup_quickview_width]"> x <input value="<?php echo $themecontrol->get("popup_quickview_height", "80%");?>" name="themecontrol[popup_quickview_height]"> 
+			  							</td>
+							</tr>
+
+							<tr>
+								<td><?php echo Mage::helper('ves_tempcp')->__('Header');?></td>
+								<td>
+									<select name="themecontrol[header]">
+										<?php
+													foreach($header_options as $key=>$val){
+														if($key == $themecontrol->get("header", "")){
+															?>
+															<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+															<?php
+														}else{
+															?>
+															<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+															<?php
+														}
+													}
+												?>
+									</select>
+								</td>
+							</tr>
+							
+							<tr><td colspan="2"><h3><?php echo Mage::helper('ves_tempcp')->__('Template Layout Setting');?></h3></td></tr>
+							<tr>
+								<td><label class=""><?php echo Mage::helper('ves_tempcp')->__('Layout');?></label></td>
+								<td>
+									<select name="themecontrol[layout]">
+											<?php
+											foreach($layouts as $key=>$val){
+												if($key == $themecontrol->get("layout", "fullwidth")){
+													?>
+													<option value="<?php echo $key;?>" selected="selected"><?php echo $val; ?></option>
+													<?php
+												}else{
+													?>
+													<option value="<?php echo $key;?>"><?php echo $val; ?></option>
+													<?php
+												}
+											}
+											?>		
+									</select>
+								</td>
+							</tr>
+							<tr>
+									<td><b><?php echo Mage::helper('ves_tempcp')->__('Store views');?></b></td>
+									<td class="value">
+										<?php echo $stores; ?>
+									</td>
+							</tr>
+						</tbody></table>
+				</div>				
+			</div>
+				
+				<div style="display: none;" id="tab-imodules">
+					<p>* <?php echo Mage::helper('ves_tempcp')->__('<span class="label">Internal Modules</span><i> supports by venus framework and need not install, put on postions as magento module</i>');?></p>
+					
+					<div class="inner-modules-wrap">
+						<div class="vtabs mytabs" id="my-tab-innermodules">
+							<?php
+								if($internal_modules){
+									foreach($internal_modules as $key=>$val){
+										?>
+									<a onclick="return false;" href="#tab-imodule-<?php echo $key; ?>"><?php echo Mage::helper('ves_tempcp')->__( ucfirst($key));?></a>
+										<?php
+									}
+								}
+							?>
+						 </div>
+
+						 <div class="page-tabs-wrap">
+						 	<?php
+	
+										if($internal_modules){
+											foreach($internal_modules as $key=>$val){
+												?>
+											<div style="display: none;" id="tab-imodule-<?php echo $key; ?>">
+											<?php
+													if(!empty($val) && is_array($val)){
+														foreach($val as $k=>$module){
+															if(!empty($module)){
+																?>
+																<div class="module-<?php echo $k;?>">
+																	<table class="form">
+												              			<tbody>
+																	<?php
+																	 foreach($module as $field){
+																	 	$field_name = $field->fieldname;
+																	 	echo $field->getElement($themecontrol->get($field_name, $field->default));
+																	 }
+																	?>
+																		</tbody>
+																	</table>
+																</div>
+																<?php
+															}
+														}
+													}
+														?>
+														<!--
+														<table class="form">
+												              <tbody><tr>
+												                <td><?php echo $val['title']; ?></td>
+												                <td><textarea cols="60" rows="5" id="widget_<?php echo $val['module']; ?>_data-1" name="themecontrol[widget_<?php echo $val['module']; ?>_data][1]"><?php echo $val['content']; ?></textarea></td>
+												              </tr>
+												            </tbody></table>
+												        -->
+											</div>		
+												<?php
+											}
+										}
+								?>
+						 </div>
+						 <div class="clearfix clear"></div>	
+					</div>
+
+				</div>
+<div style="display: none;" id="tab-font">
+					<table class="form">
+						<tbody><tr>
+							<td><?php echo Mage::helper('ves_tempcp')->__('Font Size'); ?></td>
+							<td>
+								<select name="themecontrol[fontsize]">
+									<?php
+									foreach($fontsizes as $key=>$val){
+										if($val == $themecontrol->get("fontsize","12")){
+											?>
+											<option value="<?php echo $val; ?>" selected="selected"><?php echo $val; ?></option>
+											<?php
+										}else{
+											?>
+											<option value="<?php echo $val; ?>"><?php echo $val; ?></option>
+											<?php
+										}
+									}
+									?>
+								</select>
+							</td>
+						</tr>
+						<tr class="highlight">
+							<td><b><?php echo Mage::helper('ves_tempcp')->__('Enable Customize Font:');?></b></td>
+							<td>
+								<select name="themecontrol[enable_customfont]">
+									<?php
+								foreach($yesno_options as $key=>$val){
+									if($key == $themecontrol->get("enable_customfont", 0)){
+										?>
+										<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+										<?php
+									}else{
+										?>
+										<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+										<?php
+									}
+								}
+							?>
+																</select>
+							</td>
+						</tr>
+					</tbody></table>
+											<table class="form">
+							
+						<tbody><tr>
+							<td><b><?php echo Mage::helper('ves_tempcp')->__('Font Setting:');?></b></td>
+							<td>
+								<div class="group-change">
+									<select name="themecontrol[type_fonts1]" class="type-fonts">
+										<?php
+										foreach($type_fonts as $key=>$val){
+
+											if($key == $themecontrol->get("type_fonts1")){
+												?>
+												<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+												<?php
+											}else{
+												?>
+												<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+												<?php
+											}
+										}
+										?>
+									</select>
+									
+									<table class="form">
+											<tbody><tr style="display: table-row;" class="items-group-change group-standard">
+												<td><?php echo Mage::helper('ves_tempcp')->__('Normal Font:');?></td>
+												<td>
+													<select name="themecontrol[normal_fonts1]">
+														<?php
+															if(!empty($fonts)){
+																$normal_fonts1 = $themecontrol->get("normal_fonts1","");
+																$normal_fonts1 = str_replace('"',"&quot;", $normal_fonts1);
+																foreach($fonts as $key=>$val){
+																	$key = str_replace('"',"&quot;", $key);
+																	if($key == $normal_fonts1){
+																		?>
+																		<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+																		<?php
+																	}else{
+																		?>
+																		<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+																		<?php
+																	}
+																}
+															}
+														?>
+																											</select>
+												</td>
+											</tr>
+											<tr style="display: none;" class="items-group-change group-google">
+												<td><?php echo Mage::helper('ves_tempcp')->__('Google URL:');?>											
+												</td>
+												<td>
+													<input name="themecontrol[google_url1]" size="65" value="<?php echo $themecontrol->get("google_url1"); ?>" type="text">
+													<p><i>Example: http://fonts.googleapis.com/css?family=Jacques+Francois+Shadow|Pirata+One</i></p>
+												</td>
+											</tr>
+											<tr style="display: none;" class="items-group-change group-google">
+												<td><?php echo Mage::helper('ves_tempcp')->__('Google Family:');?></td>
+												<td><input name="themecontrol[google_family1]" size="65" value="<?php echo $themecontrol->get("google_family1"); ?>" type="text">
+												<p><i><?php echo Mage::helper('ves_tempcp')->__('Example:\'Pirata One\', cursive');?></i></p>
+												</td>
+											</tr>
+									</tbody></table>
+								</div>
+								
+							</td>
+						</tr>
+						
+						<tr>
+							<td><?php echo Mage::helper('ves_tempcp')->__('Body Selector:');?></td>
+							<td>
+								<textarea name="themecontrol[body_selector1]" rows="5" cols="50"><?php echo $themecontrol->get("body_selector1"); ?></textarea>
+								<p><i><?php echo Mage::helper('ves_tempcp')->__('Put CSS Selector such as body, h1, h3,h4, .box-title');?> </i></p>
+							</td>
+						</tr>
+						
+						<tr>
+							<td><b><?php echo Mage::helper('ves_tempcp')->__('Font Setting:');?></b></td>
+							<td>
+								<div class="group-change">
+									<select name="themecontrol[type_fonts2]" class="type-fonts">
+									<?php
+										foreach($type_fonts as $key=>$val){
+											if($key == $themecontrol->get("type_fonts2")){
+												?>
+												<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+												<?php
+											}else{
+												?>
+												<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+												<?php
+											}
+										}
+										?>
+																			</select>
+									
+									<table class="form">
+											<tbody><tr style="display: table-row;" class="items-group-change group-standard">
+												<td><?php echo Mage::helper('ves_tempcp')->__('Normal Font:');?></td>
+												<td>
+													<select name="themecontrol[normal_fonts2]">
+														<?php
+															if(!empty($fonts)){
+																$normal_fonts2 = $themecontrol->get("normal_fonts2","");
+																$normal_fonts2 = str_replace('"',"&quot;", $normal_fonts2);
+																
+																foreach($fonts as $key=>$val){
+																	$key = str_replace('"',"&quot;", $key);
+																	if($key == $normal_fonts2){
+																		?>
+																		<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+																		<?php
+																	}else{
+																		?>
+																		<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+																		<?php
+																	}
+																}
+															}
+														?>
+													</select>
+												</td>
+											</tr>
+											<tr style="display: none;" class="items-group-change group-google">
+												<td><?php echo Mage::helper('ves_tempcp')->__('Google URL:');?>										
+												</td>
+												<td>
+													<input name="themecontrol[google_url2]" size="65" value="<?php echo $themecontrol->get("google_url2"); ?>" type="text">
+													<p><i>Example: http://fonts.googleapis.com/css?family=Jacques+Francois+Shadow|Pirata+One</i></p>
+												</td>
+											</tr>
+											<tr style="display: none;" class="items-group-change group-google">
+												<td><?php echo Mage::helper('ves_tempcp')->__('Google Family:');?></td>
+												<td><input name="themecontrol[google_family2]" size="65" value="<?php echo $themecontrol->get("google_family2"); ?>" type="text">
+												<p><i><?php echo Mage::helper('ves_tempcp')->__('Example:\'Pirata One\', cursive');?></i></p>
+												</td>
+											</tr>
+									</tbody></table>
+								</div>
+								
+							</td>
+						</tr>
+						
+						<tr>
+							<td><?php echo Mage::helper('ves_tempcp')->__('Body Selector:');?></td>
+							<td>
+								<textarea name="themecontrol[body_selector2]" rows="5" cols="50"><?php echo $themecontrol->get("body_selector2"); ?></textarea>
+								<p><i><?php echo Mage::helper('ves_tempcp')->__('Put CSS Selector such as body, h1, h3,h4, .box-title ');?></i></p>
+							</td>
+						</tr>
+						
+						<tr>
+							<td><b><?php echo Mage::helper('ves_tempcp')->__('Font Setting:');?></b></td>
+							<td>
+								<div class="group-change">
+									<select name="themecontrol[type_fonts3]" class="type-fonts">
+									<?php
+										foreach($type_fonts as $key=>$val){
+											if($key == $themecontrol->get("type_fonts3")){
+												?>
+												<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+												<?php
+											}else{
+												?>
+												<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+												<?php
+											}
+										}
+										?>
+																			</select>
+									
+									<table class="form">
+											<tbody><tr style="display: table-row;" class="items-group-change group-standard">
+												<td><?php echo Mage::helper('ves_tempcp')->__('Normal Font:');?></td>
+												<td>
+													<select name="themecontrol[normal_fonts3]">
+														<?php
+															if(!empty($fonts)){
+																$normal_fonts3 = $themecontrol->get("normal_fonts3","");
+																$normal_fonts3 = str_replace('"',"&quot;", $normal_fonts3);
+																foreach($fonts as $key=>$val){
+																	$key = str_replace('"',"&quot;", $key);
+																	if($key == $normal_fonts3){
+																		?>
+																		<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+																		<?php
+																	}else{
+																		?>
+																		<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+																		<?php
+																	}
+																}
+															}
+														?>															
+													</select>
+												</td>
+											</tr>
+											<tr style="display: none;" class="items-group-change group-google">
+												<td><?php echo Mage::helper('ves_tempcp')->__('Google URL:');?>										
+												</td>
+												<td>
+													<input name="themecontrol[google_url3]" size="65" value="<?php echo $themecontrol->get("google_url3"); ?>" type="text">
+													<p><i>Example: http://fonts.googleapis.com/css?family=Jacques+Francois+Shadow|Pirata+One</i></p>
+												</td>
+											</tr>
+											<tr style="display: none;" class="items-group-change group-google">
+												<td><?php echo Mage::helper('ves_tempcp')->__('Google Family:');?></td>
+												<td><input name="themecontrol[google_family3]" size="65" value="<?php echo $themecontrol->get("google_family3"); ?>" type="text">
+												<p><i>Example:'Pirata One', cursive</i></p>
+												</td>
+											</tr>
+									</tbody></table>
+								</div>
+								
+							</td>
+						</tr>
+						
+						<tr>
+							<td><?php echo Mage::helper('ves_tempcp')->__('Body Selector:');?></td>
+							<td>
+								<textarea name="themecontrol[body_selector3]" rows="5" cols="50"><?php echo $themecontrol->get("body_selector3"); ?></textarea>
+								<p><i><?php echo Mage::helper('ves_tempcp')->__('Put CSS Selector such as body, h1, h3,h4, .box-title ');?></i></p>
+							</td>
+						</tr>
+										</tbody></table>					
+				</div>
+				
+				<input name="action_type" id="action_type" value="new" type="hidden">
+
+				<div style="display: none;" id="tab-customcode">
+					
+				<?php echo Mage::helper('ves_tempcp')->__("
+	<p><i>The framework supports you two way to put your customization on theme.</i></p><ul><li><i>You create your css file(s) and put in VES_YOURTHEME/css/local. All files will be loaded automatic</i></li><li><i>Or use tools at bellow</i></li></ul>");?>
+
+<table class="form">
+		<tbody>
+			 <tr class="highlight"><td colspan="2"><?php echo Mage::helper('ves_tempcp')->__("<b>Live Tools Customizing Theme</b>");?></td>
+		</tr><tr>
+			<td colspan="2">
+				
+				<select name="themecontrol[customize_theme]">
+					<option value="">Select A Custom Theme</option>
+					<?php foreach( $files as $file )  { $file = str_replace(".css", "", $file);?>
+					<option value="<?php echo $file;?>" <?php if( $file == $themecontrol->get("customize_theme")){?> selected="selected" <?php } ?>><?php echo $file ;?></option>
+					<?php } ?>
+				</select>
+				<?php if((int)$themecontrol->get("theme_id",0) > 0) { ?>
+				<a href="<?php echo $this->getLiveEditLink(); ?>" class="button"><?php echo Mage::helper('ves_tempcp')->__("Live Customzing Theme");?></a>
+				<?php } ?>
+				<?php echo Mage::helper('ves_tempcp')->__("<p><i>Click Live Customizing Theme to create custom-theme-profiles and they will be listed in above dropdown box. You select one profile theme to apply for your site <br>!important: All theme profiles are stored in folder <b>skin/frontend/default/VES_YOURTHEME/css/customze</b>, it need permission 0755 to put files inside</i></p>");?>
+			</td>
+		</tr>
+	
+		<tr class="highlight"><td colspan="2"><?php echo Mage::helper('ves_tempcp')->__("<b>Customize Body Background</b>");?></td></tr>
+		<tr>
+			<td>
+				<label><?php echo Mage::helper('ves_tempcp')->__("Background Image");?></label>	
+			</td>
+			<td>
+				<div class="group-input">
+					<div class="box-patterns clearfix">	
+						<div class="none" style="background:#FFF"></div>
+						<?php foreach( $patterns as $pattern )  { ?>
+						<div class="<?php echo str_replace(".png","",$pattern);?>" style="background:url(<?php echo $theme_uri."images/pattern/".$pattern; ?>)"></div>
+						<?php } ?>
+					</div>
+					<input name="themecontrol[body_pattern]" type="hidden" id="userparams_body_pattern" value="<?php echo $themecontrol->get('body_pattern');?>"/>
+					<script type="text/javascript">
+						jQuery( ".box-patterns div").click( function(){
+							jQuery("#userparams_body_pattern").val(  jQuery(this).attr("class") );
+							jQuery( ".box-patterns div").removeClass( "active" );
+							jQuery(this).addClass( "active" );
+						} );
+						if( jQuery("#userparams_body_pattern").val() ){ 
+							jQuery( ".box-patterns").find("."+ jQuery("#userparams_body_pattern").val() ).addClass( "active" );
+						}
+					</script>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td><?php echo Mage::helper('ves_tempcp')->__("Use Custom Background");?></td>
+			<td> 
+			<select name="themecontrol[use_custombg]">
+						<?php
+						foreach($yesno_options as $key=>$val){
+							if($key == $themecontrol->get("use_custombg")){
+								?>
+								<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+								<?php
+							}else{
+								?>
+								<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+								<?php
+							}
+						}
+						?>
+							</select>
+			</td>
+		</tr>
+		<tr>
+			<td><?php echo Mage::helper('ves_tempcp')->__("Customize Background");?></td>
+			<td>
+				<div class="image">
+					<img src="<?php echo $bg_image_thumb; ?>" style="width:135px;height:135px" alt="" id="thumb">
+					<input name="themecontrol[bg_image]" value="<?php echo $themecontrol->get("bg_image"); ?>" id="image" type="hidden">
+					<br>
+					<input type="file" name="bg_image" value=""/>
+				</div>
+				
+				<div class="clearfix"><br>
+				<label><?php echo Mage::helper('ves_tempcp')->__("Repeat Mode :");?> </label>
+				 <select name="themecontrol[bg_repeat]">
+					<?php
+						foreach($repeat_options as $key=>$val){
+							if($key == $themecontrol->get("bg_repeat","repeat")){
+								?>
+								<option value="<?php echo $key ?>" selected="selected"><?php echo $val; ?></option>
+								<?php
+							}else{
+								?>
+								<option value="<?php echo $key ?>"><?php echo $val; ?></option>
+								<?php
+							}
+
+						}
+					?>
+				</select>
+				</div>
+				<div class="clearfix"><br>
+				<label><?php echo Mage::helper('ves_tempcp')->__("Position Mode : ");?></label>
+				 <select name="themecontrol[bg_position]">
+					<?php
+						foreach($position_options as $key=>$val){
+							if($key == $themecontrol->get("bg_position","left top")){
+								?>
+								<option value="<?php echo $key ?>" selected="selected"><?php echo $val; ?></option>
+								<?php
+							}else{
+								?>
+								<option value="<?php echo $key ?>"><?php echo $val; ?></option>
+								<?php
+							}
+
+						}
+					?>
+				</select>
+				</div>
+			</td>
+		</tr>
+		<tr class="highlight"><td colspan="2"><b><?php echo Mage::helper('ves_tempcp')->__("Add  Css, Javascript Code");?></b></td></tr>
+		<tr><td>
+			<?php echo Mage::helper('ves_tempcp')->__("Custom Css");?></td>
+			<td>
+			<p><i><?php echo Mage::helper('ves_tempcp')->__("This is advanded feature for who having knowledge of CSS Language. You put css rules in below. <br>Css code store in file VES_YOURTHEME/css/local/custom.css.");?></i></p>
+			<textarea name="themecontrol[custom_css]" rows="16" cols="80"><?php echo $custom_css; ?></textarea>
+			</td>
+		</tr>
+		<tr><td>
+			<?php echo Mage::helper('ves_tempcp')->__("Custom Javascript");?></td><td>
+			<p><i><?php echo Mage::helper('ves_tempcp')->__("Add javascript code. Please be carefull");?></i></p>
+			<textarea name="themecontrol[custom_javascript]" rows="16" cols="80"><?php echo $themecontrol->get("custom_javascript");?></textarea>
+			</td></tr>
+		</tbody>
+	</table>
+</div>
+				<div style="display: none;" id="tab-support">
+					<h4>Venus Base Magento Theme</h4>
+					<p><i>
+					We are proud to announce the next release of our Venus Magento Framework, version 2.0. 
+					This release coincides with the new version of Magento released which is version 1.8.x. 
+					The Framework built in Bootstrap framework 3,HTML5 and Css3.It is developed with many features such as Custom Fonts, Skins Changer, Responsive Feature, Mega Menu...
+					It is as great solution for developer to develop themes more flexiable, professional and save a lot of time.
+					Let check what are included?
+					
+					</i>
+					</p>
+					
+					<h4>About Venus Magento Framework</h4>
+					<div>
+						<p class="pavo-copyright">Venus is Free Magento Theme Framework released under license GPL/V2. Powered by <a href="http://www.venustheme.com" title="VenusTheme - Magento Theme Clubs">VenusTheme</a></p>
+					</div>
+					<h4>Supports</h4>
+					<div>
+						Follow me on <b>twitter </b>or join my <b>facebook </b>page to get noticed about all theme updates and news!
+						<ul>
+							<li><a href="http://www.venustheme.com/guides/framework2/controlpanel" target="_blank"> Framework 2 Guides</a></li>
+							<li><a href="http://www.venustheme.com" target="_blank">Forum</a></li>
+							<li><a href="http://www.venustheme.com" target="_blank">Ticket</a></li>
+							<li><a href="http://www.venustheme.com" target="_blank">Contact us</a></li>
+							<li>Email: <a href="mailto:venustheme@gmail.com" target="_blank">venustheme@gmail.com</a> </li>
+							<li><a href="http://www.youtube.com/user/Venustheme" target="_blank">YouTuBe</a></li>
+						</ul>
+					</div>
+			 
+				</div>
+
+				<div style="display: none;" id="tab-tools">
+					<h3>Import Tools</h3>
+					<a class="button" href="<?php echo $this->getCustomLink('*/adminhtml_theme/import', array('type'=>'static_blocks', 'theme'=>$default_theme, 'id'=>$themecontrol->get("theme_id",0)));?>"><?php echo Mage::helper('ves_tempcp')->__("Import Static Blocks");?></a>
+					<br><span class="help"><?php echo Mage::helper('ves_tempcp')->__("import xml file store in folder 'import' folder of theme");?></span>
+					<br/>
+					<a class="button" href="<?php echo $this->getCustomLink('*/adminhtml_theme/import', array('type'=>'pages', 'theme'=>$default_theme, 'id'=>$themecontrol->get("theme_id",0)));?>"><?php echo Mage::helper('ves_tempcp')->__("Import Pages");?></a>
+					<br/>
+					<br/>
+					<hr>
+					<br/>
+					<h3>Export Tools</h3>
+					<a class="button btn-save" href="<?php echo $this->getCustomLink('*/adminhtml_theme/export', array('type'=>'static_blocks', 'theme'=>$default_theme, 'id'=>$themecontrol->get("theme_id",0)));?>"><?php echo Mage::helper('ves_tempcp')->__("Export Static Blocks");?></a>
+					<br>
+					<br/>
+					<a class="button btn-save" href="<?php echo $this->getCustomLink('*/adminhtml_theme/export', array('type'=>'pages', 'theme'=>$default_theme, 'id'=>$themecontrol->get("theme_id",0)));?>"><?php echo Mage::helper('ves_tempcp')->__("Export Pages");?></a>
+					<br/>
+				</div>
+	   </div>
+    </div></div>
+  </div>
+ 
+    	<?php echo $this->getBlockHtml('formkey')?>
+    	<div style="display:none"></div>
+	</form>
+</div>
+
+<script src="//maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places" type="text/javascript"></script>
+<script type="text/javascript">
+	function initialize() {
+		var input = document.getElementById('searchTextField');
+		var autocomplete = new google.maps.places.Autocomplete(input);
+		google.maps.event.addListener(autocomplete, 'place_changed', function () {
+			var place = autocomplete.getPlace();
+
+			var lat = place.geometry.location.lat();
+			var lon = place.geometry.location.lng();
+
+			document.getElementById('location_latitude').value = lat;
+			document.getElementById('location_longitude').value = lon;
+		});
+	}
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+  <script type="text/javascript">
+    //<![CDATA[
+        openEditorPopup = function(url, name, specs, parent) {
+            if ((typeof popups == "undefined") || popups[name] == undefined || popups[name].closed) {
+                if (typeof popups == "undefined") {
+                    popups = new Array();
+                }
+                var opener = (parent != undefined ? parent : window);
+                popups[name] = opener.open(url, name, specs);
+            } else {
+                popups[name].focus();
+            }
+            return popups[name];
+        }
+
+        closeEditorPopup = function(name) {
+            if ((typeof popups != "undefined") && popups[name] != undefined && !popups[name].closed) {
+                popups[name].close();
+            }
+        }
+    //]]>
+    </script>
+
+<script type="text/javascript"><!--
+jQuery.noConflict();
+jQuery('#tabs a').tabs(); 
+(function( $ ) {
+
+function myTab(element_tab, element_tab_content, obj) {
+	$(element_tab_content).hide();
+	$(element_tab+' a').each(function(){
+		$(this).removeClass("selected");
+	})
+	var href_current = $(obj).attr("href");
+	$(href_current).show();
+	$(obj).addClass("selected");
+	return false;
+}
+
+$('#tabs a').click(function(){
+	return myTab('#tabs', "#tab-contents >div", this);
+})
+
+$('#tab-pages-layout a').click(function(){
+	return myTab('#tab-pages-layout', "#tab-pages-layout .page-tabs-wrap >div", this);
+})
+
+$('#tab-imodules a').click(function(){
+	return myTab('#tab-imodules', "#tab-imodules .page-tabs-wrap >div", this);
+})
+
+$('#tabs a').tabs(); 
+$('.mytabs a').tabs();
+$('#languages a').tabs();
+$('#tab-pages-layout a').tabs();
+$('#tabs a').click( function(){
+	$.cookie("actived_tab", $(this).attr("href") );
+} );
+
+if( $.cookie("actived_tab") !="undefined" ){
+	$('#tabs a').each( function(){
+		if( $(this).attr("href") ==  $.cookie("actived_tab") ){
+			$(this).click();
+			return ;
+		}
+	} );
+	
+}
+$(document).ready( function(){	
+
+	$("a.ajax-action").click( function(){
+		$(this).append('&lt;span class="ajax-loading"&gt;Procesing...&lt;/span&gt;');
+		var _a = this;
+		var url = $(this).attr('href');
+		$.ajax({
+			  type: 'POST',
+			  url: url,
+			  data: 'rand='+Math.random(),
+			  success: function(){
+			  	$(".ajax-loading",_a).remove();
+			 }
+		});	 
+		return false; 
+	} );
+} );
+
+$(".group-change").each( function(){
+	var $this = this;
+	$(".items-group-change",$this).hide();  //  alert( $(".type-fonts",this).val() );
+	$(".group-"+$(".type-fonts",$this).val(), this).show();
+	
+	$(".type-fonts", this).change( function(){
+		$(".items-group-change",$this).hide();
+		$(".group-"+$(this).val(), $this).show();
+	} );
+});
+
+})( jQuery );
+//--></script>
+
+
+<?php echo $this->getChildHtml('form_after');?>
+
+<?php if ($this->hasFooterButtons()): ?>
+    <div class="content-footer">
+        <p class="form-buttons"><?php echo $this->getButtonsHtml('footer') ?></p>
+    </div>
+<?php endif; ?>
+<script type="text/javascript">
+    editForm = new varienForm('edit_form', '<?php echo $this->getValidationUrl() ?>');
+</script>
+<?php echo $this->getFormScripts() ?>

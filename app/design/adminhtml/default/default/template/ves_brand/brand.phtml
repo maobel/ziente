@@ -1,0 +1,20 @@
+<div class="content-header">
+<table cellspacing="0">
+    <tr>
+        <td style="width:50%;"><h3 class="icon-head head-brand"><?php echo Mage::helper('ves_brand')->__('Brands Manager') ?></h3></td>
+        <td class="a-right">
+            <?php echo $this->getAddNewButtonHtml() ?>
+        </td>
+		<td style="width:15%;">
+            <?php echo $this->getMassResizeButtonHtml() ?>
+        </td>
+		<td style="width:15%;">
+            <?php echo $this->getMassRewriteCatButtonHtml() ?>
+        </td>
+    </tr>
+</table>
+</div>
+<?php  echo $this->getStoreSwitcherHtml() ?>
+<div>
+    <?php echo $this->getGridHtml() ?>
+</div>

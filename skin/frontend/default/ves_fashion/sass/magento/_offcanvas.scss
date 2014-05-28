@@ -1,0 +1,255 @@
+/******************************************************
+ * @package Ves Theme Framework for Magento
+ * @version 1.0
+ * @author http://www.venustheme.com
+ * @copyright Copyright (C) Augus 2013 Venustheme.com <@emai:venustheme@gmail.com>.All rights reserved.
+ * @license   GNU General Public License version 2
+*******************************************************/
+
+html,
+body,
+.offcanvas-container,
+.offcanvas-pusher,
+.offcanvas-content {
+	min-height: 100%;
+}
+
+.offcanvas-content {
+	overflow-y: scroll;
+	background: #f3efe0;
+}
+	
+.offcanvas-container {
+	
+	
+}
+.offcanvas-content,
+.offcanvas-content-inner {
+
+}
+
+
+.offcanvas-pusher {
+
+	left: 0;
+	z-index: 99;
+	height: 100%;
+	-webkit-transition: -webkit-transform 0.5s;
+	transition: transform 0.5s;
+}
+
+.offcanvas-pusher::after {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 0;
+	height: 0;
+	background: rgba(0,0,0,0.2);
+	content: '';
+	opacity: 0;
+	-webkit-transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+	transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+	z-index: 99;
+}
+ 
+.offcanvas-menu-open .offcanvas-pusher::after {
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+	-webkit-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+
+.offcanvas-menu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 999999;
+	visibility: hidden;
+	width: 300px;
+	height: 100%;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.offcanvas-menu::after {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.2);
+	content: '';
+	opacity: 1;
+	-webkit-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+
+.offcanvas-menu-open .offcanvas-menu::after {
+	width: 0;
+	height: 0;
+	opacity: 0;
+	-webkit-transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+	transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+}
+
+/* content style */
+
+.offcanvas-menu ul {
+	margin: 0;
+	padding: 0;
+}
+
+.offcanvas-menu h2 {
+	margin: 0;
+	padding: 1em;
+	color: rgba(0,0,0,0.4);
+	text-shadow: 0 0 1px rgba(0,0,0,0.1);
+	font-weight: 300;
+	font-size: 2em;
+}
+
+.offcanvas-menu ul.megamenu  > li > a {
+	font-family: $menu-lvtop-font-family;
+	font-size: $menu-lvtop-font-size;
+	display:block; 
+	line-height:$menu-lvtop-line-height; 
+	text-decoration:none; 
+	padding:15px; 
+	color:#fff;
+	background: #000;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: 300;
+	margin-bottom: 1px;
+}
+
+.offcanvas-menu ul li:firoffcanvas-child a {
+	@include box-shadow(inset 0 -1px rgba(0,0,0,0.2), inset 0 1px rgba(0,0,0,0.2));
+}
+
+.offcanvas-menu ul li a:hover {
+}
+
+.offcanvas-menu{
+	.dropdown-backdrop,.dropdown-toggle{ display: none;}
+	.mega-col{ margin-bottom: 20px; width: 100%!important;}
+	.dropdown-menu{ 
+		border: none;
+		clear: both;
+		display: block;		
+		padding: 10px 15px;
+		position: static;
+		width: 100%;
+		max-width: 100%;
+		float: none;
+		@include box-shadow(0 0 0 rgba(0, 0, 0, 0));
+	}
+	.menu-title{
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		font-family: $menu-lvtop-font-family;
+		font-weight: 300;
+		padding-bottom: 10px;
+	}
+}
+
+/* Individual effects */
+
+/* Effect 1: Slide in on top */
+.offcanvas-effect-1.offcanvas-menu {
+	visibility: visible;
+	@include translate3d(-100%, 0, 0);
+}
+
+.offcanvas-effect-1.offcanvas-menu-open .offcanvas-effect-1.offcanvas-menu {
+	visibility: visible;
+	@include translate3d(0, 0, 0);
+}
+
+.offcanvas-effect-1.offcanvas-menu::after {
+	display: none;
+}
+
+/* Effect 2: Reveal */
+.offcanvas-effect-2.offcanvas-menu-open .offcanvas-pusher {
+	@include translate3d(300px, 0, 0);
+}
+
+.offcanvas-effect-2.offcanvas-menu {
+	z-index: 1;
+}
+
+.offcanvas-effect-2.offcanvas-menu-open .offcanvas-effect-2.offcanvas-menu {
+	visibility: visible;
+	@include transition-transform (0.5s) ;
+	@include translate3d (0, 0, 0);
+}
+
+.offcanvas-effect-2.offcanvas-menu::after {
+
+}
+
+/* Effect 3: Push*/
+.offcanvas-effect-3.offcanvas-menu-open .offcanvas-pusher {
+	@include translate3d(300px, 0, 0);
+}
+
+.offcanvas-effect-3.offcanvas-menu {
+	@include translate3d(-100%, 0, 0);
+	z-index: 1;
+}
+
+.offcanvas-effect-3.offcanvas-menu-open .offcanvas-effect-3.offcanvas-menu {
+	visibility: visible;
+	@include transition-transform (0.5s) ;
+
+	@include translate3d (0, 0, 0);
+}
+
+.offcanvas-effect-3.offcanvas-menu::after {
+}
+ 
+/* Effect 5: Reverse slide out */
+.offcanvas-effect-5.offcanvas-menu-open .offcanvas-pusher {
+	@include translate3d (300px, 0, 0);
+}
+
+.offcanvas-effect-5.offcanvas-menu {
+	z-index: 1;
+	@include translate3d (50%, 0, 0);
+}
+
+.offcanvas-effect-5.offcanvas-menu-open .offcanvas-effect-5.offcanvas-menu {
+	visibility: visible;
+	@include transition-transform (0.5s) ;
+	@include translate3d (0, 0, 0);
+}
+
+
+
+/* RESPONSIVE */
+@media (max-width: 979px) {
+
+
+	/*** OFFCANVAS SIDEBAR ***/
+	.offcanvas-siderbars{ 
+		position: relative; 
+		.offcanvas-sidebar{
+			display: none;
+			width: 100%;
+		}
+
+		&.column-left-active #ves-columns-left{
+			display: block;
+		}
+		&.column-right-active #ves-columns-right{
+			display: block;
+		}
+		&.column-left-active .main-column,
+		&.column-right-active .main-column{
+			display: none;
+		}
+	}	
+
+}

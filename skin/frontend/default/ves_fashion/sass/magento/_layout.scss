@@ -1,0 +1,269 @@
+/******************************************************
+ * @package Ves Theme Framework for Magento
+ * @version 1.0
+ * @author http://www.venustheme.com
+ * @copyright Copyright (C) Augus 2013 Venustheme.com <@emai:venustheme@gmail.com>.All rights reserved.
+ * @license   GNU General Public License version 2
+*******************************************************/
+/* Layout ================================================================================ */
+.wrapper {}
+#page {
+	margin: 0 auto;
+}
+.page-print { background:#fff; padding:25px 30px; text-align:left; }
+.page-empty { background:#fff; padding:20px; text-align:left; }
+.page-popup { background:#fff; padding:25px 30px; text-align:left; }
+.main-container { }
+.main {}
+body{
+    &.layout-boxed-md{
+        background: url("#{$image-theme-path-base}pattern/pattern14.png");
+        #page{  max-width: $container-desktop; @include box-shadow(0 0 5px #888); background: $white;}
+    }
+    &.layout-boxed-lg{
+        background: url("#{$image-theme-path-base}pattern/pattern14.png");
+        #page{  max-width: $container-lg-desktop; @include box-shadow(0 0 5px #888);background: $white; }
+
+    }
+    &.fullwidth{ }
+    
+ } 
+ /*
+ * TOPBAR 
+ */
+
+#topbar {
+	background-color: $topbar-bg;	
+	border-style: solid;
+	border-width: 5px 0 1px;
+	border-color: $topbar-border-color;
+	@include clearfix();
+	a { 
+		color: $base-link-color;
+		font-size: 0.9em;
+	}
+	.form-language {}
+	.links { 
+		
+		li { 
+			float:left; 
+			line-height: 42px;
+			display: list-item;
+			list-style-type: disc;
+			margin: 0 10px 0 15px;
+
+			
+			&.last{
+				a{ 
+					border-right: 1px solid $border-color ; padding-right: 12px;
+					@include rtl-border-left(0);
+					@include rtl-padding-left(0);
+				}
+			}
+		}
+	}
+	.welcome-msg { 
+		margin:0; 
+		color: $white; 
+		text-align:right; 
+		a { 
+			color: $base-link-color; 
+		}
+	}
+
+	.language{ 
+		padding-top: 13px; padding-left: 12px;
+		> div{ padding-right: 12px;}
+	}
+	.caret{
+		background: url(#{$image-theme-path-base}caret.png) center no-repeat transparent;
+		border: none;
+		width: 8px; height: 8px; margin-left: 4px; margin-top: -1px;
+	}
+
+	.form-search{
+		label{ display: none;}
+		position:relative;
+		margin-top: 8px;
+		margin-right: 6px;
+		#search{ 
+			border: 1px solid $border-color;
+			@include border-radius(0);
+			height: 28px; width: 170px;
+			padding-right: 20px;
+			padding-left: 5px;
+			color: #666;
+			font-size: 12px;
+
+		}
+		.button{
+			background: url(#{$image-theme-path-base}btn-search.png) center no-repeat transparent;
+			text-indent: 9999em;
+			overflow: hidden;
+			width: 20px;
+			height: 28px;
+			border: none;
+			position: absolute;
+			top: 0;
+			right: 0;
+
+		}
+	}
+}
+/* Cart top */
+.cart-inner {
+	margin-top: 8px;
+	margin-right: 35px;
+	.fa{ 
+		background: $theme-color-default;
+		color: #FFFFFF;
+	    height: 28px;
+	    line-height: 28px;
+	    text-align: center;
+	    width: 28px;
+	    margin-right: 10px;
+	}
+	h4{ font-size: 12px; text-transform: uppercase;}
+	a{ text-transform: none;}
+}
+ /*
+ * HEADER 
+ */
+ #header-main {
+ 	background-color: $header-main-bg;
+ }
+ .header-wrap{ text-align: center; padding: $header-main-padding;}
+/**LOGO**/
+.logo { 
+	strong { position:absolute; top:-999em; left:-999em; width:0; height:0; font-size:0; line-height:0; text-indent:-999em; overflow:hidden; } 
+}
+.top-search .form-search {
+	label { 
+	}
+	input.input-text { 
+	}
+	button.button { 
+		span {  
+			span {  
+			}
+		}
+	}
+	.search-autocomplete { 
+		left: 0 !important;
+		top: 100% !important;
+		z-index: 999;
+		ul {
+			border:1px solid #5c7989; background-color:#f9f5f0; 
+			li { 
+				text-align:left; border-bottom:1px solid #f4eee7; padding:2px 8px 1px 8px; cursor:pointer; 
+				.amount { 
+					float:right; font-weight:bold; 
+				}
+				&.odd { 
+					background-color:#fffefb; 
+				}
+				&.selected { background-color:#f7e8dd; }
+			}
+		} 
+	}
+}
+
+.top-container { 
+	clear:both;
+	padding:5px 10px 0 12px; 
+	text-align:right; 
+	a { 
+		font-size:11px; 
+		color:#ebbc58; 
+	}
+} 
+/*
+ * NAVIGATION
+ */
+ #ves-mainnav {
+ 	
+ }
+ .navbar-inverse{
+ 	border-color: $navbar-border-color;
+ }
+/*
+ * SLIDESHOW 
+ */
+ .ves-slideshow {}
+/*
+ * SHOWCASE 
+ */
+ .ves-showcase {
+	.block{
+		.block-content{ background: none;}
+	}
+ }
+/*
+ * PROMOTION 
+ */
+ .ves-promotion {}
+/*
+ * MAIN CONTENT
+ */ 
+ #columns {}
+ #columns .container {}
+/*
+ * MASSBOTTOM
+ */
+ .ves-massbottom {}
+ 
+/* BreadCrumbs */
+.breadcrumbs { 
+	font-size: 12px;
+	line-height: 1em; 
+	margin:0 0 25px; 
+	li { display:inline; }
+	strong{ font-weight: normal;}
+}
+
+/* FOOTER*/
+
+/* Footer ================================================================================ */
+#footer {}
+.footer-container {}
+.footer {}
+.footer .store-switcher { 
+}
+.footer a { 
+	&:hover {
+	} 
+}
+.footer .bugs { 
+	a { 
+		&:hover { 
+		}
+	}
+}
+.footer address { 
+	a { 
+		&:hover { } 
+	} 
+}
+.footer-bottom ul { 
+	display:inline; 
+	&.links { 
+		display:block; 
+	}
+	li { 
+		display:inline; 
+		margin: 0 5px; 
+		&.last { 
+		}
+	}
+}
+.footer-container .bottom-container { 
+	margin:0 0 5px; 
+}
+
+/*FOOTER TOP*/
+
+/*FOOTER CENTER*/
+/* ======================================================================================= */
+
+/* POWER BY */
+.copyright{ text-align: center; border-top: 1px solid $border-color; padding: 35px 0 70px; border-bottom: 10px solid #000; line-height: 24px;}

@@ -1,0 +1,33 @@
+$image-theme-path-base:'../../../images/';
+$image-theme-path : '../../../images/dark/';
+
+/*------------------ User ------------------*/
+$theme-color-default					: #896b5a; //000
+$body-background 						: #333; //fff
+$base-color								: #999; //666
+$base-link-color						: #999; //666
+$border-color 							: #4d423b; //E4E4E4 
+
+/* NAV */
+$nav-lv1-color							: #fff; //0000
+$nav-lv1-color-hover					: #fff; //0000
+
+
+/* Heading */
+$h_color								: #999; //999
+$h_color-hover							: #666; //999
+$h_active-color							: #000; //000
+
+/* Product */
+$p_name-color							: #fff; //000
+$p_name-color-hv						: #fff; //000
+$p_price-color							: $theme-color-default; //000
+$p_special-price-color					: #fff; //b34a4a
+$p_old-price-color						: #896b5a; //999
+
+/* Setting */
+$topbar-border-color						: $theme-color-default transparent $border-color;
+$navbar-border-color						: $border-color transparent $theme-color-default;
+
+/*------------------ End User ------------------*/
+

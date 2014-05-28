@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ves_Tempcp>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Ves_Tempcp>
+    </modules>
+</config> 

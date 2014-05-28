@@ -1,0 +1,243 @@
+<?xml version="1.0"?>  
+<config>  
+	<modules>  
+		<Ves_Blog>  
+			<version>1.1.0</version>  
+		</Ves_Blog>  
+	</modules>  
+	<frontend>
+		<translate>
+			<modules>
+				<Ves_Blog>
+					<files>
+						<default>Ves_Blog.csv</default>
+					</files>
+				</Ves_Blog>
+			</modules>
+		</translate>
+		<routers>
+            <blog>
+                <use>standard</use>
+                <args>
+                    <module>Ves_Blog</module>
+                    <frontName>venusblog</frontName>
+                </args>
+            </blog>
+        </routers>
+
+		<layout>
+			<updates>
+				<blog module="ves_blog">
+					<file>ves_blog.xml</file>
+				</blog>
+			</updates>
+		</layout>
+		
+		<events>
+			<controller_action_layout_generate_blocks_after>
+				<observers>
+					<ves_blog_observer>
+						<type>singleton</type>
+						<class>Ves_Blog_Model_Observer</class>
+						<method>beforeRender</method>
+					</ves_blog_observer>
+				</observers>
+			</controller_action_layout_generate_blocks_after>
+
+        </events>
+       
+		
+	</frontend>	
+	<global>  	
+		
+		<events>
+
+	 
+			<controller_front_init_routers>
+				<observers>
+					<blog>
+						<type>singleton</type>
+						<class>Ves_Blog_Model_Observer</class>
+						<method>initControllerRouters</method>
+					</blog>
+				</observers>
+			</controller_front_init_routers>
+        </events>
+		
+		<blocks>
+            <ves_blog>
+                <class>Ves_Blog_Block</class>
+            </ves_blog>
+        </blocks>
+        <models>
+            <ves_blog>
+                <class>Ves_Blog_Model</class>
+                <resourceModel>ves_blog_mysql4</resourceModel>
+            </ves_blog>
+            <ves_blog_mysql4>
+                <class>Ves_Blog_Model_Mysql4</class>
+                <entities>
+                    <post>
+                        <table>ves_blog_post</table>
+                    </post>
+                    <post_store>
+                        <table>ves_blog_post_store</table>
+                    </post_store>
+					<category>
+                        <table>ves_blog_category</table>
+                    </category>
+                    <category_store>
+                        <table>ves_blog_category_store</table>
+                    </category_store>
+					<comment>
+                        <table>ves_blog_comment</table>
+                    </comment>
+                    <comment_store>
+                        <table>ves_blog_comment_store</table>
+                    </comment_store>
+                </entities>
+            </ves_blog_mysql4>
+        </models>
+        <helpers>
+            <ves_blog>
+                <class>Ves_Blog_Helper</class>
+            </ves_blog>
+        </helpers>
+        <resources>
+            <ves_blog_setup>
+                <setup>
+                    <module>Ves_Blog</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </ves_blog_setup>
+            <ves_blog_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </ves_blog_write>
+            <ves_blog_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </ves_blog_read>
+        </resources>
+		
+	</global>
+	<admin>
+		<routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Ves_Blog after="Mage_Adminhtml">Ves_Blog</Ves_Blog>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+	<adminhtml>
+       
+        <translate>
+			<modules>
+				<Ves_Blog>
+					<files>
+						<default>Ves_Blog.csv</default>
+					</files>
+				</Ves_Blog>
+			</modules>
+		</translate>
+    </adminhtml>	
+		
+	<default>
+        <ves_blog>
+            <general_setting>
+            	<enable_jquery>0</enable_jquery>
+                <show>1</show>    
+                <theme>default</theme>
+				<title>Ves Blog</title>  
+				<theme>default</theme>
+                <route>ves-blog</route>
+				<extension>html</extension>
+				
+				<large_imagesize>738x369</large_imagesize>
+				<medium_imagesize>360x180</medium_imagesize>
+				<small_imagesize>180x100</small_imagesize>
+				
+				<enable_recaptcha>1</enable_recaptcha>
+				<privatekey>6Lf92dcSAAAAAOuVGEQA0IpBT6LgCI_snoq7u2Xd </privatekey>
+				<publickey>6Lf92dcSAAAAAM4ICd_P64gF6OI2xVBpfyAoIEUS </publickey>
+				<comment_limit>6</comment_limit>
+				<comment_publish>2</comment_publish>
+				<metakeywords></metakeywords>
+				<metadescription></metadescription>
+				<commentdisqus>demovenuthemeblog</commentdisqus>
+				<commentfacebook>leotheme</commentfacebook>
+				<commenttype></commenttype>
+				<commentfacebookwidth>720</commentfacebookwidth>
+			</general_setting>
+			<list_setting>
+				<list_leadingimage>l</list_leadingimage>
+				<list_leadinglimit>1</list_leadinglimit>
+				<list_leadingcols>1</list_leadingcols>
+				<list_secondimage>m</list_secondimage>
+				<list_secondlimit>6</list_secondlimit>
+				<list_secondcols>3</list_secondcols>
+				<list_showtitle>1</list_showtitle>
+				<list_showdescription>1</list_showdescription>
+				<list_category_title>1</list_category_title>
+				<show_author>1</show_author>
+				<show_commentcouter>1</show_commentcouter>
+				<list_showreadmore>1</list_showreadmore>
+				<list_showcreated>1</list_showcreated>
+				<list_showtags>1</list_showtags>
+			</list_setting>
+			<post_setting>
+				<post_imagetype>l</post_imagetype>
+				<post_showtitle>1</post_showtitle>
+				<post_showhits>1</post_showhits>
+				<post_showdescription>1</post_showdescription>
+				<post_show_category_title>1</post_show_category_title>
+				<post_show_author>1</post_show_author>
+				<post_show_commentcouter>1</post_show_commentcouter>
+				<post_showreadmore>1</post_showreadmore>
+				<post_showcreated>1</post_showcreated>
+				<post_showupdated>1</post_showupdated>
+				<post_showtags>1</post_showtags>
+				<post_showsocial>1</post_showsocial>
+				<post_showcommentblock>1</post_showcommentblock>
+				<post_showmorepost>1</post_showmorepost>
+				<post_showmorepostlimit>6</post_showmorepostlimit>
+				<post_showrelatedpost>1</post_showrelatedpost>
+				<post_showrelatedpostlimit>6</post_showrelatedpostlimit>
+				
+			</post_setting>
+			<category_setting>
+				<catimagesize>210x119</catimagesize>
+				<show_childrent>1</show_childrent>
+				<enable_rss>1</enable_rss>
+				<chidlrentcols>3</chidlrentcols>
+				<chidlrentheight>288</chidlrentheight>
+			</category_setting>
+			<module_setting>
+				
+				<enable_latestmodule>1</enable_latestmodule>
+				<cmenu_parent>0</cmenu_parent>
+				<limit_items>6</limit_items>
+				<latest_position>right</latest_position>
+				<latest_title>Venus Blog Latest Module</latest_title>
+				<latestmod_desc></latestmod_desc>
+				
+				<latest_display>after</latest_display>
+				<latest_menuassignment>all</latest_menuassignment>
+				<latest_typesource>latest</latest_typesource>
+				<enable_cmenumodule>1</enable_cmenumodule>
+				<cmenu_menuassignment>all</cmenu_menuassignment>
+				<cmenu_title>Blog Categories</cmenu_title>
+				<cmenu_position>right</cmenu_position>
+				<cmenu_customposition></cmenu_customposition>
+				<cmenu_display></cmenu_display>
+			</module_setting>
+        </ves_blog>
+    </default>
+</config>  

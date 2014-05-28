@@ -1,0 +1,89 @@
+<?xml version="1.0"?> 
+<config>
+    <menu>
+            <vesextensions module="ves_brand">
+                <title>VenusTheme</title>
+                <sort_order>50</sort_order>
+                <children>
+                    <brand translate="title" module="ves_brand">
+                        <title>Ves Brand</title>
+                        <children>
+                            <add module="ves_brand">
+                                <title>Add Brand</title>
+                                <sort_order>0</sort_order>
+                                <action>brand/adminhtml_brand/add</action>
+                            </add>
+                            <brands module="ves_brand">
+                                <title>Manage Brands</title>
+                                <sort_order>1</sort_order>
+                                <action>brand/adminhtml_brand/index</action>
+                            </brands>
+                            
+                         
+                            <configuration translate="title" module="ves_brand">
+                                <title>Configuration</title>
+                                <sort_order>5</sort_order>
+                                <action>adminhtml/system_config/edit/section/ves_brand</action>
+                            </configuration>
+                        </children>
+                    </brand>
+                </children>
+            </vesextensions>
+    </menu>
+    <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <vesextensions module="ves_brand">
+                            <title>VenusTheme</title>
+                            <sort_order>50</sort_order>
+                            <children>
+                                <brand translate="title" module="ves_brand">
+                                    <title>Ves Brand</title>
+                                    <children>
+                                        <add module="ves_brand">
+                                            <title>Add Brand</title>
+                                            <sort_order>0</sort_order>
+                                            <action>brand/adminhtml_brand/add</action>
+                                        </add>
+                                        <brands module="ves_brand">
+                                            <title>Manage Brands</title>
+                                            <sort_order>1</sort_order>
+                                            <action>brand/adminhtml_brand/index</action>
+                                        </brands>
+                                        
+                                     
+                                        <configuration translate="title" module="ves_brand">
+                                            <title>Configuration</title>
+                                            <sort_order>5</sort_order>
+                                            <action>adminhtml/system_config/edit/section/ves_brand</action>
+                                        </configuration>
+                                    </children>
+                                </brand>
+                            </children>
+                        </vesextensions>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <ves_brand>
+                                            <title>Ves Brand</title>
+                                        </ves_brand>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <translate>
+			<modules>
+				<Ves_Brand>
+					<files>
+						<default>Ves_Brand.csv</default>
+					</files>
+				</Ves_Brand>
+			</modules>
+		</translate>
+</config>

@@ -1,0 +1,179 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+?>
+<?php
+    $theme = Mage::helper("ves_tempcp/framework")->getFramework( );
+    $themeConfig = $theme->getConfig();
+
+    $main_image_width = (int)$themeConfig->get("main_image_width", 492);
+    $main_image_height = (int)$themeConfig->get("main_image_height", 705);
+    $additional_image_width = (int)$themeConfig->get("additional_image_width", 87);
+    $additional_image_height = (int)$themeConfig->get("additional_image_height", 128);
+?>
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+?>
+<?php
+    // Get the Special Price
+    $specialprice = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialPrice(); 
+    // Get the Special Price FROM date
+    $specialPriceFromDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialFromDate();
+    // Get the Special Price TO date
+    $specialPriceToDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialToDate();
+    // Get Current date
+    $today =  time();
+
+  ?>
+
+<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+
+<?php if($themeConfig->get("product_enablezoom", 1)): ?>
+    <div class="image">
+     <?php
+      if ($specialprice) {
+          if($today >= strtotime( $specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime( $specialPriceFromDate) && is_null($specialPriceToDate)) {
+      ?>
+          <span class="onsale"><span><?php echo $this->__("Sale");?></span></span>
+      <?php  
+          }
+        }
+      ?>
+    
+    <a href="<?php echo $this->helper('catalog/image')->init($_product, 'image'); ?>" title="<?php echo $heading_title; ?>" class="colorbox">
+        <?php
+        $_img = '<img id="image" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize($main_image_width,$main_image_height).'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'" data-zoom-image="'.$this->helper('catalog/image')->init($_product, 'image').'" class="product-image-zoom"/>';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+
+        ?>
+    </a></div>
+<?php else: ?>
+    <p class="product-image product-image-zoom">
+        <?php
+            $_img = '<img id="image" src="'.$this->helper('catalog/image')->init($_product, 'image').'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'" />';
+            echo $_helper->productAttribute($_product, $_img, 'image');
+        ?>
+    </p>
+    <p class="zoom-notice" id="track_hint"><?php echo $this->__('Double click on above image to view full picture') ?></p>
+    <div class="zoom">
+        <img id="zoom_out" src="<?php echo $this->getSkinUrl('images/slider_btn_zoom_out.gif') ?>" alt="<?php echo $this->__('Zoom Out') ?>" title="<?php echo $this->__('Zoom Out') ?>" class="btn-zoom-out" />
+        <div id="track">
+            <div id="handle"></div>
+        </div>
+        <img id="zoom_in" src="<?php echo $this->getSkinUrl('images/slider_btn_zoom_in.gif') ?>" alt="<?php echo $this->__('Zoom In') ?>" title="<?php echo $this->__('Zoom In') ?>" class="btn-zoom-in" />
+    </div>
+    <script type="text/javascript">
+    //<![CDATA[
+        Event.observe(window, 'load', function() {
+            product_zoom = new Product.Zoom('image', 'track', 'handle', 'zoom_in', 'zoom_out', 'track_hint');
+        });
+    //]]>
+    </script>
+<?php endif; ?>
+<?php else: ?>
+<p class="product-image">
+    <?php
+        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize($main_image_width,$main_image_height).'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+</p>
+<?php endif; ?>
+<?php if ( count($this->getGalleryImages()) > 0): ?>
+<div id="image-additional" class="image-additional slide carousel more-views">
+    <div class="carousel-inner">
+     <?php
+        $icols = $themeConfig->get("moreview_cols", 4);
+        $icols = !empty($icols)?$icols: 4;
+    $col = 12/$icols;
+
+        $i= 0;
+        $eimages = array();
+        $total_images = count($this->getGalleryImages());
+      
+        foreach ($this->getGalleryImages() as $_image) { ?>
+      <?php if( (++$i)%$icols == 1 ) { ?>
+      <div class="item ">
+      <?php } ?>
+      
+      <?php if($i == 1){ ?>
+      
+          <a href="<?php echo $this->helper('catalog/image')->init($_product, 'image'); ?>" title="" class="colorbox" data-zoom-image="<?php echo $this->helper('catalog/image')->init($_product, 'image'); ?>" data-image="<?php echo $this->helper('catalog/image')->init($_product, 'image'); ?>">
+            <img src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize($additional_image_width,$additional_image_height); ?>" title="" alt="" data-zoom-image="<?php echo $this->helper('catalog/image')->init($_product, 'image') ?>" class="product-image-zoom" />
+          </a>
+      
+      <?php $i++; }?>
+     
+        <a href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile()); ?>" title="<?php echo $this->escapeHtml($_image->getLabel()) ?>" class="colorbox" data-zoom-image="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile()); ?>" data-image="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile()); ?>">
+        <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($additional_image_width,$additional_image_height); ?>" title="<?php echo $this->escapeHtml($_image->getLabel()) ?>" alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>" data-zoom-image="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile()) ?>" class="product-image-zoom" />
+        </a>
+     
+            <?php if( $i%$icols == 0 || $i==($total_images+1) ) { ?>
+            </div>
+          <?php } ?>
+        <?php } ?>
+      </div>
+      <div class="carousel-control left" href="#image-additional" data-slide="prev">&lsaquo;</div>
+      <div class="carousel-control right" href="#image-additional" data-slide="next">&rsaquo;</div>
+</div>
+<script type="text/javascript">
+    jQuery('#image-additional .item:first').addClass('active');
+    jQuery('#image-additional').carousel({interval:false})
+</script>
+<?php endif; ?>
+
+<?php if( $themeConfig->get("product_enablezoom", 1) ) { ?>
+<script type="text/javascript" src="<?php echo $theme->getJs("elevatezoom/elevatezoom-min.js"); ?>"></script>
+<script type="text/javascript">
+ <?php if( $themeConfig->get('product_zoomgallery') == 'slider' ) {  ?>
+  jQuery("#image").elevateZoom({gallery:'image-additional', cursor: 'pointer', galleryActiveClass: 'active'}); 
+  <?php } else { ?>
+  var zoomCollection = '<?php echo $themeConfig->get("product_zoomgallery")=="basic"?".product-image-zoom":"#image";?>';
+   jQuery( zoomCollection ).elevateZoom({
+      <?php if( $themeConfig->get('product_zoommode') != 'basic' ) { ?>
+      zoomType        : "<?php echo $themeConfig->get('product_zoommode');?>",
+      <?php } ?>
+      lensShape : "<?php echo $themeConfig->get('product_zoomlensshape');?>",
+      lensSize    : <?php echo (int)$themeConfig->get('product_zoomlenssize');?>,
+  
+   });
+  <?php } ?> 
+</script>
+<?php } ?>
+<script type="text/javascript"><!--
+jQuery(document).ready(function() {
+  jQuery('.colorbox').colorbox({
+    overlayClose: true,
+    opacity: 0.5,
+    rel: "colorbox"
+  });
+});
+//--></script> 

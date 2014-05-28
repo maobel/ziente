@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+	<cms_index_index translate="label">
+		<reference name="slideshowTop">
+			<!-- example to add more product carousel 
+			<block type="ves_contentslider/list" before="-" name="contentslider.list2">
+				<action method="setConfig">
+					<key>show</key>
+					<value>1</value>
+				</action>
+				<action method="setConfig">
+					<key>bannerId</key>
+					<value>0</value>
+				</action>
+			</block>
+			-->
+			<block type="ves_contentslider/list" before="-" name="contentslider.list"/>		
+		</reference>
+	</cms_index_index>
+</layout>

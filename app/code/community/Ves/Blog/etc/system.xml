@@ -1,0 +1,869 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <ves translate="label" module="ves_blog">
+            <label>Venus Theme</label>
+            <sort_order>211</sort_order>
+        </ves>
+    </tabs>
+	<sections>
+        <ves_blog>
+            <label>Ves Blog</label>
+            <tab>ves</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+				<general_setting translate="label">
+                    <label>General Setting</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>     
+						<last_update translate="label">
+							<label>Current Update Time</label>
+							<frontend_type>label</frontend_type>
+							<frontend_model>ves_blog/system_config_form_field_notification</frontend_model>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</last_update> 
+						<show translate="label" module="core">
+							<label>Enabled</label>
+							<sort_order>10</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</show>
+						<enable_jquery translate="label" module="core">
+							<label>Enabled Jquery Libs</label>
+							<comment>If you site load more than 2 query libs, recommend you uses this option to disable loading query libs.</comment>
+							<sort_order>11</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable_jquery>
+						<title translate="label">
+                            <label>Module Title </label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>15</sort_order>
+                            <comment>Empty for hide</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title> 
+						<theme translate="label">
+                            <label>Select Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ves_blog/system_config_source_listTheme</source_model>
+                            <sort_order>20</sort_order>
+							<comment>Choose Template for your module</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </theme>
+						<route translate="label">
+                            <label>Route</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>22</sort_order>
+                            <comment>Configure Blog Link, for example: http://domain.com/YOUR_ROUTER</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </route> 
+						<extension translate="label">
+                            <label>Extension</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>23</sort_order>
+                            <comment>Add Your extension at end of Link, for example: http://domain.com/your_route/YOUR_CATEGORY_ALIAS.YOUR_EXTENSION</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </extension> 
+						
+								
+						<spacer_1 translate="label">
+							<label>Set Width and Height for Images</label>
+							<frontend_type>label</frontend_type>
+							<frontend_model>ves_blog/system_config_form_field_spacer</frontend_model>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</spacer_1> 
+						<large_imagesize translate="label">
+                            <label>Large Image Size</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>41</sort_order>
+                            <comment>Formart WidthxHeight, for example: 600x250</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </large_imagesize> 
+						<medium_imagesize translate="label">
+                            <label>Medium Image Size</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>42</sort_order>
+                            <comment>Formart WidthxHeight, for example: 600x250</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </medium_imagesize> 
+						<small_imagesize translate="label">
+                            <label>Small Image Size</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>42</sort_order>
+                            <comment>Formart WidthxHeight, for example: 600x250</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </small_imagesize> 
+						
+						<spacer_2 translate="label">
+							<label>Recaptcha Setting for Comment</label>
+							<frontend_type>label</frontend_type>
+							<frontend_model>ves_blog/system_config_form_field_spacer</frontend_model>
+							<sort_order>43</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</spacer_2> 
+						<enable_recaptcha  translate="label">
+                            <label>Enable ReCaptcha</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>43</sort_order>
+                            <comment>Enable Recaptch in service http://www.google.com/recaptcha</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_recaptcha> 
+						<privatekey  translate="label">
+                            <label>Private Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>44</sort_order>
+                            <comment>Enter Private Key</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </privatekey> 
+						<publickey  translate="label">
+                            <label>Public Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>44</sort_order>
+                            <comment>Enter Public key</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </publickey> 
+						<comment_publish  translate="label">
+                            <label>Auto Publish Comment</label>
+                            
+                            <sort_order>83</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </comment_publish> 
+						<comment_limit  translate="label">
+                            <label>Limit Comments</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>85</sort_order>
+                            <comment>Set Limit Comments</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </comment_limit> 
+						
+						<spacer_10 translate="label">
+							<label>SE0 - Set Default Meta Key word and Meta Description</label>
+							<frontend_type>label</frontend_type>
+							<frontend_model>ves_blog/system_config_form_field_spacer</frontend_model>
+							<sort_order>80</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</spacer_10> 
+						<metakeywords  translate="label">
+                            <label>Meta Keywords</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>81</sort_order>
+                            <comment>Set default Meta Keywords</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </metakeywords> 
+						<metadescription  translate="label">
+                            <label>Meta Description</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>82</sort_order>
+                            <comment>Set default Meta Description</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </metadescription> 
+						
+						<spacer_3 translate="label">
+							<label>Comment Engine</label>
+							<frontend_type>label</frontend_type>
+							<frontend_model>ves_blog/system_config_form_field_spacer</frontend_model>
+							<sort_order>90</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</spacer_3> 
+						
+						<commenttype  translate="label">
+                            <label>Engine</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>93</sort_order>
+                            <comment>Select a comment engine</comment>
+							 <source_model>ves_blog/system_config_source_listComment</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </commenttype> 
+						<commentdisqus  translate="label">
+                            <label>Disqus Short name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>94</sort_order>
+                            <comment>Enter Disqus short name</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </commentdisqus> 
+						
+						<commentfacebook  translate="label">
+                            <label>Facebook Comment ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>95</sort_order>
+                            <comment>Enter Facebook ID, for example: ves</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </commentfacebook> 
+						<commentfacebookwidth  translate="label">
+                            <label>Facebook Width</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>96</sort_order>
+                            <comment>Facebook width</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </commentfacebookwidth> 
+					</fields>
+				</general_setting>
+				<list_setting>
+					<label>List Blogs Setting</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1001</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+					<fields>
+						
+						<list_leadingimage translate="label" module="core">
+							<label>Image Size</label>
+							<comment>Select A Image Size For Leading Blogs </comment>
+							<sort_order>1</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>ves_blog/system_config_source_imagetypes</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</list_leadingimage>
+						<list_leadinglimit translate="label" module="core">
+							<label>Leading Limit Blogs</label>
+							<comment>Set Number Of Block Showing in Leading Block</comment>
+							<sort_order>2</sort_order>
+							<frontend_type>text</frontend_type>
+							
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</list_leadinglimit>
+						
+						<list_leadingcols translate="label" module="core">
+							<label>Leading Column</label>
+							<comment>Set Number Of Columns in Leading Block</comment>
+							<sort_order>3</sort_order>
+							<frontend_type>text</frontend_type>
+							
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</list_leadingcols>
+						
+					 
+						<list_secondimage translate="label"  >
+							<label>Second Image Size</label>
+							<comment>Select A Image Size For Second Blogs </comment>
+							<sort_order>4</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>ves_blog/system_config_source_imagetypes</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</list_secondimage>
+						
+						<list_secondlimit translate="label" module="core">
+							<label>Second Limit Blogs</label>
+							<comment>Set Maximum Blogs show</comment>
+							<sort_order>5</sort_order>
+							<frontend_type>text</frontend_type>
+							
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</list_secondlimit>
+						
+						<list_secondcols translate="label" module="core">
+							<label>Second Column</label>
+							<comment>Set Number Of Columns in Second Block</comment>
+							<sort_order>6</sort_order>
+							<frontend_type>text</frontend_type>
+							
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</list_secondcols>
+						
+						<list_showtitle translate="label" module="core">
+							<label>Show Blog Title</label>
+							<comment>Whethere to show blog title</comment>
+							<sort_order>12</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</list_showtitle>
+						<list_showdescription translate="label" module="core">
+							<label>Show Description</label>
+							<sort_order>13</sort_order>
+							<comment>Whethere to  Show Description</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</list_showdescription>
+						<list_category_title translate="label" module="core">
+							<label>Show Categorys Title</label>
+							<sort_order>14</sort_order>
+							<comment>Whethere to show blog title</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</list_category_title>
+						<list_show_author translate="label" module="core">
+							<label>Show Author</label>
+							<sort_order>15</sort_order>
+							<comment>Whethere to show blog title</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</list_show_author>
+						<list_show_commentcouter translate="label" module="core">
+							<label>Show Comment Counter</label>
+							<sort_order>16</sort_order>
+							<comment>Whethere to show Comment Counter</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</list_show_commentcouter>
+						<list_showreadmore translate="label" module="core">
+							<label>Show Read More</label>
+							<sort_order>17</sort_order>
+							<comment>Whethere to  Show Read More</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</list_showreadmore>
+						<list_showcreated translate="label" module="core">
+							<label>Show Created Time</label>
+							<sort_order>18</sort_order>
+							<comment>Whethere to show Created Time</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</list_showcreated>
+					
+						<list_showtags translate="label" module="core">
+							<label>Show Tags</label>
+							<sort_order>19</sort_order>
+							<comment>Whethere to  Show Tags</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</list_showtags>
+
+                        <list_show_hits translate="label" module="core">
+                            <label>Show Hits</label>
+                            <sort_order>30</sort_order>
+                            <comment>Whethere to show number view</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_show_hits>
+						
+					</fields>
+				</list_setting>
+ 
+				<category_setting>
+					<label>Category Page Setting</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1002</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+						<fields>
+							<catimagesize translate="label" module="core">
+								<label>Category Image Size</label>
+								<sort_order>15</sort_order>
+								<comment>Whethere to Childrent</comment>
+								<frontend_type>text</frontend_type>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+							</catimagesize>
+							<show_childrent translate="label" module="core">
+								<label>Show Childrent</label>
+								<sort_order>15</sort_order>
+								<comment>Whethere to Childrent</comment>
+								<frontend_type>select</frontend_type>
+								<source_model>adminhtml/system_config_source_yesno</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+							</show_childrent>
+							<enable_rss translate="label" module="core">
+								<label>Enable RSS</label>
+								<sort_order>15</sort_order>
+								<comment>Whethere to RSS Link</comment>
+								<frontend_type>select</frontend_type>
+								<source_model>adminhtml/system_config_source_yesno</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+							</enable_rss>
+						
+							<chidlrentcols translate="label" module="core">
+								<label>Childrents show in N Columns</label>
+								<sort_order>15</sort_order>
+								<comment>Show </comment>
+								<frontend_type>text</frontend_type>
+								
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+							</chidlrentcols>
+							<chidlrentheight translate="label" module="core">
+								<label>Childrent Height</label>
+								<sort_order>15</sort_order>
+								<comment>Set Height for Childrent box</comment>
+								<frontend_type>text</frontend_type>
+								
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+							</chidlrentheight>
+					</fields>
+				</category_setting>
+				 
+				<post_setting>
+					<label>Post Page Setting</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1003</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+					<fields>
+						<post_imagetype translate="label" module="core">
+							<label>Image Size</label>
+							<comment>Select A Image Size For Detail Blog</comment>
+							<sort_order>4</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>ves_blog/system_config_source_imagetypes</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</post_imagetype>
+						 
+						
+						<post_showtitle translate="label" module="core">
+							<label>Show Blog Title</label>
+							<comment>Whethere to show blog title</comment>
+							<sort_order>12</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</post_showtitle>
+						<post_showdescription translate="label" module="core">
+							<label>Show Description</label>
+							<sort_order>13</sort_order>
+							<comment>Whethere to  Show Description</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</post_showdescription>
+						<post_show_category_title translate="label" module="core">
+							<label>Show Categorys Title</label>
+							<sort_order>14</sort_order>
+							<comment>Whethere to show Category title</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</post_show_category_title>
+						<post_show_author translate="label" module="core">
+							<label>Show Author</label>
+							<sort_order>15</sort_order>
+							<comment>Whethere to show author</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</post_show_author>
+						<post_show_commentcouter translate="label" module="core">
+							<label>Show Comment Counter</label>
+							<sort_order>16</sort_order>
+							<comment>Whethere to show Comment Counter</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</post_show_commentcouter>
+						<post_showhits translate="label" module="core">
+							<label>Show Hits</label>
+							<sort_order>19</sort_order>
+							<comment>Whethere to  Show Hits</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</post_showhits>
+						<post_showreadmore translate="label" module="core">
+							<label>Show Read More</label>
+							<sort_order>17</sort_order>
+							<comment>Whethere to  Show Read More</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</post_showreadmore>
+						<post_showcreated translate="label" module="core">
+							<label>Show Created Time</label>
+							<sort_order>18</sort_order>
+							<comment>Whethere to show Created Time</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</post_showcreated>
+						<post_showupdated translate="label" module="core">
+							<label>Show Updated Time</label>
+							<sort_order>18</sort_order>
+							<comment>Whethere to show Created Time</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</post_showupdated>
+					
+						<post_showtags translate="label" module="core">
+							<label>Show Tags</label>
+							<sort_order>19</sort_order>
+							<comment>Whethere to  Show Tags</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</post_showtags>
+						
+						<post_showsocial translate="label" module="core">
+							<label>Social Block</label>
+							<sort_order>19</sort_order>
+							<comment>Whethere to  Show Social Block</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</post_showsocial>
+						
+						<post_showcommentblock translate="label" module="core">
+							<label>Comment Block</label>
+							<sort_order>20</sort_order>
+							<comment>Whethere to  Show Comment Block</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</post_showcommentblock>
+						
+						<post_showmorepost translate="label" module="core">
+							<label>Show More Post</label>
+							<sort_order>25</sort_order>
+							<comment>Whethere to show more post links</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</post_showmorepost>
+						<post_showmorepostlimit translate="label" module="core">
+							<label>Limit More Post</label>
+							<sort_order>26</sort_order>
+							<comment>Limit Post will be showed</comment>
+							<frontend_type>text</frontend_type>
+							
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</post_showmorepostlimit>
+						
+						<post_showmorepost translate="label" module="core">
+							<label>Show Related Post By Tag</label>
+							<sort_order>27</sort_order>
+							<comment>Show related post by tag</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</post_showmorepost>
+						<post_showrelatedpostlimit translate="label" module="core">
+							<label>Limit Related Post</label>
+							<sort_order>28</sort_order>
+							<comment>Limit Post will be showed</comment>
+							<frontend_type>text</frontend_type>
+					
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</post_showrelatedpostlimit>
+					</fields>
+				</post_setting>
+				<module_setting>
+					<label>Modules Setting</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2003</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+					<fields>
+						<spacer_1000 translate="label">
+							<label>Categories Tree Module</label>
+							<frontend_type>label</frontend_type>
+							<frontend_model>ves_blog/system_config_form_field_spacer</frontend_model>
+							<sort_order>100</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</spacer_1000> 
+							<enable_cmenumodule translate="label" module="core">
+								<label>Enable Blog Categories Menu</label>
+								<sort_order>102</sort_order>
+								<comment>Show related post by tag</comment>
+								<frontend_type>select</frontend_type>
+								<source_model>adminhtml/system_config_source_yesno</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+							</enable_cmenumodule>
+							<cmenu_title translate="label" module="core">
+								<label>Blog Categories</label>
+								<sort_order>103</sort_order>
+								<comment>Whethere to show Blog Categories Block</comment>
+								<frontend_type>text</frontend_type>
+						
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+							</cmenu_title>
+							
+							<cmenu_parent translate="label">
+								<label>Default Parent</label>
+								<frontend_type>select</frontend_type>
+								<source_model>ves_blog/system_config_source_ListCategories</source_model>
+								<sort_order>104</sort_order>
+								<comment>Set default parent</comment>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+							</cmenu_parent>
+						
+						<spacer_2000 translate="label">
+							<label>Latest Posts Module</label>
+							<frontend_type>label</frontend_type>
+							<frontend_model>ves_blog/system_config_form_field_spacer</frontend_model>
+							<sort_order>199</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</spacer_2000> 
+						
+						
+						<enable_latestmodule translate="label" module="core">
+							<label>Enable Latest Module</label>
+							<sort_order>200</sort_order>
+							<comment>Show related post by tag</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable_latestmodule>
+						<latestmod_title translate="label" module="core">
+							<label>Module Title</label>
+							<sort_order>201</sort_order>
+							<comment>Maximum blog show in module</comment>
+							<frontend_type>text</frontend_type>
+					
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</latestmod_title>
+						<latestmod_desc translate="label" module="core">
+							<label>Module Description</label>
+							<sort_order>201</sort_order>
+							<comment>Maximum blog show in module</comment>
+							<frontend_type>textarea</frontend_type>
+					
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</latestmod_desc>
+						<latest_typesource translate="label">
+                            <label>Source Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ves_blog/system_config_source_ListSourceType</source_model>
+                            <sort_order>202</sort_order>
+							<comment>Which pages does the module show...</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </latest_typesource>
+						
+						<limit_items translate="label" module="core">
+							<label>Limit Post</label>
+							<sort_order>201</sort_order>
+							<comment>Maximum blog show in module</comment>
+							<frontend_type>text</frontend_type>
+					
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</limit_items>
+						
+						<columns translate="label" module="core">
+							<label>Items show in N columns</label>
+							<sort_order>202</sort_order>
+							<comment>Limit Post will be showed</comment>
+							<frontend_type>text</frontend_type>
+							
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</columns>
+						 
+					   <latest_show_commentcouter translate="label" module="core">
+                            <label>Show Comment Counter</label>
+                            <sort_order>210</sort_order>
+                            <comment>Whethere to show Comment Counter</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </latest_show_commentcouter>
+
+                        <latest_showcreated translate="label" module="core">
+                            <label>Show Created Time</label>
+                            <sort_order>220</sort_order>
+                            <comment>Whethere to show Created Time</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </latest_showcreated>
+                    
+                        <latest_show_hits translate="label" module="core">
+                            <label>Show Hits</label>
+                            <sort_order>230</sort_order>
+                            <comment>Whethere to show number view</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </latest_show_hits>
+
+					</fields>
+					
+				</module_setting>	
+				<!-- Information -->
+				<advanded_parameter>
+					<label>Information - Support</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>6003</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields> 
+						<module_information translate="label">
+							<label>Set Module Visable On Pages, Position</label>
+							<frontend_type>label</frontend_type>
+							<frontend_model>ves_blog/system_config_form_field_information</frontend_model>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</module_information>                        
+					</fields>
+				</advanded_parameter>	
+            </groups>
+        </ves_blog>
+    </sections>    
+</config>

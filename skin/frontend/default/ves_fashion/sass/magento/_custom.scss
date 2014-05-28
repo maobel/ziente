@@ -1,0 +1,118 @@
+/******************************************************
+ * @package Ves Theme Framework for Magento
+ * @version 1.0
+ * @author http://www.venustheme.com
+ * @copyright Copyright (C) Augus 2013 Venustheme.com <@emai:venustheme@gmail.com>.All rights reserved.
+ * @license   GNU General Public License version 2
+*******************************************************/
+.box {
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+    
+}
+
+.custom-block{
+	.box {
+		a{
+	    	position: relative;
+	    	display: block;
+	    	&:before{
+	    		content:"";
+	    		position: absolute;
+	    		width: 100%;
+	    		height: 100%;
+	    		top: 0;
+	    		left: 0;
+	    		@include transition(all 300ms ease-in-out);
+	    	}
+	    	&:hover{
+	    		&:before{
+	    			@include box-shadow(0 0 0 30px rgba(255, 255, 255, 0.3) inset);
+					
+	    		}
+	    	}
+	    }
+	}
+}
+.custom-abs{ border-top: 2px solid $theme-color-default; padding-top: 32px;}
+.custom-abs h3,
+.custom-footer-links h3{
+	color: $h_active-color;
+    font-family: 'brandon_grotesque_regularRg';
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 2px;
+    padding: 0 0 8px;
+    text-transform: uppercase;
+}
+.social {
+	span{ display:none;}
+	li{ float: left; margin: 0 4px; @include rtl-float-left();}
+	.fa{
+		color: $h_active-color;
+    	font-size: 20px;
+	}
+	a{
+	    color: #000000;
+	    display: inline-block;
+	    font-size: 20px;
+	    height: 35px;
+	    line-height: 35px;
+	    width: 35px;
+		@include transition(all 300ms ease-in-out);
+		&:hover{ opacity: .7;}
+	}
+}
+.time li{ 
+	@include clearfix();
+	background: url(#{$image-theme-path-base}dot.png) left 16px repeat-x;
+	
+	line-height: 24px;
+	span{ 
+		background: $body-background;
+		&.f-left{ padding-right: 5px;}
+		&.f-right{ padding-left: 5px;}
+	}
+}
+.custom-footer-links{
+	font-size: 13px; color: $base-color; line-height: 24px;
+	h3{}
+	.row > div{ padding-right: 20px;}
+	.row > div:last-child{ padding-right: 10px;}
+	.boxed{ border-top: 1px solid $border-color; padding-top: 26px;}
+	strong{ color: $h_active-color;}
+}
+.custom-links{
+	a{ 
+		line-height: 24px; padding-left: 7px; color: $base-link-color;
+		@include rtl-padding(0, 0, 0, 7px);
+	}
+	li{ 
+		padding-bottom: 5px;
+		@include transition(all 250ms ease-in-out);				
+		&:hover{ padding-left: 12px;}
+		}
+	.fa{ font-size: 10px;}
+}
+.ct-p{
+	margin-top: 15px;
+	line-height: 32px;
+	.fa{ 
+		@include border-radius(50%);
+		border: 3px solid $h_active-color;
+	    color: $h_active-color;
+	    font-size: 19px;
+	    height: 35px;
+	    line-height: 30px;
+	    text-align: center;
+	    width: 35px;
+	    margin-right: 3px;
+	}	
+	strong{
+		font-family: 'brandon_grotesque_regularRg';
+	    font-size: 18px;
+	    font-weight: normal;
+	    letter-spacing: 2px;		
+	}
+}

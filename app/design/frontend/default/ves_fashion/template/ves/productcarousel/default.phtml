@@ -1,0 +1,146 @@
+<?php 
+	$moduleId = rand().time();
+	$itemsperpage = (int)$this->getEffectConfig("max_items");
+	$auto_play_mode = (int)$this->getEffectConfig("auto_play");
+
+	$title_maxchar = (int)$this->getEffectConfig("titleMaxchar");
+	$title_maxchar = $title_maxchar > 0 ?$title_maxchar: 100;
+	$desc_maxchar = (int)$this->getEffectConfig("descMaxchar");
+	$desc_maxchar = $desc_maxchar > 0 ?$desc_maxchar: 100;
+	$interval = (int)$this->getEffectConfig("interval");
+	$auto_play = $auto_play_mode?"true":"false";
+	$cols = (int)$this->getEffectConfig("limit_cols");
+	$cols = !empty($cols)?$cols:1;
+	$span = 12/$cols;
+	$active = 'latest';
+
+	if($items){
+		$items = $items->getItems();
+	}
+
+?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<div class="<?php echo $this->getEffectConfig('prefix');?> block block-productcarousel" id="module<?php echo $moduleId; ?>">
+	<?php if($this->getConfig('title')){?>
+	<div class="block-title">
+		<strong><span><?php echo $this->getConfig('title')?></span></strong>
+		<?php if( ($pretext=$this->getConfig("pretext")) && !$cms ) { ?>
+			<div class="pretext"><?php echo $pretext;?></div>
+		<?php } else {
+			?>
+			<div class="pretext"><?php echo $cms;?></div>
+			<?php
+		} ?>
+	</div>
+	<?php }?>
+	<div class="block-content">
+		<div class="box-products carousel slide" id="productcarousel<?php echo $moduleId;?>">
+			<?php if( count($items) > $itemsperpage && $this->getConfig("show_navigator")) { ?>
+			<div class="carousel-controls">
+				<a class="carousel-control left fa fa-angle-left" href="#productcarousel<?php echo $moduleId;?>"   data-slide="prev">&lt;</a>
+				<a class="carousel-control right fa fa-angle-right" href="#productcarousel<?php echo $moduleId;?>"  data-slide="next">&gt;</a>
+			</div>
+			<?php } ?>
+			<div class="carousel-inner mini-products-list">		
+			<?php
+			$pages = array_chunk( $items, $itemsperpage);
+			?>
+			<?php foreach ($pages as  $k => $tproducts ) {   ?>
+					<div class="<?php if($k==0) {?>active<?php } ?> product-grid no-margin">
+						<?php foreach( $tproducts as $i => $_product ) {  $i=$i+1;?>
+						<?php if( $cols == 1 || $i%$cols == 1 ) { ?>
+
+						<?php } ?>
+							<div class="item">
+								<div class="product">									
+									<a class="product-image" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>">
+										<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize( $this->getConfig("thumbWidth"), $this->getConfig("thumbHeight") ) ?>" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" />
+									</a>										
+				                       
+									<div class="product-details">
+										<?php if( $this->getConfig('show_title') ) : ?>
+										<p class="product-name">
+											<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php
+												$product_name = $this->htmlEscape($_product->getName());
+												echo $this->subString($product_name, $title_maxchar, "");
+												?>
+											</a>
+										</p>
+										<?php endif; ?>
+										
+										<?php if ( $this->getConfig('show_desc') ): ?>
+										<div class="desc">
+											<?php
+												$product_short_desc = $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description');
+												echo $this->subString($product_short_desc, $desc_maxchar, "");
+											 ?>
+										</div>
+										<?php endif; ?>
+										<?php if ( $this->getConfig('show_review') ): ?>
+											<div class="review"><?php echo $this->getReviewsSummaryHtml($_product, 'short') ?></div>
+										<?php endif; ?>
+										<?php if($this->getConfig('show_price')): ?>
+										<?php echo $this->getPriceHtml($_product, true) ?>
+										<?php endif; ?>
+									
+										<div class="productcarousel-action">
+											<?php if( $this->getConfig("show_addcart") ): ?>		                	
+												<?php if($_product->isSaleable()): ?>
+												<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+												<?php else: ?>
+												<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+												<?php endif; ?>
+											<?php endif; ?>
+											<?php if( $this->getConfig("show_wc") ): ?>
+												<div class="add-to-links">
+													<div class="left">										
+														<a class="add-to-wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product);?>" title="<?php echo $this->__('Wishlist')?>"><?php echo $this->__('Wishlist')?></a>										
+													</div>
+													<div class="right">
+														<a class="add-to-compare" href="<?php echo $this->helper('catalog/product_compare')->getAddUrl($_product);?>" title="<?php echo $this->__('Compare')?>"><?php echo $this->__('Compare')?></a>
+													</div>
+												</div>
+											<?php endif; ?>
+										</div>
+									</div>
+   							    </div>
+							</div>
+							  
+							<?php if( $i%$cols == 0 || $i==count($tproducts) ) { ?>
+	
+							<?php } ?>
+							
+						<?php } //endforeach; ?>
+					</div>
+				<?php } ?>
+			
+		</div>	
+	</div>
+</div>
+</div>
+
+<?php if( $this->getConfig("show_pzoom") ) {  ?>
+<script type="text/javascript">
+<!--
+jQuery(document).ready(function() {
+	if(typeof(colorbox) != "undefined"){
+		jQuery('.colorbox').colorbox({
+			overlayClose: true,
+			opacity: 0.5,
+			rel: false,
+			onLoad:function(){
+				jQuery("#cboxNext").remove(0);
+				jQuery("#cboxPrevious").remove(0);
+				jQuery("#cboxCurrent").remove(0);
+			}
+		});
+	}
+	 
+});
+//-->
+</script>
+<?php } ?>
+
+<script type="text/javascript">
+jQuery('#productcarousel<?php echo $id;?>').carousel({interval:<?php echo ( $auto_play_mode?$interval:'false') ;?>,auto:<?php echo $auto_play;?>,pause:'hover'});
+</script>

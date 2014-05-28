@@ -1,0 +1,82 @@
+<?php 
+ /*------------------------------------------------------------------------
+  # VenusTheme Brand Module 
+  # ------------------------------------------------------------------------
+  # author:    VenusTheme.Com
+  # copyright: Copyright (C) 2012 http://www.venustheme.com. All Rights Reserved.
+  # @license: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+  # Websites: http://www.venustheme.com
+  # Technical Support:  http://www.venustheme.com/
+-------------------------------------------------------------------------*/
+$auto_play = isset($setting['auto_play'])?$setting['auto_play']:1;
+$width = isset($setting['width'])?$setting['width']:800;
+$height = isset($setting['height'])?$setting['height']:350;
+$interval = isset($setting['interval'])?$setting['interval']:0;
+$auto_play_mode = isset($setting['auto_play_mode'])?$setting['auto_play_mode']:"0";
+?>
+<?php if( count($banners) ) { ?>
+	<?php $id = rand(1,10);?>
+   <div id="vescontentslider<?php echo $id;?>" class="carousel slide vescontentslider">
+	
+		<div class="carousel-inner">
+			
+			 <?php foreach ($banners as $i=> $banner) {  ?>
+				<div class="item <?php if($i==0) {?>active<?php } ?>">
+					<?php if ($banner['link']) { ?>
+					<a href="<?php echo $banner['link']; ?>"><img src="<?php echo $banner['thumb']; ?>" alt="<?php echo $banner['title']; ?>" /></a>
+					<?php } else { ?>
+					<img src="<?php echo $banner['thumb']; ?>" alt="<?php echo $banner['title']; ?>" />
+					<?php } ?>
+					<?php if( isset($banner['layers']) && $banner['layers'] ) { ?>
+					<?php foreach( $banner['layers'] as $layer ) { ?>
+					<?php 
+					 $caption_position = isset($layer['caption_position'])?$layer['caption_position']:'custom';
+					 $caption_class = ($caption_position !="custom")?"caption-position-".$caption_position:"";
+					 $style = 'top:'.(int)$layer['top'].'px;left:'.(int)$layer['left'].'px';
+					 if($caption_position == "center") {
+					 	$caption_position = "custom";
+					 	$style = 'top:'.(int)$layer['top'].'px';
+					 }
+					?>
+					<div class="ves-caption <?php echo $layer['effect']. " ".$layer['class'];?> <?php echo $caption_class; ?>" style="<?php echo $caption_position == "custom"?$style:""; ?>">
+						<?php  echo $layer['caption'];?>
+					</div>
+					<?php } ?>
+					<?php } ?>		 
+				</div>
+				
+			<?php } ?>
+		</div>
+		<?php if( count($banners) > 1 ){ ?>	
+		<a class="carousel-control left " href="#vescontentslider<?php echo $id;?>" data-slide="prev">&lsaquo;</a>
+		<a class="carousel-control right" href="#vescontentslider<?php echo $id;?>" data-slide="next">&rsaquo;</a>
+		<?php } ?>
+
+		<?php if( count($banners)  > 1 ) { ?>	
+			<?php if( isset($setting['image_navigator']) && $setting['image_navigator'] ) { ?>
+			<ol class="carousel-indicators thumb-indicators hidden-phone ">
+			<?php foreach ( $banners as $j=>$item )  : ?>
+				<li data-target="#vescontentslider<?php echo $id;?>" data-slide-to="<?php echo $j;?>" class="<?php if($j==0) {?>active<?php } ?>">
+					<img src="<?php echo $item['image_navigator'];?>"/>
+				</li>
+			<?php endforeach ?>
+			</ol>
+			<?php } else { ?>
+			<ol class="carousel-indicators">
+			<?php foreach ( $banners as $j=>$item )  : ?>
+				<li data-target="#vescontentslider<?php echo $id;?>" data-slide-to="<?php echo $j;?>" class="<?php if($j==0) {?>active<?php } ?>"></li>
+			<?php endforeach ?>
+			</ol>
+			<?php } ?>
+		<?php } ?>
+		
+		
+		
+    </div>
+	<?php if( count($banners) > 1 ){ ?>
+	<script type="text/javascript">
+		jQuery('#vescontentslider<?php echo $id;?>').carousel({interval:<?php echo ( $auto_play_mode?$interval:'false') ;?>,auto:<?php echo $auto_play;?>,pause:'hover'});
+
+	</script>
+	<?php } ?>
+<?php } ?>

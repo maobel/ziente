@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<theme>
+	<version value="1.4">
+		<ccc available="true" />
+		<guest_checkout available="true" />
+		<one_page_checkout available="true" />
+		<store_locator available="true" />
+	</version>
+	<name>Venus BikeStore</name>
+	<positions>
+		<position>top</position>
+		<position>header</position>
+		<position>left</position>
+		<position>right</position>
+		<position>slideshow</position>
+		<position>showcase</position>
+		<position>promotion</position>
+		<position>breadcrumbs</position>
+		<position>global_messages</position>
+		<position>contentTop</position>
+		<position>contentBottom</position>
+		<position>content</position>
+		<position>massbottom</position>
+		<position>footerTop</position>
+		<position>footerCenter</position>
+		<position>footer</position>
+
+	</positions>
+
+	<skins>
+		<skin>default</skin>		
+		<skin>dark</skin>		
+		
+	</skins>
+
+	<fontsizes>
+				<option>9</option>
+				<option>10</option>
+				<option>11</option>
+				<option>12</option>
+				<option>13</option>
+				<option>14</option>
+				<option>15</option>
+				<option>16</option>
+	</fontsizes>
+
+	<fonts>
+				<option value="Verdana, Geneva, sans-serif">Verdana</option>
+				<option value="Georgia, &quot;Times New Roman&quot;, Times, serif">Georgia</option>
+				<option value="Arial, Helvetica, sans-serif">Arial</option>
+				<option value="Impact, Arial, Helvetica, sans-serif">Impact</option>
+				<option value="Tahoma, Geneva, sans-serif">Tohoma</option>
+				<option value="&quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif">Trebuchet</option>
+				<option value="&quot;Arial Black&quot;, Gadget, sans-serif">Arial Black</option>
+				<option value="Times, &quot;Times New Roman&quot;, serif">Times</option>
+				<option value="&quot;Palatino Linotype&quot;, &quot;Book Antiqua&quot;, Palatino, serif">Palatino Linotype</option>
+				<option value="&quot;Lucida Sans Unicode&quot;, &quot;Lucida Grande&quot;, sans-serif">Lucida Sans Unicode</option>
+				<option value="&quot;MS Serif&quot;, &quot;New York&quot;, serif">MS Serif</option>									
+				<option value="&quot;Comic Sans MS&quot;, cursive">Comic Sans MS</option>
+				<option value="&quot;Courier New&quot;, Courier, monospace">Courier New</option>
+				<option value="&quot;Lucida Console&quot;, Monaco, monospace">Lucida Console</option>											
+	</fonts>
+
+	<modules>
+		<module>pavmegamenu</module>
+		<module>pavslideshow</module>
+		<module>pavproductcarousel</module>
+	</modules>
+
+	<default>
+		<skin>default</skin>
+		<theme_width>auto</theme_width>
+		<enable_custom_copyright>0</enable_custom_copyright>
+		<enable_development_mode>0</enable_development_mode>
+		<copyright><![CDATA[<b>Copyright 2</b> 2014 Venusthemes.Com.]]></copyright>
+		<theme_intro><![CDATA[ Venus Base On Magento ]]></theme_intro>
+	</default>
+	
+	<custom_fonts>
+		<font><![CDATA[https://fonts.googleapis.com/css?family=Noticia+Text:400,400italic,700,700italic]]></font>
+	</custom_fonts>
+
+<!-- Internal Modules - support by venustheme framework-->
+
+	<internal_modules>	
+		<fields name="showcase">
+			<fieldset name="customblock">
+				<field name="customblock_label" type="label"><![CDATA[Contact Us]]></field>
+				<field name="widget_customblock_name" type="input" label="Module Name" id=""></field>
+				<field name="widget_customblock_data" label="Custom Block" description="" type="editor" width="500px" height="300px" cols="15" rows="2">
+					<![CDATA[
+						<div class="custom-block">
+						<div class="row">
+						<div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
+						<div class="box"><a title="custom 1" href="#"> <img src="{{media url="wysiwyg/staticblock/img-baner1.jpg"}}" alt="" /> </a></div>
+						<div class="box"><a title="custom 3" href="#"> <img src="{{media url="wysiwyg/staticblock/img-baner3.jpg"}}" alt="" /> </a></div>
+						</div>
+						<div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
+						<div class="box"><a title="custom 5" href="#"> <img src="{{media url="wysiwyg/staticblock/img-baner5.jpg"}}" alt="" /> </a></div>
+						</div>
+						<div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
+						<div class="box"><a title="custom 2" href="#"> <img src="{{media url="wysiwyg/staticblock/img-baner2.jpg"}}" alt="" /> </a></div>
+						<div class="box"><a title="custom 4" href="#"> <img src="{{media url="wysiwyg/staticblock/img-baner4.jpg"}}" alt="" /> </a></div>
+						</div>
+						</div>
+						</div>
+					]]>
+				</field>
+				<field name="widget_customblock_block_id" type="staticblocklist" default="" label="Static Block" description="If you select a static block, it will override custom html of module"></field>
+
+				<field name="widget_customblock_layout" type="layout" size="10" label="Layout" default="all" style="width:280px;min-height:100px" description="Select one or more layout page which module will show there">
+					<option>cms</option>		
+					<option>contacts</option>		
+					<option>catalog-product</option>
+					<option>catalog-category</option>
+					<option>checkout</option>
+					<option>tag</option>
+					<option>catalogsearch</option>
+					<option>sales</option>
+					<option>customer</option>
+					<option>wishlist</option>
+					<option>review</option>
+					<option>oauth</option>
+					<option>newsletter</option>
+					<option>downloadable</option>
+				</field>
+				<field name="widget_customblock_status" type="list" label="Status" default="1" description="Show/hide module">
+					<option value="1">Yes</option>		
+					<option value="0">No</option>
+				</field>
+			</fieldset>			
+		
+		</fields>
+		
+		<fields name="massbottom">
+			<!--MAOBEL
+			<fieldset name="custombanner">
+				<field name="custombanner_label" type="label"><![CDATA[Custom Banner]]></field>
+				<field name="widget_custombanner_name" type="input" label="Module Name" id=""></field>
+				<field name="widget_custombanner_data" label="Custom Banner" description="" type="editor" width="500px" height="300px" cols="15" rows="2">
+					<![CDATA[
+						<div class="custom-banner"><img src="{{media url="wysiwyg/staticblock/img-news.jpg"}}" alt="" /></div>
+					]]>
+				</field>
+				<field name="widget_custombanner_block_id" type="staticblocklist" default="" label="Static Block" description="If you select a static block, it will override custom html of module"></field>
+
+				<field name="widget_custombanner_layout" type="layout" size="10" label="Layout" default="all" style="width:280px;min-height:100px" description="Select one or more layout page which module will show there">
+					<option>cms</option>		
+					<option>contacts</option>		
+					<option>catalog-product</option>
+					<option>catalog-category</option>
+					<option>checkout</option>
+					<option>tag</option>
+					<option>catalogsearch</option>
+					<option>sales</option>
+					<option>customer</option>
+					<option>wishlist</option>
+					<option>review</option>
+					<option>oauth</option>
+					<option>newsletter</option>
+					<option>downloadable</option>
+				</field>
+				<field name="widget_custombanner_status" type="list" label="Status" default="1" description="Show/hide module">
+					<option value="1">Yes</option>		
+					<option value="0">No</option>
+				</field>
+			</fieldset>			
+			-->
+		</fields>
+		
+		<fields name="footerTop">
+			<!-- MAOBEL
+			<fieldset name="aboutus">
+				<field name="aboutus_label" type="label"><![CDATA[About Us]]></field>
+				<field name="widget_aboutus_name" type="input" label="Module Name" id=""></field>
+				<field name="widget_aboutus_data" label="About Us" description="" type="editor" width="500px" height="300px" cols="15" rows="2">
+					<![CDATA[
+						<div class="custom-abs">
+						<div class="row">
+						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="box logo-ft a-center"><img src="{{media url="wysiwyg/staticblock/logo2.png"}}" alt="" /></div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<div class="box about">
+						<h3 class="title_block"><span>About The Shop</span></h3>
+						<p>Sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</p>
+						</div>
+						</div>
+						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="social-link">
+						<h3 class="title_block"><span>Follow Us On Social</span></h3>
+						<ul class="social">
+						<li><a class="facebook" href="#"> <em class="fa fa-facebook stack"><span>Facebook</span></em> </a></li>
+						<li><a class="twitter" href="#"> <em class="fa fa-twitter stack"><span>Twitter</span></em> </a></li>
+						<li><a class="rss" href="#"> <em class="fa fa-rss stack"> <span>Google Plus</span> </em> </a></li>
+						<li><a class="youtube" href="#"> <em class="fa fa-youtube stack"> <span>Youtube</span> </em> </a></li>
+						<li><a class="skype" href="#"> <em class="fa fa-skype stack"> <span>Skype</span> </em> </a></li>
+						</ul>
+						</div>
+						</div>
+						</div>
+						</div>
+					]]>
+				</field>
+
+				<field name="widget_aboutus_block_id" type="staticblocklist" default="" label="Static Block" description="If you select a static block, it will override custom html of module"></field>
+
+				<field name="widget_aboutus_layout" type="layout" size="10" label="Layout" default="cms" style="width:280px;min-height:100px" description="Select one or more layout page which module will show there">
+					<option>cms</option>		
+					<option>contacts</option>		
+					<option>catalog-product</option>
+					<option>catalog-category</option>
+					<option>checkout</option>
+					<option>tag</option>
+					<option>catalogsearch</option>
+					<option>sales</option>
+					<option>customer</option>
+					<option>wishlist</option>
+					<option>review</option>
+					<option>oauth</option>
+					<option>newsletter</option>
+					<option>downloadable</option>
+				</field>
+				<field name="widget_aboutus_status" type="list" label="Status" default="1" description="Show/hide module">
+					<option value="1">Yes</option>		
+					<option value="0">No</option>
+				</field>
+			</fieldset>		
+			-->	
+			
+			<!-- MAOBEL
+			<fieldset name="custom-footer-links">
+				<field name="custom-footer-links_label" type="label"><![CDATA[Custom Footer Links]]></field>
+				<field name="widget_custom-footer-links_name" type="input" label="Module Name" id=""></field>
+				<field name="widget_custom-footer-links_data" label="About Us" description="" type="editor" width="500px" height="300px" cols="15" rows="2">
+					<![CDATA[
+						<div class="custom-footer-links">
+						<div class="row">
+						<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+						<div class="boxed">
+						<h3>openning time</h3>
+						<ul class="time">
+						<li><span class="f-left">Monday - Friday</span><span class="f-right">8.00 to 18.00</span></li>
+						<li><span class="f-left">Saturday</span><span class="f-right">9.00 to 21.00</span></li>
+						<li><span class="f-left">Sunday</span><span class="f-right">10.00 to 21.00</span></li>
+						</ul>
+						<div class="ct-p"><em class="fa fa-phone"></em> <span>Call us: <strong>0123 456 789</strong></span></div>
+						</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="boxed">
+						<div class="row">
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+						<h3>categories</h3>
+						<ul class="custom-links">
+						<li><em class="fa fa-long-arrow-right"></em><a title="Jackets / Coats" href="#">Jackets / Coats</a></li>
+						<li><em class="fa fa-long-arrow-right"></em><a title="Jumpsuits / Rompers" href="#">Jumpsuits / Rompers</a></li>
+						<li><em class="fa fa-long-arrow-right"></em><a title="Leather" href="#">Leather</a></li>
+						<li><em class="fa fa-long-arrow-right"></em><a title="Leggings" href="#">Leggings</a></li>
+						<li><em class="fa fa-long-arrow-right"></em><a title="Lingerie" href="#">Lingerie</a></li>
+						</ul>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+						<h3>informations</h3>
+						<ul class="custom-links">
+						<li><em class="fa fa-long-arrow-right"></em><a title="About Us" href="#">About Us</a></li>
+						<li><em class="fa fa-long-arrow-right"></em><a title="Jobs" href="#">Jobs</a></li>
+						<li><em class="fa fa-long-arrow-right"></em><a title="Affiliates" href="#">Affiliates</a></li>
+						<li><em class="fa fa-long-arrow-right"></em><a title="Contact" href="#">Contact</a></li>
+						</ul>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+						<h3>account</h3>
+						<ul class="custom-links">
+						<li><em class="fa fa-long-arrow-right"></em><a title="Wishlist" href="#">Wishlist</a></li>
+						<li><em class="fa fa-long-arrow-right"></em><a title="Your account" href="#">Your account</a></li>
+						<li><em class="fa fa-long-arrow-right"></em><a title="Checkout" href="#">Checkout</a></li>
+						<li><em class="fa fa-long-arrow-right"></em><a title="Login" href="#">Login</a></li>
+						</ul>
+						</div>
+						</div>
+						</div>
+						</div>
+						<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+						<div class="boxed">
+						<h3>contact</h3>
+						<strong>Warehouse &amp; Offices</strong>
+						<p>12345 Street name, California, USA<br />0123 456 789 / 0123 456 788</p>
+						<strong>Retail Store</strong>
+						<p>54321 Street name, California, USA<br />0123 456 789 / 0123 456 788</p>
+						</div>
+						</div>
+						</div>
+						</div>
+					]]>
+				</field>
+				<field name="widget_custom-footer-links_block_id" type="staticblocklist" default="" label="Static Block" description="If you select a static block, it will override custom html of module"></field>
+
+				<field name="widget_custom-footer-links_layout" type="layout" size="10" label="Layout" default="cms" style="width:280px;min-height:100px" description="Select one or more layout page which module will show there">
+					<option>cms</option>		
+					<option>contacts</option>		
+					<option>catalog-product</option>
+					<option>catalog-category</option>
+					<option>checkout</option>
+					<option>tag</option>
+					<option>catalogsearch</option>
+					<option>sales</option>
+					<option>customer</option>
+					<option>wishlist</option>
+					<option>review</option>
+					<option>oauth</option>
+					<option>newsletter</option>
+					<option>downloadable</option>
+				</field>
+				<field name="widget_custom-footer-links_status" type="list" label="Status" default="1" description="Show/hide module">
+					<option value="1">Yes</option>		
+					<option value="0">No</option>
+				</field>
+			</fieldset>
+			-->	
+		
+		</fields>
+	</internal_modules>
+
+</theme>
+

@@ -1,0 +1,99 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+
+<div class="container">
+	<section id="topbar">
+        <div class="topLinks pull-left">
+            <!--span class="welcome-msg"><?php //echo $this->getChildHtml('welcome') ?> <?php //echo $this->getAdditionalHtml() ?></span-->
+            <?php echo $this->getChildHtml('topLinks') ?>
+        </div>
+		<div class="quick-access">
+			<div class="quickaccess-toggle hidden-lg hidden-md">
+				<i class="fa fa-sun-o"></i>                                                        
+			</div>
+			<div class="inner-toggle">
+				<div class="language pull-left">
+					<div class="pull-left">
+						<?php echo $this->getChildHtml('store_language') ?>
+					</div>	
+					<div class="pull-left">
+						<?php echo $this->getChildHtml('top_currency') ?>
+					</div>	
+				</div>
+			</div>
+		</div>
+		 
+		<div class="header-right inner pull-right">
+			<div class="pull-right">  
+				<div class="inner-toggle">
+					<div class="cart-top">
+						<?php echo Mage::helper("ves_tempcp/framework")->getMinicartHtml(); ?>
+					</div>
+				</div>
+			</div>
+			<div class="quick-access pull-right">
+				<div class="quickaccess-toggle hidden-lg hidden-md">
+					<i class="fa fa-search"></i>                                                        
+				</div>
+				<div class="inner-toggle">
+					<div class="top-search pull-right">
+						<?php echo $this->getChildHtml('topSearch') ?>
+					</div>		
+				</div>		
+			</div>		
+		</div>
+	</section>
+</div>
+
+<section id="header-main">
+    <div class="container">
+        <div class="header-wrap">
+                <?php if ($this->getIsHomePage()):?>
+                <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+                <?php else:?>
+                <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+                <?php endif?>            
+        </div>
+        <?php if($topContainer =  $this->getChildHtml('topContainer')){ ?>
+             <div class="top-container">
+                <div class="container">
+                    <?php echo $topContainer; ?>
+                </div>
+             </div>
+        <?php } ?>
+    </div>
+</section>
+<?php if($topmenu = $this->getChildHtml('topMenu')){ ?>
+<section id="ves-mainnav">
+    <div class="container">
+        <?php echo $topmenu; ?>
+    </div>
+</section>
+<?php } ?>

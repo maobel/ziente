@@ -1,0 +1,21 @@
+.vescarousel{
+	margin:0;
+}
+.vescarousel .carousel-control{
+	top: 50%;
+	margin: -13px 0 0px ;	
+	background: none;
+	-webkit-border-radius: 0 0 0 0;
+	border-radius: 0 0 0 0;
+	line-height: 24px;
+	border: none;
+}
+.vescarousel .carousel-control.left{
+	left: 0;
+}
+.vescarousel .carousel-control.right{
+	right: 0;
+}
+.vescarousel{ margin-bottom: 75px;}
+.vescarousel .item-inner{ border: 1px solid #e7e7e7;}
+.vescarousel .carousel-control:hover{ background-color: #ddd; color: #000;}

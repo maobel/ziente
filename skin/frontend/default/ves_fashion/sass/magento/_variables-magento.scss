@@ -1,0 +1,202 @@
+/******************************************************
+ * @package Ves Theme Framework for Magento
+ * @version 1.0
+ * @author http://www.venustheme.com
+ * @copyright Copyright (C) Augus 2013 Venustheme.com <$emai:venustheme@gmail.com>.All rights reserved.
+ * @license   GNU General Public License version 2
+*******************************************************/
+
+// Global values
+// --------------------------------------------------
+$rtl-left : left;
+$rtl-right : right;
+
+$theme-padding           : $line-height-computed - 5;
+$theme-margin            : $line-height-computed - 5;
+$theme-line-height       : 30px;
+
+$theme-padding           : $line-height-computed - 5;
+$theme-margin            : $line-height-computed - 5;
+$theme-line-height        : 30px;
+
+// themes colors
+// -------------------------
+
+$brown:					#b39770;
+$browndark: 			#e4dcd2;
+$lightbrown:			#f6eee3;	
+$blue:                  #049cdb;
+$bluedark:              #0064cd;
+$yellow:                #ffc40d;
+$orange:                #f89406;
+$pink:                  #c3325f;
+$purple:                #7a43b6;
+$white :			 	#FFFFFF;
+$black :				#000000;
+$cyandark:   			#4e4d49;
+$green:                 #7db641;
+$red:                   #c83a3a;
+
+$theme-color-primary   : $gray-lighter; // for hightligh block header, button as default it is  color
+$theme-color-secondary : $red ; 
+
+
+
+$theme-color 			: $theme-color-default;
+$theme-color-hover      : $theme-color-secondary;
+
+$btn-theme-primary       : $theme-color ;
+$btn-theme-primary-hover : $theme-color-hover ;
+
+$text-primary-theme : $theme-color;
+$text-danger-theme : $theme-color-secondary;
+/**
+ * Heading Page
+ */
+$heading-line-height            : 30px;
+
+$theme-color 			: $theme-color-default;
+$theme-color-hover      : $theme-color-secondary;
+$mainnav-color-hover    : $theme-color-hover;
+
+
+$btn-theme-primary       : $theme-color ;
+$btn-theme-primary-hover : $theme-color-hover ;
+
+$text-primary-theme 	: $theme-color;
+$text-danger-theme : $theme-color-secondary;
+
+
+$header-main-bg				: transparent; 
+$nav-background 			: transparent;
+$topbar-bg					: transparent; 
+
+/* 
+ * product block
+ */
+
+$product-name-font-size		        : 16px;
+$product-name-color  		        : #000;
+$product-name-color-hover  		    : #000;
+$product-name-font-family			: $font-family-custom-light;
+$product-price-old-size				: 16px;
+$product-price-font-size    		: 16px;
+$product-price-color				: #000;
+$product-price-tax                  : #bbb;
+
+$list-product-name-font-size		: $font-size-large;
+$list-product-name-color  		    : #000;
+$list-product-name-color-hover  	: $theme-color-default;
+$list-product-name-font-family		: $font-family-custom-light;
+$list-product-price-font-size    	: $font-size-large;
+
+/* Icons */
+$product-sale-bg 					: #F5EA32;
+$product-sale-color 				: #000;
+
+/* buttons */
+$btn-wrap-border:   #CCC ;
+$btn-wrap-bg    : $white; 
+
+/* 
+ * htab module 
+ */
+$htab-border-color 	     : $nav-tabs-border-color; 
+$htab-border 		     : $nav-tabs-border-color; 
+$htab-nav-padding	     : 7px 25px 7px 25px;
+$htab-nav-color		     : $gray;
+$htab-bg    		     : $white;
+$htab-bg-selected     	 : $theme-color-default;
+$htab-nav-selected-color : $white;
+
+
+
+/* 
+ * Default Menu
+ */
+
+$menu-bg					:$white;
+$menu-height				:50px;
+
+
+$menu-lvtop-font-size		:12px;
+$menu-lvtop-font-family		:'brandon_grotesque_regularRg'; 
+$menu-lvtop-line-height		:$menu-lvtop-font-size * 1.5;
+$menu-lvtop-padding         : ($menu-height - $menu-lvtop-line-height)/2  10px;
+
+
+$menu-lvnd-height			: 30px;
+$menu-lvnd-font-size		: 14px;
+$menu-lvnd-font-family		: $font-family-base;
+$menu-lvnd-line-height		: $menu-lvnd-font-size * 1.5;
+$menu-lvnd-padding          : ($menu-lvnd-height - $menu-lvnd-line-height)/2  15px;
+$menu-lvnd-color			: #999;
+$menu-lvnd-color-hover   	: #fff;
+$menu-lvnd-bg				: #000;
+$menu-lvnd-bg-hover			: #000;
+
+$menu-dropdow-bg			: #000;
+$menu-dropdow-color			: #999;
+$menu-dropdow-color-hv		: #fff;
+
+
+/* 
+ * Mega Menu Module
+ */
+$megamenu-bg: #000; 
+$megamenu-border-color:#999;
+/* 
+ * Block Modules 
+ */
+$block-module-title-font   	 	: $font-family-base;
+$block-module-title-color    	: #fff;
+$block-module-title-bg			: $brown;
+$block-module-title-border   	: $gray-lighter;
+$block-module-title-fontsize 	: 13px;
+$block-module-title-lineheight  : 28px;
+$block-module-content-bg        : #fff;
+$block-module-padding           : $theme-padding;
+$block-module-margin	        : 20px;
+$block-module-border     		: 1px solid #c4c1bc;
+$block-module-badge            : $theme-color;
+ /* 
+  * LAYOUTS VAIRABLES 
+  */
+
+// topbar  
+$topbar-color			: $gray-light;
+$topbar-font-size  		: $font-size-base - 1;
+$topbar-link-hover-color: $theme-color-secondary;
+
+//header-main
+
+$header-main-padding        : 35px 0;
+
+//Pav-mainnav
+$mainnav-bg				: $lightbrown; 
+$mainnav-wrap-bg		: $brown;
+
+//Offcanvas
+$offcanvas-bg           : $theme-color-secondary;
+
+// footer position
+$footer-bg 				: $white;
+$footer-color 				: #3b3b3b;
+$footer-heading-font-size  : $font-size-base;
+$footer-heading-color		: $footer-color;
+$footer-heading-boder-color: 2px solid transparent;
+$footer-link-color         : $footer-color;
+$footer-link-hover-color   : $theme-color-hover;
+$footer-padding            : $line-height-computed + 13;
+$footer-margin             : $line-height-computed + 13;
+//footer-top
+$footertop-bg 			: #f8f8f8;
+$footertop-link         : $footer-link-hover-color;
+
+// powered by
+$power-bg              : $gray;
+$power-text-color      : $white;
+$power-link-color      : $theme-color;
+$power-link-color-hover: $theme-color-hover;
+$power-padding         : $footer-padding;
+$power-margin          : $footer-margin;

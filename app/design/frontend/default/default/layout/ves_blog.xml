@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+	
+		<!--reference name="content">
+			<block type="ves_blog/latest" name="ves.latest" after="-" />
+		</reference-->
+		
+		<reference name="massbottom">
+			<block type="ves_blog/latest" name="ves.latest" after="-" />
+		</reference>
+		
+	</default>	
+    <blog_index_index>
+        <reference name="content">
+            <block type="ves_blog/blog_list" name="blog.frontpage" template="ves/blog/list.phtml"/>
+        </reference>
+		
+		<reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+		<reference name="right">
+			<block type="ves_blog/cmenu" name="ves.cmenu" before="-" />
+		</reference>
+		
+    </blog_index_index>
+    
+	<blog_category_view>
+		<reference name="content">
+            <block type="ves_blog/blog_category" name="blog.category" template="ves/blog/list.phtml">
+				<block type="ves_blog/blog_toolbar" name="list.toolbar" template="ves/blog/toolbar.phtml"/>
+			</block>			
+        </reference>
+			
+		<reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+		
+		<reference name="right">
+			<block type="ves_blog/cmenu" name="ves.cmenu" before="-" />
+		</reference>
+	</blog_category_view>
+	
+	
+	<blog_list_show>
+		<reference name="content">
+            <block type="ves_blog/blog_list" name="blog.list" template="ves/blog/list.phtml">
+			</block>			
+        </reference>
+		
+		<reference name="right">
+			<block type="ves_blog/cmenu" name="ves.cmenu" before="-" />
+		</reference>
+		
+		<reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+	</blog_list_show>
+	
+	
+	 <blog_post_view>
+        <reference name="content">
+            <block type="ves_blog/blog_post" name="blog.post" template="ves/blog/post.phtml">
+
+				<block type="ves_blog/blog_post_recaptcha" name="post.recaptcha" template="ves/blog/post/recaptcha.phtml" />
+				<block type="ves_blog/blog_post_comment" name="post.comment" template="ves/blog/post/comment.phtml">
+					<block type="ves_blog/blog_toolbar" name="post.comment.toolbar" template="ves/blog/toolbar.phtml"/>
+				</block>
+				<block type="ves_blog/blog_post_social" name="post.social" template="ves/blog/post/social.phtml" />				
+			</block>
+			
+        </reference>
+		
+		<reference name="right">
+			<block type="ves_blog/cmenu" name="ves.cmenu" before="-" />
+		</reference>
+		
+		<reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+		
+    </blog_post_view>
+    
+</layout> 

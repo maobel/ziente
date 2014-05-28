@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+    <layout version="0.1.0">
+        <appointments_index_index>
+            <reference name="content">
+                <block type="appointements/appointements" name="appointements" template="page/html/appointment.phtml"/>
+            </reference>
+        </appointments_index_index>
+    </layout>
+    

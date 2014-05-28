@@ -1,0 +1,62 @@
+/******************************************************
+ * @package Ves Theme Framework for Magento
+ * @version 1.0
+ * @author http://www.venustheme.com
+ * @copyright Copyright (C) Augus 2013 Venustheme.com <@emai:venustheme@gmail.com>.All rights reserved.
+ * @license   GNU General Public License version 2
+*******************************************************/
+ 
+h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+  font-family: $headings-font-family;
+}
+
+h1 {
+  font-size: $font-size-base + 8;
+  line-height: $input-height-base * 1;
+}
+
+h2 {
+  font-size: $font-size-base + 6;  
+  line-height: $input-height-base * 1;
+}
+
+h3 {
+  font-size: $font-size-base + 2; 
+  line-height: $input-height-base ;
+}
+
+h4 {
+  font-size: $font-size-base + 1;
+  line-height: $input-height-base - 8 ;
+}
+
+h5 {
+  font-size: $font-size-base + 1;
+}
+
+h6 {
+  font-size: $font-size-base; 
+  line-height: $input-height-base; 
+}
+.success { color:#3d6611; font-weight:bold; }
+.error { color:#df280a; font-weight:bold; }
+.notice { color:#e26703; }
+
+.messages { width:100%; overflow:hidden; }
+.messages,
+.messages ul { list-style:none !important; margin:0 !important; padding:0 !important; }
+.messages li { 
+	margin:0 0 10px !important;
+	li { 
+		margin:0 0 3px !important; 
+	} 
+}
+.error-msg,
+.success-msg,
+.note-msg,
+.notice-msg { border-style:solid !important; border-width:1px !important; background-position:10px 9px !important; background-repeat:no-repeat !important; min-height:24px !important; padding:8px 8px 8px 32px !important; font-size:11px !important; font-weight:bold !important; }
+.error-msg { border-color:#f16048; background-color:#faebe7; background-image:url(#{$image-theme-path-base}i_msg-error.gif); color:#df280a; }
+.success-msg { border-color:#446423; background-color:#eff5ea; background-image:url(#{$image-theme-path-base}i_msg-success.gif); color:#3d6611; }
+.note-msg,
+.notice-msg { border-color:#fcd344; background-color:#fafaec; background-image:url(#{$image-theme-path-base}i_msg-note.gif); color:#3d6611; }

@@ -1,0 +1,288 @@
+#ves-tree
+	{
+		padding-left:10px;
+	}
+#ves-tree li
+	{
+		line-height:22px;					
+	}
+#ves-tree li a
+	{
+		text-decoration:none;
+	}
+#ves-tree a:hover
+	{
+		color:#000;
+		font-weight:bold !important;
+	}
+#ves-tree ul li a 
+	{
+		background:url("images/menu_bg_li1.gif") no-repeat scroll 0 3px transparent;
+		font-weight:normal;
+		padding-left:15px;
+		color:#444444;
+	}
+#ves-tree ul ul li a 
+	{
+		background:url("images/menu_bg_li2.gif") no-repeat scroll 0 4px transparent;
+		color:#444444;
+		padding-left:15px;
+	}
+#ves-tree li a
+	{
+		text-transform:uppercase;
+		color:#444444;
+		font-weight:bold;
+	} 
+#ves-tree li ul li a
+	{
+		text-transform:none;
+	}
+#ves-treeli.active a 
+	{
+		font-weight:bold;
+	}
+#ves-tree li.active ul li a 
+	{
+		font-weight:normal;
+	}
+#ves-tree li.active ul li.active ul li.active a 
+	{
+		font-weight:bold;
+	}
+#ves-tree li.active ul li.active ul li a {
+		font-weight:normal;
+	}
+#ves-tree li.active ul li.active a 
+	{
+		font-weight:bold;
+	}
+#ves-tree ul
+	{
+		padding-left:10px;
+	}
+	
+	
+/*-----------------------------------
+* Dropdown
+*------------------------------------/
+
+#ves-dropdown { padding:0; font-size:1.1em;}
+
+
+/************** ALL LEVELS  *************/ /* Style consistent throughout all nav levels */
+#ves-dropdown li { position:relative; text-align:left; width:100%;line-height:25px; height:25px; float:left;}
+#ves-dropdown li.over { z-index:999;}
+#ves-dropdown a{ display:block; line-height:25px; text-decoration:none; }
+#ves-dropdown a:hover { display:block; line-height:25px; color:#D96708; }
+#ves-dropdown span { display:block; cursor:pointer; white-space:nowrap;
+text-transform:none; }
+#ves-dropdown li ul span {white-space:normal; }
+
+/************ 0 LEVEL  ***************/
+#ves-dropdown li {border-bottom:1px dotted #d8d8d8; }
+#ves-dropdown li.active a { color:#D96708;  }
+#ves-dropdown li.active li a{text-decoration:none;}
+#ves-dropdown li.active li a:hover{color:#D96708;}
+#ves-dropdown a {  padding:0 15px 0px 15px; color:#000; font-weight:normal; }
+#ves-dropdown li.over a{color:#D96708;};
+#ves-dropdown a:hover { color:#D96708; }
+
+/************ 1ST LEVEL ************/
+#ves-dropdown ul li,
+#ves-dropdown ul li.active { float:left; margin:0; }
+#ves-dropdown ul li.last { background:#fff; padding-bottom:0; }
+
+#ves-dropdown ul a,
+#ves-dropdown ul li a:hover { float:left; padding:0; background:fff; color:#D96708; }
+#ves-dropdown ul li a { font-weight:normal !important;}
+#ves-dropdown ul{background:#FFF !important;}
+
+/************ 2ND LEVEL ************/
+#ves-dropdown ul { position:absolute; width:170px; top:25px; left:-10000px; border:1px solid #d8d8d8;  }
+
+/* Show menu */
+#ves-dropdown li.over > ul { left:120px;top:-1px; }
+#ves-dropdown li.over > ul li.over > ul { left:120px; }
+#ves-dropdown li.over ul ul { left:-10000px; }
+
+#ves-dropdown ul li a { background:#fff; }
+#ves-dropdown ul li a:hover { background:#fff;color:#D96708 !important; }
+#ves-dropdown ul li a{ color:#000 !important; }
+#ves-dropdown ul span, #ves-dropdown ul li.last li span { padding:0px 15px 0px 15px;}
+#ves-dropdown li.last{border:none !important;}
+/************ 3RD+ LEVEL ************/
+#ves-dropdown ul ul { background:#fff; }
+#ves-dropdown ul li{}
+
+
+/*-------------------------------------------
+* accordion
+--------------------------------------------*/
+#ves-accordion 
+	{ 
+		margin:0; 
+		padding:5px 10px;
+	}
+.side-col .box
+	{
+		clear:both;
+	}
+#ves-accordion li
+	{
+		background:#f6f6f6;
+		line-height:25px;
+		font-weight:normal;
+		list-style:none;
+	}
+/* Some list and link styling */
+#ves-accordion ul li
+	{
+		padding-left:10px;
+	}
+#ves-accordion ul ul li 
+	{ 
+		border:none !important; 
+		padding: 0; margin-bottom: 0
+		; 
+	}
+#ves-accordion ul ul
+	{
+		display:block !important;
+	}
+#ves-accordion ul ul li a,#ves-accordion ul li a
+	{
+		background:url("images/menu_bg_li1.gif") no-repeat scroll 0 8px transparent;
+		padding-left:15px;
+		font-weight:normal;
+	}
+#ves-accordion ul  li a 
+	{ 
+		text-decoration:none;
+		text-transform:none;
+		color:#444444;   
+	}
+
+
+/* For the xtra menu */
+
+#ves-accordion ul ul li 
+	{   
+		margin-bottom: 0; 
+	}
+#ves-accordion ul ul li
+	{
+		padding-left:10px;
+	}
+#ves-accordion ul ul li a 
+	{
+		background:url("images/menu_bg_li2.gif") no-repeat scroll 0 9px transparent; 
+		color: #444444;
+		padding-left:15px;
+	}
+#ves-accordion ul ul li 
+	{
+		border:none;
+	}
+#ves-accordion span  a
+	{
+		width:16px;
+	}
+#ves-accordion li a
+	{
+		text-transform:uppercase;
+		color:#2f2f2f;
+		text-decoration:none; 
+		font-weight:bold; 
+		font-size:12px;
+	}
+#ves-accordion li a:hover
+	{
+		/*text-decoration:underline;*/
+		font-weight:bold !important;
+	}
+#ves-accordion ul
+	{
+		padding:0px;
+	}
+#ves-accordion ul ul 
+	{
+		float:left;
+		padding:0px;
+		width:100%;
+	}
+#ves-accordion ul,#ves-accordion ul ul,#ves-accordion ul ul ul , #ves-accordionul ul ul ul
+	{
+		padding:0;
+		margin:0;
+	}
+/* Header links styling */
+#ves-accordion span.head a 
+	{ 
+		background: #f6f6f6 url(images/menu_down.gif) no-repeat; 
+		color:#333333;
+		display:block;
+		height:15px;
+		margin-top:5px;
+		padding:0;
+		width:15px;
+	}
+#ves-accordion span.head a:hover 
+	{ 
+		color: #000;
+		background: #f6f6f6 url(images/menu_down.gif) no-repeat; 
+		background-position: 98% 50%;		
+	}
+#ves-accordion span.selected a 
+	{ 
+		background:  url(images/menu_up.gif) no-repeat; 
+		background-position:98% 50%;
+		color: #fff;
+		padding:0px;
+	}
+#ves-accordion span.selected a:hover 
+	{ 
+		background: #69c url(images/menu_up.gif) no-repeat; 
+		background-position:98% 50%;
+		color: #36a;
+	}
+#ves-accordion li.active a 
+	{
+		font-weight:bold;
+	}
+#ves-accordion li.active ul li a {
+		font-weight:normal;
+	}
+#ves-accordion li.active ul li.active ul li.active a {
+		font-weight:bold;
+	}
+#ves-accordion li.active ul li.active ul li a {
+		font-weight:normal;
+	}
+#ves-accordion li.active ul li.active a {
+		font-weight:bold;
+}
+#ves-accordion li a
+	{
+		float:left;
+	}
+#ves-accordion ul
+	{
+		float:left;
+		clear:both;
+	}			
+#ves-accordion li
+	{
+		float:left;
+		width:175px;
+		clear:both;
+	}	
+	
+#ves-accordion ul li
+	{
+		width:165px;
+	}
+#ves-accordion ul ul li
+	{
+		width:155px;
+	}

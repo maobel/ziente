@@ -1,0 +1,89 @@
+<?xml version="1.0"?> 
+<config>
+    <menu>
+            <vesextensions module="ves_contentslider">
+                <title>VenusTheme</title>
+                <sort_order>50</sort_order>
+                <children>
+                    <ves_contentslider translate="title" module="ves_contentslider">
+                        <title>Ves Contentslider</title>
+                        <children>
+                            <add module="ves_contentslider">
+                                <title>Add Banner</title>
+                                <sort_order>0</sort_order>
+                                <action>adminhtml/adminhtml_banner/add</action>
+                            </add>
+                            <banners module="ves_contentslider">
+                                <title>Manage Banners</title>
+                                <sort_order>1</sort_order>
+                                <action>adminhtml/adminhtml_banner/index</action>
+                            </banners>
+                            
+                         
+                            <configuration translate="title" module="ves_contentslider">
+                                <title>Configuration</title>
+                                <sort_order>5</sort_order>
+                                <action>adminhtml/system_config/edit/section/ves_contentslider</action>
+                            </configuration>
+                        </children>
+                    </ves_contentslider>
+                </children>
+            </vesextensions>
+    </menu>
+    <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <vesextensions module="ves_contentslider">
+                            <title>VenusTheme</title>
+                            <sort_order>50</sort_order>
+                            <children>
+                                <ves_contentslider translate="title" module="ves_contentslider">
+                                    <title>Ves Contentslider</title>
+                                    <children>
+                                        <add module="ves_contentslider">
+                                            <title>Add Banner</title>
+                                            <sort_order>0</sort_order>
+                                            <action>adminhtml/adminhtml_banner/add</action>
+                                        </add>
+                                        <banners module="ves_contentslider">
+                                            <title>Manage Brands</title>
+                                            <sort_order>1</sort_order>
+                                            <action>adminhtml/adminhtml_banner/index</action>
+                                        </banners>
+                                        
+                                     
+                                        <configuration translate="title" module="ves_contentslider">
+                                            <title>Configuration</title>
+                                            <sort_order>5</sort_order>
+                                            <action>adminhtml/system_config/edit/section/ves_contentslider</action>
+                                        </configuration>
+                                    </children>
+                                </ves_contentslider>
+                            </children>
+                        </vesextensions>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <ves_contentslider>
+                                            <title>Ves Banner</title>
+                                        </ves_contentslider>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <translate>
+			<modules>
+				<Ves_Contentslider>
+					<files>
+						<default>Ves_Contentslider.csv</default>
+					</files>
+				</Ves_Contentslider>
+			</modules>
+		</translate>
+</config>

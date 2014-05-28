@@ -1,0 +1,33 @@
+<?php $cols = (int)$this->getConfig( "columns" ); ?>
+<?php
+	$col = 12/$cols;
+?>
+<div class="venus-latest-block">
+	<?php if( $this->getConfig("latestmod_title") ) : ?>	
+        <h2 class="title"><span><?php echo $this->getConfig( "latestmod_title" ); ?></span></h2>
+	<?php endif; ?>
+
+	<?php if( $this->getConfig("latestmod_desc") ) :?>
+	<div class="block-description">
+		<p><?php echo $this->getConfig("latestmod_desc"); ?></p>
+	</div>
+	<?php endif; ?>
+	
+	<div class="row">
+	<?php $j==0;foreach( $posts as $post ): ?>
+		<div class="col-lg-<?php echo $col;?> col-md-<?php echo $col;?> col-sm-12 col-xs-12">
+			<div class="post-item itemcol">
+				<span class="blog-time"><?php echo $post->getUpdated(); ?></span>
+				<h4><a href="<?php echo $post->getURL();?>" title="<?php echo $post->getTitle();?>"><?php echo $post->getTitle(); ?></a></h4>
+				<div class="latest-description"><?php echo $post->getDescription(); ?></div>
+				<p class="blog-readmore">
+					<a href="<?php echo $post->getURL();?>" title="<?php echo $post->getTitle();?>">
+						<?php echo $this->__("read more");?>
+					</a>
+				</p>		
+			</div>					
+		</div>					
+	<?php $j++; endforeach; ?>
+	</div>
+
+</div>

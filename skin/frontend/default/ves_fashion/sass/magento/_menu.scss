@@ -1,0 +1,159 @@
+/******************************************************
+ * @package Ves Theme Framework for Magento
+ * @version 1.0
+ * @author http://www.venustheme.com
+ * @copyright Copyright (C) Augus 2013 Venustheme.com <@emai:venustheme@gmail.com>.All rights reserved.
+ * @license   GNU General Public License version 2
+*******************************************************/
+
+/*Navigation default*/
+ #ves-mainnav {	
+	margin-bottom: 25px;
+ }
+.navbar-inverse,
+#ves-mainnav{
+	background-color: $nav-background;
+}
+
+.nav-container { }
+#nav { 
+	@include clearfix();
+	border-top: 1px solid $border-color;
+	border-bottom: 2px solid #000;
+	text-align: center;
+	li{
+		position:relative; 		
+		&.over{
+			z-index:998;
+			> a{
+				color: $nav-lv1-color-hover;
+			}
+		}
+		&.active{
+			> a{
+				color: $nav-lv1-color-hover; 
+			}
+		}
+		ul{
+			span {white-space:normal;}
+		}
+		ul,
+		div{
+			&.shown-sub{
+				left:0; z-index:999;
+			}
+		}
+		.shown-sub{
+			ul.shown-sub,
+			li div.shown-sub { left:90%; }
+		}
+	}
+	> li{
+		display: inline-block;
+		vertical-align: middle;		
+	}
+	> li.parent > a{
+		background: url(#{$image-theme-path-base}caret.png) 93% center no-repeat;
+	}
+	ul{
+		li{ text-align: left;}
+		a{ color: $menu-lvnd-color; text-transform: none; }
+		ul{ left:90%; top:-25px !important;}
+		.over ul{ top: 0 !important}
+	}
+	a{
+		font-family: $menu-lvtop-font-family;
+		font-size: $menu-lvtop-font-size;
+		display:block; 
+		line-height:$menu-lvtop-line-height; 
+		text-decoration:none; 
+		float:left; 
+		padding:16px 20px; 
+		color: $nav-lv1-color;
+		text-transform: uppercase;
+		//&:hover{
+		//	color: $nav-lv1-color-hover;
+		//}
+	}
+	a.level-top > span{ letter-spacing: 2px;}
+	span{
+		display:block; cursor:pointer; white-space:nowrap;
+	}
+	ul{
+		left: 0;
+	    position: absolute;
+	    top: 90px;
+	    width: 15em;
+	    z-index: 0;
+	    visibility: hidden;
+	    opacity: 0;
+	    background:$menu-lvnd-bg ;
+	    padding: 5px 0;
+	    @include transition(all 200ms ease-in-out);
+
+		li{
+			float:none; margin:0; background:$menu-lvnd-bg ;	
+			&.parent{
+				a{
+					
+				}
+				li{
+					a{
+						background-image: none;
+					}
+				}
+			}
+			&.active{
+				float:none; margin:0; padding-bottom:1px; background:$menu-lvnd-bg ;
+				> a{
+					color:$menu-lvnd-color-hover;
+				}
+			}
+			&.last{
+				padding-bottom:0;
+				li{
+				 	span { padding:3px 15px 4px 15px; }
+				} 
+			}
+			a{
+				font-size: 13px;
+				font-family: $menu-lvnd-font-family;
+				line-height: 24px;
+				font-weight:normal !important;
+				background:$menu-lvnd-bg;
+
+				//color:$menu-lvnd-color !important;
+				//&:hover { background:$menu-lvnd-bg-hover;color:$menu-lvnd-color-hover !important; }
+			}
+			&:hover{
+				>a{
+					background:$menu-lvnd-bg-hover;
+					color:$menu-lvnd-color-hover;
+				}
+			}
+		}
+		a{
+			&,
+			&:hover{
+				float:none; padding:0; background:none;
+			}
+		}
+		ul,
+		div{
+			top:5px;
+		}
+		span{
+			padding:$menu-lvnd-padding; 
+		}
+	}
+	.over{
+		> ul{ visibility: visible; opacity: 1; top: 100%;}
+	}
+	div{
+		position:absolute; width:15em; top:$menu-height; left:-10000px; 
+		ul{
+			position:static; width:auto; border:none;
+		}
+	}
+}
+

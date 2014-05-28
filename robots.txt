@@ -1,0 +1,74 @@
+Sitemap: http://www.ziente.com/sitemap.xml
+
+User-agent: *
+## Dont crawl development files and folders
+Disallow: CVS
+Disallow: .svn
+Disallow: .idea
+Disallow: .sql
+Disallow: .tgz
+
+## Dont crawl Magento admin page
+User-agent: *
+Disallow: /admin/
+
+## Dont crawl common Magento folders
+User-agent: *
+Disallow: /404/
+Disallow: /app/
+Disallow: /cgi-bin/
+Disallow: /downloader/
+Disallow: /errors/
+Disallow: /includes/
+Disallow: /js/
+Disallow: /lib/
+Disallow: /magento/
+Disallow: /media/
+Disallow: /pkginfo/
+Disallow: /report/
+Disallow: /shell/
+Disallow: /skin/
+Disallow: /stats/
+Disallow: /var/
+
+## Dont crawl common Magento files
+User-agent: *
+Disallow: /api.php
+Disallow: /cron.php
+Disallow: /cron.sh
+Disallow: /error_log
+Disallow: /get.php
+Disallow: /install.php
+Disallow: /LICENSE.html
+Disallow: /LICENSE.txt
+Disallow: /LICENSE_AFL.txt
+Disallow: /README.txt
+Disallow: /RELEASE_NOTES.txt
+Disallow: /STATUS.txt
+
+## Dont crawl sub-category pages that are sorted or filtered
+Disallow: /*?dir*
+Disallow: /*?dir=desc
+Disallow: /*?dir=asc
+Disallow: /*?limit=all
+Disallow: /*?mode*
+
+## Dont crawl links with session IDs
+User-agent: *
+Disallow: /*?SID=
+
+## Dont crawl the checkout and user account pages
+User-agent: *
+Disallow: /checkout/
+Disallow: /onestepcheckout/
+Disallow: /customer/
+Disallow: /customer/account/
+Disallow: /customer/account/login/
+Disallow: /wishlist/
+
+## Dont crawl common server folders / files
+User-agent: *
+Disallow: /cgi-bin/
+Disallow: /cleanup.php
+Disallow: /apc.php Disallow: /memcache.php
+Disallow: /phpinfo.php

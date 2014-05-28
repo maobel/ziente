@@ -1,0 +1,173 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<?php echo $this->getChildHtml('head') ?>
+<?php
+    $helper = Mage::helper("ves_tempcp/framework")->getFramework( $this );
+    $layoutMode = $helper->getParam( 'layout' );
+    $themeConfig = $helper->getConfig();
+    $SPAN = $helper->getSPAN("col2-left");
+?>
+<body id="offcanvas-container" class="<?php echo $themeConfig->get("header"); ?> <?php echo $this->getBodyClass(); ?> offcanvas-container layout-<?php echo $layoutMode; ?> fs<?php echo $themeConfig->get('fontsize');?> <?php echo $helper->getPageClass();?> <?php echo $helper->getParam('body_pattern','');?>">
+    <section id="page" class="offcanvas-pusher" role="main">
+        <section id="header" class="header">
+        <?php echo $helper->getModulesByPosition('header') ?>
+        </section>
+        <?php if($after_body_start =  $this->getChildHtml('after_body_start')){ ?>
+            <section id="after_body_start">
+                <?php echo $after_body_start; ?>
+            </section>
+        <?php } ?>
+        <section id="sys-notification">
+            <div class="container">
+            <?php if($notices = $this->getModulesByPosition('global_notices')){ ?>
+            
+                <?php echo $this->getChildHtml('global_notices') ?>
+                
+            <?php } ?>
+            <div id="notification"></div>
+            </div>
+        </section>
+        <?php if($slideshow = $helper->getModulesByPosition('slideshowTop')){ ?>
+        <section id="ves-slideshow" class="ves-slideshow">
+            <div class="container">
+                <?php echo $slideshow; ?>
+            </div>
+        </section>
+        <?php } ?>
+        <?php if($showcase = $helper->getModulesByPosition('showcase')){ ?>
+        <section id="ves-showcase" class="ves-showcase">
+            <div class="container">
+                <?php echo $showcase; ?>
+            </div>
+        </section>
+        <?php } ?>
+        <?php if($promotion = $helper->getModulesByPosition('promotion')){ ?>
+        <section id="ves-promotion" class="ves-promotion">
+            <div class="container">
+                <?php echo $promotion; ?>
+            </div>
+        </section>
+        <?php } ?>
+        <?php if( $themeConfig->get('enable_offsidebars', 0) ) { ?>
+        <section id="columns" class="offcanvas-siderbars">
+		<div class="container">
+        <div class="row visible-sm visible-xs">
+			<div class="container">
+				<div class="offcanvas-sidebars-buttons">
+					<button type="button" data-for="column-left" class="pull-left btn btn-danger"><i class="glyphicon glyphicon-indent-left"></i> <?php echo Mage::helper('ves_tempcp')->__('Sidebar Left'); ?></button>
+					
+				</div>
+			</div>
+		</div>
+        <?php }else { ?>
+        <section id="columns">
+			<div class="container">		
+			<?php } ?>
+				<?php echo $helper->getModulesByPosition('breadcrumbs') ?>
+				<div class="row col2-left-layout">
+						<?php if( $SPAN[0] ): ?>
+							<aside class="col-lg-<?php echo $SPAN[0];?> col-md-<?php echo $SPAN[0];?> col-sm-12 col-xs-12 pull-left">
+								<div id="columns-left" class="sidebar"><?php echo $helper->getModulesByPosition('left') ?></div>
+							</aside>
+						<?php endif; ?>
+						<section class="col-lg-<?php echo $SPAN[1];?> col-md-<?php echo $SPAN[1];?> col-sm-12 col-xs-12 pull-right">                        
+							<div id="content">
+									<?php if($global_messages = $helper->getModulesByPosition('global_messages')){ ?>
+										<div class="global_messages">
+											<div class="container">
+												<?php echo $global_messages; ?>
+											</div>
+										</div>
+									<?php } ?>
+									<?php if($contentTop = $helper->getModulesByPosition('contentTop')){ ?>
+										<div class="contentTop">
+											<div class="container">
+												<?php echo $contentTop; ?>
+											</div>
+										</div>
+									<?php } ?>
+									<?php echo $helper->getModulesByPosition('content') ?>
+									<?php if($contentBottom = $helper->getModulesByPosition('contentBottom')){ ?>
+										<div class="contentBottom">
+											<div class="container">
+												<?php echo $contentBottom; ?>
+											</div>
+										</div>
+									<?php } ?>
+							</div>
+						</section>
+						<?php if( $SPAN[2] ): ?>
+							<aside class="col-lg-<?php echo $SPAN[2];?> col-md-<?php echo $SPAN[2];?> col-sm-12 col-xs-12">   
+							   <div id="columns-right" class="sidebar"><?php echo $helper->getModulesByPosition('right') ?></div>
+							</aside>
+						<?php endif; ?>
+				</div>
+			</div>
+        </section>
+        <?php if($massbottom = $helper->getModulesByPosition('massbottom')){ ?>
+        <section id="ves-massbottom" class="ves-massbottom">
+            <div class="container">
+                <?php echo $massbottom; ?>
+            </div>
+        </section>
+        <?php } ?>
+       <section id="footer">
+         <?php if($footerTop = $helper->getModulesByPosition('footerTop')){ ?>
+            <div class="footer-top">
+                <div class="container">
+                    <?php echo $footerTop; ?>
+                </div>
+            </div>
+            <?php } ?>
+        <?php if($themeConfig->get("enable_footer_center",1) && $footerCenter = $helper->getModulesByPosition('footerCenter')){ ?>
+            <div class="footer-center">
+                    <div class="container">
+                        <?php echo $footerCenter; ?>
+                    </div>
+                </div>
+        <?php } ?>
+        <?php if($footerBottom = $helper->getModulesByPosition('footer')){ ?>
+                <?php echo $footerBottom; ?>
+            <?php } ?>
+         <?php if($before_body_end =  $this->getChildHtml('before_body_end')){ ?>
+            <section id="before_body_end">
+                <?php echo $before_body_end; ?>
+            </section>
+        <?php } ?>
+        <?php echo $this->getAbsoluteFooter() ?>
+        </section>
+         <?php if($themeConfig->get('enable_paneltool') ){  ?>
+            <?php  echo $helper->renderAddon( 'panel' );?>
+        <?php } ?>
+    </section>
+</body>
+</html>

@@ -1,0 +1,49 @@
+Block_Id,Title,Content,Identifier,Creation_Time,Update_Time,Is_Active,Stores
+3,"Electronics Landing","<div class=""left"" style=""width:284px; margin-right:25px;"">
+<h3 style=""margin-bottom:0;""><a href=""{{store direct_url=""electronics/cell-phones.html""}}""><img src=""{{skin url='images/media/head_electronics_cellphones.gif}}"" alt=""Cell Phones"" style=""display:block; border:0;""/></h3>
+<p><img src=""{{skin url='images/media/electronics_cellphones.jpg}}"" alt="""" usemap=""#Map"" border=""0""/></p>
+</div>
+<div class=""left"" style=""width:284px;"">
+<h3 style=""margin-bottom:0;""><a href=""{{store direct_url=""electronics/cameras/digital-cameras.html""}}""><img src=""{{skin url='images/media/head_electronics_digicamera.gif}}"" alt=""Digital Cameras"" style=""display:block; border:0;""/></a></h3>
+<p><img src=""{{skin url='images/media/electronics_digitalcameras.jpg}}"" alt="""" usemap=""#Map2"" border=""0""/></p>
+</div>
+<div class=""right"" style=""width:284px;"">
+<h3 style=""margin-bottom:0;""><a href=""{{store direct_url=""electronics/computers/laptops.html""}}""><img src=""{{skin url='images/media/head_electronics_laptops.gif}}"" alt=""Laptops"" style=""display:block; border:0;""/></a></h3>
+<p><img src=""{{skin url='images/media/electronics_laptops.jpg}}"" alt="""" usemap=""#Map3"" border=""0""/></p>
+</div>
+<div class=""clear""></div>
+
+<map name=""Map"">
+  <area shape=""rect"" coords=""14,154,78,182"" href=""{{store direct_url=""electronics/cell-phones.html?manufacturer=3""}}"">
+  <area shape=""rect"" coords=""12,177,80,209"" href=""{{store direct_url=""electronics/cell-phones.html?manufacturer=20""}}"">
+  <area shape=""rect"" coords=""104,158,167,181"" href=""{{store direct_url=""electronics/cell-phones.html?manufacturer=2""}}"">
+  <area shape=""rect"" coords=""103,181,179,208"" href=""{{store direct_url=""electronics/cell-phones.html?manufacturer=101""}}"">
+ <area shape=""rect"" coords=""16,203,273,432"" href=""{{store direct_url=""electronics/cell-phones/blackberry-8100-pearl.html""}}"">
+</map>
+
+<map name=""Map2"">
+  <area shape=""rect"" coords=""14,152,75,179"" href=""{{store direct_url=""electronics/cameras/digital-cameras.html?manufacturer=33""}}"">
+  <area shape=""rect"" coords=""109,154,163,183"" href=""{{store direct_url=""electronics/cameras/digital-cameras.html?manufacturer=31""}}"">
+  <area shape=""rect"" coords=""14,177,73,208"" href=""{{store direct_url=""electronics/cameras/digital-cameras.html?manufacturer=32""}}"">
+  <area shape=""rect"" coords=""106,180,177,211"" href=""{{store direct_url=""electronics/cameras/digital-cameras.html?manufacturer=34""}}"">
+</map>
+
+
+<map name=""Map3"">
+  <area shape=""rect"" coords=""15,155,58,179"" href=""{{store direct_url=""electronics/computers/laptops?computer_manufacturers=79""}}"">
+  <area shape=""rect"" coords=""114,152,159,180"" href=""{{store direct_url=""electronics/computers/laptops?computer_manufacturers=76""}}"">
+  <area shape=""rect"" coords=""13,178,67,205"" href=""{{store direct_url=""electronics/computers/laptops?computer_manufacturers=77""}}"">
+  <area shape=""rect"" coords=""114,180,178,205"" href=""{{store direct_url=""electronics/computers/laptops?computer_manufacturers=74""}}"">
+  <area shape=""rect"" coords=""13,310,154,434"" href=""{{store direct_url=""electronics/computers/laptops/acer-ferrari-3200-notebook-computer-pc.html""}}"">
+  <area shape=""rect"" coords=""167,310,279,440"" href=""{{store direct_url=""electronics/computers/laptops/toshiba-satellite-a135-s4527-155-4-notebook-pc-intel-pentium-dual-core-processor-t2080-1-gb-ram-120-gb-hard-drive-supermulti-dvd-drive-vista-premium.html""}}"">
+</map>",electronics-landing,"2007-08-28 14:33:10","2008-08-08 13:08:37",1,0
+4,"Cellphones Landing","<a href=""{{store direct_url=""electronics/cell-phones/sony-ericsson-w810i.html""}}""><img src=""{{skin url='images/media/cell_phone_landing_banner1.jpg}}"" alt=""""/></a>",cellphones-landing,"2007-08-28 14:59:44","2008-08-08 13:07:55",1,0
+5,"Footer Links","<ul>
+<li><a href=""{{store direct_url=""about-magento-demo-store""}}"">About Us</a></li>
+<li><a href=""{{store direct_url=""customer-service""}}"">Customer Service</a></li>
+<li class=""last privacy""><a href=""{{store direct_url=""privacy-policy-cookie-restriction-mode""}}"">Privacy Policy</a></li>
+</ul>",footer_links,"2007-08-30 14:01:52","2013-10-10 03:28:50",1,0
+6,"test thu ti nao","<h2>Daily Deal</h2>
+<p><span>{{widget type=""catalog/category_widget_link"" anchor_text=""demo link"" template=""catalog/category/widget/link/link_block.phtml"" id_path=""category/13""}}<br /></span></p>
+<p>Turn your Magento into Groupon Clone, the site selling daily deals on your city with a latest extension from AdolMedia. You can now start your own group buying site like Groupon or Living Social with all the standard features they offer now comes as an ready-made extension for awarding winning, open source eCommerce platform ""Magento eCommerce"".</p>
+<p> </p>",test-nao,"2013-11-09 09:36:00","2013-11-09 09:36:00",1,0

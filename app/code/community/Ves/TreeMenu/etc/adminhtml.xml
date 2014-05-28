@@ -1,0 +1,67 @@
+<?xml version="1.0"?> 
+<config>
+     <menu>
+            <vesextensions module="ves_treemenu">
+                <title>VenusTheme</title>
+                <sort_order>53</sort_order>
+                <children>
+                    <treemenu translate="title" module="ves_treemenu">
+                        <title>Ves TreeMenu</title>
+                        <children>
+                            
+                            <configuration translate="title" module="ves_treemenu">
+                                <title>Configuration</title>
+                                <sort_order>4</sort_order>
+                                <action>adminhtml/system_config/edit/section/ves_treemenu</action>
+                            </configuration>
+                        </children>
+                    </treemenu>
+                </children>
+            </vesextensions>
+        </menu>
+		<acl>
+            <resources>
+                <admin>
+                    <children>
+                        <vesextensions module="ves_treemenu">
+                            <title>Ves</title>
+                            <sort_order>53</sort_order>
+                            <children>
+                                <treemenu translate="title" module="ves_treemenu">
+                                    <title>Ves TreeMenu</title>
+                                    <children>
+                                        
+                                        <configuration translate="title" module="ves_treemenu">
+                                            <title>Configuration</title>
+                                            <sort_order>4</sort_order>
+                                            <action>adminhtml/system_config/edit/section/ves_treemenu</action>
+                                        </configuration>
+                                    </children>
+                                </treemenu>
+                            </children>
+                        </vesextensions>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <ves_treemenu>
+                                            <title>Venus TreeMenu</title>
+                                        </ves_treemenu>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <translate>
+			<modules>
+				<Venus_TreeMenu>
+					<files>
+						<default>Ves_TreeMenu.csv</default>
+					</files>
+				</Venus_TreeMenu>
+			</modules>
+		</translate>
+</config>

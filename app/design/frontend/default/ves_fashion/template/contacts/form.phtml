@@ -1,0 +1,188 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+$helper = Mage::helper("ves_tempcp/framework")->getFramework( );
+$themeConfig = $helper->getConfig();
+$contact_customhtml = $themeConfig->get("contact_customhtml","", true);
+$store = Mage::getStoreConfig('general/store_information/name');
+$address = Mage::getStoreConfig('general/store_information/address');
+$address = !empty($address)?$address:'79-99 Beaver Street, New York, NY 10005, USA';
+$address = $themeConfig->get('location_address', $address);
+$telephone = Mage::getStoreConfig('general/store_information/phone');
+$fax = "";
+?>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="wrapper no-margin">
+                <h1><?php echo Mage::helper('contacts')->__('Our Location'); ?></h1>
+                <?php //start contact map ?>
+                <div class="contact-location hidden-xs">
+                    <div id="contact-map"></div>
+                </div>
+
+                <div class="row contact-content">                   
+                    <?php  if(  $contact_customhtml ){ ?>
+                        <div class="col-ld-4 col-md-4 col-sm-12 hidden-xs">
+                            <div class="contact-info">
+                                <h3><?php echo Mage::helper("contacts")->__('Contact Us'); ?></h3>
+                                <div class="content">       
+                                    <div class="media">
+                                        <i class="fa fa-home pull-left"></i>
+                                        <div class="media-body">
+                                            <?php echo $store; ?><br> <?php echo $address; ?>
+                                        </div>
+                                    </div>
+
+                                    <?php if ($telephone) { ?>
+                                    <div class="media">
+                                        <i class="fa fa-phone pull-left"></i>
+                                        <div class="media-body">                          
+                                            <?php echo $telephone; ?>                                                       
+                                        </div>
+                                    </div>
+                                    <?php } ?>
+
+                                    
+                                    <?php if ($fax) { ?>
+                                        <div class="media">
+                                            <i class="fa fa-envelope-o pull-left"></i>                                          
+                                            <div class="media-body">
+                                                <?php echo $fax; ?>
+                                            </div>
+                                        </div>                                  
+                                    <?php } ?>
+
+
+                                </div>  
+                            </div>
+                            <div class="contact-customhtml">
+                                <div class="content">
+                                    <?php echo $contact_customhtml; ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?> 
+
+                    <div class="col-ld-8 col-md-8 col-sm-12">
+                        <form action="<?php echo $this->getFormAction(); ?>" id="contactForm" method="post">            
+                            <h3><?php echo Mage::helper('contacts')->__('Contact Form') ?></h3>
+                            <div class="content">
+                                <div class="form-group">
+                                    <label for="name" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Name') ?></label>
+                                    <div class="input-box">
+                                        <input name="name" id="name" title="<?php echo Mage::helper('contacts')->__('Name') ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry" type="text" />
+                                    </div>
+                                </div>                          
+ 
+                                <div class="form-group">
+                                   <label for="email" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Email') ?></label>
+                                    <div class="input-box">
+                                        <input name="email" id="email" title="<?php echo Mage::helper('contacts')->__('Email') ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserEmail()) ?>" class="input-text required-entry validate-email" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telephone"><?php echo Mage::helper('contacts')->__('Telephone') ?></label>
+                                    <div class="input-box">
+                                        <input name="telephone" id="telephone" title="<?php echo Mage::helper('contacts')->__('Telephone') ?>" value="" class="input-text" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                        <label for="comment" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Comment') ?></label>
+                                        <div class="input-box">
+                                            <textarea name="comment" id="comment" title="<?php echo Mage::helper('contacts')->__('Comment') ?>" class="required-entry input-text" cols="5" rows="3"></textarea>
+                                        </div>
+                                </div>
+                               
+                            </div>
+                            
+                            <div class="buttons">
+                                <div class="right">
+                                    <p class="required"><?php echo Mage::helper('contacts')->__('* Required Fields') ?></p>
+                                    <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+                                    <button type="submit" title="<?php echo Mage::helper('contacts')->__('Submit') ?>" class="button"><span><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></span></button>
+                                </div>
+                            </div>              
+                        </form>
+                    </div>
+                </div>
+
+                <?php // Jquery googlemap api v3 ?>
+                <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=en"></script>
+                <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>venustheme/ves_tempcp/gmap/gmap3.min.js"></script>
+                <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);  ?>venustheme/ves_tempcp/gmap/gmap3.infobox.js"></script>
+                <script type="text/javascript">
+                    var mapDiv, map, infobox;
+                    var lat = <?php echo $themeConfig->get('location_latitude', '40.705423'); ?>;
+                    var lon = <?php echo $themeConfig->get('location_longitude', '-74.008616'); ?>;
+                    jQuery(document).ready(function($) {
+                        mapDiv = $("#contact-map");
+                        mapDiv.height(400).gmap3({
+                            map:{
+                                options:{
+                                    center:[lat,lon],
+                                    zoom: 15
+                                }
+                            },
+                            marker:{
+                                values:[
+                                    {latLng:[lat, lon], data:"<?php echo $themeConfig->get('location_address', $address); ?>"},
+                                ],
+                                options:{
+                                    draggable: false
+                                },
+                                events:{
+                                      mouseover: function(marker, event, context){
+                                        var map = $(this).gmap3("get"),
+                                            infowindow = $(this).gmap3({get:{name:"infowindow"}});
+                                        if (infowindow){
+                                            infowindow.open(map, marker);
+                                            infowindow.setContent(context.data);
+                                        } else {
+                                            $(this).gmap3({
+                                            infowindow:{
+                                                anchor:marker, 
+                                                options:{content: context.data}
+                                            }
+                                          });
+                                        }
+                                    },
+                                    mouseout: function(){
+                                        var infowindow = $(this).gmap3({get:{name:"infowindow"}});
+                                        if (infowindow){
+                                            infowindow.close();
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    });
+                </script>
+                <?php //end contact map ?>
+            </div>
+
+<script type="text/javascript">
+//<![CDATA[
+    var contactForm = new VarienForm('contactForm', true);
+//]]>
+</script>

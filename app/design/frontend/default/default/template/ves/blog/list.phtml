@@ -1,0 +1,200 @@
+<?php   
+/*------------------------------------------------------------------------
+ # Ves Blog Module 
+ # ------------------------------------------------------------------------
+ # author:    Ves.Com
+ # copyright: Copyright (C) 2012 http://www.ves.com. All Rights Reserved.
+ # @license: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ # Websites: http://www.ves.com
+ # Technical Support:  http://www.ves.com/
+-------------------------------------------------------------------------*/
+	
+		
+	
+	$leadingCols = 	(int)$this->getListConfig("list_leadingcols");
+	$leadingItems = (int)$this->getListConfig("list_leadinglimit");	
+	
+	
+	$secondItems = (int)$this->getListConfig("list_secondlimit");		
+	$secondCols = (int)$this->getListConfig("list_secondcols");	
+	$childheight = $this->getCategoryConfig("chidlrentheight");
+	$childheight = (trim($childheight) == 'auto')?'auto':(int)$childheight."px";
+	$cols = (int)$this->getCategoryConfig("chidlrentcols");
+	
+
+ ?>
+<div class="blog-list">
+	<div class="blog-wrapper">
+	
+		<div class="page-title">
+			<h1><?php echo $this->getPageTitle(); ?></h1>
+		</div>
+		
+		<?php  if( $this->getType() == 'category' && $category = $this->getCategory() ) : ?>	
+		<?php if( $this->getCategoryConfig("show_childrent") && ($childrent = $this->getChildrent()) && count($childrent) ): ?>
+			<div class="blog-childrent vesclear">
+				<h3><?php echo $this->__("Childrent"); ?></h3>
+				
+				<div class="childrent-wrapper colswrapper cols<?php echo $cols;?>">
+					<?php $i=0; foreach( $childrent as $sub ): ?>
+						<?php $class=""; 
+							if( $i%$cols==0 ){
+								$class .="itemlast";
+							}
+						?>
+						<div class="childrent-item itemcol <?php echo $class;?>" style="height:<?php echo $childheight;?>">
+							<h2>
+							<a href="<?php echo $sub->getCategoryLink();?>" title="<?php echo $category->getTitle();?>"><?php echo $sub->getTitle(); ?></a> 
+							
+							(<?php echo $this->countPosts( $sub->getId() ); ?>)</h2>
+							
+							<a href="<?php echo $sub->getCategoryLink(); ?>">
+								<img src="<?php echo $sub->getImageURL('l');?>"/>
+							</a>
+							<div class="ves-description">
+								<?php echo $sub->getDescription(); ?>
+							</div>
+							<div class="sub-viewblogs">
+								<a href="<?php echo $sub->getCategoryLink();?>" title="<?php echo $category->getTitle();?>"><?php echo $this->__("View Posts"); ?></a>
+							</div>
+						</div>
+					<?php $i++; endforeach; ?>
+				</div>
+			</div>
+			<?php endif ; ?>
+		<?php endif; ?>
+		
+		<?php if( ($posts = $this->getPosts()) && count($posts) ): ?>
+			<?php if( $leadingItems ): ?>
+			<div class="leading-posts vesclear">
+				<div class="colswrapper cols<?php echo $leadingCols;?>">
+					<?php $i =0;$j=0; foreach( $posts as $post ): ?>
+							<?php if( $i==$leadingItems):  break; endif; ?>
+						<div class="blog-container itemcol">
+							<?php if( $post->getFile() ): ?>
+							<div class="blog-image">
+								<a href="<?php echo $post->getURL();?>" title="<?php echo $post->getTitle();?>">
+									<img src="<?php echo $post->getImageURL( $this->getListConfig("list_leadingimage") );?>" title="<?php echo $post->getTitle();?>"/>
+								</a>
+							</div>
+							<?php endif; ?>
+							<div class="blog-meta">
+								<?php if($this->getListConfig("list_showcreated")) { ?>
+								<span class="created-date"><?php echo $post->getCreated();?></span>
+								<?php } ?>
+								<?php if( $this->getType() !="category" && $this->getListConfig("list_category_title") ): ?>		
+								<span class="blog-category">
+									<span><?php echo $this->__("Pubslished In");?></span> 
+									<a href="<?php echo $post->getCategoryLink();?>" title="<?php echo $post->getCatTitle();?>"><?php echo $post->getCatTitle();?></a>
+								</span>
+								<?php endif; ?>
+
+								<?php if($this->getListConfig("list_show_hits")) { ?>
+								<span class="blog-hits"><span><?php echo $this->__("Read");?></span> <strong><?php echo $post->getHits(); ?></strong> <?php echo $this->__("Times"); ?></span>
+								<?php } ?>
+
+								<?php if($this->getListConfig("list_show_commentcouter")) { ?>
+								<span class="blog-comment-count"><?php echo $this->getCountingComment($post->getId());?> <?php  echo $this->__("Comment");?></span>
+								<?php } ?>
+								
+								<h3 class="blog-title"><a href="<?php echo $post->getURL();?>" title="<?php echo $post->getTitle();?>"><?php echo $post->getTitle(); ?></a></h3>
+							</div>
+							<div class="ves-description">
+								<?php echo $post->getDescription(); ?>
+								<p class="blog-readmore">
+									<a href="<?php echo $post->getURL();?>" title="<?php echo $post->getTitle();?>">
+										<?php echo $this->__("Read more...");?>
+									</a>
+								</p>
+							</div>
+							<div class="blog-botm">
+								<?php if( $tags = $post->getTags() ) :$tags = explode( ",",$tags );	?>
+								<div class="blog-tags">
+									<span><?php echo $this->__("Tags :");?> </span>
+									<?php foreach( $tags as $tag ): ?>
+									<a href="<?php echo Mage::helper('ves_blog')->getTagUrl(trim($tag));?>" title="<?php echo $tag;?>"><span><?php echo $tag; ?><span></a>, 
+									<?php endforeach; ?>
+								</div>
+								<?php endif; ?>
+								
+							</div>
+						</div>
+						<?php if( $j%$secondCols==0&& $j>0): ?>
+						<div class="vesclear"></div>
+						<?php endif; ?>
+					<?php $i++;$j++; endforeach; ?>	
+				</div>
+			</div>
+			<?php endif; ?>
+			
+			<?php if( $secondItems ): ?>
+			<div class="second-posts">
+				 <div class="bloglist-content colswrapper cols<?php echo $secondCols;?> vesclear">
+					<?php $i =0;$j=0; foreach( $posts as $post ):
+						
+						if(++$i<=$leadingItems):
+							continue;
+						endif;
+
+					?>
+						<div class="blog-container itemcol">
+							<?php if( $post->getFile() ): ?>
+							<div class="blog-image">
+								<a href="<?php echo $post->getURL();?>" title="<?php echo $post->getTitle();?>">
+									<img src="<?php echo $post->getImageURL( $this->getListConfig("list_secondimage") );?>" title="<?php echo $post->getTitle();?>"/>
+								</a>
+							</div>
+							<?php endif; ?>
+							<div class="blog-meta">
+								<span class="created-date"><?php echo $post->getCreated();?></span>
+								
+								<?php if( $this->getType() !="category" && $this->getListConfig("list_category_title") ): ?>		
+								<span class="blog-category">
+									<span><?php echo $this->__("Pubslished In");?></span> 
+									<a href="<?php echo $post->getCategoryLink();?>" title="<?php echo $post->getCatTitle();?>"><?php echo $post->getCatTitle();?></a>
+								</span>
+								<?php endif; ?>
+								
+								
+								<h3 class="blog-title"><a href="<?php echo $post->getURL();?>" title="<?php echo $post->getTitle();?>"><?php echo $post->getTitle(); ?></a></h3>
+							</div>
+							<div class="ves-description">
+								<?php echo $post->getDescription(); ?>
+								<p class="blog-readmore">
+									<a href="<?php echo $post->getURL();?>" title="<?php echo $post->getTitle();?>">
+										<?php echo $this->__("Read more...");?>
+									</a>
+								</p>
+							</div>
+							
+							<div class="blog-botm">
+								<?php if( $tags = $post->getTags() ) :
+									$tags = explode( ",",$tags );
+								?>
+								<div class="blog-tags">
+									<span><?php echo $this->__("Tags :");?> </span>
+									<?php foreach( $tags as $tag ): ?>
+									<a href="<?php echo Mage::helper('ves_blog')->getTagUrl(trim($tag));?>" title="<?php echo $tag;?>"><span><?php echo $tag; ?><span></a>, 
+									<?php endforeach; ?>
+								</div>
+								<?php endif; ?>
+								
+							</div>
+						</div>
+						<?php if( $j%$secondCols==0&& $j>0): ?>
+						<div class="vesclear"></div>
+						<?php endif; ?>
+					<?php $j++;endforeach; ?>
+				</div>	
+			</div>
+			<?php endif; ?>
+		
+		<?php elseif( count($childrent) <= 0 ): ?>
+			<div class="ves-message">
+				<?php echo $this->__( "We are updating data, please come back in near time!!!" ); ?>
+			</div>
+		<?php endif; ?>
+		
+	</div>
+	<?php echo $this->getChildHtml('list.toolbar'); ?>
+</div>

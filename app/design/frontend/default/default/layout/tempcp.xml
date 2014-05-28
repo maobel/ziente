@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <default>
+    	<reference name="head">
+            <block type="page/html_head" name="tempcp_head" as="tempcp_head" template="venustheme/tempcp/head.phtml"/>
+    	</reference>
+		
+		<reference name="content">
+			<block type="ves_tempcp/cpanel" name="ves.tempcp" />
+		</reference>
+    </default>
+
+    <tempcp_quickview_view>
+		<update handle="catalog_product_view"/>
+	</tempcp_quickview_view>
+	
+	<tempcp_quickview_view_FINAL>
+		<reference name="root">
+            <action method="setTemplate"><template>venustheme/tempcp/quickview/product.phtml</template></action>
+			<action method="setIsHandle"><applied>1</applied></action>
+        </reference>
+
+        <reference name="content">
+			<remove name="product.info.upsell"/>
+			<remove name="product.info.additional"/>
+			<remove name="product.description"/>
+			<remove name="product.attributes"/>
+        </reference>
+
+        <block type="catalog/product_price_template" name="catalog_product_price_template" />
+	</tempcp_quickview_view_FINAL>
+
+</layout>

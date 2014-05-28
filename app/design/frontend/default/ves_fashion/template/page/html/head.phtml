@@ -1,0 +1,228 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+$current_controller = Mage::app()->getRequest()->getControllerName(); 
+
+$helper = Mage::helper("ves_tempcp/framework")->getFramework( );
+
+$themeConfig = $helper->getConfig();
+
+$themeName =  Mage::getDesign()->getTheme('frontend');
+
+$google_analytics = "";
+
+$helper->setCacheUri($this->getSkinUrl("cache", array('_secure'=>true)));
+$jsbaseURL = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);
+$skinbaseURL = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN);
+
+$enable_colorbox = $themeConfig->get("enable_colorbox", 1);
+$controller = Mage::app()->getFrontController()->getRequest()->getControllerName();
+if($controller == "product"){
+	$enable_colorbox = 1;
+}
+
+/* Add framework scripts files to head */
+$assets = $helper->setFrameworkScripts( $this->getData("items") );
+if(!empty($assets)){
+	$this->setData("items", $assets);
+}
+
+/*End add framework scripts*/
+
+$helper->addScript( $jsbaseURL.'venustheme/ves_tempcp/common.js' );
+$helper->addScript( $this->getSkinUrl('javascript/common.js',array('_secure'=>true)) );
+
+$helper->addCss('js_css','venustheme/ves_tempcp/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css', 'media="all"' );
+
+
+if($enable_colorbox){
+	$helper->addScript( $jsbaseURL.'venustheme/ves_tempcp/jquery/colorbox/jquery.colorbox-min.js' );
+	$helper->addCss('js_css','venustheme/ves_tempcp/jquery/colorbox/colorbox.css', 'media="all"' );
+}
+$helper->addScript( $jsbaseURL.'venustheme/ves_tempcp/jquery/tabs.js' );
+
+if( $customize_theme = $themeConfig->get('customize_theme') ) {
+	$helper->addCss( 'skin_css', 'css/customize/'.$customize_theme.'.css', 'media="all"' );
+}
+
+$helper->addCss( 'skin_css', 'css/font-awesome.min.css', 'media="all"' );
+/*load local font*/
+if(file_exists(Mage::getBaseDir('skin')."/frontend/default/".$themeName."/css/font.css")) {
+	$helper->addCss( 'skin_css', 'css/font.css', 'media="all"' );
+}
+
+$custom_fonts = $themeConfig->get("custom_fonts");
+if($custom_fonts) {
+	$custom_fonts = is_array($custom_fonts)?$custom_fonts:array($custom_fonts);
+	foreach($custom_fonts as $k => $font) {
+		if($font) {
+			$helper->addCss( 'stylesheet', (string)$font);
+		}
+	}
+}
+	
+
+
+if($css_files = $helper->getCssLinks()){
+
+	foreach($css_files as $key=>$val){
+	
+		if(!empty($val)){
+			if($val['type'] == "stylesheet") {
+				$this->addLinkRel( $val['type'], $val['name']);
+			} else {
+				$this->addItem( $val['type'], $val['name'], $val['params'], $val['if'], $val['cond']);
+			}
+			
+		}
+	}
+}
+
+$layoutMode = $helper->getParam( 'layout' );
+$assets = $this->getData("items");
+
+/*Init Framework*/
+
+$category_display_mode = $themeConfig->get( 'category_display_mode', 'grid' );
+$session = Mage::getSingleton('catalog/session');
+/*Set Catagory display mode*/
+if (!$session->getParamsMemorizeDisabled()) {
+	$session->setData('display_mode', $category_display_mode);
+}
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $helper->getLang() ?>" dir="<?php echo $helper->getDirection(); ?>" class="<?php echo $helper->getDirection(); ?>" lang="<?php echo $helper->getLang() ?>">
+<head>
+<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<!-- Mobile viewport optimized: h5bp.com/viewport -->
+<meta name="viewport" content="width=device-width">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
+<title><?php echo $this->getTitle() ?></title>
+<meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />
+<meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />
+<meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
+<link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<base href="<?php echo Mage::getBaseUrl(); ?>" />
+<!--[if lt IE 7]>
+<script type="text/javascript">
+//<![CDATA[
+    var BLANK_URL = '<?php echo $this->helper('core/js')->getJsUrl('blank.html') ?>';
+    var BLANK_IMG = '<?php echo $this->helper('core/js')->getJsUrl('spacer.gif') ?>';
+//]]>
+</script>
+<![endif]-->
+<?php if($themeConfig->get("enable_ajaxcart")) { ?>
+<script type="text/javascript">
+	var ajaxCart = true;
+</script>
+<?php } ?>
+<script type="text/javascript">
+	var minicart_url = "<?php echo Mage::helper('ves_tempcp')->getMinicartURL(); ?>";
+</script>
+<?php echo $this->getCssJsHtml() ?>
+<?php echo $this->getChildHtml() ?>
+
+
+<?php foreach( $helper->getScriptFiles() as $script )  { ?>
+<script type="text/javascript" src="<?php echo $script; ?>"></script>
+<?php } ?>
+
+<?php if( $custom_javascript = $themeConfig->get('custom_javascript') ){ ?>
+	<script type="text/javascript"><!--
+		jQuery(document).ready(function() {
+			<?php echo html_entity_decode(trim( $custom_javascript) ); ?>
+		});
+//--></script>
+<?php }	?>
+
+<?php echo $this->helper('core/js')->getTranslatorScript() ?>
+
+<?php echo $this->getIncludes() ?>
+
+
+<?php if( $themeConfig->get('theme_width') &&  $themeConfig->get('theme_width') != 'auto' ) { ?>
+			<style type="text/css"> #page-container .container{max-width:<?php echo $themeConfig->get('theme_width');?>; width:auto}</style>
+	<?php } ?>
+	
+	<?php if( $themeConfig->get('use_custombg') ) {	?>
+	<style type="text/css"> 
+		body{
+			background: url( "<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$themeConfig->get('bg_image');?>") <?php echo $themeConfig->get('bg_repeat');?> scroll <?php echo $themeConfig->get('bg_position');?> !important;
+		}</style>
+	<?php } ?>
+<?php 
+	if( $themeConfig->get('enable_customfont') ){
+	$css=array();
+	$link = array();
+	for( $i=1; $i<=3; $i++ ){
+		$tmp = $themeConfig->get('google_url'.$i);
+		if( trim($tmp) && $themeConfig->get('type_fonts'.$i) == 'google' ){
+			$link[] = '<link rel="stylesheet" type="text/css" href="'.trim($tmp) .'"/>';
+			$themeConfig->set('normal_fonts'.$i, $themeConfig->get('google_family'.$i) );
+		}
+		$tmp = $themeConfig->get('body_selector'.$i);
+		$tmp2 = $themeConfig->get('normal_fonts'.$i);
+
+		if( trim($tmp) && trim($tmp2) ){
+			$css[]= trim($tmp)." {font-family:".str_replace("'",'"',htmlspecialchars_decode(trim($tmp2)))."}\r\n"	;
+		}
+	}
+	echo implode( "\r\n",$link );
+?>
+<style>
+	<?php echo implode("\r\n",$css);?>
+</style>
+<?php } else { ?>
+<link href='http://fonts.googleapis.com/css?family=Lora:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+<?php } ?>
+
+<?php if($themeConfig->get('enable_paneltool') ){  ?>
+
+<link rel="stylesheet" type="text/css" href="<?php echo $helper->getThemeCssURL();?>paneltool.css" />
+<script type="text/javascript" src="<?php echo $helper->getJs("colorpicker/js/colorpicker.js");?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo $helper->getJs("colorpicker/css/colorpicker.css");?>" />
+
+<?php } ?>
+
+<!--[if lt IE 9]>
+<?php if($themeConfig->get('load_live_html5') ) { ?>
+<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<?php } else { ?>
+<script src="<?php echo $this->helper('core/js')->getJsUrl('venustheme/ves_tempcp/html5.js');?>"></script>
+<?php } ?>
+<script src="<?php echo $this->helper('core/js')->getJsUrl('venustheme/ves_tempcp/respond.min.js');?>"></script>
+<![endif]-->
+<?php 
+
+if($current_controller == "quickview") { 
+?>
+<base target="_parent" />
+<?php } ?>
+<?php echo $google_analytics; ?>
+</head>

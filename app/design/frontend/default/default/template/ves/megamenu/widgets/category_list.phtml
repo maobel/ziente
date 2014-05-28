@@ -1,0 +1,24 @@
+<?php 
+  $widget = $this->getWidget();
+  $show_name = isset($widget['show_name'])?$widget['show_name']: 1;
+  $categories = isset($widget['categories'])?$widget['categories']: array();
+  $categories = is_array($categories)?$categories:explode(",", $categories);
+  
+  if($categories) {
+?>
+<?php if( isset($widget['widget_name']) & $show_name){
+?>
+<div class="menu-title"><?php echo $widget['widget_name'];?></div>
+<?php
+}?>
+<div class="widget-category-list">
+  <div class="widget-inner">
+      <ul>
+      <?php foreach ($categories as $category_id) { ?>
+      <?php $category = Mage::getModel('catalog/category')->load($category_id); ?>
+      <li><a href="<?php echo $category->getUrl(); ?>"><span><?php echo $category->getName();?></span></a></li>
+      <?php } ?>
+      </ul>
+  </div>
+</div>
+<?php } ?>

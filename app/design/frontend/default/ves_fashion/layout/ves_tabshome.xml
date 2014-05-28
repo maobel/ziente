@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+	<cms_index_index translate="label">
+		<reference name="content">
+			<!-- example to add more home tabs
+			<block type="ves_tabshome/list" before="-" name="tabshome.list2">
+				<action method="setConfig">
+					<key>title</key>
+					<value>New Home Tabs </value>
+				</action>
+				<action method="setConfig">
+					<key>enable_new</key>
+					<value>0</value>
+				</action>
+				<action method="setConfig">
+					<key>enable_feature</key>
+					<value>0</value>
+				</action>
+				<action method="setConfig">
+					<key>enable_bestseller</key>
+					<value>1</value>
+				</action>
+				<action method="setConfig">
+					<key>enable_special</key>
+					<value>1</value>
+				</action>
+				<action method="setConfig">
+					<key>show_des</key>
+					<value>0</value>
+				</action>
+				<action method="setConfig">
+					<key>show_pzoom</key>
+					<value>0</value>
+				</action>
+			</block>
+			-->
+			<block type="ves_tabshome/list" before="-" name="tabshome.list" />			
+		</reference>
+	</cms_index_index>
+</layout>

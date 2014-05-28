@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <ves translate="label" module="ves_tempcp">
+            <label>Venus Extensions</label>
+            <sort_order>210</sort_order>
+        </ves>
+    </tabs>
+    <sections>
+
+    </sections>    
+</config>

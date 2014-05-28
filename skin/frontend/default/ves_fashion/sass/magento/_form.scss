@@ -1,0 +1,157 @@
+/******************************************************
+ * @package Ves Theme Framework for Magento
+ * @version 1.0
+ * @author http://www.venustheme.com
+ * @copyright Copyright (C) Augus 2013 Venustheme.com <@emai:venustheme@gmail.com>.All rights reserved.
+ * @license   GNU General Public License version 2
+*******************************************************/
+
+/* Forms */
+form          { display:inline; }
+fieldset      { border:0; }
+legend        { display:none; }
+
+/* Table */
+table         { border:0; border-spacing:0; empty-cells:show; font-size:100%; width: 100%; }
+caption,th,td { vertical-align:top; text-align:left; font-weight:normal; }
+
+/* Global Styles ========================================================================= */
+/* Form Elements */
+input,select,textarea,button {
+  font-size: $font-size-base;
+  color: $input-color;
+  background-color: $input-bg;
+  border: 1px solid $input-border;
+  border-radius: $border-radius-small;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.button, input {}
+.button, input.button {
+	background-color: #000;
+	border-radius: $border-radius-small;
+	border: 1px solid #000;
+	color: $white;
+ 	padding: 5px 15px;
+	@include transition(all 300ms ease-in-out);	
+}
+.button:hover{ background: #666; border-color: #666;}
+select,textarea {
+	padding: 5px; width: 100%;
+}
+input.qty,input[title="Qty"] {
+    display: inline;
+    text-align: center;
+    width: 60px;
+    height: 30px;
+}
+input[type="radio"], input[type="checkbox"] {
+    float:left;
+    margin: 0 3px 0 0;
+	@include rtl-float-left();
+	@include rtl-margin(0, 3px, 0, 0);
+	
+}
+label {
+	padding: 0;
+	margin: 0;
+	font-weight: normal;
+  	color: $gray;
+}
+.label {
+	display: table-cell;
+}
+/* Data Table */
+table { 
+	width:100%; border:1px solid $border-color;
+	.odd  {}
+	.even { background:#eeeded; }
+	td.last, th.last { border-right:0; }
+	tr.last th,tr.last td { border-bottom:0 !important; border-color: $border-color; }
+	th { padding:3px 8px; font-weight:bold; border-right:1px solid #D6D4D4}
+	td { padding:3px 8px; }
+
+	tbody {
+		th,td { border-bottom:1px solid #d9dde3; border-right:1px solid #d9dde3; }
+	}
+/* Bundle products tables */
+	tbody.odd tr { background:#f8f7f5 !important; }
+	tbody.even tr { background:#f6f6f6 !important; }
+	tbody.odd tr td,
+	tbody.even tr td { border-bottom:0; }
+	tbody.odd tr.border td,
+	tbody.even tr.border td { border-bottom:1px solid #d9dde3; }
+
+	tbody td .option-label { font-weight:bold; font-style:italic; }
+	tbody td .option-value { padding-left:10px; }
+ 
+}
+.table thead > tr > th{
+	border-color: $border-color;
+}
+.data-table {
+    width: 100%;
+  th, td {
+      padding: 10px;
+  }
+  thead {
+      background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+      border-bottom: 1px solid $border-color;
+    th {
+        font-weight: bold;
+        vertical-align: bottom;
+        &.wrap {
+          white-space: normal;
+      }
+    }
+  }
+  tr.odd td, tr.odd th {
+      border-right: 1px solid $border-color ;
+      color: #333;
+	  border-color: $border-color;
+  }
+  tr.odd td.last {
+      border-right: medium none;
+  }
+  tr.odd.last {
+      border-bottom: 1px solid $border-color ;
+  }
+  tr.even td,  tr.even th {
+      border-right: 1px solid $border-color ;
+      color: #333;
+  }
+  tr.even td.last {
+      border-right: medium none;
+  }
+  tr.even {
+      background-color: #fff;
+  }
+  tbody {
+    tr.product-shop-row:hover {
+      background-color: #fff;
+    }
+    &.odd td {
+        border-width: 0 1px;
+    }
+    &.odd tr.last {
+        border-bottom: 1px solid $border-color ;
+    }
+    &.even {
+        background-color: #fff;
+    }
+    &.even td {
+        border-width: 0 1px;
+    }
+  }
+  th .tax-flag {
+      font-weight: normal;
+  }
+  .cell-label {
+      display: none;
+  }
+}
+.validation-advice{ 
+  color: #EE001C;
+  font-size: 12px;
+  margin: 3px 0;
+}

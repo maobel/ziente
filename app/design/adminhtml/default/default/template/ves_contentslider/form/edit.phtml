@@ -1,0 +1,527 @@
+<?php
+/**
+ * @see Mage_Adminhtml_Block_Widget_Form_Container
+ */
+ ?>
+ <?php
+
+ 	$element = Mage::helper("ves_contentslider/element");
+
+ 	$banner = $this->getBannerData();
+
+ 	$params = $this->getBannerParams();
+
+
+ 	$banner_images = isset($params['banner_images'])?$params['banner_images']:array();
+
+ 	$yesno_options= array(1 => Mage::helper('ves_contentslider')->__('Yes'),
+ 				  0 => Mage::helper('ves_contentslider')->__('No'));
+
+ 	$disable_options= array(1 => Mage::helper('ves_contentslider')->__('Enabled'),
+ 				  0 => Mage::helper('ves_contentslider')->__('Disabled'));
+
+ 	$stores = $banner->getStoreId();
+
+ 	$stores = $element->getElementStores("store_id", "stores[]", $stores);
+
+ 	$positions = array("center" => Mage::helper("ves_contentslider")->__("Center"),
+ 						 "bottom" => Mage::helper("ves_contentslider")->__("Bottom"), 
+ 						 "left" => Mage::helper("ves_contentslider")->__("Left"), 
+ 						 "right" => Mage::helper("ves_contentslider")->__("Right"), 
+ 						 "custom" => Mage::helper("ves_contentslider")->__("Custom Top - Left") );
+
+ 	$effects = array('slideUp','slideDown','slideLeft',
+					'slideRight','slideExpandUp','expandUp','fadeIn',
+					'expandOpen','bigEntrance','hatch','bounce',
+					'pulse','floating','tossing','pullUp','pullDown','stretchLeft','stretchRight'
+					);
+ 	$base_url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+ ?>
+
+
+<?php echo $this->getFormInitScripts() ?>
+<?php echo $element->initTextEditor(); ?>
+<div class="entry-edit">
+    <form id="form" action="<?php echo $this->getFormActionUrl() ?>" method="post" id="product_edit_form" enctype="multipart/form-data">
+    	<input type="hidden" name="banner_id" value="<?php echo $banner->getData("banner_id"); ?>"/>
+    	<input type="hidden" name="action" value="" id="action"/>
+
+    	<div class="box">
+		    <div class="heading">
+		      <h1><?php echo $this->getHeaderText(); ?></h1>
+		      <div class="buttons">
+		       <a onclick="jQuery('#form').submit();" class="button"><?php echo Mage::helper('ves_contentslider')->__('Save');?></a>
+		       
+		       <a id="button_save_keep" class="button" onclick="jQuery('#action').val('save_stay');jQuery('#form').submit();" rel="save-edit"><?php echo Mage::helper('ves_contentslider')->__('Save and Edit');?></a>
+	 
+	  			<a href="<?php echo $this->getCancelLink(); ?>" class="button"><?php echo Mage::helper('ves_contentslider')->__('Cancel');?></a>
+			</div>
+		    </div>
+		    <div class="content">
+		    	<div id="tabs" class="htabs">
+				
+					<a class="selected" style="display: inline;" href="#tab-general"><?php echo Mage::helper('ves_contentslider')->__('General');?></a>
+					<a style="display: inline;" href="#tab-banner-images"><?php echo Mage::helper('ves_contentslider')->__('Banner Images');?></a>
+					
+				 </div>
+				<div id="tab-contents">
+				
+					<div style="display: none;" id="tab-general">
+				    	<table class="form">
+								<tr>
+								  <td><?php echo Mage::helper('ves_contentslider')->__('Title');?></td>
+								  <td><input type="text" name="banner[title]" value="<?php echo $banner->getData("title"); ?>" size="45" /></td>
+								</tr>
+								<tr>
+								  <td><?php echo Mage::helper('ves_contentslider')->__('Status');?></td>
+								  <td><select name="banner[is_active]">
+									 <?php
+												foreach($yesno_options as $key=>$val){
+													if($key == $banner->getData("is_active")){
+														?>
+														<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+														<?php
+													}else{
+														?>
+														<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+														<?php
+													}
+												}
+											?>
+									</select></td>
+								</tr>
+
+								<tr>
+								  <td><?php echo Mage::helper('ves_contentslider')->__('Sort Order');?></td>
+								  <td><input type="text" name="banner[position]" value="<?php echo $banner->getData("position"); ?>" size="3" /></td>
+								</tr>
+								
+								<tr>
+								  <td><?php echo Mage::helper('ves_contentslider')->__('Auto Play');?></td>
+								  <td><select name="banner[params][auto_play]">
+									  <?php
+												foreach($yesno_options as $key=>$val){
+													if(isset($params['auto_play']) && $key == $params['auto_play']){
+														?>
+														<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+														<?php
+													}else{
+														?>
+														<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+														<?php
+													}
+												}
+											?>
+									</select></td>
+								</tr>
+
+								<tr>
+								  <td><?php echo Mage::helper('ves_contentslider')->__('Interval');?></td>
+								  <td><input type="text" name="banner[params][interval]" value="<?php echo isset($params['interval'])?$params['interval']:1000; ?>" size="3" /></td>
+								</tr>
+								
+
+								<tr>
+								  <td><?php echo Mage::helper('ves_contentslider')->__('Banner Width');?></td>
+								  <td><input type="text" id="banner_width" name="banner[params][width]" value="<?php echo isset($params['width'])?$params['width']:700; ?>" size="8" /></td>
+								</tr>
+								<tr>
+								  <td><?php echo Mage::helper('ves_contentslider')->__('Banner Height');?></td>
+								  <td><input type="text" id="banner_height" name="banner[params][height]" value="<?php echo isset($params['height'])?$params['height']:369; ?>" size="8" /></td>
+								</tr>
+								
+								<tr>
+								  <td><?php echo Mage::helper('ves_contentslider')->__('Show Thumbnail Navigator');?></td>
+								  <td><select name="banner[params][image_navigator]">
+									  <?php
+											foreach($disable_options as $key=>$val){
+												if(isset($params['image_navigator']) && $key == $params['image_navigator']){
+													?>
+													<option value="<?php echo $key; ?>" selected="selected"><?php echo $val; ?></option>
+													<?php
+												}else{
+													?>
+													<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+													<?php
+												}
+											}
+											?>
+									</select></td>
+								</tr>
+								<tr>
+								  <td><?php echo Mage::helper('ves_contentslider')->__('Thumbnail Width');?></td>
+								  <td><input type="text" name="banner[params][navimg_width]" value="<?php echo isset($params['navimg_width'])?$params['navimg_width']:100; ?>" size="8" /></td>
+								</tr>
+								<tr>
+								  <td><?php echo Mage::helper('ves_contentslider')->__('Thumbnail Height');?></td>
+								  <td><input type="text" name="banner[params][navimg_height]" value="<?php echo isset($params['navimg_height'])?$params['navimg_height']:100; ?>" size="8" /></td>
+								</tr>
+								<tr>
+									<td><b><?php echo Mage::helper('ves_tempcp')->__('Store views');?></b></td>
+									<td class="value">
+										<?php echo $stores; ?>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div style="display: none;" id="tab-banner-images">
+							<div class="vtabs">
+	
+					          <?php 
+							  
+							  $banner_row=1;
+							  if($banner_images) {
+							  	?>
+								   <?php foreach ($banner_images as $banner_row=> $banner) { ?>
+							          <a href="#tab-module-<?php echo $banner_row; ?>" id="module-<?php echo $banner_row; ?>"><?php echo Mage::helper("ves_contentslider")->__("Banner ") . ' ' . $banner_row; ?>&nbsp;<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."ves_contentslider/icons/delete.png";?>" alt="" onclick="jQuery('.vtabs a:first').trigger('click'); jQuery('#module-<?php echo $banner_row; ?>').remove(); jQuery('#tab-module-<?php echo $banner_row; ?>').remove(); return false;" /></a>
+							 
+						          <?php } ?>
+					          <?php
+							  	}
+							  ?>
+					          <span id="module-add"><?php echo Mage::helper('ves_contentslider')->__('Add Banner'); ?>&nbsp;<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."ves_contentslider/icons/add.png";?>" alt="" onclick="addModule();" /></span>
+							  </div>
+							  <?php $banner_row = 1; ?>
+						        <?php foreach ($banner_images as $banner_row=> $banner) { ?>
+						        <div id="tab-module-<?php echo $banner_row; ?>" class="vtabs-content">
+								
+								 <table class="form">
+								 
+									 <tr>
+										<td>Image</td>
+									 <td class="left">
+									 	<div class="image">
+									 		<div class="image-preview" style="position:relative">
+									 			<img src="<?php echo isset($banner['image'])?$base_url.$banner['image']:""; ?>" style="width:135px;height:135px" alt="" id="thumb<?php echo $banner_row; ?>" />
+									 		</div>	
+
+						                  <input type="hidden" name="banner_image[<?php echo $banner_row; ?>][image]" value="<?php echo isset($banner['image'])?$banner['image']:""; ?>" id="image<?php echo $banner_row; ?>"  />
+						                  <br/>
+						                  <?php if(isset($banner['image']) && $banner['image']) { ?>
+						                  <input id="banner_image_<?php echo $banner_row; ?>_clear" type="checkbox" name="banner_image[<?php echo $banner_row; ?>][clear_image]" value="1"/> <label for="banner_image_<?php echo $banner_row; ?>_clear"><?php echo Mage::helper("ves_contentslider")->__("Delete Current Image?");?></label>
+						                  <?php } ?>
+						                  <br />
+						                  <input type="file" name="image<?php echo $banner_row; ?>" value="" id="image<?php echo $banner_row; ?>" />
+						                 </div>
+						              </td>
+									</tr>
+									<tr>
+										<td>Link</td>
+										<td><input name="banner_image[<?php echo $banner_row;?>][link]" size="55" value="<?php echo $banner['link']?>" type="text"/></td>
+									</tr>
+								  </table>
+
+						      	<div class="clone-caption-layer">Add Caption</div>
+					      		<?php
+					      		 	if(isset($banner['title'])){
+					      		 		foreach($banner['title'] as $ilayer => $captionlayer) {
+					      		 			$top 	= 	$banner['top'][$ilayer];
+							         		$left   = 	$banner['left'][$ilayer];
+							         		$ieffect = isset($banner['effect'][$ilayer])?($banner['effect'][$ilayer]):"";
+							         		$iposition = isset($banner['caption_position'][$ilayer])?($banner['caption_position'][$ilayer]):"custom";
+							         		$class  = 	isset($banner['class'][$ilayer])?$banner['class'][$ilayer]:"";
+					      		?>
+						         	<div class="caption-layer">
+						         	<a href="#" class="remove-caption-layer">Remove</a>
+						            <table class="form ">
+									  <tr>
+						                <td><?php echo Mage::helper("ves_contentslider")->__("Caption Setting"); ?>	</td>
+						                <td>
+						                	<div class="caption-layers">
+						                	<label><?php echo Mage::helper("ves_contentslider")->__('Caption');?></label>
+						                	<textarea size="60" name="banner_image[<?php echo $banner_row; ?>][title][]"   rows="3" cols="60"><?php echo $captionlayer; ?></textarea>
+						               
+						                	<div class="layer-setting"><div>
+						        		 	<label><?php echo Mage::helper("ves_contentslider")->__('Effect');?></label>
+							                <select name="banner_image[<?php echo $banner_row; ?>][effect][]">
+							                	<?php foreach( $effects as $effect ) { ?>
+							                		<option class="<?php echo $effect; ?>" <?php if( $effect == $ieffect ) {?> selected="selected" <?php } ?>><?php echo $effect; ?></option>
+							                 	<?php } ?> 
+							                </select>
+											<div class="typo-class">
+											<label><?php echo Mage::helper("ves_contentslider")->__('Class');?></label>
+											<input size="46" value="<?php echo $class; ?>" name="banner_image[<?php echo $banner_row; ?>][class][]"/>
+											<a href="#" class="insert-typo">Insert Typo</a>
+											</div>
+											<div class="position-mode">
+												<label><?php echo Mage::helper("ves_contentslider")->__('Caption Position Mode');?></label>
+												 <select name="banner_image[<?php echo $banner_row; ?>][caption_position][]">
+								                	<?php foreach( $positions as $key=>$val ) { ?>
+								                		<option class="<?php echo $key; ?>" <?php if( $key == $iposition ) {?> selected="selected" <?php } ?> value="<?php echo $key; ?>"><?php echo $val; ?></option>
+								                 	<?php } ?> 
+								                </select>
+											</div>
+											<div class="slide-changer">
+												<?php echo Mage::helper("ves_contentslider")->__('Top');?><div class="slider-range" data-type="height"></div>
+											<input value="<?php echo $top; ?>" type="hidden" name="banner_image[<?php echo $banner_row; ?>][top][]"/>
+											<span class="unit"></span></div>
+						              	 	<div class="slide-changer">
+						              	 		<?php echo Mage::helper("ves_contentslider")->__('Left');?>
+						              	 		<div class="slider-range" data-type="width"></div>
+												<input type="hidden" value="<?php echo $left; ?>"  name="banner_image[<?php echo $banner_row; ?>][left][]"/>
+												<span class="unit"></span>
+											</div></div> <span class="caret"></span>
+										</div></div>	
+						              	</td>
+						              </tr>
+						            </table></div>
+						            <?php } ?>
+						        <?php } else { ?>
+						        <div class="caption-layer">
+						         	<a href="#" class="remove-caption-layer">Remove</a>
+						            <table class="form ">
+									  <tr>
+						                <td><?php echo Mage::helper("ves_contentslider")->__("Caption Setting"); ?>	</td>
+						                <td>
+						                	<div class="caption-layers">
+						                	<label><?php echo Mage::helper("ves_contentslider")->__('Caption');?></label>
+						                	<textarea size="60" name="banner_image[<?php echo $banner_row; ?>][title][]"   rows="3" cols="60"></textarea>
+						               
+						                	<div class="layer-setting"><div>
+						        		 	<label><?php echo Mage::helper("ves_contentslider")->__('Effect');?></label>
+							                <select name="banner_image[<?php echo $banner_row; ?>][effect][]">
+							                	<?php foreach( $effects as $effect ) { ?>
+							                		<option class="<?php echo $effect; ?>"><?php echo $effect; ?></option>
+							                 	<?php } ?> 
+							                </select>
+											<div class="typo-class">
+											<label><?php echo Mage::helper("ves_contentslider")->__('Class');?></label>
+											<input size="46" value="" name="banner_image[<?php echo $banner_row; ?>][class][]"/>
+											<a href="#" class="insert-typo">Insert Typo</a>
+											</div>
+											<div class="position-mode">
+												<label><?php echo Mage::helper("ves_contentslider")->__('Caption Position Mode');?></label>
+												 <select name="banner_image[<?php echo $banner_row; ?>][caption_position][]">
+								                	<?php foreach( $positions as $key=>$val ) { ?>
+								                		<option class="<?php echo $key; ?>" <?php if( $key == $iposition ) {?> selected="selected" <?php } ?> value="<?php echo $key; ?>"><?php echo $val; ?></option>
+								                 	<?php } ?> 
+								                </select>
+											</div>
+											<div class="slide-changer">
+												<?php echo Mage::helper("ves_contentslider")->__('Top');?><div class="slider-range" data-type="height"></div>
+											<input value="" type="hidden" name="banner_image[<?php echo $banner_row; ?>][top][]"/>
+											<span class="unit"></span></div>
+						              	 	<div class="slide-changer">
+						              	 		<?php echo Mage::helper("ves_contentslider")->__('Left');?>
+						              	 		<div class="slider-range" data-type="width"></div>
+												<input type="hidden" value=""  name="banner_image[<?php echo $banner_row; ?>][left][]"/>
+												<span class="unit"></span>
+											</div></div> <span class="caret"></span>
+										</div></div>	
+						              	</td>
+						              </tr>
+						            </table></div>
+						        <?php } ?>
+						        </div>
+						 
+						        <?php $banner_row++; } ?>
+						</div>
+					</div>
+		    </div>
+		</div>
+  </div>
+ 
+    	<?php echo $this->getBlockHtml('formkey')?>
+    	<div style="display:none"></div>
+	</form>
+</div>
+  <script type="text/javascript">
+    //<![CDATA[
+        openEditorPopup = function(url, name, specs, parent) {
+            if ((typeof popups == "undefined") || popups[name] == undefined || popups[name].closed) {
+                if (typeof popups == "undefined") {
+                    popups = new Array();
+                }
+                var opener = (parent != undefined ? parent : window);
+                popups[name] = opener.open(url, name, specs);
+            } else {
+                popups[name].focus();
+            }
+            return popups[name];
+        }
+
+        closeEditorPopup = function(name) {
+            if ((typeof popups != "undefined") && popups[name] != undefined && !popups[name].closed) {
+                popups[name].close();
+            }
+        }
+    //]]>
+    </script>
+<script type="text/javascript"><!--
+jQuery.noConflict();
+
+(function( $ ) {
+
+	$('#tabs a').tabs(); 
+	$('.vtabs a').tabs();
+
+})( jQuery );
+//--></script>
+
+<script type="text/javascript">
+jQuery("#form").delegate( '.remove-caption-layer', 'click', function(){
+		if( jQuery( ".caption-layer",  jQuery(this).parent().parent() ).length <= 1 ){
+
+			return false;
+		}
+	 (  jQuery(this).parent().remove() );
+	return false;
+} ); 
+
+jQuery(function() {
+	jQuery(".slide-changer .slider-range").each( function(){
+		var $parent = jQuery(this).parent();
+		var max = jQuery(this).data("type") == 'height'? jQuery("#banner_height").val(): jQuery("#banner_width").val();
+		jQuery( ".slider-range", $parent ).slider({
+				range: "min",
+				value: jQuery( "input",$parent ).val(),
+				min: 1,
+				max:max,
+				slide: function( event, ui ) {
+				 jQuery( "input",$parent ).val(  ui.value );
+				 jQuery(".unit",$parent).html(  ui.value+"/"+ max + " px");
+		} });
+		 jQuery(".unit",$parent).html(  jQuery( "input",$parent ).val() + "/" + max  + " px");
+	} );
+	
+});
+
+ jQuery("#form").delegate( '.clone-caption-layer', 'click' , function(){
+ 	 	var $parent = jQuery(this).parent();
+ 	 	var captionLayer = jQuery(".caption-layer", $parent).clone();
+ 	 	jQuery( $parent ).append(  captionLayer );
+ } );
+ </script>
+
+<script type="text/javascript">
+	 jQuery("#anchor-content").delegate( ".insert-typo",'click',function(){   
+	 	var $parent = jQuery(this).parent();
+
+		var field = 'input-layer-class';
+		var $class = jQuery( "input", $parent ).val();
+ 
+		jQuery('#dialog').remove();
+		jQuery('#anchor-content').prepend('<div id="dialog" style="padding: 3px 0px 0px 0px;"><iframe src="<?php echo $this->getTypoUrl("input-layer-class");?>" style="padding:0; margin: 0; display: block; width: 100%; height: 100%;" frameborder="no" scrolling="auto"></iframe></div>');
+			 
+		jQuery('#dialog').dialog({
+				title: '<?php echo Mage::helper("ves_contentslider")->__("Typo Management");?>',
+				close: function (event, ui) {
+					if( jQuery('#dialog').data('selected-class')  ){
+						jQuery( "input", $parent ).val( $class + " " + jQuery('#dialog').data('selected-class') );
+					}
+				},	
+				bgiframe: false,
+				width: 800,
+				height: 500,
+				resizable: false,
+				modal: false
+		});  
+		return false; 
+	});
+
+</script>
+
+
+<script type="text/javascript"><!--
+var banner_row = <?php echo $banner_row; ?>;
+
+function addModule() {	
+	
+	var bannerID ='tab-module-' + banner_row;
+
+	html  = '<div id="tab-module-' + banner_row + '" class="vtabs-content">';
+
+	
+	html += '<table class="form"><tr><td>Image</td><td class="left"><div class="image"><img src="<?php echo $no_image; ?>" alt="" id="thumb' + banner_row + '" /><input type="file" name="image' + banner_row + '" value="" id="image' + banner_row + '" /></div></td>';
+	html += '<tr><td>Link</td><td><input name="banner_image['+banner_row+'][link]" size="55" type="text" value=""/></td></tr>';
+	html += '</table>';
+
+
+	html += '<div class="clone-caption-layer">Add Caption</div><div class="caption-layer">';
+	html += ' <a href="#" class="remove-caption-layer">Remove</a> ';
+	html += '<table class="form">';
+	html += '<tr>';
+	html += '<td><?php echo Mage::helper("ves_contentslider")->__("Caption Setting"); ?></td><td>';
+	html += '<div class="caption-layers">';
+	html += '<label><?php echo Mage::helper("ves_contentslider")->__("Caption"); ?></label>';
+	html += '<textarea cols="60" rows="3"  name="banner_image[' + banner_row + '][title][]"></textarea>';
+	html += '<div class="layer-setting"><div>';
+	html += '  <label><?php echo Mage::helper("ves_contentslider")->__("Effect: ");?></label>';
+	html += '  <select name="banner_image[<?php echo $banner_row; ?>][effect][]">';
+ 	<?php foreach( $effects as $effect ) { ?>
+	html += ' <option class="<?php echo $effect; ?>"><?php echo $effect; ?></option>';
+	<?php } ?> 
+	html += ' </select> ';
+
+	html += '<div class="typo-class">';
+	html += '<label><?php echo Mage::helper("ves_contentslider")->__("Class"); ?></label>';
+	html += '<input name="banner_image[' + banner_row + '][class][]" size="45" type="text"/>';
+	html += '<a href="#" class="insert-typo">Insert Typo</a></div>';
+	html += '<div class="position-mode">';
+	html += '											<label><?php echo Mage::helper("ves_contentslider")->__('Caption Position Mode');?></label>';
+	html += '											 <select name="banner_image[' + banner_row + '][caption_position][]">';
+								                	<?php foreach( $positions as $key=>$val ) { ?>
+	html += '							                		<option class="<?php echo $key; ?>" <?php if( $key == "custom" ) {?> selected="selected" <?php } ?> value="<?php echo $key; ?>"><?php echo $val; ?></option>';
+								                 	<?php } ?> 
+	html += '							                </select>';
+	html += '										</div>';
+	html += '<div class="slide-changer">';
+	html += '<?php echo Mage::helper("ves_contentslider")->__("Top");?><div class="slider-range" data-type="height"></div>';
+	html += '<input type="hidden" name="banner_image[' + banner_row + '][top][]"  type="text"/>';
+	html += '<span class="unit"></span></div>';
+	html += '<div  class="slide-changer">';
+	html += '<?php echo Mage::helper("ves_contentslider")->__("Left");?><div class="slider-range" data-type="width"></div>';
+	html += '<input type="hidden" name="banner_image[' + banner_row + '][left][]"  type="text"/>';
+	html += '<span class="unit"></span></div>';
+	html += '	</div> <span class="caret"></span>';
+	html += '	</div></div>';
+ 	
+	html += ' </td>';
+	html += '        </tr>';
+	html += '      </table></div>';
+	html += '    </div>';
+
+	html += '</div>';
+	
+	jQuery('#tab-banner-images').append(html);
+	
+ 	jQuery("#"+bannerID+" .slide-changer .slider-range").each( function(){
+		var $parent = jQuery(this).parent();
+		var max = jQuery(this).data("type") == 'height'? jQuery("#banner_height").val(): jQuery("#banner_width").val();
+		jQuery( ".slider-range", $parent ).slider({
+				range: "min",
+				value: jQuery( "input",$parent ).val(),
+				min: 1,
+				max:max,
+				slide: function( event, ui ) {
+				 jQuery( "input",$parent ).val(   ui.value );
+				 jQuery(".unit",$parent).html(  ui.value+"/"+ max + " px");
+		} });
+		 jQuery(".unit",$parent).html(  jQuery( "input",$parent ).val() + "/" + max  + " px");
+	} );
+	
+	jQuery('#language-' + banner_row + ' a').tabs();
+	
+	jQuery('#module-add').before('<a href="#tab-module-' + banner_row + '" id="module-' + banner_row + '"><?php echo Mage::helper("ves_contentslider")->__("Banner"); ?> ' + banner_row + '&nbsp;<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."ves_contentslider/icons/delete.png"; ?>" alt="" onclick="jQuery(\'.vtabs a:first\').trigger(\'click\'); jQuery(\'#module-' + banner_row + '\').remove(); jQuery(\'#tab-module-' + banner_row + '\').remove(); return false;" /></a>');
+	
+	jQuery('.vtabs a').tabs();
+	
+	jQuery('#module-' + banner_row).trigger('click');
+	
+	banner_row++;
+}
+
+//--></script> 
+
+
+<?php echo $this->getChildHtml('form_after');?>
+
+<?php if ($this->hasFooterButtons()): ?>
+    <div class="content-footer">
+        <p class="form-buttons"><?php echo $this->getButtonsHtml('footer') ?></p>
+    </div>
+<?php endif; ?>
+<script type="text/javascript">
+    editForm = new varienForm('edit_form', '<?php echo $this->getValidationUrl() ?>');
+</script>
+<?php echo $this->getFormScripts() ?>

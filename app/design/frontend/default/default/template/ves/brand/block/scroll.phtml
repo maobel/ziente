@@ -1,0 +1,67 @@
+<?php 
+	$columns = (int)$this->getConfig( "columns", 6 );
+	$columns = !empty($columns)?$columns: 1;
+	$c = $this->getGeneralConfig( 'brand_imagesize', "" );
+	$tmp = explode( "x", $c );
+	$thumb_width = $thumb_height = "";
+	if( count($tmp) > 0 && (int)$tmp[0] ){
+		$thumb_width = (int)$tmp[0];
+		$thumb_height = (int)$tmp[1];
+	}
+	$id = rand(1,10); 
+	$span =  12/$columns;
+	$total = $brands->getSize();
+	$i = 0;
+	$title = $this->getGeneralConfig("title");
+
+?>
+<div id="ves-brandcarousel" class="block ves-brandcarousel">
+	<?php if($title) { ?>
+	<div class="block-title">
+		<h2><?php echo $title; ?></h2>	
+	</div>
+	<?php } ?>
+	<div class="block-content">
+    <div id="vesbrandcarousel<?php echo $id;?>" class="carousel slide vescarousel hidden-xs">
+		<div class="carousel-inner">
+			<?php if($brands) { ?>
+				 <?php foreach ($brands as $brand) {?>
+					<?php if($i++ % $columns==0) { ?>
+						<div class="row item <?php if(($i-1)==0) {?>active<?php } ?>">
+					<?php } ?>
+					<div class="col-lg-<?php echo $span;?> col-xs-6 col-sm-2">
+						<div class="item-inner">
+							<?php $brand_link = $brand->getLink(); ?>
+							<?php
+							 $image = "";
+							 if($thumb_width && $thumb_height) {
+							 	$image = Mage::helper('ves_brand')->resize($brand->getFile(), $thumb_width, $thumb_height);
+							 } else {
+							 	$image = $brand->getImageUrl("l");
+							 }
+							?>
+							<?php if ($brand_link) { ?>
+							<a href="<?php echo $brand_link; ?>"><img src="<?php echo $image; ?>" alt="<?php echo $brand->getTitle(); ?>" class="img-responsive" /></a>
+							<?php } else { ?>
+							<img src="<?php echo $image; ?>" alt="<?php echo $brand->getTitle(); ?>" class="img-responsive" />
+							<?php } ?>
+						</div>
+					</div>	
+						<?php if( $i%$columns==0 || $i==$total) { ?>
+					</div>
+					<?php } ?>
+				<?php } ?>
+			<?php } ?>
+		</div>
+		<?php if( (int)$total > $columns ){ ?>	
+		<a class="carousel-control left fa fa-angle-left" href="#vesbrandcarousel<?php echo $id;?>" data-slide="prev"></a>
+		<a class="carousel-control right fa fa-angle-right" href="#vesbrandcarousel<?php echo $id;?>" data-slide="next"></a>
+		<?php } ?>
+    </div>
+</div>
+</div>
+<?php if( (int)$total > 1 ){ ?>
+<script type="text/javascript"><!--
+ jQuery('#vesbrandcarousel<?php echo $id;?>').carousel({interval:false});
+--></script>
+<?php } ?>

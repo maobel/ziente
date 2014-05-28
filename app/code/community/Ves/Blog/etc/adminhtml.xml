@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+            <vesextensions module="ves_blog">
+                <title>VenusTheme</title>
+                <sort_order>50</sort_order>
+                <children>
+                    <blog translate="title" module="ves_blog">
+                        <title>Ves Blog</title>
+                        <children>
+                            <add module="ves_blog">
+                                <title>Add post</title>
+                                <sort_order>0</sort_order>
+                                <action>venusblog/adminhtml_post/add</action>
+                            </add>
+                            
+                            
+                            <categories module="ves_blog">
+                                <title>Manage Categories</title>
+                                <sort_order>1</sort_order>
+                                <action>venusblog/adminhtml_category/index</action>
+                            </categories>
+                            
+                            <posts module="ves_blog">
+                                <title>Manage Posts</title>
+                                <sort_order>2</sort_order>
+                                <action>venusblog/adminhtml_post/index</action>
+                            </posts>
+                     
+                            <comments module="ves_blog">
+                                <title>Manage Comments</title>
+                                <sort_order>4</sort_order>
+                                <action>venusblog/adminhtml_comment/index</action>
+                            </comments>
+                            <configuration translate="title" module="ves_blog">
+                                <title>Configuration</title>
+                                <sort_order>5</sort_order>
+                                <action>adminhtml/system_config/edit/section/ves_blog</action>
+                            </configuration>
+                        </children>
+                    </blog>
+                </children>
+            </vesextensions>
+        </menu>
+		 <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <vesextensions module="ves_blog">
+                        <title>VenusTheme</title>
+                        <sort_order>50</sort_order>
+                        <children>
+                            <blog translate="title" module="ves_blog">
+                                <title>Ves Blog</title>
+                                <children>
+                                    <add module="ves_blog">
+                                        <title>Add post</title>
+                                        <sort_order>0</sort_order>
+                                        <action>venusblog/adminhtml_post/add</action>
+                                    </add>
+                                    <categories module="ves_blog">
+                                        <title>Manage Categories</title>
+                                        <sort_order>1</sort_order>
+                                        <action>venusblog/adminhtml_category/index</action>
+                                    </categories>
+                                    
+                                    <posts module="ves_blog">
+                                        <title>Manage Posts</title>
+                                        <sort_order>2</sort_order>
+                                        <action>venusblog/adminhtml_post/index</action>
+                                    </posts>
+                             
+                                    <comments module="ves_blog">
+                                        <title>Manage Comments</title>
+                                        <sort_order>4</sort_order>
+                                        <action>venusblog/adminhtml_comment/index</action>
+                                    </comments>
+                                    <configuration translate="title" module="ves_blog">
+                                        <title>Configuration</title>
+                                        <sort_order>5</sort_order>
+                                        <action>adminhtml/system_config/edit/section/ves_blog</action>
+                                    </configuration>
+                                </children>
+                            </blog>
+                        </children>
+                    </vesextensions>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <ves_blog>
+                                        <title>Ves Blog</title>
+                                    </ves_blog>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <translate>
+			<modules>
+				<Ves_Blog>
+					<files>
+						<default>Ves_Blog.csv</default>
+					</files>
+				</Ves_Blog>
+			</modules>
+		</translate>
+</config>

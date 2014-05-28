@@ -1,0 +1,63 @@
+<?xml version="1.0"?> 
+<config>
+    <menu>
+        <vesextensions module="ves_tempcp">
+                <title>VenusTheme</title>
+                <sort_order>51</sort_order>
+                <children>
+                    
+                    <ves_tempcp translate="title" module="ves_tempcp">
+                        <title>Ves Template Panel</title>
+                        <children>
+                            <tempcp_index module="ves_tempcp">
+                                <title>Theme Control Panel</title>
+                                <sort_order>1</sort_order>
+                                <action>adminhtml/adminhtml_theme/index</action>
+                            </tempcp_index>
+                        </children>
+                    </ves_tempcp>
+                </children>
+            </vesextensions>
+        </menu> 
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                       <vesextensions module="ves_tempcp">
+                        <title>VenusTheme</title>
+                        <sort_order>51</sort_order>
+                        <children>
+                            
+                            <ves_tempcp translate="title" module="ves_tempcp">
+                                <title>Ves Template Panel</title>
+                                <children>
+                                    <tempcp_index module="ves_tempcp">
+                                        <title>Theme Control Panel</title>
+                                        <sort_order>1</sort_order>
+                                        <action>adminhtml/adminhtml_theme/index</action>
+                                    </tempcp_index>
+                                    <configuration translate="title" module="ves_tempcp">
+                                        <title>Configuration</title>
+                                        <sort_order>5</sort_order>
+                                        <action>adminhtml/system_config/edit/section/ves_tempcp_info</action>
+                                    </configuration>
+                                </children>
+                            </ves_tempcp>
+                        </children>
+                    </vesextensions>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <ves_tempcp>
+                                            <title>Ves Tempcp</title>
+                                        </ves_tempcp>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+</config>

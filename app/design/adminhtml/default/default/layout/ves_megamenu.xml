@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <!--
+    <ves_verticalmenu_adminhtml_megamenu_edit>
+        <reference name="left">
+            <block name="verticalmegamenu.tree" type="ves_megamenu/adminhtml_megamenu_tree" template="ves_megamenu/megamenu/tree.phtml" />
+        </reference>
+        <reference name="content">
+            <block name="verticalmegamenu.edit"  type="ves_megamenu/adminhtml_megamenu_edit" template="ves_megamenu/megamenu/edit.phtml" />
+        </reference>
+    </ves_verticalmenu_adminhtml_megamenu_edit>-->
+</layout>

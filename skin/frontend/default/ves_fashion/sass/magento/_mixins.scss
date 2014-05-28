@@ -1,0 +1,35 @@
+/******************************************************
+ * @package Ves Theme Framework for Magento
+ * @version 1.0
+ * @author http://www.venustheme.com
+ * @copyright Copyright (C) Augus 2013 Venustheme.com <@emai:venustheme@gmail.com>.All rights reserved.
+ * @license   GNU General Public License version 2
+*******************************************************/
+
+@mixin border-exclude-top($border-deep, $border-type, $border-color ){
+	border-bottom: $border-deep $border-type $border-color ;
+    border-left: $border-deep $border-type $border-color ;
+    border-right: $border-deep $border-type $border-color ;
+
+}
+
+@mixin border-exclude-bottom($border-deep, $border-type, $border-color ){
+	border-top: $border-deep $border-type $border-color ;
+    border-left: $border-deep $border-type $border-color ;
+    border-right: $border-deep $border-type $border-color ;
+
+}
+
+@mixin clearboxstyle(){
+  background: none;
+  border:none;
+}
+
+@mixin border-radius($radius){
+	-webkit-border-radius: $radius;
+	border-radius: $radius;
+}
+
+@mixin clearfix(){
+	&:after{ display:block; content:"."; clear:both; font-size:0; line-height:0; height:0; overflow:hidden; }
+}

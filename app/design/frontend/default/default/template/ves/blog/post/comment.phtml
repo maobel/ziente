@@ -1,0 +1,122 @@
+<?php 
+ /*------------------------------------------------------------------------
+  # Ves Blog Module 
+  # ------------------------------------------------------------------------
+  # author:    Ves.Com
+  # copyright: Copyright (C) 2012 http://www.ves.com. All Rights Reserved.
+  # @license: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+  # Websites: http://www.ves.com
+  # Technical Support:  http://www.ves.com/
+-------------------------------------------------------------------------*/
+$post = Mage::register('current_post');
+?>
+<div class="post-comments">
+	<h3 class="fields"><strong><?php echo $this->__('Leave a comment') ?></strong></h3>
+	<?php if( $this->getGeneralConfig("commenttype") == "disqus" ): ?>
+	
+		<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = '<?php echo $this->getGeneralConfig("commentdisqus"); ?>';
+			(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		</script>
+	<?php elseif(  $this->getGeneralConfig("commenttype") == "facebook" ) :?>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) {return;}
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=<?php echo $this->getGeneralConfig("commentfacebook");?>";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+		<div class="fb-comments" data-href="<?php echo Mage::helper("ves_blog")->getPostURL( (int)$this->getRequest()->get("id") ) ?>" data-num-posts="<?php echo $this->getGeneralConfig("comment_limit");?>" data-width="<?php echo $this->getGeneralConfig("faceboob_width")?>"></div>
+	<?php else : ?>
+	<h3 class="comment-counter">
+		<span><?php echo $this->getCountingComment(); ?></span>
+		<?php echo $this->__( "Comments" ); ?>
+	</h3>
+	<?php if( $comments = $this->getCollection() ) : ?>
+		<div class="comments-list">
+			<ul>
+			<?php $i==0; foreach( $comments as $comment ): ?>
+				<li class="<?php echo ( $i%2==0?"even":"odd") ; ?>" id="comment<?php echo $i+1; ?>">
+					<a class="comment-link" href="#comment<?php echo $i+1;?>"><?php echo $this->__("Comment Link"); ?></a>
+					<span class="comment-date"><?php echo $comment->getCreated(); ?></span>
+					<span class="comment-author"><span><?php echo $this->__("Posted By");?></span><?php echo $comment->getUser(); ?></span>
+					<p>
+						<?php echo $comment->getComment(); ?>
+					</p>
+				</li>
+			<?php $i++; endforeach; ?>
+			</ul>
+		</div>
+		<?php echo $this->getChildHtml('post.comment.toolbar'); ?>
+	<?php endif; ?>
+	
+	<div class="comment-form">
+
+		<div class="comment-notes"><?php echo $this->__( 'Make sure you enter the (*) required information where indicated. HTML code is not allowed.	' );?></div>
+		 <form method="post" action="<?php echo $this->getUrl('venusblog/post/comment', array('id' => $this->getRequest()->getParam('id'))) ?>" id="comment-form">
+			
+			<div class="above-inputs vesclear">
+			<ul class="form-list">
+			
+				<li class="fields">
+					<?php if(Mage::getSingleton('customer/session')->getCustomer()->getId()): ?>
+					<input type="hidden" name="user" value="<?php echo Mage::getSingleton('customer/session')->getCustomer()->getName() ?>" />
+					<?php else: ?>
+					<div class="field">
+						<label class="required" for="user"><em>*</em><?php echo $this->__('Name') ?></label>
+					</div>
+					<div class="input-box">
+						<input id="user" name="user" title="<?php echo $this->__('Name') ?>" class="input-text required-entry" />
+					</div>
+					<?php endif; ?>
+				</li>
+				<li class="fields email">
+					<?php if(Mage::getSingleton('customer/session')->getCustomer()->getId()): ?>
+					<input type="hidden" name="email" value="<?php echo Mage::getSingleton('customer/session')->getCustomer()->getEmail() ?>" />
+					<?php else: ?>
+					<div class="field">
+						<label class="required" for="email"><em>*</em><?php echo $this->__('Email') ?></label>
+					</div>
+					<div class="input-box">
+						<input id="email" name="email" title="<?php echo $this->__('Email') ?>" class="input-text required-entry validate-email" />
+					</div>
+					<?php endif; ?>
+				</li>
+
+			</ul>
+			</div>
+			<div class="mid-inputs">
+				<label class="required" for="comment"><em>*</em><?php echo $this->__('Comment') ?></label>
+					<div class="input-box">
+						<textarea id="comment" name="comment" title="<?php echo $this->__('Comment') ?>" class="input-text required-entry"></textarea>
+					</div>	
+			</div>
+			<?php if( $this->getGeneralConfig("enable_recaptcha") ): ?>
+			<div class="recaptcha">
+				<?php if( $captcha = $this->getReCaptcha() ) : ?>
+					<?php echo $captcha->getHtml(); ?>
+				<?php endif; ?>
+			</div>
+			<?php endif; ?>
+			<div class="below-inputs">
+				 <button class="button" type="submit" title="<?php echo $this->__('Submit Comment') ?>">
+					<span>
+						<span><?php echo $this->__('Submit Comment') ?></span>
+					</span>
+				</button>
+			</div>
+		 </form>
+	</div>
+	  <script type="text/javascript">
+	//<![CDATA[
+	  	var commentForm = new VarienForm('comment-form');
+	//]]>
+</script>
+	<?php endif; ?>
+</div>

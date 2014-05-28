@@ -1,0 +1,111 @@
+/******************************************************
+ * @package Ves Theme Framework for Magento
+ * @version 1.0
+ * @author http://www.venustheme.com
+ * @copyright Copyright (C) Augus 2013 Venustheme.com <@emai:venustheme@gmail.com>.All rights reserved.
+ * @license   GNU General Public License version 2
+*******************************************************/
+
+
+@media screen and (max-width: $screen-sm-max) {
+  .quick-access {
+    position: relative;
+    float: right;
+    padding: 10px 0;
+	
+    .quickaccess-toggle {
+		     background-color: #363636;
+		     width: 35px;
+		     line-height:  35px;
+		     height: 35px;
+		     font-size: 16px; 
+		     color: #a8a8a8;
+		     @include border-top-radius(50%);
+		     @include border-bottom-radius(50%);
+		     @include transition (all 0.2s ease-in-out 0s);
+		     text-align: center;
+		     margin: 0 3px;
+		     &:hover{
+			    background-color: $theme-color-hover;
+			    color: $white;
+		      	@include transition(all 0.2s ease-in-out 0s);
+		    }
+    	}
+        .inner-toggle {
+            background: #fff;   
+            min-width: 180px;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            z-index: 9999 !important;
+            @include opacity (0);
+			display: block;    
+			transform: translateX(-25%);
+			visibility: hidden;
+			@include box-shadow(0 1px 3px #D3D3D3);
+			padding: 5px;
+			@include border-top-radius (0);
+			@include border-bottom-radius (3px);
+			border-top: 5px solid $theme-color-hover;
+
+        }
+		&:hover {
+			.content .inner-toggle,
+			.inner-toggle {
+				@include transition( all 500ms cubic-bezier(0.09, 0.68, 0, 0.99) 0s );
+				@include opacity (1) ;   
+				transform: translateX(0px);
+				visibility: visible;
+				z-index: 10;
+			}
+		}
+
+	}
+
+	#topbar{
+		.topLinks{ float: right !important;}
+		.links{ 
+			float: none !important;
+			li{ float: none !important; line-height: 24px;}
+			li.first{ padding-left: 6px !important;}
+			li.last a{ border: none;}
+		}
+		.language{ padding: 6px 5px;}
+	}
+	.cart-top #cart .content{
+		position: static;
+		opacity: 1;
+		visibility: visible;
+		top: 0;
+		border: none;
+		min-width: 270px;
+		visibility: inherit;
+	}
+
+	#checkout-step-login{
+		.buttons-set{ margin-bottom: 10px;}
+	}
+
+}
+
+@media screen and (max-width: $screen-md) {
+	.navbar-toggle{display: block!important;}
+	.ves-caption{display: none !important;}
+	#mainmenutop .navbar-nav{display:  none!important;}
+	.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{border: 0!important;}
+	.navbar-collapse{overflow-x: hidden!important; }
+	.navbar-toggle{
+			margin: 0!important;
+	}
+	.navbar-collapse::before, .navbar-collapse::after{display: none!important;}
+}
+
+@media screen and (max-width: $screen-sm) {
+	.a-quickview{ display: none !important;} 
+}
+
+@media screen and (max-width: $screen-xs-max) {
+	.zoomContainer,
+	#cboxOverlay,
+	#colorbox,.vescontentslider,.module_customblock { display: none !important;}
+}

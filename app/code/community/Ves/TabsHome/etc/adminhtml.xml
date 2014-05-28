@@ -1,0 +1,59 @@
+<?xml version="1.0"?> 
+<config>
+    <menu>
+            <vesextensions module="ves_tabshome">
+                <title>VenusTheme</title>
+                <sort_order>53</sort_order>
+                <children>
+                    <tabshome translate="title" module="ves_tabshome">
+                        <title>Ves TabsHome</title>
+                        <children>
+                            
+                            <configuration translate="title" module="ves_tabshome">
+                                <title>Configuration</title>
+                                <sort_order>4</sort_order>
+                                <action>adminhtml/system_config/edit/section/ves_tabshome_info</action>
+                            </configuration>
+                        </children>
+                    </tabshome>
+                </children>
+            </vesextensions>
+    </menu>
+    <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <vesextensions module="ves_tabshome">
+                            <title>VenusTheme</title>
+                            <sort_order>53</sort_order>
+                            <children>
+                                <tabshome translate="title" module="ves_tabshome">
+                                    <title>Ves TabsHome</title>
+                                    <children>
+                                        
+                                        <configuration translate="title" module="ves_tabshome">
+                                            <title>Configuration</title>
+                                            <sort_order>4</sort_order>
+                                            <action>adminhtml/system_config/edit/section/ves_tabshome_info</action>
+                                        </configuration>
+                                    </children>
+                                </tabshome>
+                            </children>
+                        </vesextensions>
+                         <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <ves_tabshome_info>
+                                            <title>Ves TabsHome</title>
+                                        </ves_tabshome_info>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+</config>
