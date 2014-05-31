@@ -1,0 +1,9 @@
+var/cache/**/*
+var/session/**/*
+var/session/*
+var/log/*
+var/import/*
+var/tmp/*
+var/locks/*
+var/report/*
+var/export/*
