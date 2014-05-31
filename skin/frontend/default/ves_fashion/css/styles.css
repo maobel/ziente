@@ -346,7 +346,7 @@ ul, ol {
 /* line 8, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_block.scss */
 .block {
   border: none;
-  margin-bottom: 20px;
+  /*margin-bottom: 20px;*/
 }
 /* line 11, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_block.scss */
 .block .block-title {
@@ -1075,7 +1075,7 @@ body.layout-boxed-lg #page {
 #topbar .links li {
   float: left;
   line-height: 42px;
-  display: list-item;
+  /*display: list-item;*/
   list-style-type: disc;
   margin: 0 10px 0 15px;
 }
@@ -1213,6 +1213,12 @@ body.layout-boxed-lg #page {
   overflow: hidden;
 }
 
+.logo-logo{
+  border:1px red solid;
+  top:60px;
+  margin: 0 auto;
+}
+
 /* line 151, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_layout.scss */
 .top-search .form-search .search-autocomplete {
   left: 0 !important;
@@ -1328,11 +1334,11 @@ body.layout-boxed-lg #page {
 /* POWER BY */
 /* line 269, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_layout.scss */
 .copyright {
-  text-align: center;
-  border-top: 1px solid #e4e4e4;
-  padding: 35px 0 70px;
+ /* text-align: center;*/
+ /* border-top: 1px solid #e4e4e4;*/
+ /* padding: 35px 0 70px;*/
   /*border-bottom: 10px solid #000;*/
-  line-height: 24px;
+ /* line-height: 24px;*/
 }
 
 /******************************************************
@@ -1837,7 +1843,8 @@ body.layout-boxed-lg #page {
 /* Blog */
 /* line 331, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-module.scss */
 #ves-custom {
-  margin-bottom: 45px;
+  margin-bottom: 20px;
+  /*margin-top: 60px;*/
 }
 
 /* line 333, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-module.scss */
@@ -1917,9 +1924,10 @@ body.layout-boxed-lg #page {
 /* custom-subscribe */
 /* line 379, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-module.scss */
 .custom-subscribe {
-  background: url(../images/bg-letter.png) right top no-repeat whitesmoke;
-  border-top: 1px solid #000;
-  margin-top: 13px;
+  /*background: url(../images/bg-letter.png) right top no-repeat whitesmoke;*/
+  background-color: #CCCCCC;
+  /*border-top: 1px solid #000;
+  margin-top: 13px;*/
   text-align: center;
   padding: 0 30px 30px;
 }
@@ -2929,6 +2937,7 @@ body.layout-boxed-lg #page {
 .block-progress {
   border: 0;
   margin: 0;
+  display:none;
 }
 /* line 419, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .block-progress .block-title {
@@ -4356,7 +4365,7 @@ p.required, .product-options dt label.required em, .form-list label.required em 
 
 /* line 1038, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .new-users .content {
-  min-height: 300px;
+  /*min-height: 300px;*/
 }
 
 /* line 1039, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
@@ -7343,4 +7352,26 @@ h6 {
 /* line 9, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_rtl.scss */
 .rtl .pull-right {
   float: left !important;
+}
+
+
+.custom-footer-box1 {
+  border: 1px #CCCCCC solid; 
+  float: left; 
+  padding-left: 10px; 
+  width: 275px; 
+}
+.custom-footer-box2 {
+  border: 1px #CCCCCC solid; 
+  float: left; 
+  margin-left: 20px; 
+  padding-left: 10px; 
+  width: 275px; 
+}
+.custom-footer-box3 {
+  border: 1px #CCCCCC solid; 
+  float: left; 
+  margin-left: 20px; 
+  padding-left: 10px; 
+  width: 275px; 
 }
