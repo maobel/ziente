@@ -117,6 +117,7 @@
 
     <!-- My Applications-->
     <customer_account>
+        <!--
         <reference name="customer_account_navigation">
             <action method="addLink" translate="label" module="oauth">
                 <name>OAuth Customer Tokens</name>
@@ -124,6 +125,7 @@
                 <label>My Applications</label>
             </action>
         </reference>
+        -->
     </customer_account>
 
     <oauth_customer_token_index translate="label">

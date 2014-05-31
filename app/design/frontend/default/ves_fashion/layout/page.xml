@@ -114,10 +114,10 @@ Default layout, loads most of the pages
 			
 			<!--Custom position-->			
 			<block type="newsletter/subscribe" as="customm_newsletter" name="custom.newsletter" template="newsletter/custom_subscribe.phtml"/> 
-			<block type="ves_blog/latest" name="ves_latest" as="ves_latest"/>
-			   
-           
-			
+            <block type="cms/block" name="footer_links_cms" as="footer_links_cms">
+                <action method="setBlockId"><block_id>footer_links</block_id></action>
+            </block>
+			<!--<block type="ves_blog/latest" name="ves_latest" as="ves_latest"/>-->
 			
 			<block type="core/text_list" name="slideshowTop" as="slideshowTop" translate="label">
                 <label>Slideshow</label>

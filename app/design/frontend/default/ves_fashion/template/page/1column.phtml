@@ -129,16 +129,7 @@
         </div>
         </section>
 
-		<?php if($ves_latest = $this->getChildHtml('ves_latest') || $customm_newsletter = $this->getChildHtml('customm_newsletter')){ ?>
-        <section id="ves-custom" class="ves-custom">
-            <div class="container">
-				<div class="row">
-					<div class="col-lg-9 col-sm-7 col-xs-12"><?php echo $this->getChildHtml('ves_latest')?></div>
-					<div class="col-lg-3 col-sm-5 col-xs-12"><?php echo $this->getChildHtml('customm_newsletter') ?></div>
-				</div>
-            </div>
-        </section>
-		<?php } ?>
+		<!-- ACA ESTABA LINKS Y NEWSLETTER BOX-->
 
         <?php if($massbottom = $helper->getModulesByPosition('massbottom')){ ?>
         <section id="ves-massbottom" class="ves-massbottom">
@@ -147,7 +138,20 @@
             </div>
         </section>
         <?php } ?>
+
        <section id="footer">
+
+        <?php if($ves_latest = $this->getChildHtml('footer_links_cms') || $customm_newsletter = $this->getChildHtml('customm_newsletter')){ ?>
+        <section id="ves-custom" class="ves-custom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-13 col-sm-7 col-xs-12"><?php echo $this->getChildHtml('footer_links_cms')?></div>
+                    <div class="col-lg-3 col-sm-5 col-xs-12"><?php echo $this->getChildHtml('customm_newsletter') ?></div>
+                </div>
+            </div>
+        </section>
+        <?php } ?>
+
          <?php if($footerTop = $helper->getModulesByPosition('footerTop')){ ?>
             <div class="footer-top">
                 <div class="container">
