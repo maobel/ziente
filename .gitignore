@@ -2,6 +2,8 @@ var/cache/**/*
 var/session/**/*
 var/session/*
 var/log/*
+var/log/system.log
+var/log/exception.log
 var/import/*
 var/tmp/*
 var/locks/*
