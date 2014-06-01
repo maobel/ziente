@@ -1053,7 +1053,8 @@ body.layout-boxed-lg #page {
   background-color: transparent;
   /*border-style: solid;
   border-width: 5px 0 1px;*/
-  border-color: black transparent #e4e4e4;
+  /*border-color: black transparent #e4e4e4;*/
+  margin-top: 50px;
 }
 /* line 21, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/bootstrap_lib/_mixins.scss */
 #topbar:before, #topbar:after {
@@ -1081,7 +1082,7 @@ body.layout-boxed-lg #page {
 }
 /* line 57, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_layout.scss */
 #topbar .links li.last a {
-  border-right: 1px solid #e4e4e4;
+  /*border-right: 1px solid #e4e4e4;*/
   padding-right: 12px;
   border-left: 0;
   padding-left: 0;
@@ -1214,9 +1215,10 @@ body.layout-boxed-lg #page {
 }
 
 .logo-logo{
-  border:1px red solid;
-  top:60px;
+  width: 254px;
+  height: 215px;
   margin: 0 auto;
+  margin-top: -70px;
 }
 
 /* line 151, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_layout.scss */
@@ -1663,12 +1665,12 @@ body.layout-boxed-lg #page {
 #ves-mainnav .navbar-nav > li {
   float: none;
   display: inline-block;
-  border: 1px solid transparent;
+  /*border: 1px solid transparent;*/
   border-width: 0 1px;
 }
 /* line 203, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-module.scss */
 #ves-mainnav .navbar-nav > li:hover {
-  border-color: #e4e4e4;
+  /*border-color: #e4e4e4;*/
 }
 /* line 206, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-module.scss */
 #ves-mainnav .navbar-nav > li.dropdown {
@@ -2094,7 +2096,7 @@ body.layout-boxed-lg #page {
 
 /* line 17, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .page-title h1 {
-  border-bottom: 1px solid #e4e4e4;
+  /*border-bottom: 1px solid #e4e4e4;*/
   margin: 0 0 15px;
   padding: 0 0 10px;
 }
@@ -2219,7 +2221,7 @@ body.layout-boxed-lg #page {
 /* line 74, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .toolbar {
   margin: 20px 0;
-  border: 1px solid #e4e4e4;
+  /*border: 1px solid #e4e4e4;*/
 }
 /* line 77, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .toolbar .pager {
@@ -5290,7 +5292,7 @@ body,
 /* line 25, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-block .actions {
   background: #fff;
-  border-bottom: 1px solid #e4e4e4;
+  /*border-bottom: 1px solid #e4e4e4;*/
   bottom: 0;
   left: 0;
   position: absolute;
@@ -5314,11 +5316,12 @@ body,
 /* line 35, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-block .actions button.btn-cart {
   color: #000000;
-  float: left;
+  /*float: left;*/
   height: 55px;
   width: 50%;
   background: none;
   border: none;
+  margin-left: 60px;
 }
 /* line 42, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-block .actions button.btn-cart span {
@@ -5507,7 +5510,7 @@ body,
   opacity: 1;
   visibility: visible;
   position: static;
-  border: 1px solid #e4e4e4;
+  /*border: 1px solid #e4e4e4;*/
 }
 /* line 175, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .products-list .price-box {
@@ -7375,3 +7378,4 @@ h6 {
   padding-left: 10px; 
   width: 275px; 
 }
+.clear { clear: both; height: 0; }

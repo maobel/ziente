@@ -1,1 +1,8 @@
 "Latest Posts","Ultimas Entradas"
+"View cart","Ver el carrito"
+"Recently added item(s)","Productos recién agregados"
+"You have no items in your shopping cart.","No tiene productos en el carrito."
+'There is <a href="%s">1 item</a> in your cart.','Hay <a href="%s">1 producto</a> en su carrito.'
+'There are <a href="%s">%s items</a> in your cart.','Hay <a href="%s">%s productos</a> en su carrito.'
+"ORDER TOTAL WILL BE DISPLAYED BEFORE YOU SUBMIT THE ORDER","EL VALOR TOTAL SE MOSTRARA ANTES DE ENVIAR EL PEDIDO"
+"%s item(s) - %s","%s item(s) - %s"

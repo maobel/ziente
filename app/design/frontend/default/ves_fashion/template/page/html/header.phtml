@@ -75,19 +75,23 @@
 <section id="header-main">
     <div class="container">
         <div class="header-wrap">
-                <?php if ($this->getIsHomePage()):?>
-                <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
+            <?php if ($this->getIsHomePage()):?>
+            <h1 class="logo">
+            	<strong><?php echo $this->getLogoAlt() ?></strong>
+            	<a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
                 	<div class="logo-logo">
                 		<img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
                 	</div>
-                </a></h1>
-                <?php else:?>
-                <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong>
-                	<div class="logo-logo">
-                		<img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
-                	</div>
-                </a>
-                <?php endif?>            
+            	</a>
+            </h1>
+            <?php else:?>
+            <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
+            	<strong><?php echo $this->getLogoAlt() ?></strong>
+            	<div class="logo-logo">
+            		<img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+            	</div>
+            </a>
+            <?php endif?>
         </div>
         <?php if($topContainer =  $this->getChildHtml('topContainer')){ ?>
              <div class="top-container">
