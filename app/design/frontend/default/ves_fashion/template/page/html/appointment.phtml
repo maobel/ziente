@@ -1,44 +1,39 @@
 <?php //$collection = Mage::getModel('appointments/location')->getCollection(); ?>
 
-<div class="">
+<div style="width:1000px; margin: 0 auto;">
 
-	<div style="width:450px; float:left; margin-left:30px;">
-		<p>Seleccione:</p>
+	<div style="width:450px; float:left;">
+		<p>Seleccione las siguientes opciones:</p>
 
 		<div class="">
-			<?php $collection = Mage::getModel('appointments/appointments')->getCollection(); ?>
 
+			<?php $collection1 = Mage::getModel('appointments/locations')->getCollection(); ?>
 			<p>Sede
 			    <select name="location" id="location" class="location">
 					<option value=" " selected="selected">Seleccione</option>
-					<?php foreach($collection as $location) { ?>
+					<?php foreach($collection1 as $location) { ?>
 			        	<option value="<?php echo $location->getId();?>"><?php echo $location->getName() . ' - ' . $location->getAddress();?></option>
 			        <?php } ?>
 			    </select>
 			</p>
 
+			<?php $collection2 = Mage::getModel('appointments/days')->getCollection(); ?>
 			<p>Fecha
 				<select name="day" id="day" class="day">
 					<option value=" " selected="selected">Seleccione</option>
-					<option value=" ">Mayo 26 de 2014</option>
-					<option value=" ">Mayo 27 de 2014</option>
-					<option value=" ">Mayo 28 de 2014</option>
-					<option value=" ">Mayo 29 de 2014</option>
-					<option value=" ">Mayo 30 de 2014</option>
+					<?php foreach($collection2 as $dates) { ?>
+			        	<option value="<?php echo $dates->getId();?>"><?php echo $dates->getDate();?></option>
+			        <?php } ?>
 			    </select>
 			</p>
 
+			<?php $collection3 = Mage::getModel('appointments/hours')->getCollection(); ?>
 		    <p>Hora
 				<select name="hours" id="hours" class="hours">
 					<option value=" " selected="selected">Seleccione</option>
-					<option value=" ">8:00 a 8:30</option>
-					<option value=" ">8:30 a 9:00</option>
-					<option value=" ">9:00 a 9:30</option>
-					<option value=" ">9:30 a 10:00</option>
-					<option value=" ">10:00 a 10:30</option>
-					<option value=" ">10:30 a 11:00</option>
-					<option value=" ">11:00 a 11:30</option>
-					<option value=" ">11:30 a 12:00</option>
+					<?php foreach($collection3 as $hours) { ?>
+			        	<option value="<?php echo $hours->getId();?>"><?php echo $hours->getTime();?></option>
+			        <?php } ?>
 			    </select>
 			</p>
 		</div>
@@ -50,9 +45,7 @@
 	-->
 	</div>
 
-
-
-	<div style="width:450px; float:left; margin-left:30px;">
+	<div style="width:450px; float:left; margin-left:30px; margin-bottom:50px;">
 		<p>Confirmación</p>			
 		<div class="">
 			<p>Nombre: Mauricio Beltran</p>

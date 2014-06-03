@@ -32,12 +32,15 @@
             <appointments_mysql4>
                 <class>Ziente_Appointments_Model_Mysql4</class>
                 <entities>
-                    <appointments>
+                    <locations>
                         <table>ziente_locations</table>
-                    </appointments>
-                    <schedule>
-                        <table>ziente_schedule</table>
-                    </schedule>
+                    </locations>
+                    <days>
+                        <table>ziente_days</table>
+                    </days>
+                    <hours>
+                        <table>ziente_hours</table>
+                    </hours>
                 </entities>
             </appointments_mysql4>
         </models>
