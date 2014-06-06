@@ -41,6 +41,10 @@
     }
 ?>
 <div class="category-info clearfix">
+    <?php if($_imgUrl): ?>
+        <?php echo $_imgHtml ?>
+    <?php endif; ?>
+    
     <div class="page-title category-title">
         <?php if($this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
             <a href="<?php echo $this->getRssLink() ?>" class="link-rss"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
@@ -49,10 +53,6 @@
     </div>
 
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-
-    <?php if($_imgUrl): ?>
-        <?php echo $_imgHtml ?>
-    <?php endif; ?>
 
     <?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
         <div class="category-description std">
