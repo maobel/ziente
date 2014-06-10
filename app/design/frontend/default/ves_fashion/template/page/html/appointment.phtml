@@ -1,15 +1,32 @@
-<?php //$collection = Mage::getModel('appointments/location')->getCollection(); ?>
+<div id="appointment">
+	<h1>Agende una cita</h1>
 
-<div style="width:1000px; margin: 0 auto;">
+	<div class="form">
 
-	<div style="width:450px; float:left;">
-		<p>Seleccione las siguientes opciones:</p>
+	<?php 
+		//Get the customer data
+		$customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
+		$customerName = Mage::getSingleton('customer/session')->getCustomer()->getName();
+		$customerEmail = Mage::getSingleton('customer/session')->getCustomer()->getEmail();
+		
+		if($customerId == ''){
+	?>
 
-		<div class="">
+		<div style="width: 400px; margin: 0 auto; padding-top: 80px; padding-bottom: 80px;">
+			<p>Para agendar una cita, usted debe estar registrado con nosotros. <br />
+				Si no se ha registrado, haga clic <a href="customer/account/">aca</a> para hacerlo.</p>
+		</div>
+
+	<?php
+		}else{
+	?>
+
+		<div class="options">
+			<p>Seleccione las siguientes opciones:</p>
 
 			<?php $collection1 = Mage::getModel('appointments/locations')->getCollection(); ?>
 			<p>Sede
-			    <select name="location" id="location" class="location">
+			    <select name="location" id="locations" class="locations">
 					<option value=" " selected="selected">Seleccione</option>
 					<?php foreach($collection1 as $location) { ?>
 			        	<option value="<?php echo $location->getId();?>"><?php echo $location->getName() . ' - ' . $location->getAddress();?></option>
@@ -17,45 +34,92 @@
 			    </select>
 			</p>
 
-			<?php $collection2 = Mage::getModel('appointments/days')->getCollection(); ?>
+			
 			<p>Fecha
-				<select name="day" id="day" class="day">
-					<option value=" " selected="selected">Seleccione</option>
-					<?php foreach($collection2 as $dates) { ?>
-			        	<option value="<?php echo $dates->getId();?>"><?php echo $dates->getDate();?></option>
-			        <?php } ?>
+				<select name="days" id="days" class="days">
+					
 			    </select>
 			</p>
 
-			<?php $collection3 = Mage::getModel('appointments/hours')->getCollection(); ?>
+			
 		    <p>Hora
 				<select name="hours" id="hours" class="hours">
-					<option value=" " selected="selected">Seleccione</option>
-					<?php foreach($collection3 as $hours) { ?>
-			        	<option value="<?php echo $hours->getId();?>"><?php echo $hours->getTime();?></option>
-			        <?php } ?>
+					
 			    </select>
 			</p>
 		</div>
-		<br />
-	<!--
-		<div class="form-buttons">
-			 <button class="button" id="consult-button" onclick="">Continuar</button>
-		</div>
-	-->
-	</div>
 
-	<div style="width:450px; float:left; margin-left:30px; margin-bottom:50px;">
-		<p>Confirmación</p>			
-		<div class="">
-			<p>Nombre: Mauricio Beltran</p>
-			<p>Email: maobel@hotmail.com</p>
-			<p>Notas adicionales <textarea name="notes"></textarea></p>
+		<div class="confirmation">
+			<p>Confirmación</p>			
+			<div class="">
+				<p>Nombre: <?php echo $customerName; ?></p>
+				<p>Email:  <?php echo $customerEmail; ?></p>
+				<p>Notas adicionales <textarea name="notes"></textarea></p>
+			</div>
+			<br />
+			<div class="form-buttons">
+				<input type="hidden" id="id" value="<?php echo $customerId; ?>">
+				<input type="hidden" id="name" value="<?php echo $customerName; ?>">
+				<input type="hidden" id="email" value="<?php echo $customerEmail; ?>">
+				<button class="button" id="confirm-button" onclick="confirm()">Confirmar</button>
+			</div>
 		</div>
-		<br />
-		<div class="form-buttons">
-			 <button class="button" id="consult-button" onclick="">Confirmar</button>
-		</div>
-	</div>
 
+	<?php
+		}
+	?>
+
+	</div>
 </div>
+
+
+<script type="text/javascript">
+	function confirm(){
+   		var location = jQuery("#locations").val();
+   		var day = jQuery("#days").val();
+   		var hour = jQuery("#hours").val();
+
+		if(location == ' '){
+			alert("Por favor seleccione una sede");
+			return false;
+		}
+		if(day == ' '){
+			alert("Por favor seleccione un dia");
+			return false;
+		}
+		if(hour == ' '){
+			alert("Por favor seleccione una hora");
+			return false;
+		}
+		
+
+		//FALTA EL RESTO
+		alert('LISTO');
+	}	
+
+	jQuery(document).ready(function (){
+		jQuery('.locations').change(function() {
+			var idLocation = jQuery("#locations").val();
+
+			jQuery.ajax({
+				url: '<?php echo Mage::getBaseUrl();?>ajax/days.php?id='+idLocation,
+				context: document.body,
+				success: function(data) {
+					jQuery('#days').html(data);
+				}
+		  	});
+		});
+
+		jQuery('.days').change(function() {
+			var idDay = jQuery("#days").val();
+
+			jQuery.ajax({
+				url: '<?php echo Mage::getBaseUrl();?>ajax/hours.php?id='+idDay,
+				context: document.body,
+				success: function(data) {
+					jQuery('#hours').html(data);
+				}
+		  	});
+		});
+    });
+</script>

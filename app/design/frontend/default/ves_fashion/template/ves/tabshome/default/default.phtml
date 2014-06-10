@@ -47,9 +47,9 @@
 		<?php foreach( $tabs as $key => $value ) { ?>
 			<?php if( isset($$key) && !empty($$key) ) {     $products = $$key; ?>
 			<?php if( empty($products) || $products->getSize() <= 0){ continue; } ?>
-			 <!--<li>-->
-			 	<a href="#tab-<?php echo $key.$modid;?>" data-toggle="tab"><span><?php //echo $value; ?></span></a>
-			 	<!--</li>-->
+			 <li>
+			 	<a href="#tab-<?php echo $key.$modid;?>" data-toggle="tab"><span><?php echo $value; ?></span></a>
+			 </li>
 		<?php } ?>
 		<?php } ?>
 	</ul>

@@ -273,7 +273,7 @@ ul, ol {
   text-decoration: none;
   position: relative;
   bottom: -1px;
-  font-family: 'brandon_grotesque_regularRg';
+  font-family: 'Helvetica';
 }
 /* line 100, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_base.scss */
 .htabs a.selected {
@@ -530,6 +530,7 @@ ul, ol {
   line-height: 10px;
   padding: 10px 15px;
   margin: 0 0 0 5px;
+  font-family: "Helvetica";
   font-style: italic;
 }
 /* line 137, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_block.scss */
@@ -569,7 +570,7 @@ ul, ol {
 /* line 156, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_block.scss */
 .block-layered-nav dt {
   text-transform: uppercase;
-  color: black;
+  color: #FFFFFF;
   font-size: 14px;
   line-height: 20px;
   padding: 7px 0 7px 25px;
@@ -702,7 +703,7 @@ ul, ol {
 .sidebar .mini-products-list .item .product-name a {
   font-size: 16px;
   display: block;
-  font-family: 'brandon_grotesquelight';
+  font-family: 'Helvetica';
 }
 /* line 258, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_block.scss */
 .sidebar .mini-products-list .item .ratings .amount {
@@ -778,15 +779,28 @@ input, select, textarea, button {
 }
 
 /* line 30, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_form.scss */
-.button, input.button {
-  background-color: #000;
+.button2, input.button {
+  background-color: #072944;
   border-radius: 0px;
-  border: 1px solid #000;
+  border: 1px solid #FFFFFF;
   color: white;
   padding: 5px 15px;
   -webkit-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
 }
+.button, input.button {
+  background-color: #9defc1;
+  border-radius: 0px;
+  border: 1px solid #FFFFFF;
+  color: white;
+  padding: 5px 15px;
+  /*width: 140px;*/
+  min-width: 140px;
+  height: 30px;
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+
 
 /* line 38, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_form.scss */
 .button:hover {
@@ -1072,7 +1086,8 @@ body.layout-boxed-lg #page {
 /* line 41, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_layout.scss */
 #topbar a {
   color: #666666;
-  font-size: 0.9em;
+  font-size: 14px;
+  font-family: "Helvetica";
 }
 /* line 48, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_layout.scss */
 #topbar .links li {
@@ -1180,8 +1195,8 @@ body.layout-boxed-lg #page {
 }
 /* line 126, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_layout.scss */
 .cart-inner h4 {
-  font-size: 12px;
-  text-transform: uppercase;
+  font-size: 14px;
+  /*text-transform: uppercase;*/
 }
 /* line 127, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_layout.scss */
 .cart-inner a {
@@ -1308,6 +1323,7 @@ body.layout-boxed-lg #page {
 }
 /* line 221, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_layout.scss */
 .breadcrumbs strong {
+  font-family: "Helvetica";
   font-weight: normal;
 }
 
@@ -1369,6 +1385,15 @@ body.layout-boxed-lg #page {
 .cart-top #cart {
   position: relative;
   padding-bottom: 9px;
+}
+.my-account-custom {
+  margin-top: 15px;
+  float: left;
+  position: relative;
+  width: 90px;
+  color: #666666;
+  font-family: "Helvetica";
+  font-size: 14px;
 }
 /* line 22, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-module.scss */
 .cart-top #cart .content {
@@ -1546,7 +1571,7 @@ body.layout-boxed-lg #page {
   text-transform: uppercase;
   border: none;
   margin: 0;
-  font-family: 'brandon_grotesque_regularRg';
+  font-family: 'Helvetica';
   letter-spacing: 2px;
   display: list-item;
   list-style: disc inside none;
@@ -1555,7 +1580,10 @@ body.layout-boxed-lg #page {
 }
 /* line 115, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-module.scss */
 .producttabs .nav-tabs > li a span {
-  font-size: 14px;
+  font-size: 26px;
+  font-family: 'Helvetica';
+  font-weight: bold;
+  color: #0b2a4a;
   line-height: 1em;
   padding: 0 0 0 5px;
 }
@@ -1571,6 +1599,10 @@ body.layout-boxed-lg #page {
 /* line 125, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-module.scss */
 .producttabs .nav-tabs > li:last-child a {
   padding-right: 10px;
+  width: 300px;
+  list-style: none;
+  font-family: 'Helvetica';
+  font-size: 30px;
 }
 /* line 131, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-module.scss */
 .producttabs .nav-tabs:before {
@@ -1580,7 +1612,7 @@ body.layout-boxed-lg #page {
   margin-top: -1px;
   height: 1px;
   width: 100%;
-  background: black;
+  /*background: black;*/
   content: "";
 }
 /* line 133, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-module.scss */
@@ -1604,7 +1636,7 @@ body.layout-boxed-lg #page {
   height: 20px;
   opacity: 1;
   color: #fff;
-  background-color: #666;
+  background-color: #072944;
   text-transform: none;
   padding: 0 15px 2px;
   position: relative;
@@ -1619,12 +1651,12 @@ body.layout-boxed-lg #page {
   left: -22px;
   content: "";
   border: 11px solid transparent;
-  border-right-color: #666;
+  border-right-color: #072944;
 }
 /* line 160, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-module.scss */
 .producttabs .carousel-controls .carousel-control span.cars-next:before {
   border-right-color: transparent;
-  border-left-color: #666;
+  border-left-color: #072944;
   left: auto;
   right: -22px;
 }
@@ -1693,13 +1725,13 @@ body.layout-boxed-lg #page {
 }
 /* line 223, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-module.scss */
 #ves-mainnav .navbar-nav > li > a {
-  font-family: "brandon_grotesque_regularRg";
-  font-size: 12px;
+  font-family: "Helvetica";
+  font-size: 13px;
   display: block;
   line-height: 18px;
   text-decoration: none;
   float: left;
-  padding: 16px 20px;
+  /*padding: 16px 20px;*/
   color: black;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -1728,7 +1760,7 @@ body.layout-boxed-lg #page {
 }
 /* line 246, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-module.scss */
 #ves-mainnav .navbar-nav > li .dropdown-menu a span {
-  font-family: Noticia Text;
+  font-family: Helvetica;
   font-size: 13px;
   font-weight: 300 !important;
   line-height: 24px;
@@ -1785,7 +1817,7 @@ body.layout-boxed-lg #page {
   text-transform: uppercase;
   color: #fff;
   letter-spacing: 2px;
-  font-family: "brandon_grotesque_regularRg";
+  font-family: "Helvetica";
   padding-bottom: 6px;
   display: block;
 }
@@ -1794,7 +1826,7 @@ body.layout-boxed-lg #page {
   text-transform: uppercase;
   color: #fff;
   letter-spacing: 2px;
-  font-family: "brandon_grotesque_regularRg";
+  font-family: "Helvetica";
   font-weight: 300;
   padding-bottom: 10px;
 }
@@ -1836,7 +1868,7 @@ body.layout-boxed-lg #page {
 /* line 324, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-module.scss */
 #ves-mainnav .widget-product-list .product-block .price-box .price {
   color: #fff !important;
-  font-family: Noticia Text !important;
+  font-family: Helvetica !important;
   font-size: 15px !important;
 }
 /* line 325, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-module.scss */
@@ -1855,7 +1887,7 @@ body.layout-boxed-lg #page {
 .venus-latest-block .title {
   display: block;
   text-align: center;
-  font-family: "brandon_grotesque_regularRg";
+  font-family: "Helvetica";
   font-weight: 300;
   font-size: 14px;
   letter-spacing: 2px;
@@ -1892,7 +1924,7 @@ body.layout-boxed-lg #page {
 .venus-latest-block .post-item h4 a {
   color: black;
   font-size: 16px;
-  font-family: Noticia Text;
+  font-family: Helvetica;
   font-weight: bold;
   line-height: 24px;
   -webkit-transition: all 300ms ease-in-out;
@@ -1907,12 +1939,12 @@ body.layout-boxed-lg #page {
   font-style: italic;
   font-size: 1em;
   color: #666666;
-  font-family: Noticia Text;
+  font-family: Helvetica;
 }
 /* line 369, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-module.scss */
 .venus-latest-block .latest-description {
   font-size: 1em;
-  font-family: Noticia Text;
+  font-family: Helvetica;
   line-height: 24px;
   margin-bottom: 10px;
 }
@@ -1938,8 +1970,8 @@ body.layout-boxed-lg #page {
 /* line 385, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-module.scss */
 .custom-subscribe .title {
   text-transform: uppercase;
-  font-family: "brandon_grotesque_regularRg";
-  font-size: 14px;
+  font-family: "Helvetica";
+  font-size: 16px;
   color: #000;
   letter-spacing: 2px;
   padding: 15px 0;
@@ -1961,8 +1993,8 @@ body.layout-boxed-lg #page {
 }
 /* line 397, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-module.scss */
 .custom-subscribe .button span span {
-  background: url(../images/arrow-links-white.png) right 7px no-repeat;
-  padding-right: 18px;
+  /*background: url(../images/arrow-links-white.png) right 7px no-repeat;
+  padding-right: 18px;*/
 }
 
 /* Brand */
@@ -2032,7 +2064,7 @@ body.layout-boxed-lg #page {
   border-style: none;
   border-width: 0;
   color: #FFF;
-  font-family: "brandon_grotesque_regularRg",serif;
+  font-family: "Helvetica",serif;
   font-size: 14px;
   font-weight: normal;
   letter-spacing: 3px;
@@ -2045,7 +2077,7 @@ body.layout-boxed-lg #page {
 .ves-slideshow .ves-caption.normal-caption {
   font-weight: 300;
   color: #FFF;
-  font-family: Noticia Text, serif;
+  font-family: Helvetica, serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -2058,7 +2090,7 @@ body.layout-boxed-lg #page {
 /* line 468, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-module.scss */
 .ves-slideshow .ves-caption.big-caption {
   color: #FFF;
-  font-family: "brandon_grotesquebold",serif;
+  font-family: "Helvetica",serif;
   font-size: 36px;
   font-weight: 700;
   letter-spacing: 3px;
@@ -2091,7 +2123,7 @@ body.layout-boxed-lg #page {
   color: black;
   font-size: 24px;
   letter-spacing: 2px;
-  font-family: 'brandon_grotesque_regularRg';
+  font-family: 'Helvetica';
   text-transform: uppercase;
   line-height: 36px;
 }
@@ -2253,7 +2285,7 @@ body.layout-boxed-lg #page {
   display: block;
   padding: 10px 20px;
   line-height: 28px;
-  font-family: Noticia Text;
+  font-family: Helvetica;
 }
 /* line 93, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .toolbar-bottom .sorter, .toolbar-bottom .limiter {
@@ -3063,7 +3095,7 @@ body.layout-boxed-lg #page {
 }
 /* line 484, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .opc .step-title {
-  background-color: #EFEFEF;
+  background-color: #FFFFFF;
   border: 1px solid #e0e0e0;
   padding: 8px;
   text-align: right;
@@ -3071,7 +3103,8 @@ body.layout-boxed-lg #page {
 }
 /* line 490, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .opc .step-title .number {
-  background-color: #fff;
+  color: #FFFFFF;
+  background-color: #65788d;
   float: left;
   font-size: 14px;
   line-height: 16px;
@@ -3080,7 +3113,8 @@ body.layout-boxed-lg #page {
 }
 /* line 498, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .opc .step-title h2 {
-  color: #999;
+  color: #000000;
+  text-transform:uppercase;
   float: left;
   font-size: 16px;
   line-height: 25px;
@@ -3102,15 +3136,16 @@ body.layout-boxed-lg #page {
 }
 /* line 518, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .opc .allow .step-title {
-  background: none repeat scroll 0 0 #F5F5F5;
+  /*background: none repeat scroll 0 0 #F5F5F5;*/
 }
 /* line 520, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .opc .allow .step-title:hover {
-  background-color: #E5E5E5;
+  /*background-color: #E5E5E5;*/
 }
 /* line 523, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .opc .allow .step-title h2 {
-  color: #333333;
+  color: #FFFFFF;
+  text-transform:uppercase;
 }
 /* line 526, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .opc .allow .step-title a {
@@ -3118,12 +3153,12 @@ body.layout-boxed-lg #page {
 }
 /* line 530, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .opc .active .step-title {
-  background-color: #E5E5E5;
+  background-color: #65788d;
   cursor: default;
 }
 /* line 533, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .opc .active .step-title .number {
-  background-color: #333333;
+  background-color: #65788d;
   color: #FFFFFF;
 }
 /* line 537, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
@@ -4507,7 +4542,7 @@ p.required, .product-options dt label.required em, .form-list label.required em 
 }
 /* line 64, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_menu.scss */
 #nav a {
-  font-family: "brandon_grotesque_regularRg";
+  font-family: "Helvetica";
   font-size: 12px;
   display: block;
   line-height: 18px;
@@ -4573,7 +4608,7 @@ p.required, .product-options dt label.required em, .form-list label.required em 
 /* line 118, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_menu.scss */
 #nav ul li a {
   font-size: 13px;
-  font-family: Noticia Text;
+  font-family: Helvetica;
   line-height: 24px;
   font-weight: normal !important;
   background: black;
@@ -5083,7 +5118,7 @@ body,
 
 /* line 112, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_offcanvas.scss */
 .offcanvas-menu ul.megamenu > li > a {
-  font-family: "brandon_grotesque_regularRg";
+  font-family: "Helvetica";
   font-size: 12px;
   display: block;
   line-height: 18px;
@@ -5129,7 +5164,7 @@ body,
 .offcanvas-menu .menu-title {
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-family: "brandon_grotesque_regularRg";
+  font-family: "Helvetica";
   font-weight: 300;
   padding-bottom: 10px;
 }
@@ -5281,7 +5316,7 @@ body,
 .product-block .product-name {
   margin: 0 0 5px;
   color: #203548;
-  font-family: brandon_grotesquelight;
+  font-family: 'Helvetica';
   font-size: 16px;
   line-height: 24px;
 }
@@ -5331,7 +5366,7 @@ body,
   font-style: normal;
   padding: 0;
   text-transform: uppercase;
-  font-family: 'brandon_grotesque_regularRg';
+  font-family: 'Helvetica';
 }
 /* line 48, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-block .actions button.btn-cart span .fa {
@@ -5444,7 +5479,7 @@ body,
 .products-grid .product-name, .box-up-sell .product-name {
   margin: 20px 0 5px;
   color: #203548;
-  font-family: brandon_grotesquelight;
+  font-family: 'Helvetica';
   font-size: 16px;
 }
 /* line 131, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
@@ -5480,7 +5515,7 @@ body,
 .products-list .product-name {
   margin: 0 0 5px;
   font-size: 17px;
-  font-family: brandon_grotesquelight;
+  font-family: 'Helvetica';
 }
 /* line 159, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .products-list .product-name a {
@@ -5720,7 +5755,7 @@ body,
 /* line 280, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .price-box .price {
   color: black;
-  font-family: 'brandon_grotesquebold';
+  font-family: 'Helvetica';
 }
 
 /* Regular price */
@@ -5733,7 +5768,7 @@ body,
 .regular-price .price {
   font-size: 16px;
   color: black;
-  font-family: 'brandon_grotesquebold';
+  font-family: 'Helvetica';
 }
 
 /* line 297, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
@@ -5761,7 +5796,7 @@ body,
   color: #999999;
   text-decoration: line-through;
   font-size: 16px;
-  font-family: 'brandon_grotesquelight';
+  font-family: 'Helvetica';
 }
 
 /* Special price */
@@ -6314,7 +6349,7 @@ body,
 .product-view .add-to-cart .add-cart {
   background: #000;
   line-height: 38px;
-  font-family: 'brandon_grotesque_regularRg';
+  font-family: 'Helvetica';
 }
 /* line 645, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-view .add-to-box .add-cart:hover,
@@ -6325,6 +6360,7 @@ body,
 .product-view .add-to-box .add-cart button.btn-cart,
 .product-view .add-to-cart .add-cart button.btn-cart {
   background: none;
+  background-color: #9defc1;
   border: medium none;
   font-size: 11px;
   text-transform: uppercase;
@@ -6354,7 +6390,7 @@ body,
   text-transform: uppercase;
   font-size: 11px;
   border-bottom: 1px solid #e4e4e4;
-  font-family: 'brandon_grotesque_regularRg';
+  font-family: 'Helvetica';
 }
 /* line 675, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-view .add-to-links li a {
@@ -6507,7 +6543,7 @@ body,
 /* line 736, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-view .product-shop .product-name {
   margin: 0 0 5px;
-  font-family: brandon_grotesquelight;
+  font-family: 'Helvetica';
   font-size: 16px;
 }
 /* line 740, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
@@ -6593,7 +6629,7 @@ body,
   letter-spacing: 2px;
   color: black;
   font-size: 14px;
-  font-family: 'brandon_grotesque_regularRg';
+  font-family: 'Helvetica';
   background: white;
   padding: 0 20px;
   position: relative;
@@ -6843,7 +6879,7 @@ body,
 /* line 951, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .crosssell .product-name {
   margin: 0 0 5px;
-  font-family: brandon_grotesquelight;
+  font-family: 'Helvetica';
   font-size: 16px;
   line-height: 24px;
 }
@@ -7029,7 +7065,7 @@ body,
 /* line 9, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_typo.scss */
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
-  font-family: Noticia Text;
+  font-family: Helvetica;
 }
 
 /* line 14, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_typo.scss */
@@ -7193,7 +7229,7 @@ h6 {
 .custom-abs h3,
 .custom-footer-links h3 {
   color: black;
-  font-family: 'brandon_grotesque_regularRg';
+  font-family: 'Helvetica';
   font-size: 14px;
   font-weight: normal;
   letter-spacing: 2px;
@@ -7335,7 +7371,7 @@ h6 {
 }
 /* line 112, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_custom.scss */
 .ct-p strong {
-  font-family: 'brandon_grotesque_regularRg';
+  font-family: 'Helvetica';
   font-size: 18px;
   font-weight: normal;
   letter-spacing: 2px;
@@ -7385,7 +7421,31 @@ HOME PAGE
 .follow-box{
   width: 51px;
   float: left;
+  margin-top: 20px;
   margin-left: 5px;
+}
+.custom-footer-box1 h3, .custom-footer-box3 h3 {
+  color: black;
+  font-size: 22px;
+  letter-spacing: 2px;
+  font-family: 'Helvetica';
+  text-transform: uppercase;
+  line-height: 36px;
+}
+.custom-footer-box1 ul{
+  margin-top: 20px;
+}
+.custom-footer-box1 li{
+  margin-top: 10px;
+  font-size: 16px;
+  font-family: 'Helvetica';
+  font-style: normal;
+}
+.custom-footer-box2 li{
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-family: 'Helvetica';
+  font-style: normal;
 }
 
 /*
@@ -7398,6 +7458,16 @@ COLECCIONES
   width: 350px; 
   margin: 0 auto; 
   margin-bottom: 120px;
+}
+#colecciones-intro h2{
+  text-align: center;
+  margin-top: 32px;  
+}
+#colecciones-intro p{
+  margin-top: 62px;
+  font-size: 16px;
+  font-family: 'Helvetica';
+  text-align: justify;
 }
 .colecciones-box2{
   width: 380px; 
@@ -7425,10 +7495,11 @@ COLECCIONES
 }
 
 /*
-COLECCIONES
+HISTORIA
 */
 #historia{
-  width: 1155px;  
+  width: 1155px;
+  height: 2000px;
 }
 #historia-intro{
   width: 592px; 
@@ -7458,10 +7529,26 @@ COLECCIONES
   width: 193px; 
   float:left;
   margin-top: 72px;
+  font-size: 24px;
+  font-family: 'Helvetica';
 }
 .historia-flujo-imagen{
   width: 961px; 
   float:left;
+}
+#historia-intro p{
+  font-size: 16px;
+  font-family: 'Helvetica';
+  font-style: normal;
+  text-align: justify;
+}
+.historia-intro-texto{
+  font-size: 16px;
+  font-family: 'Helvetica';
+  font-style: italic;
+  margin:  0 auto; 
+  width: 360px;
+  padding-bottom: 45px;
 }
 
 /*
@@ -7480,14 +7567,37 @@ CAMISAS
   margin: 0 auto; 
 }
 .camisas-tabla{
-  width: 100%;
+  width: 1060px;
   border: 0;
-  padding: 30px;
+  padding-bottom: 30px;
   margin-top: 100px;
 }
 .camisas-tabla tr, .camisas-tabla td, .camisas-tabla th{
   border: 0;
-  padding: 30px;
+  padding-bottom: 100px;
+}
+.camisas-tabla .col1{
+  width: 190px;
+}
+.camisas-tabla .col2{
+  text-align: center;
+  width: 318px;
+  padding-top: 35px;
+}
+.camisas-tabla .col3{
+  width: 552px;
+}
+.camisas-tabla p{
+  font-size: 16px;
+  font-family: 'Helvetica';
+  font-weight: normal;
+  text-align: justify;
+}
+.camisas-tabla span{
+  font-size: 20px;
+  letter-spacing: 2px;
+  font-family: 'Helvetica';
+  text-transform: uppercase;
 }
 .camisas-silueta-01{
   width: 1083px;
@@ -7514,8 +7624,12 @@ CAMISAS
 }
 .camisas-largo-texto{
   width: 807px;
-  padding-top: 100px; 
-  margin: 0 auto; 
+  padding-top: 16px; 
+  margin: 0 auto;
+  font-size: 16px;
+  font-family: 'Helvetica';
+  font-weight: normal;
+  text-align: justify;
 }
 .camisas-largo-imagen{
   width: 1090px;
@@ -7540,19 +7654,128 @@ CAMISAS
   margin-top: 34px;
   margin-bottom: 83px;
 }
+.camisas-faq .preguntas{
+  width: 900px;
+  margin: 0 auto;
+  margin-bottom: 96px;
+}
+.camisas-faq .preguntas li{
+  margin-bottom: 90px;
+  font-size: 16px;
+  font-family: 'Helvetica';
+  font-style: normal;
+}
+.camisas-faq .preguntas li h3{
+  font-size: 20px;
+  font-family: 'Helvetica';
+  margin-bottom: 30px;
+}
+#camisas .texto{
+  text-align: center;
+  margin-top: 26px;
+  margin-bottom: 84px;
+}
+
+/*
+COMPRAR
+*/
+#comprar{
+  width: 1165px;  
+}
+.comprar-step{
+  width: 970px; 
+  margin: 0 auto;
+  padding-top: 50px;
+  padding-bottom: 25px;
+}
+.comprar-step-number{
+  width: 75px; 
+  height: 98px;
+  float: left;
+}
+.comprar-step p{
+  margin-top: 20px;
+  font-size: 16px;
+  font-family: 'Helvetica';
+}
+.comprar-faq{
+  clear: both;
+  padding-top: 145px; 
+}
+.comprar-faq .preguntas{
+  width: 900px;
+  margin: 0 auto;
+  margin-bottom: 96px;
+  margin-top: 140px;
+}
+.comprar-faq .preguntas li{
+  margin-bottom: 90px;
+  font-size: 16px;
+  font-family: 'Helvetica';
+  font-style: normal;
+}
+.comprar-faq .preguntas li h3{
+  font-size: 20px;
+  font-family: 'Helvetica';
+  margin-bottom: 30px;
+}
+#comprar .texto{
+  text-align: center;
+  margin-top: 26px;
+  margin-bottom: 84px;
+}
+.botones{
+  width: 804px;
+  margin: 0 auto;
+}
+
+/*
+CITAS
+*/
+#appointment{
+  width:1000px; 
+  margin: 0 auto;
+}
+#appointment .form{
+  margin-top: 50px;
+}
+#appointment .form .options{
+  width:450px; 
+  float:left;
+}
+#appointment .form .confirmation{
+  width:450px; 
+  float:left; 
+  margin-left:30px; 
+  margin-bottom:50px;
+}
 
 
+#camisas h1, #historia h1, #colecciones h1, #comprar h1, #appointment h1, #legal h1, #privacy h1, #terms h1{
+  color: #072944;
+  font-size: 46px;
+  letter-spacing: 2px;
+  font-family: 'Helvetica';
+  font-weight:bold;
+  text-transform: uppercase;
+  line-height: 36px;
+  text-align: center;
+}
+#camisas h2, #historia h2, .comprar-faq h2{
+  color: #072944;
+  font-size: 46px;
+  letter-spacing: 2px;
+  font-family: 'Helvetica';
+  font-weight:bold;
+  text-transform: uppercase;
+  line-height: 36px;
+  text-align: center;
+}
+#legal .content, #privacy .content, #terms .content{
+  margin-top: 50px;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-.clear { clear: both; height: 0; }
+.back-link{
+  margin-top: 50px;
+};

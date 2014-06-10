@@ -44,7 +44,7 @@ audio:not([controls]) {
 
 /* line 64, ../sass/bootstrap_lib/_normalize.scss */
 html {
-  font-family: sans-serif;
+  font-family: "Helvetica";
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
@@ -105,7 +105,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: monospace, serif;
+  font-family: "Helvetica";
   font-size: 1em;
 }
 
@@ -176,7 +176,7 @@ button,
 input,
 select,
 textarea {
-  font-family: inherit;
+  font-family: "Helvetica";
   font-size: 100%;
   margin: 0;
 }
@@ -371,7 +371,7 @@ html {
 
 /* line 22, ../sass/bootstrap_lib/_scaffolding.scss */
 body {
-  font-family: Noticia Text;
+  font-family: "Helvetica";
   font-size: 13px;
   line-height: 1.42857;
   color: #777777;
@@ -383,7 +383,7 @@ input,
 button,
 select,
 textarea {
-  font-family: inherit;
+  font-family: "Helvetica";
   font-size: inherit;
   line-height: inherit;
 }
@@ -546,7 +546,7 @@ cite {
 /* line 51, ../sass/bootstrap_lib/_type.scss */
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: Noticia Text;
+  font-family: "Helvetica";
   font-weight: 500;
   line-height: 1.1;
 }
@@ -6597,7 +6597,7 @@ body.modal-open {
   height: 20px;
   margin-top: -10px;
   margin-left: -10px;
-  font-family: serif;
+  font-family: "Helvetica";
 }
 /* line 120, ../sass/bootstrap_lib/_carousel.scss */
 .carousel-control .icon-prev:before {
