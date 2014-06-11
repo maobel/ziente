@@ -14,7 +14,7 @@
 
 		<div style="width: 400px; margin: 0 auto; padding-top: 80px; padding-bottom: 80px;">
 			<p>Para agendar una cita, usted debe estar registrado con nosotros. <br />
-				Si no se ha registrado, haga clic <a href="customer/account/">aca</a> para hacerlo.</p>
+				Si no se ha registrado, haga clic <a href="customer/account/">aquí</a> para hacerlo.</p>
 		</div>
 
 	<?php
@@ -50,19 +50,22 @@
 		</div>
 
 		<div class="confirmation">
-			<p>Confirmación</p>			
-			<div class="">
-				<p>Nombre: <?php echo $customerName; ?></p>
-				<p>Email:  <?php echo $customerEmail; ?></p>
-				<p>Notas adicionales <textarea name="notes"></textarea></p>
-			</div>
-			<br />
-			<div class="form-buttons">
-				<input type="hidden" id="id" value="<?php echo $customerId; ?>">
-				<input type="hidden" id="name" value="<?php echo $customerName; ?>">
-				<input type="hidden" id="email" value="<?php echo $customerEmail; ?>">
-				<button class="button" id="confirm-button" onclick="confirm()">Confirmar</button>
-			</div>
+			<form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="confirmation-form">
+				<p>Confirmación</p>			
+				<div class="">
+					<p>Nombre: <?php echo $customerName; ?></p>
+					<p>Email:  <?php echo $customerEmail; ?></p>
+					<p>Notas adicionales <textarea name="notes"></textarea></p>
+				</div>
+				<br />
+				<div class="form-buttons">
+					<input type="hidden" id="id" value="<?php echo $customerId; ?>">
+					<input type="hidden" id="name" value="<?php echo $customerName; ?>">
+					<input type="hidden" id="email" value="<?php echo $customerEmail; ?>">
+
+					<button class="button" id="confirm-button" onclick="confirm()">Confirmar</button>
+				</div>
+			</form>
 		</div>
 
 	<?php

@@ -398,7 +398,7 @@ textarea {
 
 /* line 54, ../sass/bootstrap_lib/_scaffolding.scss */
 a {
-  color: #777777;
+  color: #072944;
   text-decoration: none;
 }
 /* line 59, ../sass/bootstrap_lib/_scaffolding.scss */
@@ -845,7 +845,13 @@ pre code {
 .row {
   margin-left: -10px;
   margin-right: -10px;
-  margin-top: 50px;
+}
+.row-footer{
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top: 1px #f0f0f0 solid;
 }
 /* line 21, ../sass/bootstrap_lib/_mixins.scss */
 .row:before, .row:after {
@@ -1545,6 +1551,7 @@ pre code {
   /* line 298, ../sass/bootstrap_lib/_grid.scss */
   .col-lg-6 {
     width: 50%;
+    float: right;
   }
 
   /* line 299, ../sass/bootstrap_lib/_grid.scss */

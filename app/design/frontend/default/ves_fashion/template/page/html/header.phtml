@@ -32,8 +32,8 @@
 	<section id="topbar">
         <div class="topLinks pull-left">
             <!--span class="welcome-msg"><?php //echo $this->getChildHtml('welcome') ?> <?php //echo $this->getAdditionalHtml() ?></span-->
-            <?php //echo $this->getChildHtml('topLinks') ?>
-            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('header_links')->toHtml(); ?>
+            <?php echo $this->getChildHtml('topLinks') ?>
+            <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('header_links')->toHtml(); ?>
         </div>
 		<div class="quick-access">
 			<div class="quickaccess-toggle hidden-lg hidden-md">
@@ -52,9 +52,10 @@
 		</div>
 		 
 		<div class="header-right inner pull-right">
+			<!--
 			<div class="my-account-custom">
 				<a href='customer/account/'><?php echo $this->__('My Account'); ?></a>
-			</div>
+			</div>-->
 			<div class="pull-right">
 				<div class="inner-toggle">
 					<div class="cart-top">

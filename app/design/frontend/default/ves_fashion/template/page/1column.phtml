@@ -140,42 +140,40 @@
         </section>
         <?php } ?>
 
-       <section id="footer">
-
-        <?php if($ves_latest = $this->getChildHtml('footer_links_cms') || $customm_newsletter = $this->getChildHtml('customm_newsletter')){ ?>
-        <section id="ves-custom" class="ves-custom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-13 col-sm-7 col-xs-12"><?php echo $this->getChildHtml('footer_links_cms')?></div>
-                    <div class="col-lg-3 col-sm-5 col-xs-12"><?php echo $this->getChildHtml('customm_newsletter') ?></div>
-                </div>
-            </div>
-        </section>
-        <?php } ?>
-
-         <?php if($footerTop = $helper->getModulesByPosition('footerTop')){ ?>
-            <div class="footer-top">
+        <section id="footer">
+            <?php if($ves_latest = $this->getChildHtml('footer_links_cms') || $customm_newsletter = $this->getChildHtml('customm_newsletter')){ ?>
+            <section id="ves-custom" class="ves-custom">
                 <div class="container">
-                    <?php echo $footerTop; ?>
-                </div>
-            </div>
-            <?php } ?>
-        <?php if($themeConfig->get("enable_footer_center",1) && $footerCenter = $helper->getModulesByPosition('footerCenter')){ ?>
-            <div class="footer-center">
-                    <div class="container">
-                        <?php echo $footerCenter; ?>
+                    <div class="row-footer">
+                        <div class="col-lg-13 col-sm-7 col-xs-12"><?php echo $this->getChildHtml('footer_links_cms')?></div>
+                        <div class="col-lg-3 col-sm-5 col-xs-12"><?php echo $this->getChildHtml('customm_newsletter') ?></div>
                     </div>
                 </div>
-        <?php } ?>
-        <?php if($footerBottom = $helper->getModulesByPosition('footer')){ ?>
+            </section>
+            <?php } ?>
+             <?php if($footerTop = $helper->getModulesByPosition('footerTop')){ ?>
+                <div class="footer-top">
+                    <div class="container">
+                        <?php echo $footerTop; ?>
+                    </div>
+                </div>
+            <?php } ?>
+            <?php if($themeConfig->get("enable_footer_center",1) && $footerCenter = $helper->getModulesByPosition('footerCenter')){ ?>
+                <div class="footer-center">
+                        <div class="container">
+                            <?php echo $footerCenter; ?>
+                        </div>
+                    </div>
+            <?php } ?>
+            <?php if($footerBottom = $helper->getModulesByPosition('footer')){ ?>
                 <?php echo $footerBottom; ?>
             <?php } ?>
-         <?php if($before_body_end =  $this->getChildHtml('before_body_end')){ ?>
-            <section id="before_body_end">
-                <?php echo $before_body_end; ?>
-            </section>
-        <?php } ?>
-        <?php echo $this->getAbsoluteFooter() ?>
+            <?php if($before_body_end =  $this->getChildHtml('before_body_end')){ ?>
+                <section id="before_body_end">
+                    <?php echo $before_body_end; ?>
+                </section>
+            <?php } ?>
+            <?php echo $this->getAbsoluteFooter() ?>
         </section>
          <?php if( $themeConfig->get('enable_paneltool') ){  ?>
             <?php  echo $helper->renderAddon( 'panel' );?>
