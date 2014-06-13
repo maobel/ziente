@@ -1795,7 +1795,7 @@ th {
   padding: 9px 8px 11px 18px;
   line-height: 1.42857;
   vertical-align: top;
-  border-top: 1px solid #d6d4d4;
+  /*border-top: 1px solid #d6d4d4;*/
 }
 /* line 35, ../sass/bootstrap_lib/_tables.scss */
 .table thead > tr > th {

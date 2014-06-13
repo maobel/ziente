@@ -9,3 +9,5 @@ var/tmp/*
 var/locks/*
 var/report/*
 var/export/*
+var/cache/*
+var/log/system.log

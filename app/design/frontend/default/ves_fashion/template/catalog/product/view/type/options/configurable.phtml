@@ -32,10 +32,13 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 <?php if ($_product->isSaleable() && count($_attributes)):?>
     <dl>
     <?php foreach($_attributes as $_attribute): ?>
-        <dt></dt>
+        <dt>
+            <label class="required">Selecciona tu <?php echo $_attribute->getLabel() ?>:</label><br />
+            <span><a href="#">¿Cuál es la diferencia?</a></span>
+        </dt>
         <dd<?php if ($_attribute->decoratedIsLast){?> class="last"<?php }?>>
             <div class="input-box">
-                <label class="required"><em>*</em><?php echo $_attribute->getLabel() ?></label>
+                
                 <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
                     <option><?php echo $this->__('Choose an Option...') ?></option>
                   </select>

@@ -25,7 +25,7 @@
  */
 ?>
 <?php $_product = $this->getProduct(); ?>
-<?php $buttonTitle = $this->__('Add to Cart'); ?>
+<?php $buttonTitle = $this->__('Add to Shopping Cart'); ?>
 <?php if($_product->isSaleable()): ?>
     <div class="add-to-cart">
 		<div class="qty">
@@ -35,7 +35,7 @@
 			<?php endif; ?>
 		</div>
 		<div class="add-cart">
-			<button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><i class="fa fa-shopping-cart "> </i><?php echo $buttonTitle ?></span></span></button>
+			<button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><?php echo $buttonTitle ?></button>
 			<?php echo $this->getChildHtml('', true, true) ?>
 		</div>
     </div>

@@ -883,8 +883,8 @@ table td {
 }
 /* line 75, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_form.scss */
 table tbody th, table tbody td {
-  border-bottom: 1px solid #d9dde3;
-  border-right: 1px solid #d9dde3;
+  /*border-bottom: 1px solid #d9dde3;
+  border-right: 1px solid #d9dde3;*/
 }
 /* line 78, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_form.scss */
 table tbody.odd tr {
@@ -922,7 +922,7 @@ table tbody td .option-value {
 
 /* line 92, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_form.scss */
 .data-table {
-  width: 90%;
+  width: 100%;
   float: right;
   border: 0;
 }
@@ -933,7 +933,7 @@ table tbody td .option-value {
 /* line 97, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_form.scss */
 .data-table thead {
   background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
-  border-bottom: 1px solid #e4e4e4;
+  /*border-bottom: 1px solid #e4e4e4;*/
 }
 /* line 100, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_form.scss */
 .data-table thead th {
@@ -949,7 +949,7 @@ table tbody td .option-value {
   /*border-right: 1px solid #e4e4e4;*/
   border: 0;
   color: #333;
-  border-color: #e4e4e4;
+  /*border-color: #e4e4e4;*/
 }
 /* line 113, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_form.scss */
 .data-table tr.odd td.last {
@@ -957,12 +957,12 @@ table tbody td .option-value {
 }
 /* line 116, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_form.scss */
 .data-table tr.odd.last {
-  border-bottom: 1px solid #e4e4e4;
+  /*border-bottom: 1px solid #e4e4e4;*/
 }
 /* line 119, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_form.scss */
 .data-table tr.even td, .data-table tr.even th {
-  border-right: 1px solid #e4e4e4;
-  color: #333;
+  /*border-right: 1px solid #e4e4e4;*/
+  /*color: #333;*/
 }
 /* line 123, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_form.scss */
 .data-table tr.even td.last {
@@ -982,7 +982,7 @@ table tbody td .option-value {
 }
 /* line 136, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_form.scss */
 .data-table tbody.odd tr.last {
-  border-bottom: 1px solid #e4e4e4;
+  /*border-bottom: 1px solid #e4e4e4;*/
 }
 /* line 139, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_form.scss */
 .data-table tbody.even {
@@ -5328,8 +5328,9 @@ body,
 }
 /* line 19, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-block .product-name a {
-  text-align: center;
+  text-align: left;
   display: block;
+  margin-left: 15px;
   line-height: 1.25;
 }
 /* line 25, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
@@ -5365,6 +5366,7 @@ body,
   background: none;
   border: none;
   margin-left: 60px;
+  display: none;
 }
 /* line 42, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-block .actions button.btn-cart span {
@@ -5483,14 +5485,15 @@ body,
 }
 /* line 125, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .products-grid .product-name, .box-up-sell .product-name {
-  margin: 20px 0 5px;
+  /*margin: 20px 0 5px;*/
   color: #203548;
   font-family: 'Helvetica';
-  font-size: 16px;
+  font-size: 13px;
 }
 /* line 131, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .products-grid .price-box, .box-up-sell .price-box {
-  text-align: center;
+  text-align: left;
+  margin-left: 15px;
 }
 /* line 134, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .products-grid .availability, .box-up-sell .availability {
@@ -5775,6 +5778,7 @@ body,
   font-size: 16px;
   color: #072944;
   font-family: 'Helvetica';
+  font-size: 13px;
 }
 
 /* line 297, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
@@ -6114,7 +6118,7 @@ body,
 }
 /* line 518, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-collateral h2 {
-  border-bottom: 1px solid #e4e4e4;
+  /*border-bottom: 1px solid #e4e4e4;*/
   font-size: 15px;
   margin: 0 0 15px;
   padding: 0 0 2px;
@@ -6160,6 +6164,7 @@ body,
 /* line 540, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-options {
   position: relative;
+  padding-top: 90px;
 }
 /* line 542, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-options dt {
@@ -6170,6 +6175,9 @@ body,
 .product-options dt label {
   font-weight: bold;
   color: #2f2f2f;
+  font-size: 16px;
+  font-style: italic;
+  text-transform: uppercase;
 }
 /* line 546, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-options dt label.required em {
@@ -6186,8 +6194,8 @@ body,
 /* line 554, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-options dd {
   padding: 10px 0 20px;
-  margin: 0 0 5px;
-  border-bottom: 1px solid #e4e4e4;
+  margin: 0 0 40px;
+  /*border-bottom: 1px solid #e4e4e4;*/
 }
 /* line 556, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-options dd .qty-holder {
@@ -6263,6 +6271,7 @@ body,
   right: 0;
   top: 11px;
   right: 0;
+  display:none;
 }
 /* line 113, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_rtl.scss */
 .rtl .product-options p.required {
@@ -6334,7 +6343,7 @@ body,
 }
 /* line 633, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-view .add-to-cart {
-  border-top: 1px solid #e4e4e4;
+  /*border-top: 1px solid #e4e4e4;*/
 }
 /* line 636, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-view .rating-box {
@@ -6349,6 +6358,7 @@ body,
 .product-view .add-to-box div.qty,
 .product-view .add-to-cart div.qty {
   padding: 8px 0;
+  display:none;
 }
 /* line 641, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-view .add-to-box .add-cart,
@@ -6356,6 +6366,7 @@ body,
   background: #000;
   line-height: 38px;
   font-family: 'Helvetica';
+  margin-top: 60px;
 }
 /* line 645, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-view .add-to-box .add-cart:hover,
@@ -6576,11 +6587,13 @@ body,
   line-height: 24px;
   color: #072944;
   font-family: 'Helvetica';
+  font-size: 14px;
 }
 /* line 756, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-view .product-shop .price-box {
-  margin: 0px 0 25px;
+  margin: 30px 0 25px;
   line-height: 1.2;
+  display: none;
 }
 /* line 757, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-view .product-shop .add-to-links {
@@ -6590,7 +6603,7 @@ body,
 }
 /* line 760, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-view .product-shop .price {
-  font-size: 30px;
+  font-size: 20px;
 }
 /* line 764, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-view .product-view .grouped-items-table .price-box {
