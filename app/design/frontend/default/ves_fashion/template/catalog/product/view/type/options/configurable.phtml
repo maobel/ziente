@@ -34,9 +34,19 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
     <?php foreach($_attributes as $_attribute): ?>
         <dt>
             <label class="required">Selecciona tu <?php echo $_attribute->getLabel() ?>:</label><br />
-            <span><a href="#">¿Cuál es la diferencia?</a></span>
         </dt>
         <dd<?php if ($_attribute->decoratedIsLast){?> class="last"<?php }?>>
+            <div class="link">
+                <?php if ($_attribute->getAttributeId() == 525) {?>
+                <a href="#">Guía de tallas</a>
+                <?php } ?>
+                <?php if ($_attribute->getAttributeId() == 965) {?>
+                <a href="#">¿Cuál es la diferencia 1?</a>
+                <?php } ?>
+                <?php if ($_attribute->getAttributeId() == 966) {?>
+                <a href="#">¿Cuál es la diferencia 2?</a>
+                <?php } ?>
+            </div>
             <div class="input-box">
                 
                 <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">

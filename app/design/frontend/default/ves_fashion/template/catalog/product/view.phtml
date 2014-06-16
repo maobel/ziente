@@ -194,6 +194,9 @@
         <?php if($route != "review" && $route !="tempcp") { ?>
         <a href="#tab-reviews"><?php echo Mage::helper('ves_tempcp')->__("Reviews");?></a>
         <?php } ?>
+
+        <h2><?php echo Mage::helper('ves_tempcp')->__("Reviews");?></h2>
+
         </div>
         <?php echo $tmp_html; ?>
         <?php echo $product_additional_data; ?>
@@ -211,6 +214,6 @@
      <?php echo $this->getChildHtml('upsell_products') ?>
 </div>
 <script type="text/javascript">
-jQuery('#tabs a').tabs();
+//jQuery('#tabs a').tabs();
 </script> 
 

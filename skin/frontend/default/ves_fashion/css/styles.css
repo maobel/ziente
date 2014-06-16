@@ -302,8 +302,8 @@ ul, ol {
 
 /* line 123, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_base.scss */
 .carousel-control {
-  background-color: #F4F4F4;
-  color: #B0B0B0;
+  /*background-color: #F4F4F4;
+  color: #B0B0B0;*/
   cursor: pointer;
   font-size: 22px;
   height: 26px;
@@ -789,7 +789,7 @@ input, select, textarea, button {
   transition: all 300ms ease-in-out;
 }
 .button, input.button {
-  background-color: #9defc1;
+  background-color: #068b8e;
   border-radius: 0px;
   border: 1px solid #FFFFFF;
   color: white;
@@ -5288,6 +5288,7 @@ body,
   /* line 246, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_offcanvas.scss */
   .offcanvas-siderbars.column-right-active #ves-columns-right {
     display: block;
+    background-color: #FFFFFF;
   }
   /* line 250, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_offcanvas.scss */
   .offcanvas-siderbars.column-left-active .main-column, .offcanvas-siderbars.column-right-active .main-column {
@@ -5418,7 +5419,7 @@ body,
 }
 /* line 78, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-block:hover .actions, .product-block:hover .a-quickview {
-  visibility: visible;
+  /*visibility: visible;*/
   opacity: 1;
 }
 /* line 83, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
@@ -6170,6 +6171,8 @@ body,
 .product-options dt {
   padding: 10px 0 0;
   font-weight: normal;
+  margin-bottom: 10px;
+  border-bottom: 1px #c1c9d0 solid;
 }
 /* line 544, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-options dt label {
@@ -6178,6 +6181,11 @@ body,
   font-size: 16px;
   font-style: italic;
   text-transform: uppercase;
+}
+.product-options dd .link{
+  text-align: center;
+  margin-bottom: 10px;
+  font-style: italic;
 }
 /* line 546, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-options dt label.required em {
@@ -6219,7 +6227,7 @@ body,
 }
 /* line 569, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-options dd select {
-  width: 50%;
+  width: 100%;
 }
 /* line 572, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-options dd .multiselect option {
@@ -6377,7 +6385,7 @@ body,
 .product-view .add-to-box .add-cart button.btn-cart,
 .product-view .add-to-cart .add-cart button.btn-cart {
   background: none;
-  background-color: #9defc1;
+  background-color: #068b8e;
   border: medium none;
   font-size: 11px;
   text-transform: uppercase;
@@ -6546,10 +6554,12 @@ body,
 /* line 724, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-view .product-img-box .more-views .carousel-control.left {
   left: -50px;
+  background: url(../images/large_left.png) left center no-repeat;
 }
 /* line 725, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-view .product-img-box .more-views .carousel-control.right {
-  right: -50px;
+  right: 0;
+  background: url(../images/large_right.png) right center no-repeat;
 }
 /* line 729, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-view .product-img-box .more-views .item a {
@@ -6593,7 +6603,6 @@ body,
 .product-view .product-shop .price-box {
   margin: 30px 0 25px;
   line-height: 1.2;
-  display: none;
 }
 /* line 757, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
 .product-view .product-shop .add-to-links {
@@ -7800,4 +7809,4 @@ CITAS
 
 .back-link{
   margin-top: 50px;
-};
+}

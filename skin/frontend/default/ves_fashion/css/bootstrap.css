@@ -1551,7 +1551,7 @@ pre code {
   /* line 298, ../sass/bootstrap_lib/_grid.scss */
   .col-lg-6 {
     width: 50%;
-    float: right;
+    float: left;
   }
 
   /* line 299, ../sass/bootstrap_lib/_grid.scss */

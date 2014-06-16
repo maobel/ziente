@@ -7,7 +7,7 @@
             <span><?php echo $this->__('Blog Categories') ?></span>
         </strong>
     </div>
-	<div class="block-content">
+	<div class="block-content-blog">
 	<?php if( count($menus) ): ?>
 		<ul id="blog-menu<?php echo $modid; ?>">
 		<?php foreach( $menus as $menu ): ?>
@@ -31,5 +31,9 @@
 					});	
 				</script>
 	<?php endif; ?>
+	</div>
+
+	<div class="block-boxes-blog">
+		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('blog_boxes')->toHtml(); ?>
 	</div>
 </div>

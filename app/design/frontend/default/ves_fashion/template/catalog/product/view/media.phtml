@@ -113,7 +113,9 @@
      <?php
         $icols = $themeConfig->get("moreview_cols", 4);
         $icols = !empty($icols)?$icols: 4;
-    $col = 12/$icols;
+
+        $icols = 4;
+        $col = 12/$icols;
 
         $i= 0;
         $eimages = array();

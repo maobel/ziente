@@ -15,20 +15,25 @@
 	 
 		<div class="blog-content">
 			<div class="blog-container">
-				<?php if( $post->getFile() ): ?>
-				<div class="blog-image"><img src="<?php echo $post->getImageURL( $this->getPostConfig("post_imagetype") );?>" title="<?php echo $post->getTitle();?>"/></div>
-				<?php endif; ?>
 				<div class="blog-meta">
+					<?php if( $this->getPostConfig("post_showtitle") ): ?>
+					<h2 class="blog-title"><?php echo $post->getTitle(); ?></h2>
+					<?php endif; ?>
 					<span class="created-date"><?php echo $post->getCreated();?></span>
+					
+					<!--
 					<span class="author">
 						<span><?php echo $this->__( "Writen By:" );?></span><a href="<?php echo $post->getAuthorURL();?>" title="<?php echo $post->getAuthor(); ?>">
 						<?php echo $post->getAuthor(); ?>
 						</a>
 					</span>
-					<?php if( $this->getPostConfig("post_showtitle") ): ?>
-					<h2 class="blog-title"><?php echo $post->getTitle(); ?></h2>
-					<?php endif; ?>
+					-->
 				</div>
+
+				<?php if( $post->getFile() ): ?>
+				<div class="blog-image"><img src="<?php echo $post->getImageURL( $this->getPostConfig("post_imagetype") );?>" title="<?php echo $post->getTitle();?>"/></div>
+				<?php endif; ?>
+
 				<?php if( $this->getPostConfig("post_showdescription") ): ?>
 				<div class="blog-description ves-description">
 					<?php echo $post->getDescription(); ?>
@@ -39,7 +44,7 @@
 				</div>
 			</div>
 			
-			<div class="blog-bottom vesclear">
+			<div class="blog-bottom">
 				<?php if( $this->getPostConfig("post_showupdated") ): ?>
 				<div class="blog-updated">
 					<span><?php echo $this->__("Last Update");?></span>

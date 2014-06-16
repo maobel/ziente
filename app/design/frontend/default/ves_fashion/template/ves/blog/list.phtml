@@ -24,11 +24,12 @@
  ?>
 <div class="blog-list">
 	<div class="blog-wrapper">
-	
+		<!--
 		<div class="page-title">
 			<h1><?php echo $this->getPageTitle(); ?></h1>
 		</div>
-		
+		-->
+
 		<?php  if( $this->getType() == 'category' && $category = $this->getCategory() ) : ?>	
 		<?php if( $this->getCategoryConfig("show_childrent") && ($childrent = $this->getChildrent()) && count($childrent) ): ?>
 			<div class="blog-childrent vesclear">
@@ -62,7 +63,7 @@
 			</div>
 			<?php endif ; ?>
 		<?php endif; ?>
-		
+
 		<?php if( ($posts = $this->getPosts()) && count($posts) ): ?>
 			<?php if( $leadingItems ): ?>
 			<div class="leading-posts vesclear">
@@ -70,29 +71,33 @@
 					<?php $i =0;$j=0; foreach( $posts as $post ): ?>
 							<?php if( $i==$leadingItems):  break; endif; ?>
 						<div class="blog-container itemcol">
-							<?php if( $post->getFile() ): ?>
-							<div class="blog-image">
-								<a href="<?php echo $post->getURL();?>" title="<?php echo $post->getTitle();?>">
-									<img src="<?php echo $post->getImageURL( $this->getListConfig("list_leadingimage") );?>" title="<?php echo $post->getTitle();?>"/>
-								</a>
-							</div>
-							<?php endif; ?>
 							<div class="blog-meta">
-								<span class="created-date"><?php echo $post->getCreated();?></span>
+								<h3 class="blog-title">
+									<a href="<?php echo $post->getURL();?>" title="<?php echo $post->getTitle();?>"><?php echo $post->getTitle(); ?></a>
+								</h3>
+								<div class="created-date"><?php echo $post->getCreated();?></div>
 								
+								<!--
 								<?php if( $this->getType() !="category" && $this->getListConfig("list_category_title") ): ?>		
 								<span class="blog-category">
 									<span><?php echo $this->__("Pubslished In");?></span> 
 									<a href="<?php echo $post->getCategoryLink();?>" title="<?php echo $post->getCatTitle();?>"><?php echo $post->getCatTitle();?></a>
 								</span>
 								<?php endif; ?>
-								
-								<h3 class="blog-title"><a href="<?php echo $post->getURL();?>" title="<?php echo $post->getTitle();?>"><?php echo $post->getTitle(); ?></a></h3>
+								-->
 							</div>
+							<?php if( $post->getFile() ): ?>
+								<div class="blog-image">
+									<a href="<?php echo $post->getURL();?>" title="<?php echo $post->getTitle();?>">
+										<img src="<?php echo $post->getImageURL( $this->getListConfig("list_leadingimage") );?>" title="<?php echo $post->getTitle();?>"/>
+									</a>
+								</div>
+							<?php endif; ?>
+
 							<div class="ves-description">
 								<?php echo $post->getDescription(); ?>
 								<p class="blog-readmore">
-									<a href="<?php echo $post->getURL();?>" title="<?php echo $post->getTitle();?>">
+									<a href="<?php echo $post->getURL();?>" title="<?php echo $post->getTitle();?>" class="readmore">
 										<?php echo $this->__("Read more...");?>
 									</a>
 								</p>
@@ -102,7 +107,8 @@
 								<div class="blog-tags">
 									<span><?php echo $this->__("Tags :");?> </span>
 									<?php foreach( $tags as $tag ): ?>
-									<a href="<?php echo Mage::helper('ves_blog')->getTagUrl(trim($tag));?>" title="<?php echo $tag;?>"><span><?php echo $tag; ?><span></a>, 
+									<a href="<?php echo Mage::helper('ves_blog')->getTagUrl(trim($tag));?>" title="<?php echo $tag;?>">
+										<?php echo $tag; ?></a>,
 									<?php endforeach; ?>
 								</div>
 								<?php endif; ?>
