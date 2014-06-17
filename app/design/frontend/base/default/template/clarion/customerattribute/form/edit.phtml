@@ -80,6 +80,8 @@
         
          <div class="fieldset">
              <!--<h2 class="legend"><?php echo $this->__('Additional Information') ?></h2>-->
+             <ul class="form-list">
+                <li class="fields">
              
              <!-- For all user defined attributes -->
              <?php foreach($attributeCollection as $attribute):?>
@@ -91,8 +93,7 @@
                     <?php $fieldRequiredClass = ($attribute->getIsRequired()) ? 'required-entry' : '' ?>
                     <?php $fieldFrontendClass = ($attribute->getFrontendClass()) ? $attribute->getFrontendClass() : '' ?>
                     <?php $fieldValue = $this->escapeHtml($this->getCustomer()->$getAttributeCodeFunction()); ?>
-                    <ul class="form-list">
-                        <li class="fields">
+                    
                            <div class="field">
                                <label for="<?php echo $attribute->getAttributeCode(); ?>" <?php if($attribute->getIsRequired()):?>class="required"><em>*</em> <?php  else :?>><?php endif;?><?php echo $this->__($frontEndLabel) ?></label>
                                <div class="input-box">
@@ -146,10 +147,11 @@
                                    <?php endif;?>
                                </div>
                            </div>
-                       </li>
-                    </ul>
+                       
               <?php endif;?>
              <?php endforeach;?>
+                    </li>
+                </ul>
 
                 <ul>
                     <li class="control">

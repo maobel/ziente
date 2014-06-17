@@ -11,7 +11,7 @@
 $post = Mage::register('current_post');
 ?>
 <div class="post-comments">
-	<h3 class="fields"><strong><?php echo $this->__('Leave a comment') ?></strong></h3>
+	<h3><strong><?php echo $this->__('Leave a comment') ?></strong></h3>
 	<?php if( $this->getGeneralConfig("commenttype") == "disqus" ): ?>
 	
 		<div id="disqus_thread"></div>
@@ -43,9 +43,9 @@ $post = Mage::register('current_post');
 			<ul>
 			<?php $i==0; foreach( $comments as $comment ): ?>
 				<li class="<?php echo ( $i%2==0?"even":"odd") ; ?>" id="comment<?php echo $i+1; ?>">
-					<a class="comment-link" href="#comment<?php echo $i+1;?>"><?php echo $this->__("Comment Link"); ?></a>
+					<!--<a class="comment-link" href="#comment<?php echo $i+1;?>"><?php echo $this->__("Comment Link"); ?></a>-->
 					<span class="comment-date"><?php echo $comment->getCreated(); ?></span>
-					<span class="comment-author"><span><?php echo $this->__("Posted By");?></span><?php echo $comment->getUser(); ?></span>
+					<span class="comment-author"><span><?php echo $this->__("Posted By");?></span> <?php echo $comment->getUser(); ?></span>
 					<p>
 						<?php echo $comment->getComment(); ?>
 					</p>

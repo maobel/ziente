@@ -412,20 +412,20 @@ Validation.add('IsEmpty', '', function(v) {
 });
 
 Validation.addAllThese([
-    ['validate-no-html-tags', 'HTML tags are not allowed', function(v) {
+    ['validate-no-html-tags', 'Etiquetas de HTML no son permitidas', function(v) {
 				return !/<(\/)?\w+/.test(v);
 			}],
-	['validate-select', 'Please select an option.', function(v) {
+	['validate-select', 'Por favor seleccione una opción.', function(v) {
                 return ((v != "none") && (v != null) && (v.length != 0));
             }],
-    ['required-entry', 'This is a required field.', function(v) {
+    ['required-entry', 'Campo requerido.', function(v) {
                 return !Validation.get('IsEmpty').test(v);
             }],
-    ['validate-number', 'Please enter a valid number in this field.', function(v) {
+    ['validate-number', 'Por favor ingrese un número válido.', function(v) {
                 return Validation.get('IsEmpty').test(v)
                     || (!isNaN(parseNumber(v)) && /^\s*-?\d*(\.\d*)?\s*$/.test(v));
             }],
-    ['validate-number-range', 'The value is not within the specified range.', function(v, elm) {
+    ['validate-number-range', 'El valor no está en el rango especificado.', function(v, elm) {
                 if (Validation.get('IsEmpty').test(v)) {
                     return true;
                 }
@@ -449,10 +449,10 @@ Validation.addAllThese([
 
                 return result;
             }],
-    ['validate-digits', 'Please use numbers only in this field. Please avoid spaces or other characters such as dots or commas.', function(v) {
+    ['validate-digits', 'Por favor use solo números. Evite usar espacios, puntos o comas.', function(v) {
                 return Validation.get('IsEmpty').test(v) ||  !/[^\d]/.test(v);
             }],
-    ['validate-digits-range', 'The value is not within the specified range.', function(v, elm) {
+    ['validate-digits-range', 'El valor no está dentro del rango especificado.', function(v, elm) {
                 if (Validation.get('IsEmpty').test(v)) {
                     return true;
                 }
@@ -476,35 +476,35 @@ Validation.addAllThese([
 
                 return result;
             }],
-    ['validate-alpha', 'Please use letters only (a-z or A-Z) in this field.', function (v) {
+    ['validate-alpha', 'Por favor use solo letras (a-z o A-Z) en este campo.', function (v) {
                 return Validation.get('IsEmpty').test(v) ||  /^[a-zA-Z]+$/.test(v)
             }],
-    ['validate-code', 'Please use only letters (a-z), numbers (0-9) or underscore(_) in this field, first character should be a letter.', function (v) {
+    ['validate-code', 'Por favor use solo letras (a-z), números (0-9) o underscore(_) en este campo, el primer cáracter debe ser una letra.', function (v) {
                 return Validation.get('IsEmpty').test(v) ||  /^[a-z]+[a-z0-9_]+$/.test(v)
             }],
-    ['validate-alphanum', 'Please use only letters (a-z or A-Z) or numbers (0-9) only in this field. No spaces or other characters are allowed.', function(v) {
+    ['validate-alphanum', 'Por favor use solo letras (a-z o A-Z) o números (0-9) en este campo. Espacios u otros cáracteres no está permitido.', function(v) {
                 return Validation.get('IsEmpty').test(v) || /^[a-zA-Z0-9]+$/.test(v)
             }],
-    ['validate-alphanum-with-spaces', 'Please use only letters (a-z or A-Z), numbers (0-9) or spaces only in this field.', function(v) {
+    ['validate-alphanum-with-spaces', 'Por favor use solo letras (a-z o A-Z), números (0-9) o espacios en este campo.', function(v) {
                     return Validation.get('IsEmpty').test(v) || /^[a-zA-Z0-9 ]+$/.test(v)
             }],
-    ['validate-street', 'Please use only letters (a-z or A-Z) or numbers (0-9) or spaces and # only in this field.', function(v) {
+    ['validate-street', 'Por favor use solo letras (a-z o A-Z) or numbers (0-9) o espacios y # en este campo.', function(v) {
                 return Validation.get('IsEmpty').test(v) ||  /^[ \w]{3,}([A-Za-z]\.)?([ \w]*\#\d+)?(\r\n| )[ \w]{3,}/.test(v)
             }],
-    ['validate-phoneStrict', 'Please enter a valid phone number. For example (123) 456-7890 or 123-456-7890.', function(v) {
+    ['validate-phoneStrict', 'Por favor ingrese un número de teléfono válido. Por ejemplo (123) 456-7890 o 123-456-7890.', function(v) {
                 return Validation.get('IsEmpty').test(v) || /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/.test(v);
             }],
-    ['validate-phoneLax', 'Please enter a valid phone number. For example (123) 456-7890 or 123-456-7890.', function(v) {
+    ['validate-phoneLax', 'Por favor ingrese un número de teléfono válido. Por ejemplo (123) 456-7890 o 123-456-7890.', function(v) {
                 return Validation.get('IsEmpty').test(v) || /^((\d[-. ]?)?((\(\d{3}\))|\d{3}))?[-. ]?\d{3}[-. ]?\d{4}$/.test(v);
             }],
-    ['validate-fax', 'Please enter a valid fax number. For example (123) 456-7890 or 123-456-7890.', function(v) {
+    ['validate-fax', 'Por favor ingrese un número de fax válido. Por ejemplo (123) 456-7890 o 123-456-7890.', function(v) {
                 return Validation.get('IsEmpty').test(v) || /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/.test(v);
             }],
-    ['validate-date', 'Please enter a valid date.', function(v) {
+    ['validate-date', 'Por favor ingrese una fecha válida.', function(v) {
                 var test = new Date(v);
                 return Validation.get('IsEmpty').test(v) || !isNaN(test);
             }],
-    ['validate-date-range', 'The From Date value should be less than or equal to the To Date value.', function(v, elm) {
+    ['validate-date-range', 'La fecha de inicio debe ser menor o igual a la fecha de finalización.', function(v, elm) {
             var m = /\bdate-range-(\w+)-(\w+)\b/.exec(elm.className);
             if (!m || m[2] == 'to' || Validation.get('IsEmpty').test(v)) {
                 return true;
@@ -523,19 +523,19 @@ Validation.addAllThese([
             return !dependentElements.length || Validation.get('IsEmpty').test(dependentElements[0].value)
                 || normalizedTime(v) <= normalizedTime(dependentElements[0].value);
         }],
-    ['validate-email', 'Please enter a valid email address. For example johndoe@domain.com.', function (v) {
+    ['validate-email', 'Por favor ingrese una dirección de correo electrónico válido.', function (v) {
                 //return Validation.get('IsEmpty').test(v) || /\w{1,}[@][\w\-]{1,}([.]([\w\-]{1,})){1,3}$/.test(v)
                 //return Validation.get('IsEmpty').test(v) || /^[\!\#$%\*/?|\^\{\}`~&\'\+\-=_a-z0-9][\!\#$%\*/?|\^\{\}`~&\'\+\-=_a-z0-9\.]{1,30}[\!\#$%\*/?|\^\{\}`~&\'\+\-=_a-z0-9]@([a-z0-9_-]{1,30}\.){1,5}[a-z]{2,4}$/i.test(v)
                 return Validation.get('IsEmpty').test(v) || /^([a-z0-9,!\#\$%&'\*\+\/=\?\^_`\{\|\}~-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z0-9,!\#\$%&'\*\+\/=\?\^_`\{\|\}~-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*@([a-z0-9-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z0-9-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*\.(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]){2,})$/i.test(v)
             }],
-    ['validate-emailSender', 'Please use only visible characters and spaces.', function (v) {
+    ['validate-emailSender', 'Por favor use solo caracteres y espacios.', function (v) {
                 return Validation.get('IsEmpty').test(v) ||  /^[\S ]+$/.test(v)
                     }],
-    ['validate-password', 'Please enter 6 or more characters. Leading or trailing spaces will be ignored.', function(v) {
+    ['validate-password', 'Por favor ingrese 6 o más caracteres. Espacios serán ignorados.', function(v) {
                 var pass=v.strip(); /*strip leading and trailing spaces*/
                 return !(pass.length>0 && pass.length < 6);
             }],
-    ['validate-admin-password', 'Please enter 7 or more characters. Password should contain both numeric and alphabetic characters.', function(v) {
+    ['validate-admin-password', 'Por favor ingrese 7 o más caracteres. La contraseña debe contener tanto números como letras.', function(v) {
                 var pass=v.strip();
                 if (0 == pass.length) {
                     return true;
@@ -545,7 +545,7 @@ Validation.addAllThese([
                 }
                 return !(pass.length < 7);
             }],
-    ['validate-cpassword', 'Please make sure your passwords match.', function(v) {
+    ['validate-cpassword', 'Por favor asegúrese que las contraseñas concuerdan.', function(v) {
                 var conf = $('confirmation') ? $('confirmation') : $$('.validate-cpassword')[0];
                 var pass = false;
                 if ($('password')) {
@@ -563,7 +563,7 @@ Validation.addAllThese([
                 }
                 return (pass.value == conf.value);
             }],
-    ['validate-both-passwords', 'Please make sure your passwords match.', function(v, input) {
+    ['validate-both-passwords', 'Por favor asegúrese que las contraseñas concuerdan.', function(v, input) {
                 var dependentInput = $(input.form[input.name == 'password' ? 'confirmation' : 'password']),
                     isEqualValues  = input.value == dependentInput.value;
 
@@ -573,30 +573,30 @@ Validation.addAllThese([
 
                 return dependentInput.value == '' || isEqualValues;
             }],
-    ['validate-url', 'Please enter a valid URL. Protocol is required (http://, https:// or ftp://)', function (v) {
+    ['validate-url', 'Por favor ingrese una URL válida. El protocolo es requerido (http://, https:// o ftp://)', function (v) {
                 v = (v || '').replace(/^\s+/, '').replace(/\s+$/, '');
                 return Validation.get('IsEmpty').test(v) || /^(http|https|ftp):\/\/(([A-Z0-9]([A-Z0-9_-]*[A-Z0-9]|))(\.[A-Z0-9]([A-Z0-9_-]*[A-Z0-9]|))*)(:(\d+))?(\/[A-Z0-9~](([A-Z0-9_~-]|\.)*[A-Z0-9~]|))*\/?(.*)?$/i.test(v)
             }],
-    ['validate-clean-url', 'Please enter a valid URL. For example http://www.example.com or www.example.com', function (v) {
+    ['validate-clean-url', 'Por favor ingrese una URL válida. Por ejemplo http://www.ejemplo.com o www.ejemplo.com', function (v) {
                 return Validation.get('IsEmpty').test(v) || /^(http|https|ftp):\/\/(([A-Z0-9][A-Z0-9_-]*)(\.[A-Z0-9][A-Z0-9_-]*)+.(com|org|net|dk|at|us|tv|info|uk|co.uk|biz|se)$)(:(\d+))?\/?/i.test(v) || /^(www)((\.[A-Z0-9][A-Z0-9_-]*)+.(com|org|net|dk|at|us|tv|info|uk|co.uk|biz|se)$)(:(\d+))?\/?/i.test(v)
             }],
-    ['validate-identifier', 'Please enter a valid URL Key. For example "example-page", "example-page.html" or "anotherlevel/example-page".', function (v) {
+    ['validate-identifier', 'Por favor ingrese una URL válida. Por ejemplo "example-page", "pagina-ejemplo.html" or "nivel/pagina-ejemplo".', function (v) {
                 return Validation.get('IsEmpty').test(v) || /^[a-z0-9][a-z0-9_\/-]+(\.[a-z0-9_-]+)?$/.test(v)
             }],
-    ['validate-xml-identifier', 'Please enter a valid XML-identifier. For example something_1, block5, id-4.', function (v) {
+    ['validate-xml-identifier', 'Por favor ingrese un identificador XML válida. Por ejemplo algo_1, block5, id-4.', function (v) {
                 return Validation.get('IsEmpty').test(v) || /^[A-Z][A-Z0-9_\/-]*$/i.test(v)
             }],
-    ['validate-ssn', 'Please enter a valid social security number. For example 123-45-6789.', function(v) {
+    ['validate-ssn', 'Por favor ingrese un número de seguridad social válido. Por ejemplo 123-45-6789.', function(v) {
             return Validation.get('IsEmpty').test(v) || /^\d{3}-?\d{2}-?\d{4}$/.test(v);
             }],
-    ['validate-zip', 'Please enter a valid zip code. For example 90602 or 90602-1234.', function(v) {
+    ['validate-zip', 'Por favor ingrese un código postal válido. Por ejemplo 90602 o 90602-1234.', function(v) {
             return Validation.get('IsEmpty').test(v) || /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(v);
             }],
-    ['validate-zip-international', 'Please enter a valid zip code.', function(v) {
+    ['validate-zip-international', 'Por favor ingrese un código postal válido.', function(v) {
             //return Validation.get('IsEmpty').test(v) || /(^[A-z0-9]{2,10}([\s]{0,1}|[\-]{0,1})[A-z0-9]{2,10}$)/.test(v);
             return true;
             }],
-    ['validate-date-au', 'Please use this date format: dd/mm/yyyy. For example 17/03/2006 for the 17th of March, 2006.', function(v) {
+    ['validate-date-au', 'Por favor use este formato de fecha: dd/mm/yyyy. Por ejemplo 17/03/2006', function(v) {
                 if(Validation.get('IsEmpty').test(v)) return true;
                 var regex = /^(\d{2})\/(\d{2})\/(\d{4})$/;
                 if(!regex.test(v)) return false;
@@ -605,21 +605,21 @@ Validation.addAllThese([
                             (parseInt(RegExp.$1, 10) == d.getDate()) &&
                             (parseInt(RegExp.$3, 10) == d.getFullYear() );
             }],
-    ['validate-currency-dollar', 'Please enter a valid $ amount. For example $100.00.', function(v) {
+    ['validate-currency-dollar', 'Por favor ingrese una cantidad válida. Por ejemplo $100.', function(v) {
                 // [$]1[##][,###]+[.##]
                 // [$]1###+[.##]
                 // [$]0.##
                 // [$].##
                 return Validation.get('IsEmpty').test(v) ||  /^\$?\-?([1-9]{1}[0-9]{0,2}(\,[0-9]{3})*(\.[0-9]{0,2})?|[1-9]{1}\d*(\.[0-9]{0,2})?|0(\.[0-9]{0,2})?|(\.[0-9]{1,2})?)$/.test(v)
             }],
-    ['validate-one-required', 'Please select one of the above options.', function (v,elm) {
+    ['validate-one-required', 'Por favor seleccione una de las opciones.', function (v,elm) {
                 var p = elm.parentNode;
                 var options = p.getElementsByTagName('INPUT');
                 return $A(options).any(function(elm) {
                     return $F(elm);
                 });
             }],
-    ['validate-one-required-by-name', 'Please select one of the options.', function (v,elm) {
+    ['validate-one-required-by-name', 'Por favor seleccione una de las opciones.', function (v,elm) {
                 var inputs = $$('input[name="' + elm.name.replace(/([\\"])/g, '\\$1') + '"]');
 
                 var error = 1;
@@ -639,32 +639,32 @@ Validation.addAllThese([
                     return false;
                 }
             }],
-    ['validate-not-negative-number', 'Please enter a number 0 or greater in this field.', function(v) {
+    ['validate-not-negative-number', 'Por favor ingrese un número mayor o igual a 0 en este campo.', function(v) {
                 if (Validation.get('IsEmpty').test(v)) {
                     return true;
                 }
                 v = parseNumber(v);
                 return !isNaN(v) && v >= 0;
             }],
-    ['validate-zero-or-greater', 'Please enter a number 0 or greater in this field.', function(v) {
+    ['validate-zero-or-greater', 'Por favor ingrese un número mayor o igual a 0 en este campo.', function(v) {
             return Validation.get('validate-not-negative-number').test(v);
         }],
-    ['validate-greater-than-zero', 'Please enter a number greater than 0 in this field.', function(v) {
+    ['validate-greater-than-zero', 'Por favor ingrese un número mayor o igual a 0 en este campo.', function(v) {
             if (Validation.get('IsEmpty').test(v)) {
                 return true;
             }
             v = parseNumber(v);
             return !isNaN(v) && v > 0;
         }],
-    ['validate-state', 'Please select State/Province.', function(v) {
+    ['validate-state', 'Por favor seleccione el departamento.', function(v) {
                 return (v!=0 || v == '');
             }],
-    ['validate-new-password', 'Please enter 6 or more characters. Leading or trailing spaces will be ignored.', function(v) {
+    ['validate-new-password', 'Por favor ingrese 6 o más caracteres. Espacios serán ignorados.', function(v) {
                 if (!Validation.get('validate-password').test(v)) return false;
                 if (Validation.get('IsEmpty').test(v) && v != '') return false;
                 return true;
             }],
-    ['validate-cc-number', 'Please enter a valid credit card number.', function(v, elm) {
+    ['validate-cc-number', 'Por favor ingrese un número de tarjeta de crédito válido.', function(v, elm) {
                 // remove non-numerics
                 var ccTypeContainer = $(elm.id.substr(0,elm.id.indexOf('_cc_number')) + '_cc_type');
                 if (ccTypeContainer && typeof Validation.creditCartTypes.get(ccTypeContainer.value) != 'undefined'
@@ -677,7 +677,7 @@ Validation.addAllThese([
                 }
                 return validateCreditCard(v);
             }],
-    ['validate-cc-type', 'Credit card number does not match credit card type.', function(v, elm) {
+    ['validate-cc-type', 'El número de tarjeta de crédito no concuerda con el tipo de tarjeta.', function(v, elm) {
                 // remove credit card number delimiters such as "-" and space
                 elm.value = removeDelimiters(elm.value);
                 v         = removeDelimiters(v);
@@ -717,7 +717,7 @@ Validation.addAllThese([
 
                 return true;
             }],
-     ['validate-cc-type-select', 'Card type does not match credit card number.', function(v, elm) {
+     ['validate-cc-type-select', 'El tipo de tarjeta no concuerda con el número de tarjeta de crédito.', function(v, elm) {
                 var ccNumberContainer = $(elm.id.substr(0,elm.id.indexOf('_cc_type')) + '_cc_number');
                 if (Validation.isOnChange && Validation.get('IsEmpty').test(ccNumberContainer.value)) {
                     return true;
@@ -727,7 +727,7 @@ Validation.addAllThese([
                 }
                 return Validation.get('validate-cc-type').test(ccNumberContainer.value, ccNumberContainer);
             }],
-     ['validate-cc-exp', 'Incorrect credit card expiration date.', function(v, elm) {
+     ['validate-cc-exp', 'Fecha de expiración incorrecta.', function(v, elm) {
                 var ccExpMonth   = v;
                 var ccExpYear    = $(elm.id.substr(0,elm.id.indexOf('_expiration')) + '_expiration_yr').value;
                 var currentTime  = new Date();
@@ -738,7 +738,7 @@ Validation.addAllThese([
                 }
                 return true;
             }],
-     ['validate-cc-cvn', 'Please enter a valid credit card verification number.', function(v, elm) {
+     ['validate-cc-cvn', 'Por favor ingrese una tarjeta de crédito y código de verificación válidos.', function(v, elm) {
                 var ccTypeContainer = $(elm.id.substr(0,elm.id.indexOf('_cc_cid')) + '_cc_type');
                 if (!ccTypeContainer) {
                     return true;
@@ -758,19 +758,19 @@ Validation.addAllThese([
                 return false;
             }],
      ['validate-ajax', '', function(v, elm) { return true; }],
-     ['validate-data', 'Please use only letters (a-z or A-Z), numbers (0-9) or underscore(_) in this field, first character should be a letter.', function (v) {
+     ['validate-data', 'Por favor use solo letras (a-z o A-Z), números (0-9) o underscore(_) en este campo, el primer caracter debe ser una letra.', function (v) {
                 if(v != '' && v) {
                     return /^[A-Za-z]+[A-Za-z0-9_]+$/.test(v);
                 }
                 return true;
             }],
-     ['validate-css-length', 'Please input a valid CSS-length. For example 100px or 77pt or 20em or .5ex or 50%.', function (v) {
+     ['validate-css-length', 'Por favor ingrese código CSS válido. Por ejemplo 100px o 77pt o 20em o .5ex o 50%.', function (v) {
                 if (v != '' && v) {
                     return /^[0-9\.]+(px|pt|em|ex|%)?$/.test(v) && (!(/\..*\./.test(v))) && !(/\.$/.test(v));
                 }
                 return true;
             }],
-     ['validate-length', 'Text length does not satisfy specified text range.', function (v, elm) {
+     ['validate-length', 'El contenido del texto no satisface el rango especificado.', function (v, elm) {
                 var reMax = new RegExp(/^maximum-length-[0-9]+$/);
                 var reMin = new RegExp(/^minimum-length-[0-9]+$/);
                 var result = true;
@@ -786,8 +786,8 @@ Validation.addAllThese([
                 });
                 return result;
             }],
-     ['validate-percents', 'Please enter a number lower than 100.', {max:100}],
-     ['required-file', 'Please select a file', function(v, elm) {
+     ['validate-percents', 'Por favor ingres un número menor a 100.', {max:100}],
+     ['required-file', 'Por favor seleccione un archivo', function(v, elm) {
          var result = !Validation.get('IsEmpty').test(v);
          if (result === false) {
              ovId = elm.id + '_value';
@@ -797,7 +797,7 @@ Validation.addAllThese([
          }
          return result;
      }],
-     ['validate-cc-ukss', 'Please enter issue number or start date for switch/solo card type.', function(v,elm) {
+     ['validate-cc-ukss', 'Por favor ingrese un número de tiquete o fecha de inicio para tipo de tarjeta.', function(v,elm) {
          var endposition;
 
          if (elm.id.match(/(.)+_cc_issue$/)) {

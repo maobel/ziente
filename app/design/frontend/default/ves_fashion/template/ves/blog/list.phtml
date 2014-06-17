@@ -55,7 +55,10 @@
 								<?php echo $sub->getDescription(); ?>
 							</div>
 							<div class="sub-viewblogs">
-								<a href="<?php echo $sub->getCategoryLink();?>" title="<?php echo $category->getTitle();?>"><?php echo $this->__("View Posts"); ?></a>
+								
+								<!--<a href="<?php echo $sub->getCategoryLink();?>" title="<?php echo $category->getTitle();?>"><?php echo $this->__("View Posts"); ?></a>-->
+
+								<button onclick="location.href='<?php echo $sub->getCategoryLink();?>'"><?php echo $this->__("View Posts"); ?></button>
 							</div>
 						</div>
 					<?php $i++; endforeach; ?>
@@ -97,11 +100,14 @@
 							<div class="ves-description">
 								<?php echo $post->getDescription(); ?>
 								<p class="blog-readmore">
-									<a href="<?php echo $post->getURL();?>" title="<?php echo $post->getTitle();?>" class="readmore">
+									<!--<a href="<?php echo $post->getURL();?>" title="<?php echo $post->getTitle();?>" class="readmore">
 										<?php echo $this->__("Read more...");?>
-									</a>
+									</a>-->
+
+									<button class="button3" onclick="location.href='<?php echo $post->getURL();?>'"><?php echo $this->__("Read more..."); ?></button>
 								</p>
 							</div>
+
 							<div class="blog-botm">
 								<?php if( $tags = $post->getTags() ) :$tags = explode( ",",$tags );	?>
 								<div class="blog-tags">

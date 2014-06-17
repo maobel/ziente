@@ -80,16 +80,13 @@ html[xmlns] .vesclear {
 
 .blog-meta span{ text-transform:uppercase; }
 .blog-readmore {
-	height: 22px;
+	height: 40px;
 	width: 80px;
-	background-color: #162f49;
-	color: #FFFFFF;
 	margin: 0 auto;
-	font-size: 12px;
 	vertical-align: middle;
 	text-align: center;
-	text-transform:uppercase;
-	margin-bottom: 20px;
+	margin-top: 20px;
+	margin-bottom: 30px;
 }
 .readmore{
 	color: #FFFFFF;
@@ -229,4 +226,15 @@ span.author
 }
 .blog-follow-text span{
 	margin-left: 10px;
+}
+
+.button3, input.button {
+	background-color: #072944;
+	border-radius: 0px;
+	border: 1px solid #FFFFFF;
+	color: white;
+	padding: 5px 15px;
+	width: 104px;
+	height: 37px;
+	text-transform: uppercase;
 }
