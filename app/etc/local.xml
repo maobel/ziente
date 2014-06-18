@@ -50,6 +50,19 @@
                     <pdoType><![CDATA[]]></pdoType>
                     <active>1</active>
                 </connection>
+                <!--
+                <connection>
+                    <host><![CDATA[127.0.0.1]]></host>
+                    <username><![CDATA[zienteco_magento]]></username>
+                    <password><![CDATA[z1SBas1UNL0J]]></password>
+                    <dbname><![CDATA[zienteco_magento]]></dbname>
+                    <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
+                    <model><![CDATA[mysql4]]></model>
+                    <type><![CDATA[pdo_mysql]]></type>
+                    <pdoType><![CDATA[]]></pdoType>
+                    <active>1</active>
+                </connection>
+                -->
             </default_setup>
         </resources>
         <session_save><![CDATA[files]]></session_save>
