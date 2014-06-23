@@ -825,9 +825,30 @@ input, select, textarea, button {
   text-transform: uppercase;
   font-size: 20px;
 }
+.button6, input.button {
+  background-color: #068b8e;
+  border-radius: 0px;
+  border: 1px solid #FFFFFF;
+  color: #FFFFFF;
+  padding: 5px 15px;
+  width: 368px;
+  height: 60px;
+  text-transform: uppercase;
+  font-size: 20px;
+  margin-left: 80px;
+}
+.button7, input.button {
+  background-color: #6d97ca;
+  border-radius: 0px;
+  color: white;
+  width: 155px;
+  height: 38px;
+  text-transform: uppercase;
+  /*margin-left: 120px;*/
+}
 
 
-
+  
 /* line 38, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_form.scss */
 .button:hover {
   background: #666;
@@ -1360,6 +1381,7 @@ body.layout-boxed-lg #page {
   font-size: 12px;
   line-height: 1em;
   margin: 0 0 25px;
+  text-transform: uppercase;
 }
 /* line 220, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_layout.scss */
 .breadcrumbs li {
@@ -2540,9 +2562,11 @@ body.layout-boxed-lg #page {
 }
 /* line 204, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .cart .discount, .cart .shipping {
-  border: 1px solid #e4e4e4;
+  border: 3px solid #002b49;
   padding: 12px 15px;
   margin: 0 0 18px;
+  text-align: center;
+  width: 320px;
 }
 /* line 207, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .cart .discount .buttons-set, .cart .shipping .buttons-set {
@@ -2558,8 +2582,9 @@ body.layout-boxed-lg #page {
 }
 /* line 216, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .cart .discount .input-box {
-  margin: 8px 0 0;
+  margin: 8px 0 0 13px;
   width: 260px;
+  border: 3px solid #002b49;
 }
 /* line 217, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .cart .discount input.input-text {
@@ -2616,18 +2641,19 @@ body.layout-boxed-lg #page {
 /* Options Tool Tip */
 /* line 252, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .item-options dt {
-  /*font-weight: bold;
-  font-style: italic;*/
-  width: 60px;
+  font-weight: bold;
+  font-style: italic;
+  /*width: 60px;
   display: inline-block;
   color: #002b49;
+  font-weight: normal;*/
 }
 /* line 253, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .item-options dd {
   padding-left: 10px;
   margin: 0 0 6px;
-  width: 540px;
-  display: inline-block;
+  /*width: 540px;
+  display: inline-block;*/
 }
 
 /* line 255, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
@@ -3112,6 +3138,12 @@ body.layout-boxed-lg #page {
 .opc .buttons-set button.button {
   float: right;
 }
+.opc .buttons-set button.button5 {
+  float: right;
+}
+.opc .buttons-set button.button7 {
+  float: right;
+}
 /* line 462, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .opc .buttons-set p.required {
   margin: 0;
@@ -3199,6 +3231,10 @@ body.layout-boxed-lg #page {
 }
 /* line 523, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .opc .allow .step-title h2 {
+  color: #000000;
+  text-transform:uppercase;
+}
+.opc .active .step-title h2 {
   color: #FFFFFF;
   text-transform:uppercase;
 }
@@ -4511,7 +4547,7 @@ p.required, .product-options dt label.required em, .form-list label.required em 
 /*Navigation default*/
 /* line 10, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_menu.scss */
 #ves-mainnav {
-  margin-bottom: 15px;
+  margin-bottom: 8px;
 }
 
 /* line 14, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_menu.scss */
@@ -6436,11 +6472,12 @@ body,
   background: none;
   background-color: #068b8e;
   border: medium none;
-  font-size: 11px;
+  font-size: 20px;
   text-transform: uppercase;
   vertical-align: middle;
   display: block;
   width: 100%;
+  height: 60px;
   padding: 0;
 }
 /* line 655, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_product.scss */
@@ -7577,27 +7614,27 @@ HISTORIA
 */
 #historia{
   width: 1155px;
-  height: 2000px;
+  height: 1500px;
 }
 #historia-intro{
   width: 592px; 
   margin: 0 auto; 
-  margin-bottom: 120px;
+  margin-bottom: 100px;
 }
 .historia-icono01{
   width: 100px; 
   margin: 0 auto; 
-  margin-top: 120px;
-  margin-bottom: 90px;
+  margin-top: 46px;
+  margin-bottom: 44px;
 }
 .historia-icono02{
   width: 100px; 
   margin: 0 auto; 
-  margin-top: 115px;
-  margin-bottom: 52px;
+  margin-top: 44px;
+  margin-bottom: 57px;
 }
 .historia-flujo01{
-  margin-top: 170px;
+  margin-top: 65px;
 }
 .historia-flujo02{
   margin-top: 86px;
@@ -7607,11 +7644,14 @@ HISTORIA
   width: 193px; 
   float:left;
   margin-top: 72px;
-  font-size: 24px;
+  font-size: 20px;
   font-family: 'Helvetica';
+  text-align: center;
+  line-height: 20px;
 }
 .historia-flujo-imagen{
-  width: 961px; 
+  width: 782px; 
+  margin-bottom: 70px;
   float:left;
 }
 #historia-intro p{
@@ -7638,7 +7678,7 @@ CAMISAS
 #camisas-titulo{
   width: 350px; 
   margin: 0 auto; 
-  margin-bottom: 120px;
+  margin-bottom: 79px;
 }
 .camisas-tabla-wrap{
   width: 1060px;
@@ -7648,11 +7688,11 @@ CAMISAS
   width: 1060px;
   border: 0;
   padding-bottom: 30px;
-  margin-top: 100px;
+  margin-top: 79px;
 }
 .camisas-tabla tr, .camisas-tabla td, .camisas-tabla th{
   border: 0;
-  padding-bottom: 100px;
+  padding-bottom: 60px;
 }
 .camisas-tabla .col1{
   width: 190px;
@@ -7678,27 +7718,25 @@ CAMISAS
   text-transform: uppercase;
 }
 .camisas-silueta-01{
-  width: 1083px;
-  padding-left:151px;
+  width: 651px;
   margin: 0 auto; 
-}
-.camisas-silueta-02{
-  width: 551px; 
-  float:left;
-  margin-left: 40px;
-}
-.camisas-silueta-03{
-  width: 532px;
-  float:left;
-  padding-left:48px;
 }
 .camisas-silueta{
   clear: both;
-  padding-top: 180px;
+}
+.camisas-text-silueta{
+  width: 600px;
+  margin: 0 auto;
+}
+.camisas-texto-regular{
+  width: 300px;
+  text-align: center;
+  float: left;
+  font-size: 20px;
 }
 .camisas-largo{
   clear: both;
-  padding-top: 135px; 
+  padding-top: 90px; 
 }
 .camisas-largo-texto{
   width: 807px;
@@ -7711,20 +7749,14 @@ CAMISAS
 }
 .camisas-largo-imagen{
   width: 1090px;
-  margin-top: 99px
+  margin-top: 62px
 }
 .camisas-largo-01{
-  float:left;
-  width: 551px;
-  text-align: right;
-}
-.camisas-largo-02{
-  float:left;
-  width: 532px;
+  width: 1046px;
 }
 .camisas-faq{
   clear: both;
-  padding-top: 158px;  
+  padding-top: 88px;  
 }
 .camisas-faq-icon{
   width: 100px;
@@ -7738,53 +7770,65 @@ CAMISAS
   margin-bottom: 96px;
 }
 .camisas-faq .preguntas li{
-  margin-bottom: 90px;
+  margin-bottom: 45px;
   font-size: 16px;
   font-family: 'Helvetica';
   font-style: normal;
 }
 .camisas-faq .preguntas li h3{
-  font-size: 20px;
+  font-size: 18px;
   font-family: 'Helvetica';
+  font-weight: bold;
   margin-bottom: 30px;
 }
 #camisas .texto{
   text-align: center;
-  margin-top: 26px;
-  margin-bottom: 84px;
+  margin-bottom:60px;
 }
 
 /*
 COMPRAR
 */
 #comprar{
-  width: 1165px;  
+  width: 1200px;  
+}
+.comprar-step-container{
+  width: 1200px;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  clear: both;
 }
 .comprar-step{
-  width: 970px; 
+  width: 590px; 
   margin: 0 auto;
-  padding-top: 50px;
-  padding-bottom: 25px;
-}
-.comprar-step-number{
-  width: 75px; 
-  height: 98px;
   float: left;
 }
-.comprar-step p{
-  margin-top: 20px;
-  font-size: 16px;
+.comprar-step-center{
+  width: 590px; 
+  margin: 0 auto;
+}
+.comprar-step-number{
+  width: 60px; 
+  height: 90px;
+  float: left;
+}
+.comprar-step p, .comprar-step-center p{
+  margin-top: 5px;
+  font-size: 14px;
   font-family: 'Helvetica';
 }
 .comprar-faq{
   clear: both;
-  padding-top: 145px; 
+  padding-top: 80px;
+  width: 824px;
+  margin: 0 auto;
+  text-align: justify;
 }
 .comprar-faq .preguntas{
   width: 900px;
   margin: 0 auto;
-  margin-bottom: 96px;
-  margin-top: 140px;
+  margin-bottom: 80px;
+  margin-top: 64px;
 }
 .comprar-faq .preguntas li{
   margin-bottom: 90px;
@@ -7793,8 +7837,9 @@ COMPRAR
   font-style: normal;
 }
 .comprar-faq .preguntas li h3{
-  font-size: 20px;
+  font-size: 18px;
   font-family: 'Helvetica';
+  font-weight: bold;
   margin-bottom: 30px;
 }
 #comprar .texto{
@@ -7803,7 +7848,7 @@ COMPRAR
   margin-bottom: 84px;
 }
 .botones{
-  width: 804px;
+  width: 904px;
   margin: 0 auto;
 }
 
@@ -7814,45 +7859,123 @@ CITAS
   width:1000px; 
   margin: 0 auto;
 }
-#appointment .form{
-  margin-top: 50px;
+
+#appointment-intro{
+  width: 610px; 
+  margin: 0 auto; 
+  padding-top: 20px; 
+  padding-bottom: 40px;
+}
+#appointment-intro h2{
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+#appointment-intro .button-center{
+  width: 140px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+#appointment .form-confirmation{
+  width:1100px; 
+  margin-top: 30px;
 }
 #appointment .form .options{
-  width:450px; 
+  width:550px; 
   float:left;
 }
 #appointment .form .confirmation{
   width:450px; 
   float:left; 
   margin-left:30px; 
-  margin-bottom:50px;
+}
+#appointment .form-buttons{
+  width: 140px;
+  margin: 0 auto;
+  clear: both;
 }
 
-
+/*
+COMMON CLASSES
+*/
 #camisas h1, #historia h1, #colecciones h1, #comprar h1, #appointment h1, #legal h1, #privacy h1, #terms h1, #ayuda h1{
   color: #072944;
-  /*font-size: 46px;*/
   font-size: 26px;
   letter-spacing: 2px;
   font-family: 'Helvetica';
-  /*font-weight:bold;*/
+  font-weight: bold;
+  text-decoration: underline;
   text-transform: uppercase;
-  line-height: 36px;
+  line-height: 26px;
   text-align: center;
+  margin-top: -20px;
 }
 #camisas h2, #historia h2, .comprar-faq h2{
   color: #072944;
-  /*font-size: 46px;*/
   font-size: 26px;
   letter-spacing: 2px;
   font-family: 'Helvetica';
-  /*font-weight:bold;*/
+  font-weight: bold;
   text-transform: uppercase;
   line-height: 36px;
   text-align: center;
 }
 #legal .content, #privacy .content, #terms .content, #ayuda .content{
   margin-top: 50px;
+}
+
+
+/*
+SUCCESS PAGE
+*/
+.success-thanks{
+  width: 450px;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 30px;
+}
+.success-thanks p{
+  font-size: 16px;
+  color: #072944;
+}
+.success-number{
+  clear: both;
+  width: 335px;
+  padding-top: 10px;
+  margin: 0 auto;
+  text-align: center;
+  border: 3px solid #072944;
+}
+.success-number p{
+  font-size: 18px;
+  font-weight: bold;
+  color: #072944;
+}
+.success-container{
+  clear: both;
+  padding-top: 70px;
+  width: 900px;
+  margin: 0 auto;
+}
+.success-box{
+  width: 390px;
+  float: left;
+  text-align: center;
+  margin-left: 40px;
+}
+.success-box h2{
+  text-transform: uppercase;
+  margin-top: 50px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.success-box p{ 
+  margin-top: 34px;
+}
+.success-buttons{
+  clear: both;
+  text-align: center;
+  padding-top: 90px;
 }
 
 

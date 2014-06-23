@@ -803,7 +803,7 @@ Payment.prototype = {
         if (result) {
             return true;
         }
-        alert(Translator.translate('Please specify payment method.').stripTags());
+        alert(Translator.translate('Por favor especifique el método de pago.').stripTags());
         return false;
     },
 
