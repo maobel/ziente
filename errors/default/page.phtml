@@ -34,28 +34,80 @@
 <meta name="keywords" content="" />
 <meta name="robots" content="*" />
 <link rel="stylesheet" href="css/styles.css" type="text/css" />
+<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
 <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 </head>
-<body>
-    <div class="wrapper">
-        <div class="page">
-            <div class="header-container">
-                <div class="header">
-                    <a href="<?php echo $this->getBaseUrl()?>" title="Magento Commerce" class="logo"><img src="images/logo.gif" alt="Magento Commerce" /></a>
+
+<body id="offcanvas-container" class="  cms-index-index cms-home offcanvas-container layout-fullwidth fs12  ">
+    <section id="page" class="offcanvas-pusher" role="main">
+
+        <section id="header" class="header">
+            <section id="header-main">
+                <div class="container">
+                    <div class="header-wrap">
+                        <h1 class="logo">
+                            <strong>ZIENTE</strong>
+                            <div class="logo-logo">
+                                <img src="images/logo.gif" alt="ZIENTE" />
+                            </div>
+                        </h1>
+                    </div>
                 </div>
-            </div>
-            <div class="main-container">
-                <div class="main col1-layout">
-                    <?php require_once $contentTemplate; ?>
+            </section>
+            
+            <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                        
+                <div id="content">
+                    <div class="std">
+                        <div id="terms">
+                            <?php require_once $contentTemplate; ?>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="footer-container">
-                <div class="footer">
-                    <address class="copyright">Magento is a trademark of Magento Inc. Copyright &copy; 2013 Magento Inc.</address>
+            </section>
+        </section>
+        
+        <section id="footer">
+            <section id="ves-custom" class="ves-custom">
+                <div class="container">
+                    <div class="row-footer">
+                        <div class="col-lg-13 col-sm-7 col-xs-12">
+                            <div class="custom-footer-box1">
+                                <h3>CONTACTO</h3>
+                                <ul>
+                                    <li><em>info@ziente.co</em></li>
+                                    <li>311.111.111.11</li>
+                                    <li>Carrera 18 No. 93-25<br />Bogotá, Colombia</li>
+                                </ul>
+                            </div>
+                            <div class="custom-footer-box2">
+                                <ul>
+                                <li></li>
+                                </ul>
+                            </div>
+                            <div class="custom-footer-box3">
+                                
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-5 col-xs-12">
+                            <h3>SIGUENOS</h3>
+                            <div class="follow-boxes">
+                                <div class="follow-box">
+                                    <a href="https://www.facebook.com/zienteCo" target="_blank"><img src="images/icon-facebook.png" alt="facebook" /></a>
+                                </div>
+                                <div class="follow-box">
+                                    <a href="https://twitter.com/ZIENTEco" target="_blank"><img src="images/icon-twitter.png" alt="twitter" /></a>
+                                </div>
+                                <div class="follow-box">
+                                    <a href="http://instagram.com/ZIENTEco" target="_blank"><img src="images/icon-instagram.png" alt="instagram" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
+            </section>
+        </section>
+
+     </section>
 </body>
 </html>
