@@ -2569,11 +2569,17 @@ body.layout-boxed-lg #page {
   width: 320px;
 }
 /* line 207, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
-.cart .discount .buttons-set, .cart .shipping .buttons-set {
+.cart .shipping .buttons-set {
   margin: 10px 0 0;
   border: 0;
   padding: 0;
   text-align: left;
+}
+.cart .discount .buttons-set{
+  margin: 10px 10px 0;
+  border: 0;
+  padding: 0;
+  text-align: right;
 }
 /* line 209, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 .cart .discount .buttons-set button.button, .cart .shipping .buttons-set button.button {
@@ -3287,7 +3293,8 @@ body.layout-boxed-lg #page {
 /* line 564, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 #opc-review .buttons-set {
   border: 0 none;
-  padding: 15px 30px;
+  padding: 35px 0;
+  clear: both;
 }
 /* line 568, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-pages.scss */
 #opc-review .buttons-set p {
