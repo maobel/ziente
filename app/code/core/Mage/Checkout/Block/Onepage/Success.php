@@ -178,4 +178,18 @@ class Mage_Checkout_Block_Onepage_Success extends Mage_Core_Block_Template
             }
         }
     }
+
+
+    public function sendEmail() {
+        $orderId = Mage::getSingleton('checkout/session') -> getLastOrderId();
+        if ($orderId) {
+            $order = Mage::getModel('sales/order') -> load($orderId);
+
+            try {
+                $order->sendNewOrderEmail();
+            } catch (Exception $e) {
+                Mage::logException($e);
+            }
+        }
+    }
 }

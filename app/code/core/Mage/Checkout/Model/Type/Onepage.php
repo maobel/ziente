@@ -809,13 +809,13 @@ class Mage_Checkout_Model_Type_Onepage
             /**
              * we only want to send to customer about new order when there is no redirect to third party
              */
-            if (!$redirectUrl && $order->getCanSendNewEmailFlag()) {
+            /*if (!$redirectUrl && $order->getCanSendNewEmailFlag()) {
                 try {
                     $order->sendNewOrderEmail();
                 } catch (Exception $e) {
                     Mage::logException($e);
                 }
-            }
+            }*/
 
             // add order information to the session
             $this->_checkoutSession->setLastOrderId($order->getId())
