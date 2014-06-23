@@ -12,57 +12,54 @@
 		if($customerId == ''){
 	?>
 
-		<div style="width: 400px; margin: 0 auto; padding-top: 80px; padding-bottom: 80px;">
-			<p>Para agendar una cita, usted debe estar registrado con nosotros. <br />
-				Si no se ha registrado, haga clic <a href="customer/account/">aquí</a> para hacerlo.</p>
+		<div id="appointment-intro">
+			<h2>PRUÉBATE UNA CAMISA ZIENTE</h2>
+			<p>Alguna vez quiso probarse una camisa Ziente antes de comprarla? Ahora lo puede hacer. Programe una cita y pase por nuestro punto de venta para obtener una fácil y rápida experiencia de compra.</p>
+			 
+			<div class="button-center"><button class="button" onclick="location.href='customer/account/'">AGENDA</button></div>
 		</div>
 
 	<?php
 		}else{
 	?>
 
-		<div class="options">
-			<p>Seleccione las siguientes opciones:</p>
-
-			<?php $collection1 = Mage::getModel('appointments/locations')->getCollection(); ?>
-			<p>Sede
-			    <select name="location" id="locations" class="locations">
-					<option value=" " selected="selected">Seleccione</option>
-					<?php foreach($collection1 as $location) { ?>
-			        	<option value="<?php echo $location->getId();?>"><?php echo $location->getName() . ' - ' . $location->getAddress();?></option>
-			        <?php } ?>
-			    </select>
-			</p>
-
-			
-			<p>Fecha
-				<select name="days" id="days" class="days">
-					
-			    </select>
-			</p>
-
-			
-		    <p>Hora
-				<select name="hours" id="hours" class="hours">
-					
-			    </select>
-			</p>
-		</div>
-
-		<div class="confirmation">
+		<div class="form-confirmation">
 			<form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="confirmation-form">
-				<p>Confirmación</p>			
-				<div class="">
-					<p>Nombre: <?php echo $customerName; ?></p>
-					<p>Email:  <?php echo $customerEmail; ?></p>
-					<p>Notas adicionales <textarea name="notes"></textarea></p>
+				<div class="options">
+					<p>Seleccione las siguientes opciones:</p>
+
+					<?php $collection1 = Mage::getModel('appointments/locations')->getCollection(); ?>
+					<p>Sede
+					    <select name="location" id="locations" class="locations">
+							<option value=" " selected="selected">Seleccione</option>
+							<?php foreach($collection1 as $location) { ?>
+					        	<option value="<?php echo $location->getId();?>"><?php echo $location->getName() . ' - ' . $location->getAddress();?></option>
+					        <?php } ?>
+					    </select>
+					</p>
+
+					<p>Fecha
+						<select name="days" id="days" class="days"></select>
+					</p>
+
+				    <p>Hora
+						<select name="hours" id="hours" class="hours"></select>
+					</p>
 				</div>
-				<br />
+
+				<div class="confirmation">
+					<p>Confirmación</p>			
+					<div class="">
+						<p>Nombre: <?php echo $customerName; ?></p>
+						<p>Email:  <?php echo $customerEmail; ?></p>
+						<p>Notas adicionales <textarea name="notes"></textarea></p>
+					</div>
+				</div>
+
 				<div class="form-buttons">
 					<input type="hidden" id="id" value="<?php echo $customerId; ?>">
 					<input type="hidden" id="name" value="<?php echo $customerName; ?>">
 					<input type="hidden" id="email" value="<?php echo $customerEmail; ?>">
-
 					<button class="button" id="confirm-button" onclick="confirm()">Confirmar</button>
 				</div>
 			</form>

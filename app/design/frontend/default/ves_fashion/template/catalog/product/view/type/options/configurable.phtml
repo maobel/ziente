@@ -38,13 +38,17 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
         <dd<?php if ($_attribute->decoratedIsLast){?> class="last"<?php }?>>
             <div class="link">
                 <?php if ($_attribute->getAttributeId() == 525) {?>
-                <a href="#">Guía de tallas</a>
+                    
                 <?php } ?>
                 <?php if ($_attribute->getAttributeId() == 965) {?>
-                <a href="#">¿Cuál es la diferencia 1?</a>
+                    <div>
+                        <a class="a-quickview cboxElement" href="media/wysiwyg/camisas-largo.png">¿Cuál es la diferencia?</a>
+                    </div>
                 <?php } ?>
                 <?php if ($_attribute->getAttributeId() == 966) {?>
-                <a href="#">¿Cuál es la diferencia 2?</a>
+                    <div>
+                        <a class="a-quickview cboxElement" href="media/wysiwyg/camisas-silueta.png">¿Cuál es la diferencia?</a>
+                    </div>
                 <?php } ?>
             </div>
             <div class="input-box">
@@ -60,3 +64,4 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
         var spConfig = new Product.Config(<?php echo $this->getJsonConfig() ?>);
     </script>
 <?php endif;?>
+
