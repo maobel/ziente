@@ -1801,8 +1801,8 @@ body.layout-boxed-lg #page {
   /*padding: 16px 20px;*/
   color: #072944;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  font-weight: 300;
+  letter-spacing: 1px;
+  /*font-weight: 300;*/
 }
 /* line 236, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_magento-module.scss */
 #ves-mainnav .navbar-nav > li .dropdown-menu {
