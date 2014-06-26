@@ -16,7 +16,7 @@ $DB = Mage::getSingleton('core/resource')->getConnection('core_write');
 	<select id="hours" name="hours" class="hours">
 		<option value=" ">Seleccione</option>
 		<?php
-			$sql = "SELECT `id`, `time` FROM ziente_hours WHERE `day_id` = '$idDay' ORDER by `time`";
+			$sql = "SELECT `id`, `time` FROM ziente_hours WHERE `day_id` = '$idDay' AND ISNULL(`customer_id`)";
 			
 			foreach ($DB->fetchAll($sql) as $rs) { ?>
 			    <option value="<?php echo $rs['id'] ?>"><?php echo $rs['time'] ?></option>

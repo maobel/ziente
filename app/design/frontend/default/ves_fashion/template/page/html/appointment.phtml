@@ -1,5 +1,72 @@
+<?php 
+$mageFilename = 'app/Mage.php';
+require_once $mageFilename;
+
+Mage::app('default');
+if($_POST){
+	//Información cita:
+	$sede = $_POST['location'];
+	$fecha = $_POST['days'];
+	$hora = $_POST['hours'];
+
+	$id = $_POST['id'];
+	$email = $_POST['email'];
+	$name = $_POST['name'];
+	$phone = $_POST['phone'];
+	$nota = $_POST['notes'];
+
+	$resource = Mage::getSingleton('core/resource');
+    $readConnection = $resource->getConnection('core_read');
+
+    $sedequery = "SELECT name FROM ziente_locations WHERE id = $sede LIMIT 1";
+    $sede_name = $readConnection->fetchOne($sedequery);
+
+    $fecha_query = "SELECT date FROM ziente_days WHERE id = '$fecha' and location_id = '$sede' LIMIT 1 ";
+    $fecha_date = $readConnection->fetchOne($fecha_query);
+
+    $hora_query = "SELECT time FROM ziente_hours WHERE id = '$hora' and day_id = '$fecha' LIMIT 1 ";
+    $hora_date = $readConnection->fetchOne($hora_query); 
+    
+    $email_query = "SELECT email FROM ziente_locations WHERE id = $sede LIMIT 1";
+    $email_sede = $readConnection->fetchOne($email_query);
+
+    $writeConnection = $resource->getConnection('core_write');
+    $query = "UPDATE ziente_hours 
+    			SET customer_id = $id, name = '$name', email= '$email', phone = '$phone', notes = '$nota', reservation_date = '$fecha_date' 
+    			WHERE day_id = $fecha and id = $hora";
+    $writeConnection->query($query);
+
+	$email_subject = 'Ziente: Citas';
+	$email_message = "Se agendó la siguiente cita:\n\n";
+	$email_message .= "Nombre: ".utf8_decode($name)."\n";
+	$email_message .= "E-mail: ". $email. "\n";
+	$email_message .= "Teléfono: ". $phone. "\n";
+	$email_message .= "Nota: " .nl2br(utf8_decode($nota)). "\n";
+	$email_message .= "Sede: " .nl2br(utf8_decode($sede_name)). "\n";
+	$email_message .= "Fecha: " .utf8_decode($fecha_date). "\n";
+	$email_message .= "Hora: " .utf8_decode($hora_date). "\n";
+
+	$ident_general = Mage::getStoreConfig('trans_email/ident_support/email');
+	$headers = 'From: '.$email."\r\n".
+	'Reply-To: '.$email."\r\n" .
+	'X-Mailer: PHP/' . phpversion();
+
+	@mail($email_sede, $email_subject, $email_message, $headers);
+	$sucess = true;
+}
+?>
+
+
 <div id="appointment">
-	<h1>Agenda una cita</h1>
+	<h1><span>Agenda una cita</span></h1>
+
+	<?php 
+	if($_POST){
+			if($sucess == true){
+				echo '<ul class="messages" style="margin-top:30px !important;"><li class="success-msg" style="margin:0;"><ul><li style="margin:0">Tu cita fue agendada con &eacute;xito!</li></ul></li></ul>';
+			}
+		}
+	?>
 
 	<div class="form">
 
@@ -39,11 +106,15 @@
 					</p>
 
 					<p>Fecha
-						<select name="days" id="days" class="days"></select>
+						<select name="days" id="days" class="days">
+							<option value=" " selected="selected">Seleccione</option>
+						</select>
 					</p>
 
 				    <p>Hora
-						<select name="hours" id="hours" class="hours"></select>
+						<select name="hours" id="hours" class="hours">
+							<option value=" " selected="selected">Seleccione</option>
+						</select>
 					</p>
 				</div>
 
@@ -52,15 +123,16 @@
 					<div class="">
 						<p>Nombre: <?php echo $customerName; ?></p>
 						<p>Email:  <?php echo $customerEmail; ?></p>
+						<p>Teléfono: <input type="text" name="phone" id="phone" /></p>
 						<p>Notas adicionales <textarea name="notes"></textarea></p>
 					</div>
 				</div>
 
 				<div class="form-buttons">
-					<input type="hidden" id="id" value="<?php echo $customerId; ?>">
-					<input type="hidden" id="name" value="<?php echo $customerName; ?>">
-					<input type="hidden" id="email" value="<?php echo $customerEmail; ?>">
-					<button class="button" id="confirm-button" onclick="confirm()">Confirmar</button>
+					<input type="hidden" id="id" name="id" value="<?php echo $customerId; ?>">
+					<input type="hidden" id="name" name="name" value="<?php echo $customerName; ?>">
+					<input type="hidden" id="email" name="email" value="<?php echo $customerEmail; ?>">
+					<button class="button" id="confirm-button" onclick="return confirm()">Confirmar</button>
 				</div>
 			</form>
 		</div>
@@ -91,10 +163,8 @@
 			alert("Por favor seleccione una hora");
 			return false;
 		}
-		
 
-		//FALTA EL RESTO
-		alert('LISTO');
+		return true;
 	}	
 
 	jQuery(document).ready(function (){
