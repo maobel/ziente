@@ -2556,14 +2556,14 @@ textarea.input-lg, .input-group-lg > textarea.form-control,
 /* line 68, ../sass/bootstrap_lib/_buttons.scss */
 .btn-danger {
   color: white;
-  background-color: #d9534f;
-  border-color: #d43f3a;
+  background-color: #068b8e;
+  border-color: #ffffff;
 }
 /* line 414, ../sass/bootstrap_lib/_mixins.scss */
 .btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active {
   color: white;
-  background-color: #d2322d;
-  border-color: #ac2925;
+  background-color: #333333;
+  border-color: #ffffff;
 }
 /* line 419, ../sass/bootstrap_lib/_mixins.scss */
 .open .btn-danger.dropdown-toggle {
