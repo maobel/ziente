@@ -42,12 +42,18 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
                 <?php } ?>
                 <?php if ($_attribute->getAttributeId() == 965) {?>
                     <div>
-                        <a class="cboxElement" href="media/wysiwyg/camisas-largo.png">¿Cuál es la diferencia?</a>
+                        <a id="link1" href="javascript:void(0)">¿Cuál es la diferencia?</a>
+                    </div>
+                    <div id="image1" style="display:none">
+                        <a id="linkimage1" href="javascript:void(0)"><img src="media/wysiwyg/producto-largo.png" /></a>
                     </div>
                 <?php } ?>
                 <?php if ($_attribute->getAttributeId() == 966) {?>
                     <div>
-                        <a class="cboxElement" href="media/wysiwyg/camisas-silueta.png">¿Cuál es la diferencia?</a>
+                        <a id="link2" href="javascript:void(0)">¿Cuál es la diferencia?</a>
+                    </div>
+                    <div id="image2" style="display:none">
+                        <a id="linkimage2" href="javascript:void(0)"><img src="media/wysiwyg/producto-silueta.png" /></a>
                     </div>
                 <?php } ?>
             </div>
@@ -63,5 +69,23 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
     <script type="text/javascript">
         var spConfig = new Product.Config(<?php echo $this->getJsonConfig() ?>);
     </script>
-<?php endif;?>
+    <script>
+      jQuery(function() {
+        jQuery("#link1").click(function(){
+            jQuery("#image1").toggle();
+          });
 
+        jQuery("#link2").click(function(){
+            jQuery("#image2").toggle();
+          });
+
+        jQuery("#linkimage1").click(function(){
+            jQuery("#image1").toggle();
+          });
+
+        jQuery("#linkimage2").click(function(){
+            jQuery("#image2").toggle();
+          });
+      });
+  </script>
+<?php endif;?>

@@ -259,3 +259,7 @@ var/locks/index_process_7.lock
 var/locks/index_process_8.lock
 
 var/locks/index_process_9.lock
+
+var/locks/index_process_1.lock
+
+var/locks/index_process_1.lock
