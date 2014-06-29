@@ -993,6 +993,7 @@ pre code {
 /* line 106, ../sass/bootstrap_lib/_grid.scss */
 .col-xs-12 {
   width: 100%;
+  /*clear: both;*/
 }
 
 @media (min-width: 768px) {
