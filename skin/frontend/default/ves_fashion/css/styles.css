@@ -7036,6 +7036,125 @@ body,
     width: 33%;
     margin-left: 0;
   }
+  div#camisas, div#historia, div#appointment, div#colecciones, div#ayuda, div#comprar, div#terms {
+    width: 100%;
+    padding-top: 20px;
+  }
+  div#colecciones-images{
+    width: 100%;
+  }
+  div.colecciones-box1, div.colecciones-box5, div.colecciones-box6{
+    width: 100%;
+    margin-left: 0;
+    text-align: center;
+  }
+  div div.colecciones-box2, div.colecciones-box3{
+    width: 32%;
+    margin-left: 5px; 
+  }
+  div#colecciones-images{
+    width: 100%;
+  }
+  div.historia-flujo-imagen{
+    width: 100%;
+  }
+  div.camisas-tabla-wrap {
+    width: 100%;
+  }
+  table.camisas-tabla{
+    width: 100%;
+    margin-top: 0;
+  }
+  td.camisas-tabla{
+    margin-top: 10px;
+  }
+  table.camisas-tabla .col1{
+    width: 100%;
+    float: left;
+    clear: both;
+    padding-bottom: 0;
+    text-align: center;
+  }
+  table.camisas-tabla .col1 img{
+    width: 20%;
+  }
+  table.camisas-tabla .col2{
+    width: 100%;
+    float: left;
+    clear: both;
+    padding-top:0;
+  }
+  table.camisas-tabla .col3{
+    width: 100%;
+    float: left;
+    clear: both;
+    padding-bottom: 0;
+  }
+  div.camisas-tabla {
+    width: 100%;
+  }
+  div.camisas-largo-imagen{
+    width: 100%;
+  }
+  div.camisas-largo-texto{
+    width: 100%;
+  }
+  div.camisas-largo-01 {
+    width: 100%;
+  }
+  div.camisas-faq .preguntas{
+    width: 100%;
+  }
+
+  div#appointment .form .options{
+    width: 100%;
+  }
+  div#appointment .form-confirmation{
+    width: 100%;
+  }
+
+/*MAOBEL*/
+
+  div.comprar-step-container{
+    width: 100%;
+  }
+  div.comprar-step{
+    width: 100%;
+  }
+  div.comprar-step-center{
+    width: 100%;
+  }
+  div.comprar-faq{
+    width: 100%;
+  }
+  div.comprar-faq .preguntas{
+    width: 100%;
+  }
+  div.botones{
+    width: 100%;
+  }
+  .button6, input.button{
+    width: 100%;
+    margin-left: 0;
+  }
+  table.camisas-tabla td{
+    padding-bottom: 20px;
+  }
+
+  .block-cart .actions button.button, .block-cart .actions .view-cart{
+    width: 100px;
+    font-size: 10px;
+    height: 30px;
+    float: left;
+  }
+  .cart-top #cart a{
+    width: 100px;
+    font-size: 10px;
+    height: 30px;
+    float: left;
+    padding: 10px 5px; 
+    margin: 0 0 0 5px;
+  }
 }
 
 @media screen and (max-width: 991px) {
@@ -7072,7 +7191,7 @@ body,
   /* line 34, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_responsive.scss */
   .quick-access .inner-toggle {
     background: #fff;
-    min-width: 180px;
+    min-width: 210px;
     position: absolute;
     right: 0;
     top: 100%;
