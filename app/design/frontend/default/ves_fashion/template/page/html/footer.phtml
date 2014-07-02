@@ -27,6 +27,12 @@
  $themeConfig = $helper->getConfig();
 
 ?>
+<script type="text/javascript">
+(function() {var s = document.createElement('script');s.type = 'text/javascript';s.async = true;
+s.src = document.location.protocol + '//wisepops.com/default/index/get-loader?user_id=3617';
+var s2 = document.getElementsByTagName('script')[0];s2.parentNode.insertBefore(s, s2);})();
+</script>
+
 <div class="footer-bottom">
    
 </div>
@@ -38,7 +44,7 @@
 	            echo "<address>".$themeConfig->get("copyright","")."</address>";
 	        }else{
 	            ?>
-	            <address><?php echo $this->getCopyright() ?></address>
+	            <?php echo $this->getCopyright() ?>
 	            <?php
 	        }
 	    	?>

@@ -98,7 +98,7 @@ if($_POST){
 					<?php $collection1 = Mage::getModel('appointments/locations')->getCollection(); ?>
 					<p>Sede
 					    <select name="location" id="locations" class="locations">
-							<option value=" " selected="selected">Seleccione</option>
+							<option value=" " selected="selected">Selecciona</option>
 							<?php foreach($collection1 as $location) { ?>
 					        	<option value="<?php echo $location->getId();?>"><?php echo $location->getName() . ' - ' . $location->getAddress();?></option>
 					        <?php } ?>
@@ -107,13 +107,13 @@ if($_POST){
 
 					<p>Fecha
 						<select name="days" id="days" class="days">
-							<option value=" " selected="selected">Seleccione</option>
+							<option value=" " selected="selected">Selecciona</option>
 						</select>
 					</p>
 
 				    <p>Hora
 						<select name="hours" id="hours" class="hours">
-							<option value=" " selected="selected">Seleccione</option>
+							<option value=" " selected="selected">Selecciona</option>
 						</select>
 					</p>
 				</div>

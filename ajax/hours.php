@@ -14,7 +14,7 @@ $DB = Mage::getSingleton('core/resource')->getConnection('core_write');
 		Hours:
 	</label>
 	<select id="hours" name="hours" class="hours">
-		<option value=" ">Seleccione</option>
+		<option value=" ">Selecciona</option>
 		<?php
 			$sql = "SELECT `id`, `time` FROM ziente_hours WHERE `day_id` = '$idDay' AND ISNULL(`customer_id`)";
 			

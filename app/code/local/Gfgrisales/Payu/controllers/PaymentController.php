@@ -18,9 +18,9 @@ class Gfgrisales_Payu_PaymentController extends Mage_Core_Controller_Front_Actio
             $form->addField($field, 'hidden', array('name'=>$field, 'value'=>$value));
         }
         $html = '<html><body>';
-        $html.= $this->__('Usted sera redireccionado al punto de pago de PayU en unos segundos.');
+        $html.= $this->__('Usted ser&aacute; redireccionado al punto de pago de PayU en unos segundos.');
         $html.= $form->toHtml();
-		$html.= '<img src="http://www.payulatam.com/logos/img/payu_solo_107x51.png" alt="PayU" width="107" height="51" border="0">';
+		//$html.= '<img src="http://www.payulatam.com/logos/img/payu_solo_107x51.png" alt="PayU" width="107" height="51" border="0">';
         $html.= '<script type="text/javascript">document.getElementById("payu_checkout").submit();</script>';
         $html.= '</body></html>';
 
