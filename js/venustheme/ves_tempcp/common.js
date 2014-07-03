@@ -80,12 +80,12 @@ function addToCart( addtocartURL ) {
             type: 'post',
             data: "isAjax=1",
             success: function(data) {
-                jQuery('.success, .warning, .attention, .information, .error').remove();
+                jQuery('.success-msg, .warning, .attention, .information, .error').remove();
 
                 if (data.status == "SUCCESS") {
-                    jQuery('#notification').html('<div class="success" style="display: none;">' + data.message + '<a class="close btn-remove" href="javascript:;" onclick="jQuery(\'.success, .warning, .attention, .information, .error\').remove()">X</a></div>');
+                    jQuery('#notification').html('<div class="success-msg" style="display: none;">' + data.message + '<a class="close btn-remove" href="javascript:;" onclick="jQuery(\'.success, .warning, .attention, .information, .error\').remove()">X</a></div>');
                     
-                    jQuery('.success').fadeIn('slow').delay(5000).hide(0);
+                    jQuery('.success-msg').fadeIn('slow').delay(5000).hide(0);
                     
                     jQuery('#cart > .heading a').click();
                     
@@ -280,12 +280,12 @@ $(window).ready( function(){
                                 success: function(data){ 
                                     /*$('#ajax_loader').hide();*/
 
-                                    jQuery('.success, .warning, .attention, .information, .error').remove();
+                                    jQuery('.success-msg, .warning, .attention, .information, .error').remove();
 
                                     if (data.status == "SUCCESS") {
-                                        jQuery('#notification').html('<div class="success" style="display: none;">' + data.message + '<a onclick="jQuery(\'.success, .warning, .attention, .information, .error\').remove()" class="close btn-remove" href="javascript:;">X</a></div>');
+                                        jQuery('#notification').html('<div class="success-msg" style="display: none;">' + data.message + '<a onclick="jQuery(\'.success, .warning, .attention, .information, .error\').remove()" class="close btn-remove" href="javascript:;">X</a></div>');
                                         
-                                        jQuery('.success').fadeIn('slow').delay(5000).hide(0);
+                                        jQuery('.success-msg').fadeIn('slow').delay(5000).hide(0);
                                         
                                         showMiniCart();
                                         
