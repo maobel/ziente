@@ -7941,9 +7941,9 @@ HISTORIA
   line-height: 20px;
 }
 .historia-flujo-imagen{
-  width: 782px; 
+  width: 630px; 
   margin-bottom: 70px;
-  float:left;
+  margin: 0 auto;
 }
 #historia-intro p{
   font-size: 14px;
@@ -7972,11 +7972,11 @@ CAMISAS
   margin-bottom: 79px;
 }
 .camisas-tabla-wrap{
-  width: 1060px;
+  width: 807px;
   margin: 0 auto; 
 }
 .camisas-tabla{
-  width: 1060px;
+  width: 807px;
   border: 0;
   padding-bottom: 30px;
   margin-top: 79px;
@@ -7986,15 +7986,15 @@ CAMISAS
   padding-bottom: 60px;
 }
 .camisas-tabla .col1{
-  width: 190px;
+  width: 100px;
 }
 .camisas-tabla .col2{
   text-align: center;
-  width: 318px;
+  width: 200px;
   padding-top: 35px;
 }
 .camisas-tabla .col3{
-  width: 552px;
+  width: 507px;
 }
 .camisas-tabla p{
   font-size: 14px;
@@ -8039,15 +8039,14 @@ CAMISAS
   text-align: justify;
 }
 .camisas-largo-imagen{
-  width: 1090px;
-  margin-top: 62px
-}
-.camisas-largo-01{
-  width: 1033px;
+  width: 807px;
+  margin-top: 52px;
+  padding-bottom: 50px;
+  margin: 0 auto;
 }
 .camisas-faq{
   clear: both;
-  padding-top: 88px;  
+  padding-top: 20px;  
 }
 .camisas-faq-icon{
   width: 100px;
@@ -8079,7 +8078,7 @@ CAMISAS
 }
 #camisas .texto{
   text-align: center;
-  margin-bottom:60px;
+  margin-bottom:20px;
 }
 
 /*
@@ -8193,6 +8192,14 @@ CITAS
   width: 140px;
   margin: 0 auto;
   clear: both;
+}
+
+/*
+COLECCIONES
+*/
+#terms{
+  width: 807px; 
+  margin: 0 auto;
 }
 
 /*
