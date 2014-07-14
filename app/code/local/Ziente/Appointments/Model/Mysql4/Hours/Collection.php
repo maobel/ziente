@@ -1,8 +1,12 @@
 <?php
-class Ziente_Appointments_Model_Mysql4_Hours_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract{
+    class Ziente_Appointments_Model_Mysql4_Hours_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract
+    {
 
-	public function construct()
-	{
-		$this->_init('appointments/hours');
-	}
-} 
+		public function _construct(){
+			$this->_init("appointments/hours");
+		}
+
+		
+
+    }
+	 

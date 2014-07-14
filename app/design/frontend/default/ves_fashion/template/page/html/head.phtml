@@ -23,6 +23,13 @@
  * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
+//Unset session
+$urlString = Mage::helper('core/url')->getCurrentUrl();
+$url = Mage::getSingleton('core/url')->parseUrl($urlString);
+$path = $url->getPath();
+if($path != "/customer/account/login/")
+	Mage::getSingleton('core/session')->unsReturnPath();
+
 $current_controller = Mage::app()->getRequest()->getControllerName(); 
 
 $helper = Mage::helper("ves_tempcp/framework")->getFramework( );

@@ -2,6 +2,9 @@
 $mageFilename = 'app/Mage.php';
 require_once $mageFilename;
 
+//Set session
+Mage::getSingleton('core/session')->setReturnPath("agenda-una-cita");
+
 Mage::app('default');
 if($_POST){
 	//Información cita:

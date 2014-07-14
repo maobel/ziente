@@ -186,6 +186,7 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
     protected function _loginPostRedirect()
     {
         $session = $this->_getSession();
+        $returnPath  =  Mage::getSingleton('core/session')->getReturnPath();
 
         if (!$session->getBeforeAuthUrl() || $session->getBeforeAuthUrl() == Mage::getBaseUrl()) {
             // Set default URL to redirect customer to
@@ -217,7 +218,12 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
                 $session->setAfterAuthUrl($session->getBeforeAuthUrl());
             }
             if ($session->isLoggedIn()) {
-                $session->setBeforeAuthUrl($session->getAfterAuthUrl(true));
+                //$session->setBeforeAuthUrl($session->getAfterAuthUrl(true));
+                
+                if($returnPath != "")
+                    $session->setBeforeAuthUrl(Mage::getBaseUrl().$returnPath);
+                else
+                    $session->setBeforeAuthUrl($session->getAfterAuthUrl(true));
             }
         }
         $this->_redirectUrl($session->getBeforeAuthUrl(true));

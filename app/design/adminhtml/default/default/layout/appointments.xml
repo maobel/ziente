@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <appointments_adminhtml_hours_index>
+	<reference name="content">
+	  <block type="appointments/adminhtml_hours" name="hours" />
+	</reference>
+  </appointments_adminhtml_hours_index>
+  <appointments_adminhtml_days_index>
+	<reference name="content">
+	  <block type="appointments/adminhtml_days" name="days" />
+	</reference>
+  </appointments_adminhtml_days_index>
+  <appointments_adminhtml_locations_index>
+	<reference name="content">
+	  <block type="appointments/adminhtml_locations" name="locations" />
+	</reference>
+  </appointments_adminhtml_locations_index>
+</layout>

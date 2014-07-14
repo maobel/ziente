@@ -51,7 +51,9 @@
 					<?php echo $post->getUpdated(); ?>
 				</div>
 				<?php endif; ?>
-				<div class="blog-hits"><span><?php echo $this->__("Read");?></span> <strong><?php echo $post->getHits(); ?></strong> <?php echo $this->__("Times"); ?></div>
+
+				<!--<div class="blog-hits"><span><?php echo $this->__("Read");?></span> <strong><?php echo $post->getHits(); ?></strong> <?php echo $this->__("Times"); ?></div>-->
+
 				<?php if( $this->getPostConfig("post_show_category_title") ): ?>
 				<div class="blog-category">
 					<span><?php echo $this->__("Published In");?></span> 
@@ -73,6 +75,7 @@
 				<?php endif; ?>
 			</div>
 			
+
 			<?php if( $this->getPostConfig("post_showsocial") ): ?>
 			<div class="blog-social">
 				<?php echo $this->getChildHtml('post.social'); ?>

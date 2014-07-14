@@ -651,6 +651,9 @@ ul, ol {
 
 /* Block reorder */
 /* line 224, E:/Work/BrainOS/SVN.Local/magento.svn/themes/ves_fashion/ves_fashion_theme_1.8.1/skin/frontend/default/ves_fashion/sass/magento/_block.scss */
+.block-reorder{
+  display: none;
+}
 .block-reorder li input {
   margin-right: 12px;
 }

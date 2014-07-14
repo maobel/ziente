@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <config>
-   <modules>
-      <Ziente_Appointments>
-         <active>true</active>
-         <codePool>local</codePool>
-         <version>1.0.0</version>
-      </Ziente_Appointments>
-   </modules>
+  <modules>
+    <Ziente_Appointments>
+      <active>true</active>
+      <codePool>local</codePool>
+      <version>0.1.0</version>
+    </Ziente_Appointments>
+  </modules>
 </config>
