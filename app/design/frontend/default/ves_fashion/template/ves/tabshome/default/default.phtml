@@ -24,8 +24,6 @@
 	$span = floor(12/$cols);
 	$active = 'news';
 	$modid = rand(1,9)+rand();
-	
-
 ?>
 <?php $_helper = $this->helper('catalog/output'); ?>
 
@@ -106,7 +104,7 @@
 													
 													<?php if($swap_image && $hover_image = $helper->getProductImage($_product->getId(), 0, $list_image_width, $list_image_height)) { ?>
 													<span class="hover-image">
-														<a class="img" href="<?php echo $_product->getProductUrl(); ?>"><img src="<?php echo $hover_image; ?>" width="<?php echo $list_image_width; ?>" height="<?php echo $list_image_height; ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"></a>
+														<a class="img" href="<?php echo $_product->getProductUrl(); ?>"><img src="<?php echo $hover_image; ?>" width="<?php echo $list_image_width; ?>" height="<?php echo $list_image_height; ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
 													</span>
 													<?php } ?>
 												</div>

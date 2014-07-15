@@ -33,6 +33,14 @@ if($_POST){
     $email_query = "SELECT email FROM ziente_locations WHERE id = $sede LIMIT 1";
     $email_sede = $readConnection->fetchOne($email_query);
 
+
+    $address_query = "SELECT address FROM ziente_locations WHERE id = $sede LIMIT 1";
+    $address_sede = $readConnection->fetchOne($address_query);
+
+    $phone_query = "SELECT phone FROM ziente_locations WHERE id = $sede LIMIT 1";
+    $phone_sede = $readConnection->fetchOne($phone_query);
+
+
     $writeConnection = $resource->getConnection('core_write');
     $query = "UPDATE ziente_hours 
     			SET customer_id = $id, name = '$name', email= '$email', phone = '$phone', notes = '$nota', reservation_date = '$fecha_date' 
@@ -56,7 +64,37 @@ if($_POST){
 
 	@mail($email_sede, $email_subject, $email_message, $headers);
 	$sucess = true;
+
+	//Send email to customer
+	sendNotification($name, $email, $sede_name, $address_sede, $phone_sede, $fecha_date, $hora_date);
 }
+
+	function sendNotification($toName, $toEmail, $location, $address, $phone, $date, $time) {
+		$storeId = Mage::app ()->getStore ()->getId ();
+		$templateId = '9';
+		$mailSubject = $title;
+		$fromName = "Admin";
+		$fromEmail = "admin@ziente.co";
+		
+		$sender = array (
+				'name' => $fromName,
+				'email' => $fromEmail 
+		);
+		
+		$vars = Array (
+				'name' => $toName,
+				'location' => $location,
+				'address' => $address,
+				'phone' => $phone,
+				'date' => $date,
+				'time' => $time
+		);
+		
+		$mailTemplate = Mage::getModel ( 'core/email_template' );
+		$mailTemplate->setTemplateSubject ( $mailSubject )->sendTransactional ( $templateId, $sender, $toEmail, $toName, $vars, $storeId );
+		
+		return true;
+	}
 ?>
 
 
@@ -98,7 +136,8 @@ if($_POST){
 				<div class="options">
 					<p>Seleccione las siguientes opciones:</p>
 
-					<?php $collection1 = Mage::getModel('appointments/locations')->getCollection(); ?>
+					<?php $collection1 = Mage::getModel('appointments/locations')->getCollection()->addFilter('active', 1);?>
+
 					<p>Sede
 					    <select name="location" id="locations" class="locations">
 							<option value=" " selected="selected">Selecciona</option>
