@@ -4,77 +4,83 @@ require_once $mageFilename;
 
 //Set session
 Mage::getSingleton('core/session')->setReturnPath("agenda-una-cita");
-
 Mage::app('default');
-if($_POST){
-	//Información cita:
-	$sede = $_POST['location'];
-	$fecha = $_POST['days'];
-	$hora = $_POST['hours'];
 
+if($_POST){
+	//Get the parameters
+	$location = $_POST['location'];
+	$date = $_POST['days'];
+	$time = $_POST['hours'];
 	$id = $_POST['id'];
 	$email = $_POST['email'];
 	$name = $_POST['name'];
 	$phone = $_POST['phone'];
-	$nota = $_POST['notes'];
+	$notes = $_POST['notes'];
 
 	$resource = Mage::getSingleton('core/resource');
     $readConnection = $resource->getConnection('core_read');
 
-    $sedequery = "SELECT name FROM ziente_locations WHERE id = $sede LIMIT 1";
-    $sede_name = $readConnection->fetchOne($sedequery);
 
-    $fecha_query = "SELECT date FROM ziente_days WHERE id = '$fecha' and location_id = '$sede' LIMIT 1 ";
-    $fecha_date = $readConnection->fetchOne($fecha_query);
+    $DB = Mage::getSingleton('core/resource') -> getConnection('core_read');
+		
+    //Get the location data
+    $queryLocation = "SELECT name, email, address, phone FROM ziente_locations WHERE id = $location LIMIT 1";
+	
+	foreach ($DB->fetchAll($queryLocation) as $rs) {
+		$locationName = $rs['name'];
+		$locationEmail = $rs['email'];
+		$locationAddress = $rs['address'];
+		$locationPhone = $rs['phone'];
+ 	}
 
-    $hora_query = "SELECT time FROM ziente_hours WHERE id = '$hora' and day_id = '$fecha' LIMIT 1 ";
-    $hora_date = $readConnection->fetchOne($hora_query); 
+    $queryDate= "SELECT date FROM ziente_days WHERE id = '$date' and location_id = '$location' LIMIT 1 ";
+    $dateAppointment = $readConnection->fetchOne($queryDate);
     
-    $email_query = "SELECT email FROM ziente_locations WHERE id = $sede LIMIT 1";
-    $email_sede = $readConnection->fetchOne($email_query);
-
-
-    $address_query = "SELECT address FROM ziente_locations WHERE id = $sede LIMIT 1";
-    $address_sede = $readConnection->fetchOne($address_query);
-
-    $phone_query = "SELECT phone FROM ziente_locations WHERE id = $sede LIMIT 1";
-    $phone_sede = $readConnection->fetchOne($phone_query);
-
-
+    $queryTime = "SELECT time FROM ziente_hours WHERE id = '$time' and day_id = '$date' LIMIT 1 ";
+    $timeAppointment = $readConnection->fetchOne($queryTime); 
+    
+    //Save the record
+    $currentTime = now();
     $writeConnection = $resource->getConnection('core_write');
     $query = "UPDATE ziente_hours 
-    			SET customer_id = $id, name = '$name', email= '$email', phone = '$phone', notes = '$nota', reservation_date = '$fecha_date' 
-    			WHERE day_id = $fecha and id = $hora";
+    			SET customer_id = $id, name = '$name', email= '$email', phone = '$phone', notes = '$notes', reservation_date = '$currentTime'  
+    			WHERE day_id = $date and id = $time";
     $writeConnection->query($query);
 
-	$email_subject = 'Ziente: Citas';
-	$email_message = "Se agendó la siguiente cita:\n\n";
-	$email_message .= "Nombre: ".utf8_decode($name)."\n";
-	$email_message .= "E-mail: ". $email. "\n";
-	$email_message .= "Teléfono: ". $phone. "\n";
-	$email_message .= "Nota: " .nl2br(utf8_decode($nota)). "\n";
-	$email_message .= "Sede: " .nl2br(utf8_decode($sede_name)). "\n";
-	$email_message .= "Fecha: " .utf8_decode($fecha_date). "\n";
-	$email_message .= "Hora: " .utf8_decode($hora_date). "\n";
+	//Send notifications
+	sendAminNotification($locationEmail, $name, $email, $phone, $notes, $locationName, $dateAppointment, $timeAppointment);
+	sendCustomerNotification($name, $email, $locationName, $locationAddress, $locationPhone, $dateAppointment, $timeAppointment);
 
-	$ident_general = Mage::getStoreConfig('trans_email/ident_support/email');
-	$headers = 'From: '.$email."\r\n".
-	'Reply-To: '.$email."\r\n" .
-	'X-Mailer: PHP/' . phpversion();
-
-	@mail($email_sede, $email_subject, $email_message, $headers);
-	$sucess = true;
-
-	//Send email to customer
-	sendNotification($name, $email, $sede_name, $address_sede, $phone_sede, $fecha_date, $hora_date);
+	$success = true;
 }
 
-	function sendNotification($toName, $toEmail, $location, $address, $phone, $date, $time) {
+
+	function sendAminNotification($toEmail, $name, $email, $phone, $notes, $location, $date, $time) {
+		$subject = 'Ziente: Citas';
+		$message = "Se agendó la siguiente cita:\n\n";
+		$message .= "Nombre: ".utf8_decode($name)."\n";
+		$message .= "E-mail: ". $email. "\n";
+		$message .= "Teléfono: ". $phone. "\n";
+		$message .= "Nota: " .nl2br(utf8_decode($notes)). "\n";
+		$message .= "Sede: " .nl2br(utf8_decode($location)). "\n";
+		$message .= "Fecha: " .utf8_decode($date). "\n";
+		$message .= "Hora: " .utf8_decode($time). "\n";
+
+		$fromEmail = "info@ziente.co";
+		$ident_general = Mage::getStoreConfig('trans_email/ident_support/email');
+		$headers = 'From: '.$fromEmail."\r\n".
+		'Reply-To: '.$fromEmail."\r\n" .
+		'X-Mailer: PHP/' . phpversion();
+
+		@mail($toEmail, $subject, $message, $headers);
+	}
+	
+	function sendCustomerNotification($toName, $toEmail, $location, $address, $phone, $date, $time) {
 		$storeId = Mage::app ()->getStore ()->getId ();
 		$templateId = '9';
 		$mailSubject = $title;
-		$fromName = "Admin";
-		$fromEmail = "admin@ziente.co";
+		$fromName = "ZIENTE";
+		$fromEmail = "info@ziente.co";
 		
 		$sender = array (
 				'name' => $fromName,
@@ -92,8 +98,6 @@ if($_POST){
 		
 		$mailTemplate = Mage::getModel ( 'core/email_template' );
 		$mailTemplate->setTemplateSubject ( $mailSubject )->sendTransactional ( $templateId, $sender, $toEmail, $toName, $vars, $storeId );
-		
-		return true;
 	}
 ?>
 
@@ -103,7 +107,7 @@ if($_POST){
 
 	<?php 
 	if($_POST){
-			if($sucess == true){
+			if($success == true){
 				echo '<ul class="messages" style="margin-top:30px !important;"><li class="success-msg" style="margin:0;"><ul><li style="margin:0">Tu cita fue agendada con &eacute;xito!</li></ul></li></ul>';
 			}
 		}
@@ -122,7 +126,7 @@ if($_POST){
 
 		<div id="appointment-intro">
 			<h2>PRUÉBATE UNA CAMISA ZIENTE</h2>
-			<p>¿Quieres probarte una camisa ZIENTE antes de comprarla? Programa una cita y pasa por nuestro showroom. Podrás conocer todos nuestros productos.</p>
+			<p>¿Quieres probarte una camisa ZIENTE antes de comprarla? Regístrate en ZIENTE, programa una cita y visita nuestro showroom. Podrás conocer todos nuestros productos.</p>
 
 			<div class="button-center"><button class="button7" onclick="location.href='customer/account/'">AGENDA UNA CITA</button></div>
 		</div>
@@ -165,7 +169,7 @@ if($_POST){
 					<div class="">
 						<p>Nombre: <?php echo $customerName; ?></p>
 						<p>Email:  <?php echo $customerEmail; ?></p>
-						<p>Teléfono: <input type="text" name="phone" id="phone" /></p>
+						<p>Teléfono: <input type="text" name="phone" id="phone"/></p>
 						<p>Notas adicionales <textarea name="notes"></textarea></p>
 					</div>
 				</div>
@@ -192,6 +196,7 @@ if($_POST){
    		var location = jQuery("#locations").val();
    		var day = jQuery("#days").val();
    		var hour = jQuery("#hours").val();
+   		var phone = jQuery("#phone").val();
 
 		if(location == ' '){
 			alert("Por favor seleccione una sede");
@@ -203,6 +208,10 @@ if($_POST){
 		}
 		if(hour == ' '){
 			alert("Por favor seleccione una hora");
+			return false;
+		}
+		if(phone == ''){
+			alert("Por favor ingrese su teléfono");
 			return false;
 		}
 

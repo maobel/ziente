@@ -55,6 +55,14 @@
             <?php } ?>
             <div id="notification"></div>
             </div>
+            
+            <?php if($global_messages = $helper->getModulesByPosition('global_messages')){ ?>
+                <div class="global_messages">
+                    <div class="container">
+                        <?php echo $global_messages; ?>
+                    </div>
+                </div>
+            <?php } ?>
         </section>
         <?php if($slideshow = $helper->getModulesByPosition('slideshowTop')){ ?>
         <section id="ves-slideshow" class="ves-slideshow">
@@ -97,13 +105,7 @@
                     <?php endif; ?>
                     <section class="col-lg-<?php echo $SPAN[1];?> col-md-<?php echo $SPAN[1];?> col-sm-12 col-xs-12">                        
                         <div id="content">
-                                <?php if($global_messages = $helper->getModulesByPosition('global_messages')){ ?>
-                                    <div class="global_messages">
-                                        <div class="container">
-                                            <?php echo $global_messages; ?>
-                                        </div>
-                                    </div>
-                                <?php } ?>
+                                
                                 <?php if($contentTop = $helper->getModulesByPosition('contentTop')){ ?>
                                     <div class="contentTop">
                                         <div class="container">
