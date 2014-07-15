@@ -31,7 +31,7 @@
 				</div>
 
 				<?php if( $post->getFile() ): ?>
-				<div class="blog-image"><img src="<?php echo $post->getImageURL( $this->getPostConfig("post_imagetype") );?>" title="<?php echo $post->getTitle();?>"/></div>
+				<div class="blog-image"><img src="<?php echo '/media/' . $post->getFile(); ?>" title="<?php echo $post->getTitle();?>"/></div>
 				<?php endif; ?>
 
 				<?php if( $this->getPostConfig("post_showdescription") ): ?>

@@ -90,9 +90,10 @@
 								-->
 							</div>
 							<?php if( $post->getFile() ): ?>
+
 								<div class="blog-image">
 									<a href="<?php echo $post->getURL();?>" title="<?php echo $post->getTitle();?>">
-										<img src="<?php echo $post->getImageURL( $this->getListConfig("list_leadingimage") );?>" title="<?php echo $post->getTitle();?>"/>
+										<img src="<?php echo '/media/' . $post->getFile(); ?>" title="<?php echo $post->getTitle();?>"/>
 									</a>
 								</div>
 							<?php endif; ?>
